@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@extends('layouts.navbar')
 @section('content')
 
 </style>
@@ -9,7 +9,7 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/surfcity.jpg?text=SurfCity" class="d-block w-100" alt="...">
+                    <img src="img/surfcity.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="img/ilopango.jpg" class="d-lock w-100" alt="...">
