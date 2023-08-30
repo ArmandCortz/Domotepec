@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('users.home');
 });
-Route::get('/home', function () {
-    return view('home');
+Route::get('/dasboard', function () {
+    return view('users.dasboard');
+});
+Route::get('/producto', function () {
+    return view('users.producto');
+});
+Route::get('/reservas', function () {
+    return view('users.reservas');
 });
