@@ -7,14 +7,29 @@
                 <!-- Contenido del carrusel -->
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner">
+                        <div class="carousel-item">
+                            <img src="img/boqueron_1.png" class="img-fluid " style="width:100%; height:100%" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/chalate_1.png" class="img-fluid" style="width:100%; height:100%" alt="...">
+                        </div>
                         <div class="carousel-item active">
-                            <img src="img/surfcity.jpg" class="img-fluid " style="width:100%; height:100%" alt="...">
+                            <img src="img/ilopango_1.jpg" class="img-fluid " style="width:100%; height:100%" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/ilopango.jpg" class="img-fluid " style="width:100%; height:100%" alt="...">
+                            <img src="img/surfcity_1.jpeg" class="img-fluid " style="width:100%; height:100%" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/el-boqueron.png" class="img-fluid" style="width:100%; height:100%" alt="...">
+                            <img src="img/chalate_2.png" class="img-fluid" style="width:100%; height:100%" alt="...">
+                        </div>
+                        <div class="carousel-item active">
+                            <img src="img/ilopango_2.png" class="img-fluid " style="width:100%; height:100%" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/surfcity_2.jpeg" class="img-fluid " style="width:100%; height:100%" alt="...">
+                        </div>
+                        <div class="carousel-item active">
+                            <img src="img/surfcity_3.jpg" class="img-fluid " style="width:100%; height:100%" alt="...">
                         </div>
                     </div>
                 </div>
