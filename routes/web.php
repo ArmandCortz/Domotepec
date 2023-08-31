@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('users.home');
-});
-Route::get('/dasboard', function () {
-    return view('users.dasboard');
-});
+})->name('Home');
+
+Route::get('/dashboard', function () {
+    return view('users.dashboard');
+} )->name('Dashboard');
+
 Route::get('/producto', function () {
     return view('users.producto');
 });

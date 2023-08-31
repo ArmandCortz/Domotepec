@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
 
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{route("Home")}}">
             <img src="img/Logo-Domotepec-1.jpeg"
                 style="width: 30px; height: 30px; border-radius: 50%; overflow: hidden;" alt="">
         </a>
@@ -12,11 +12,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Domotepec</a>
+                    <a class="nav-link active" aria-current="page" href="{{route("Home")}}">Domotepec</a>
                 </li>
-
             </ul>
-
         </div>
     </div>
 </nav>
