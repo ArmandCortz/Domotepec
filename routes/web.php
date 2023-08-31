@@ -22,8 +22,9 @@ Route::get('/dashboard', function () {
 } )->name('Dashboard');
 
 Route::get('/producto', function () {
-    return view('users.producto');
-});
+    return view('users.producto');  
+})->name('Producto');
+
 Route::get('/reservas', function () {
     return view('users.reservas');
 });
