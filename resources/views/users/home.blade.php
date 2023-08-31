@@ -53,7 +53,7 @@
                 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;">
                 <div style="display: flex; justify-content: center; align-items: center;">
                     <img src="img/Logo-Domotepec-1.jpeg"
-                        style="width: 30%; height: 30%; border-radius: 50%; overflow: hidden;" alt="">
+                        style="width: 15%; height: 15%; border-radius: 50%; overflow: hidden;" alt="">
                 </div>
                 <form class="d-flex py-2" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
