@@ -41,11 +41,10 @@
 <br>
 <h2>Nombre de la cabaña</h2>
 </div>
-<div class="float-right">
-<div class="container">
-<button type="button" class="btn btn-primary ml-auto" class="btn btn-outline-success" class="btn btn-primary move-left"><i class="fas fa-share-from-square"></i> Compartir</button>
-</div>
-</div>
+
+
+<button type="button"  class="btn btn-outline-success" ><i class="fas fa-share-from-square"></i> Compartir</button>
+
 
 
 <button type="button" class="btn btn-outline-success"><i class="fas fa-heart"></i> Guardar</button>
