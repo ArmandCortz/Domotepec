@@ -7,20 +7,23 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title> {{ env('APP_NAME') }} </title>
     <!-- Scripts -->
-    <script src="{{ mix('/js/app.js') }}" defer></script>
     <!-- CSS-->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-        }
+    body {
+        font-family: 'Nunito', sans-serif;
+    }
     </style>
 </head>
 
@@ -34,6 +37,10 @@
         </main>
     </div>
     @yield('footer')
+@push('scripts')
+    <script src="/js/app.js"></script>
+
+    <script src="{{ asset('js/diseño.js') }}"></script>
 
 </body>
 
