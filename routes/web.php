@@ -14,17 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('users.home');
-})->name('Home');
-
-Route::get('/dashboard', function () {
-    return view('users.dashboard');
-} )->name('Dashboard');
-
-Route::get('/producto', function () {
-    return view('users.producto');  
-})->name('Producto');
-
-Route::get('/reservas', function () {
-    return view('users.reservas');
+    return view('home');
 });
