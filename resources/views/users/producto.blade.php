@@ -48,7 +48,38 @@
 
 
 <button type="button" class="btn btn-outline-success"><i class="fas fa-heart"></i> Guardar</button>
+<div style="padding:1.5rem !important">
+                                        <!-- /.user-block -->
+                                        <div class="row mb-3">
+                                            <div class="col-sm-6">
+                                            <img class="img-fluid" src="{{ asset('img/cabaña 1.jpeg') }}"
 
+                                                    alt="Photo">
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-sm-6">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <img class="img-fluid mb-3"
+                                                            src="{{ asset('img/cabaña 2.jpeg') }}" alt="Photo">
+                                                        <img class="img-fluid"
+                                                            src="{{ asset('img/cabaña 3.jpeg') }}" alt="Photo">
+                                                    </div>
+                                                    <!-- /.col -->
+                                                    <div class="col-sm-6">
+                                                        <img class="img-fluid mb-3"
+                                                        src="{{ asset('img/cabaña 4.jpeg') }}" alt="Photo">
+                                                        <img class="img-fluid"
+                                                        src="{{ asset('img/cabaña 5.jpeg') }}" alt="Photo">
+                                                    </div>
+                                                    <!-- /.col -->
+                                                </div>
+                                                <!-- /.row -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        
+                                        </div>
 
 
 
