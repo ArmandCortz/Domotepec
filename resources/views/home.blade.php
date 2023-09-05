@@ -1,1 +1,6 @@
-<h1>s</h1>
+@extends('layouts.app')
+@extends('layouts.components.navbar')
+@section('content')
+
+
+@endsection
