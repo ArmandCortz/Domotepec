@@ -67,22 +67,32 @@
     @include('partials.header')
     @include('partials.sidebar')
 
-    <main id="main" class="main">
-        <section class="section dashboard">
-            @yield('content')
-        </section>
-    </main><!-- End #main -->
+          <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        @yield('content-header')
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        @yield('content')
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
     
     @include('partials.footer')
 
     <a href="#" class="back-to-top d- flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     
-    <!-- Livewire and other scripts -->
-    @livewireScripts
-    @stack('scripts')
-    <!-- Custom JavaScript -->
-    @yield('js_custom')
+
 </body>
 
 </html>
