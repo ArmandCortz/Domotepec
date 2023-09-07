@@ -10,6 +10,10 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/galeria" class="nav-link">Galeria</a>
         </li>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/contacto" class="nav-link">Contacto</a>
+        </li>
     </ul>
 
     <!-- Right navbar links -->

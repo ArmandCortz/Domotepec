@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/galeria', function () {
     return view('welcome');
 });
+Route::get('/contacto', function () {
+    return view('contacto');
+});
