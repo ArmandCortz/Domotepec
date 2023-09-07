@@ -22,12 +22,12 @@
                     </div>
                             <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                       <a href="https://via.placeholder.com/1200/000000.png?text=2" data-toggle="lightbox" data-title="sample 2 - black" data-gallery="gallery">
-                        <img src="../img/cabaña2.jpeg" class="img-fluid mb-2" alt="white sample"/>
+                        <img src="../img/cabaña2.jpeg" class="img-fluid mb-1" alt="white sample"/>
                       </a>
                     </div>
                             <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                       <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=3" data-toggle="lightbox" data-title="sample 3 - red" data-gallery="gallery">
-                        <img src="../img/cabaña12.jpeg" class="img-fluid mb-2" alt="white sample"/>
+                        <img src="../img/cabaña12.jpeg" class="img-fluid mb-1" alt="white sample"/>
                       </a>
                     </div>
                             <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
