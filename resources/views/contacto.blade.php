@@ -96,5 +96,6 @@
                 <
                 img src="img/descarga.jpeg" alt="Mapa" width="400" height="300" >
                 <
-                /div>
-        @endsection
+                /div> /
+                div >
+            @endsection

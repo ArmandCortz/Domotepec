@@ -22,3 +22,7 @@ Route::get('/galeria', function () {
 Route::get('/contacto', function () {
     return view('contacto');
 });
+Route::get('/reservaciones', function () {
+    return view('reservaciones');
+});
+Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');

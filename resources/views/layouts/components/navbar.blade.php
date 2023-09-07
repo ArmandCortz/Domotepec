@@ -14,6 +14,9 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/contacto" class="nav-link">Contacto</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/reservaciones" class="nav-link">Reservaciones</a>
+        </li>
     </ul>
 
     <!-- Right navbar links -->
