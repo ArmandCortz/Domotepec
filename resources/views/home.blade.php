@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @extends('layouts.components.navbar')
 @section('content')
-    @push('styles')
-        <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    @endpush
+    
 
 
 
@@ -31,7 +29,7 @@
                 </div>
             </div>
             <div class="carousel-item ">
-                <img src="/img/img/ilopango_2.png" class="dimg-fluid mx-auto"
+                <img src="/img/img/ilopango_2.png" class="img-fluid mx-auto"
                     style="width: 100%; height: 400px; object-fit: cover;" alt="...">
                 <div class="carousel-caption "
                     style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
@@ -55,7 +53,7 @@
     <div id="nosotros" class=" bg-light">
 
         <div class="row ">
-            <div class="col-8">
+            <div class="col-6">
                 <div class="container text-center">
                         <div style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
                             <p>Nosotros</p>
@@ -69,8 +67,8 @@
                 </div>
             </div>
 
-            <div class="col">
-                <img class="" src="/img/cabaña10.jpeg" style="min-height: 100%; width: 100%;" alt="">
+            <div class="col-6">
+                <img class="" src="/img/cabaña10.jpeg" style="max-height: 500px; width: 100%;" alt="">
             </div>
         </div>
     </div>
