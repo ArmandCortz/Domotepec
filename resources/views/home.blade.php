@@ -52,7 +52,7 @@
         </a>
     </div>
 
-    <div id="nosotros" class=" bg-dark">
+    <div id="nosotros" class=" bg-light">
 
         <div class="row ">
             <div class="col-8">
@@ -74,6 +74,46 @@
             </div>
         </div>
     </div>
+    <div id="servicios" class=" bg-dark  py-2">
+        <div class="row">
+
+            <div class="col-md-6 offset-md-3 text-center">
+
+                <h1>Servicios</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, inventore. Quisquam repellendus
+                    voluptatum
+                    doloribus minus dignissimos fuga porro dicta, nostrum aspernatur sequi, illum temporibus! Placeat aut
+                    sed iusto explicabo neque.</p>
+                <br>
+
+
+            </div>
+            <div class="container py-2 text-center">
+                <div class="row">
+                    <div class="col">
+                        <i class="fa-solid fa-wifi"></i>
+                        <p>Servicio 1</p>
+                        <i class="fa-solid fa-wifi"></i>
+                        <p>Servicio 2</p>
+
+                    </div>
+                    <div class="col">
+                        <i class="fa-solid fa-wifi"></i>
+                        <p>Servicio 3</p>
+                        <i class="fa-solid fa-wifi"></i>
+                        <p>Servicio 4</p>
+                    </div>
+                    <div class="col">
+                        <i class="fa-solid fa-wifi"></i>
+                        <p>Servicio 5</p>
+                        <i class="fa-solid fa-wifi"></i>
+                        <p>Servicio 6</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="habitaciones" class=" bg-light  py-2">
         <div class="row">
 
@@ -121,45 +161,7 @@
             </div>
         </div>
     </div>
-    <div id="servicios" class=" bg-dark  py-2">
-        <div class="row">
-
-            <div class="col-md-6 offset-md-3 text-center">
-
-                <h1>Servicios</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, inventore. Quisquam repellendus
-                    voluptatum
-                    doloribus minus dignissimos fuga porro dicta, nostrum aspernatur sequi, illum temporibus! Placeat aut
-                    sed iusto explicabo neque.</p>
-                <br>
+    
 
 
-            </div>
-            <div class="container py-2 text-center">
-                <div class="row">
-                    <div class="col">
-                        <i class="fa-solid fa-wifi"></i>
-                        <p>Servicio 1</p>
-                        <i class="fa-solid fa-wifi"></i>
-                        <p>Servicio 2</p>
-
-                    </div>
-                    <div class="col">
-                        <i class="fa-solid fa-wifi"></i>
-                        <p>Servicio 3</p>
-                        <i class="fa-solid fa-wifi"></i>
-                        <p>Servicio 4</p>
-                    </div>
-                    <div class="col">
-                        <i class="fa-solid fa-wifi"></i>
-                        <p>Servicio 5</p>
-                        <i class="fa-solid fa-wifi"></i>
-                        <p>Servicio 6</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
 @endsection
