@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/galeria', function () {
-    return view('welcome');
+    return view('galeria');
 });
 Route::get('/contacto', function () {
     return view('contacto');
