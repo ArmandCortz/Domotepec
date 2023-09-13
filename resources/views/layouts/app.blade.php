@@ -61,6 +61,9 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+
+        @stack('styles')
+
 </head>
 
 <body style="background-color: #e6e6e6">
