@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@extends('layouts.components.navbar')
 @section('content')
     
 
@@ -68,12 +67,17 @@
             </div>
 
             <div class="col-6">
-                <img class="" src="/img/cabaña10.jpeg" style="max-height: 500px; width: 100%;" alt="">
+                <img class="" src="/img/img/chalate_1.png" style="max-height: 500px; width: 100%;" alt="">
+                <div class="container text-center"
+                    style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
+                    <img src="/img/img/Logo-Domotepec-1.jpeg" alt="" class="rounded-circle img-fluid"
+                            style="max-height: 300px; max-width: 300px; opacity: 50%;">
+                </div>
             </div>
         </div>
     </div>
     <div id="servicios" class=" bg-dark  py-2">
-        <div class="row">
+        <div class="row mt-5 my-5">
 
             <div class="col-md-6 offset-md-3 text-center">
 
@@ -113,7 +117,7 @@
     </div>
 
     <div id="habitaciones" class=" bg-light  py-2">
-        <div class="row">
+        <div class="row mt-5 my-5">
 
             <div class="col-md-6 offset-md-3 text-center">
 
