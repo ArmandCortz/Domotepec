@@ -69,10 +69,10 @@
 <body style="background-color: #e6e6e6">
     <!-- Your HTML content here -->
 
-    @include('partials.header')
+    @include('layouts.components.navbar')
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content" style="background-color: #e6e6e6">
+    <div class="content " style="background-color: #e6e6e6; ">
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -83,7 +83,7 @@
 
         <!-- Main content -->
         <section class="content" style="background-color: #e6e6e6">
-            <div class="container-fluid" style="background-color: #e6e6e6">
+            <div class="container-fluid" style="background-color: #e6e6e6; padding-top: 20px;">
                 @yield('content')
                 <!-- /.row (main row) -->
             </div><!-- /.container-fluid -->
