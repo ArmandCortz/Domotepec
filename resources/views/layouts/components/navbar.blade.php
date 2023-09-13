@@ -20,7 +20,7 @@
             <a href="/" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/  #servicios" class="nav-link">Servicios</a>
+            <a href="/#servicios" class="nav-link">Servicios</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/galeria" class="nav-link">Galeria</a>
