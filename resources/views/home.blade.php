@@ -1,9 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    
-
-
-
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
 
@@ -54,15 +50,15 @@
         <div class="row ">
             <div class="col-6">
                 <div class="container text-center">
-                        <div style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
-                            <p>Nosotros</p>
-                            <h1>Domotepec</h1> <br>
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quaerat cum eum veniam
-                                culpa
-                                voluptatum ipsum nam tempora! Quia cumque temporibus inventore suscipit nihil recusandae
-                                accusantium
-                                ipsum quibusdam vero perspiciatis?</h5>
-                        </div>
+                    <div style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
+                        <p>Nosotros</p>
+                        <h1>Domotepec</h1> <br>
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quaerat cum eum veniam
+                            culpa
+                            voluptatum ipsum nam tempora! Quia cumque temporibus inventore suscipit nihil recusandae
+                            accusantium
+                            ipsum quibusdam vero perspiciatis?</h5>
+                    </div>
                 </div>
             </div>
 
@@ -71,7 +67,7 @@
                 <div class="container text-center"
                     style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
                     <img src="/img/img/Logo-Domotepec-1.jpeg" alt="" class="rounded-circle img-fluid"
-                            style="max-height: 300px; max-width: 300px; opacity: 50%;">
+                        style="max-height: 300px; max-width: 300px; opacity: 50%;">
                 </div>
             </div>
         </div>
@@ -93,22 +89,22 @@
             <div class="container py-2 text-center">
                 <div class="row">
                     <div class="col">
-                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-binoculars"></i>
                         <p>Servicio 1</p>
-                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-binoculars"></i>
                         <p>Servicio 2</p>
 
                     </div>
                     <div class="col">
-                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-binoculars"></i>
                         <p>Servicio 3</p>
-                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-binoculars"></i>
                         <p>Servicio 4</p>
                     </div>
                     <div class="col">
-                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-binoculars"></i>
                         <p>Servicio 5</p>
-                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-binoculars"></i>
                         <p>Servicio 6</p>
                     </div>
                 </div>
@@ -163,7 +159,4 @@
             </div>
         </div>
     </div>
-    
-
-
 @endsection
