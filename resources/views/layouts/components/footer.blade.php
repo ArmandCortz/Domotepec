@@ -1,34 +1,47 @@
-<footer class="bg-dark">
-    <div>
-            <div class="container-fluid py-5 bg-dark">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3>Enlaces rápidos</h3>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="#">Acerca de nosotros</a></li>
-                            <li><a href="#">Servicios</a></li>
-                            <li><a href="#">Contacto</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Contacto</h3>
-                        <address>
-                            <p><i class="fas fa-map-marker-alt"></i> 123 Calle Principal, Ciudad</p>
-                            <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
-                            <p><i class="fas fa-envelope"></i> info@tusitio.com</p>
-                        </address>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Síguenos en las redes</h3>
-                        <ul class="list-unstyled social-icons">
-                            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
+<footer class="bg-dark text-white mt-4 text-center text-white-50 py-3 shadow">
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 ">
+            <div class="col">
+
+                <h2 style="text-align: left">Contactanos</h2>
+                <div class="container" style="padding-left: 20px; text-align: left">
+                    <p><i class="fas fa-phone"></i> +503 9876 0245</p>
+                    <p><i class="fas fa-envelope"></i> administracion@domotepec.com</p>
+                    <p> <i class="fas fa-phone"></i> +503 9876 0245</p>
                 </div>
             </div>
+            <div class="col">
+                <h2 style="text-align: left">Siguenos</h2>
+                <div class="container" style="padding-left: 20px; text-align: left">
+                    <a><i class="fab fa-facebook"></i> @ {{ env('APP_NAME') }}</a> <br>
+
+                    <a><i class="fab fa-instagram-square"></i> @ {{ env('APP_NAME') }}</a> <br>
+
+                    <a><i class="fab fa-twitter-square"></i> @ {{ env('APP_NAME') }}</a>
+                </div>
+            </div>
+            <div class="col">
+                <h2 style="text-align: left">¿Qué ofrecemos?</h2>
+                <div class="container" style="padding-left: 20px; text-align: left">
+                    <p>
+                        <i class="fas fa-person-biking"></i> Ciclismo <br>
+                        <i class="fas fa-person-walking"></i> Senderismo <br>
+
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <h2 style="text-align: left">Conócenos</h2>
+                <div class="container" style="padding-left: 20px; text-align: left">
+                    <p>
+                        Fundadores <br>
+                        Politicas 
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    {{ config('app.name') }} | Copyright @ {{ date('Y') }}
 </footer>
