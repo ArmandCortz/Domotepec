@@ -33,10 +33,15 @@ class Queue extends AbstractArray implements QueueInterface
     use ValueToStringTrait;
 
     /**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      * The type of elements stored in this queue.
      *
      * A queue's type is immutable once it is set. For this reason, this
      * property is set private.
+<<<<<<< HEAD
      *
      * @var string
      */
@@ -50,6 +55,19 @@ class Queue extends AbstractArray implements QueueInterface
     protected $index = 0;
 
     /**
+=======
+     */
+    private string $queueType;
+
+    /**
+     * The index of the head of the queue.
+     */
+    protected int $index = 0;
+
+    /**
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      * Constructs a queue object of the specified type, optionally with the
      * specified data.
      *
@@ -68,6 +86,15 @@ class Queue extends AbstractArray implements QueueInterface
      * Since arbitrary offsets may not be manipulated in a queue, this method
      * serves only to fulfill the `ArrayAccess` interface requirements. It is
      * invoked by other operations when adding values to the queue.
+<<<<<<< HEAD
+=======
+     *
+<<<<<<< HEAD
+     * @throws InvalidArgumentException if $value is of the wrong type
+=======
+     * @throws InvalidArgumentException if $value is of the wrong type.
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      */
     public function offsetSet($offset, $value): void
     {
@@ -82,7 +109,17 @@ class Queue extends AbstractArray implements QueueInterface
     }
 
     /**
+<<<<<<< HEAD
      * @inheritDoc
+=======
+<<<<<<< HEAD
+     * @throws InvalidArgumentException if $value is of the wrong type
+     *
+     * @inheritDoc
+=======
+     * @throws InvalidArgumentException if $value is of the wrong type.
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      */
     public function add($element): bool
     {
@@ -96,15 +133,31 @@ class Queue extends AbstractArray implements QueueInterface
      */
     public function element()
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
         $element = $this->peek();
 
         if ($element === null) {
             throw new NoSuchElementException(
+<<<<<<< HEAD
                 'Can\'t return element from Queue. Queue is empty.'
+=======
+                'Can\'t return element from Queue. Queue is empty.',
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
             );
         }
 
         return $element;
+<<<<<<< HEAD
+=======
+=======
+        return $this->peek() ?? throw new NoSuchElementException(
+            'Can\'t return element from Queue. Queue is empty.',
+        );
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     }
 
     /**

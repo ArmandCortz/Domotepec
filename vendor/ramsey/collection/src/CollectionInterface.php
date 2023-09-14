@@ -151,7 +151,16 @@ interface CollectionInterface extends ArrayInterface
      *
      * @return CollectionInterface<T>
      */
+<<<<<<< HEAD
     public function where(string $propertyOrMethod, $value): self;
+=======
+<<<<<<< HEAD
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+    public function where(string $propertyOrMethod, $value): self;
+=======
+    public function where(?string $propertyOrMethod, mixed $value): self;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * Apply a given callback method on each item of the collection.

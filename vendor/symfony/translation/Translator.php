@@ -57,10 +57,18 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
      */
     private $resources = [];
 
+<<<<<<< HEAD
     /**
      * @var MessageFormatterInterface
      */
     private $formatter;
+=======
+<<<<<<< HEAD
+    private $formatter;
+=======
+    private MessageFormatterInterface $formatter;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * @var string
@@ -74,10 +82,18 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
 
     private $cacheVary;
 
+<<<<<<< HEAD
     /**
      * @var ConfigCacheFactoryInterface|null
      */
     private $configCacheFactory;
+=======
+<<<<<<< HEAD
+    private $configCacheFactory;
+=======
+    private ?ConfigCacheFactoryInterface $configCacheFactory;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * @var array|null
@@ -154,10 +170,20 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
         $this->locale = $locale;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getLocale()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getLocale(): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->locale ?: (class_exists(\Locale::class) ? \Locale::getDefault() : 'en');
     }
@@ -191,10 +217,20 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
         return $this->fallbackLocales;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (null === $id || '' === $id) {
             return '';
@@ -226,10 +262,20 @@ class Translator implements TranslatorInterface, TranslatorBagInterface, LocaleA
         return $this->formatter->format($catalogue->get($id, $domain), $locale, $parameters);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getCatalogue(string $locale = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getCatalogue(string $locale = null): MessageCatalogueInterface
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (!$locale) {
             $locale = $this->getLocale();

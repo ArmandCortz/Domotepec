@@ -21,10 +21,25 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class XliffFileDumper extends FileDumper
 {
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = [])
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+    public function __construct(
+        private string $extension = 'xlf',
+    ) {
+    }
+
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         $xliffVersion = '1.2';
         if (\array_key_exists('xliff_version', $options)) {
@@ -47,10 +62,20 @@ class XliffFileDumper extends FileDumper
         throw new InvalidArgumentException(sprintf('No support implemented for dumping XLIFF version "%s".', $xliffVersion));
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     protected function getExtension()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    protected function getExtension(): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return 'xlf';
     }

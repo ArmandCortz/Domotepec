@@ -36,6 +36,7 @@ class TokenStream
      */
     private $used = [];
 
+<<<<<<< HEAD
     /**
      * @var int
      */
@@ -50,6 +51,15 @@ class TokenStream
      * @var bool
      */
     private $peeking = false;
+=======
+    private int $cursor = 0;
+<<<<<<< HEAD
+    private $peeked;
+=======
+    private ?Token $peeked;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    private bool $peeking = false;
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * Pushes a token.

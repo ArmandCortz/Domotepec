@@ -20,10 +20,20 @@ class PhpFileLoader extends FileLoader
 {
     private static $cache = [];
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     protected function loadResource(string $resource)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    protected function loadResource(string $resource): array
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if ([] === self::$cache && \function_exists('opcache_invalidate') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN) && (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) || filter_var(\ini_get('opcache.enable_cli'), \FILTER_VALIDATE_BOOLEAN))) {
             self::$cache = null;

@@ -31,28 +31,45 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 abstract class ProviderFactoryTestCase extends TestCase
 {
+<<<<<<< HEAD
     protected $client;
     protected $logger;
     protected $defaultLocale;
     protected $loader;
     protected $xliffFileDumper;
+=======
+<<<<<<< HEAD
+    protected $client;
+    protected $logger;
+    protected string $defaultLocale;
+    protected $loader;
+    protected $xliffFileDumper;
+=======
+    protected HttpClientInterface $client;
+    protected LoggerInterface|MockObject $logger;
+    protected string $defaultLocale;
+    protected LoaderInterface|MockObject $loader;
+    protected XliffFileDumper|MockObject $xliffFileDumper;
+    protected TranslatorBagInterface|MockObject $translatorBag;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     abstract public function createFactory(): ProviderFactoryInterface;
 
     /**
      * @return iterable<array{0: bool, 1: string}>
      */
-    abstract public static function supportsProvider(): iterable;
+    abstract public function supportsProvider(): iterable;
 
     /**
-     * @return iterable<array{0: string, 1: string}>
+     * @return iterable<array{0: string, 1: string, 2: TransportInterface}>
      */
-    abstract public static function createProvider(): iterable;
+    abstract public function createProvider(): iterable;
 
     /**
      * @return iterable<array{0: string, 1: string|null}>
      */
-    public static function unsupportedSchemeProvider(): iterable
+    public function unsupportedSchemeProvider(): iterable
     {
         return [];
     }
@@ -60,7 +77,7 @@ abstract class ProviderFactoryTestCase extends TestCase
     /**
      * @return iterable<array{0: string, 1: string|null}>
      */
-    public static function incompleteDsnProvider(): iterable
+    public function incompleteDsnProvider(): iterable
     {
         return [];
     }
@@ -142,6 +159,18 @@ abstract class ProviderFactoryTestCase extends TestCase
 
     protected function getXliffFileDumper(): XliffFileDumper
     {
+<<<<<<< HEAD
         return $this->xliffFileDumper ?? $this->xliffFileDumper = $this->createMock(XliffFileDumper::class);
+=======
+        return $this->xliffFileDumper ??= $this->createMock(XliffFileDumper::class);
+<<<<<<< HEAD
+=======
+    }
+
+    protected function getTranslatorBag(): TranslatorBagInterface
+    {
+        return $this->translatorBag ??= $this->createMock(TranslatorBagInterface::class);
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     }
 }

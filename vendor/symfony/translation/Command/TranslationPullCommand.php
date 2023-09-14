@@ -32,6 +32,7 @@ final class TranslationPullCommand extends Command
 {
     use TranslationTrait;
 
+<<<<<<< HEAD
     protected static $defaultName = 'translation:pull';
     protected static $defaultDescription = 'Pull translations from a given provider.';
 
@@ -41,6 +42,20 @@ final class TranslationPullCommand extends Command
     private $defaultLocale;
     private $transPaths;
     private $enabledLocales;
+=======
+<<<<<<< HEAD
+    private $providerCollection;
+    private $writer;
+    private $reader;
+=======
+    private TranslationProviderCollection $providerCollection;
+    private TranslationWriterInterface $writer;
+    private TranslationReaderInterface $reader;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    private string $defaultLocale;
+    private array $transPaths;
+    private array $enabledLocales;
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     public function __construct(TranslationProviderCollection $providerCollection, TranslationWriterInterface $writer, TranslationReaderInterface $reader, string $defaultLocale, array $transPaths = [], array $enabledLocales = [])
     {

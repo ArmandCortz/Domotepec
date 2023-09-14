@@ -17,8 +17,17 @@ namespace Ramsey\Collection;
 use ArrayIterator;
 use Traversable;
 
+<<<<<<< HEAD
 use function serialize;
 use function unserialize;
+=======
+use function count;
+<<<<<<< HEAD
+use function serialize;
+use function unserialize;
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
 /**
  * This class provides a basic implementation of `ArrayInterface`, to minimize

@@ -115,18 +115,22 @@ class RegisterListenersPass implements CompilerPassInterface
                     ], function ($matches) { return strtoupper($matches[0]); }, $event['event']);
                     $event['method'] = preg_replace('/[^a-z0-9]/i', '', $event['method']);
 
+<<<<<<< HEAD
+                    if (null !== ($class = $container->getDefinition($id)->getClass()) && ($r = $container->getReflectionClass($class, false)) && !$r->hasMethod($event['method']) && $r->hasMethod('__invoke')) {
+=======
                     if (null !== ($class = $container->getDefinition($id)->getClass()) && ($r = $container->getReflectionClass($class, false)) && !$r->hasMethod($event['method'])) {
                         if (!$r->hasMethod('__invoke')) {
                             throw new InvalidArgumentException(sprintf('None of the "%s" or "__invoke" methods exist for the service "%s". Please define the "method" attribute on "%s" tags.', $event['method'], $id, $this->listenerTag));
                         }
 
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
                         $event['method'] = '__invoke';
                     }
                 }
 
                 $dispatcherDefinition = $globalDispatcherDefinition;
                 if (isset($event['dispatcher'])) {
-                    $dispatcherDefinition = $container->findDefinition($event['dispatcher']);
+                    $dispatcherDefinition = $container->getDefinition($event['dispatcher']);
                 }
 
                 $dispatcherDefinition->addMethodCall('addListener', [$event['event'], [new ServiceClosureArgument(new Reference($id)), $event['method']], $priority]);
@@ -165,7 +169,7 @@ class RegisterListenersPass implements CompilerPassInterface
                     continue;
                 }
 
-                $dispatcherDefinitions[$attributes['dispatcher']] = $container->findDefinition($attributes['dispatcher']);
+                $dispatcherDefinitions[$attributes['dispatcher']] = $container->getDefinition($attributes['dispatcher']);
             }
 
             if (!$dispatcherDefinitions) {
@@ -224,7 +228,15 @@ class ExtractingEventDispatcher extends EventDispatcher implements EventSubscrib
     public static $aliases = [];
     public static $subscriber;
 
+<<<<<<< HEAD
     public function addListener(string $eventName, $listener, int $priority = 0)
+=======
+<<<<<<< HEAD
+    public function addListener(string $eventName, callable|array $listener, int $priority = 0)
+=======
+    public function addListener(string $eventName, callable|array $listener, int $priority = 0): void
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         $this->listeners[] = [$eventName, $listener[1], $priority];
     }

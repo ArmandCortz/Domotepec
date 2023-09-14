@@ -65,26 +65,56 @@ class ImmutableEventDispatcher implements EventDispatcherInterface
         throw new \BadMethodCallException('Unmodifiable event dispatchers must not be modified.');
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getListeners(string $eventName = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getListeners(string $eventName = null): array
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->dispatcher->getListeners($eventName);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getListenerPriority(string $eventName, $listener)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getListenerPriority(string $eventName, callable|array $listener): ?int
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->dispatcher->getListenerPriority($eventName, $listener);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function hasListeners(string $eventName = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function hasListeners(string $eventName = null): bool
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->dispatcher->hasListeners($eventName);
     }

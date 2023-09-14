@@ -37,10 +37,20 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
         $this->logger = $logger;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         $trans = $this->translator->trans($id = (string) $id, $parameters, $domain, $locale);
         $this->log($id, $domain, $locale);
@@ -62,18 +72,38 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
         $this->logger->debug(sprintf('The locale of the translator has changed from "%s" to "%s".', $prev, $locale));
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getLocale()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getLocale(): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->translator->getLocale();
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getCatalogue(string $locale = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getCatalogue(string $locale = null): MessageCatalogueInterface
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->translator->getCatalogue($locale);
     }

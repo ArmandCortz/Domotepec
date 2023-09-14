@@ -26,8 +26,17 @@ use Symfony\Component\CssSelector\XPath\Translator;
  */
 class CssSelectorConverter
 {
+<<<<<<< HEAD
     private $translator;
     private $cache;
+=======
+<<<<<<< HEAD
+    private $translator;
+=======
+    private Translator $translator;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    private array $cache;
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     private static $xmlCache = [];
     private static $htmlCache = [];

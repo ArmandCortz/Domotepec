@@ -76,16 +76,29 @@ namespace Ramsey\Collection;
 class Collection extends AbstractCollection
 {
     /**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      * The type of elements stored in this collection.
      *
      * A collection's type is immutable once it is set. For this reason, this
      * property is set private.
+<<<<<<< HEAD
      *
      * @var string
      */
     private $collectionType;
 
     /**
+=======
+     */
+    private string $collectionType;
+
+    /**
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      * Constructs a collection object of the specified type, optionally with the
      * specified data.
      *

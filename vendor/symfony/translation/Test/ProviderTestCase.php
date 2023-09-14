@@ -28,18 +28,35 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 abstract class ProviderTestCase extends TestCase
 {
+<<<<<<< HEAD
     protected $client;
     protected $logger;
     protected $defaultLocale;
     protected $loader;
     protected $xliffFileDumper;
+=======
+<<<<<<< HEAD
+    protected $client;
+    protected $logger;
+    protected string $defaultLocale;
+    protected $loader;
+    protected $xliffFileDumper;
+=======
+    protected HttpClientInterface $client;
+    protected LoggerInterface|MockObject $logger;
+    protected string $defaultLocale;
+    protected LoaderInterface|MockObject $loader;
+    protected XliffFileDumper|MockObject $xliffFileDumper;
+    protected TranslatorBagInterface|MockObject $translatorBag;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
-    abstract public static function createProvider(HttpClientInterface $client, LoaderInterface $loader, LoggerInterface $logger, string $defaultLocale, string $endpoint): ProviderInterface;
+    abstract public function createProvider(HttpClientInterface $client, LoaderInterface $loader, LoggerInterface $logger, string $defaultLocale, string $endpoint): ProviderInterface;
 
     /**
-     * @return iterable<array{0: ProviderInterface, 1: string}>
+     * @return iterable<array{0: string, 1: ProviderInterface}>
      */
-    abstract public static function toStringProvider(): iterable;
+    abstract public function toStringProvider(): iterable;
 
     /**
      * @dataProvider toStringProvider
@@ -71,6 +88,18 @@ abstract class ProviderTestCase extends TestCase
 
     protected function getXliffFileDumper(): XliffFileDumper
     {
+<<<<<<< HEAD
         return $this->xliffFileDumper ?? $this->xliffFileDumper = $this->createMock(XliffFileDumper::class);
+=======
+        return $this->xliffFileDumper ??= $this->createMock(XliffFileDumper::class);
+<<<<<<< HEAD
+=======
+    }
+
+    protected function getTranslatorBag(): TranslatorBagInterface
+    {
+        return $this->translatorBag ??= $this->createMock(TranslatorBagInterface::class);
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     }
 }

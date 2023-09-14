@@ -79,7 +79,15 @@ final class Dsn
         return $this->port ?? $default;
     }
 
+<<<<<<< HEAD
     public function getOption(string $key, $default = null)
+=======
+<<<<<<< HEAD
+    public function getOption(string $key, mixed $default = null)
+=======
+    public function getOption(string $key, mixed $default = null): mixed
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->options[$key] ?? $default;
     }

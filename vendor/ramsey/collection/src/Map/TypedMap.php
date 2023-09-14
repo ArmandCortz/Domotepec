@@ -86,6 +86,10 @@ use Ramsey\Collection\Tool\TypeTrait;
  */
 class TypedMap extends AbstractTypedMap
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     use TypeTrait;
 
     /**
@@ -93,21 +97,34 @@ class TypedMap extends AbstractTypedMap
      *
      * A map key's type is immutable once it is set. For this reason, this
      * property is set private.
+<<<<<<< HEAD
      *
      * @var string data type of the map key.
      */
     private $keyType;
+=======
+     */
+    private string $keyType;
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * The data type of values stored in this collection.
      *
      * A map value's type is immutable once it is set. For this reason, this
      * property is set private.
+<<<<<<< HEAD
      *
      * @var string data type of the map value.
      */
     private $valueType;
 
+=======
+     */
+    private string $valueType;
+
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     /**
      * Constructs a map object of the specified key and value types,
      * optionally with the specified data.
@@ -116,12 +133,26 @@ class TypedMap extends AbstractTypedMap
      * @param string $valueType The data type of the map's values.
      * @param array<K, T> $data The initial data to set for this map.
      */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     public function __construct(string $keyType, string $valueType, array $data = [])
     {
         $this->keyType = $keyType;
         $this->valueType = $valueType;
 
+<<<<<<< HEAD
         /** @psalm-suppress MixedArgumentTypeCoercion */
+=======
+=======
+    public function __construct(
+        private readonly string $keyType,
+        private readonly string $valueType,
+        array $data = [],
+    ) {
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
         parent::__construct($data);
     }
 

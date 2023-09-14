@@ -32,6 +32,7 @@ final class TranslationPushCommand extends Command
 {
     use TranslationTrait;
 
+<<<<<<< HEAD
     protected static $defaultName = 'translation:push';
     protected static $defaultDescription = 'Push translations to a given provider.';
 
@@ -39,6 +40,17 @@ final class TranslationPushCommand extends Command
     private $reader;
     private $transPaths;
     private $enabledLocales;
+=======
+<<<<<<< HEAD
+    private $providers;
+    private $reader;
+=======
+    private TranslationProviderCollection $providers;
+    private TranslationReaderInterface $reader;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    private array $transPaths;
+    private array $enabledLocales;
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     public function __construct(TranslationProviderCollection $providers, TranslationReaderInterface $reader, array $transPaths = [], array $enabledLocales = [])
     {

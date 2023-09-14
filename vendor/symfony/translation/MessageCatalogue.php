@@ -19,12 +19,28 @@ use Symfony\Component\Translation\Exception\LogicException;
  */
 class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterface
 {
+<<<<<<< HEAD
     private $messages = [];
     private $metadata = [];
     private $resources = [];
     private $locale;
     private $fallbackCatalogue;
     private $parent;
+=======
+    private array $messages = [];
+    private array $metadata = [];
+<<<<<<< HEAD
+    private array $resources = [];
+    private string $locale;
+    private $fallbackCatalogue = null;
+=======
+    private array $catalogueMetadata = [];
+    private array $resources = [];
+    private string $locale;
+    private ?MessageCatalogueInterface $fallbackCatalogue = null;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    private ?self $parent = null;
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * @param array $messages An array of messages classified by domain
@@ -35,18 +51,38 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         $this->messages = $messages;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getLocale()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getLocale(): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->locale;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getDomains()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getDomains(): array
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         $domains = [];
 
@@ -60,10 +96,20 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         return array_values($domains);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function all(string $domain = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function all(string $domain = null): array
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (null !== $domain) {
             // skip messages merge if intl-icu requested explicitly
@@ -96,10 +142,20 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         $this->add([$id => $translation], $domain);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function has(string $id, string $domain = 'messages')
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function has(string $id, string $domain = 'messages'): bool
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (isset($this->messages[$domain][$id]) || isset($this->messages[$domain.self::INTL_DOMAIN_SUFFIX][$id])) {
             return true;
@@ -112,18 +168,38 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         return false;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function defines(string $id, string $domain = 'messages')
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function defines(string $id, string $domain = 'messages'): bool
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return isset($this->messages[$domain][$id]) || isset($this->messages[$domain.self::INTL_DOMAIN_SUFFIX][$id]);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function get(string $id, string $domain = 'messages')
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function get(string $id, string $domain = 'messages'): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (isset($this->messages[$domain.self::INTL_DOMAIN_SUFFIX][$id])) {
             return $this->messages[$domain.self::INTL_DOMAIN_SUFFIX][$id];
@@ -225,18 +301,38 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         }
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getFallbackCatalogue()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getFallbackCatalogue(): ?MessageCatalogueInterface
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->fallbackCatalogue;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getResources()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getResources(): array
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return array_values($this->resources);
     }
@@ -249,10 +345,20 @@ class MessageCatalogue implements MessageCatalogueInterface, MetadataAwareInterf
         $this->resources[$resource->__toString()] = $resource;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getMetadata(string $key = '', string $domain = 'messages')
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getMetadata(string $key = '', string $domain = 'messages'): mixed
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if ('' == $domain) {
             return $this->metadata;

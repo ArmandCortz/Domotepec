@@ -21,9 +21,19 @@ use Symfony\Component\Translation\TranslatorBagInterface;
  */
 class FilteringProvider implements ProviderInterface
 {
+<<<<<<< HEAD
     private $provider;
     private $locales;
     private $domains;
+=======
+<<<<<<< HEAD
+    private $provider;
+=======
+    private ProviderInterface $provider;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    private array $locales;
+    private array $domains;
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     public function __construct(ProviderInterface $provider, array $locales, array $domains = [])
     {

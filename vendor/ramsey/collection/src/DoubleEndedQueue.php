@@ -28,7 +28,33 @@ use Ramsey\Collection\Exception\NoSuchElementException;
 class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
 {
     /**
+<<<<<<< HEAD
      * Index of the last element in the queue.
+=======
+<<<<<<< HEAD
+     * Index of the last element in the queue.
+     */
+    private int $tail = -1;
+
+    /**
+     * @inheritDoc
+     */
+    public function offsetSet($offset, $value): void
+    {
+        if ($this->checkType($this->getType(), $value) === false) {
+            throw new InvalidArgumentException(
+                'Value must be of type ' . $this->getType() . '; value is '
+                . $this->toolValueToString($value),
+            );
+        }
+
+        $this->tail++;
+
+        $this->data[$this->tail] = $value;
+=======
+     * Constructs a double-ended queue (dequeue) object of the specified type,
+     * optionally with the specified data.
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      *
      * @var int
      */
@@ -39,6 +65,7 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
      */
     public function offsetSet($offset, $value): void
     {
+<<<<<<< HEAD
         if ($this->checkType($this->getType(), $value) === false) {
             throw new InvalidArgumentException(
                 'Value must be of type ' . $this->getType() . '; value is '
@@ -53,6 +80,19 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
 
     /**
      * @inheritDoc
+=======
+        parent::__construct($this->queueType, $data);
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    }
+
+    /**
+     * @throws InvalidArgumentException if $element is of the wrong type
+<<<<<<< HEAD
+     *
+     * @inheritDoc
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      */
     public function addFirst($element): bool
     {

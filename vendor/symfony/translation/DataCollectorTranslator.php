@@ -25,8 +25,17 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
     public const MESSAGE_MISSING = 1;
     public const MESSAGE_EQUALS_FALLBACK = 2;
 
+<<<<<<< HEAD
     private $translator;
     private $messages = [];
+=======
+<<<<<<< HEAD
+    private $translator;
+=======
+    private TranslatorInterface $translator;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    private array $messages = [];
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * @param TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator
@@ -40,10 +49,20 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
         $this->translator = $translator;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         $trans = $this->translator->trans($id = (string) $id, $parameters, $domain, $locale);
         $this->collectMessage($locale, $domain, $id, $trans, $parameters);
@@ -59,18 +78,38 @@ class DataCollectorTranslator implements TranslatorInterface, TranslatorBagInter
         $this->translator->setLocale($locale);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getLocale()
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getLocale(): string
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->translator->getLocale();
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getCatalogue(string $locale = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getCatalogue(string $locale = null): MessageCatalogueInterface
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return $this->translator->getCatalogue($locale);
     }

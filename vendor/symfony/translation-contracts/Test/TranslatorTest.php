@@ -320,7 +320,15 @@ class TranslatorTest extends TestCase
      *
      * @return array
      */
+<<<<<<< HEAD
     public function successLangcodes()
+=======
+<<<<<<< HEAD
+    public function successLangcodes(): array
+=======
+    public static function successLangcodes(): array
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return [
             ['1', ['ay', 'bo', 'cgg', 'dz', 'id', 'ja', 'jbo', 'ka', 'kk', 'km', 'ko', 'ky']],
@@ -339,7 +347,15 @@ class TranslatorTest extends TestCase
      *
      * @return array with nplural together with langcodes
      */
+<<<<<<< HEAD
     public function failingLangcodes()
+=======
+<<<<<<< HEAD
+    public function failingLangcodes(): array
+=======
+    public static function failingLangcodes(): array
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         return [
             ['1', ['fa']],

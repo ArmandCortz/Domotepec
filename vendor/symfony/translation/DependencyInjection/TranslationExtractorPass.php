@@ -21,6 +21,7 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class TranslationExtractorPass implements CompilerPassInterface
 {
+<<<<<<< HEAD
     private $extractorServiceId;
     private $extractorTag;
 
@@ -34,6 +35,14 @@ class TranslationExtractorPass implements CompilerPassInterface
         $this->extractorTag = $extractorTag;
     }
 
+=======
+<<<<<<< HEAD
+=======
+    /**
+     * @return void
+     */
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition($this->extractorServiceId)) {

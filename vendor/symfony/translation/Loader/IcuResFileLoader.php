@@ -23,10 +23,20 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class IcuResFileLoader implements LoaderInterface
 {
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function load($resource, string $locale, string $domain = 'messages')
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function load(mixed $resource, string $locale, string $domain = 'messages'): MessageCatalogue
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (!stream_is_local($resource)) {
             throw new InvalidResourceException(sprintf('This is not a local file "%s".', $resource));
@@ -71,9 +81,16 @@ class IcuResFileLoader implements LoaderInterface
      *
      * @param \ResourceBundle $rb       The ResourceBundle that will be flattened
      * @param array           $messages Used internally for recursive calls
+<<<<<<< HEAD
+     * @param string          $path     Current path being parsed, used internally for recursive calls
+=======
      * @param string|null     $path     Current path being parsed, used internally for recursive calls
+<<<<<<< HEAD
      *
      * @return array
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
      */
     protected function flatten(\ResourceBundle $rb, array &$messages = [], string $path = null)
     {

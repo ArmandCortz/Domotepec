@@ -18,6 +18,7 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class TranslatorPass implements CompilerPassInterface
 {
+<<<<<<< HEAD
     private $translatorServiceId;
     private $readerServiceId;
     private $loaderTag;
@@ -37,6 +38,14 @@ class TranslatorPass implements CompilerPassInterface
         $this->updateCommandServiceId = $updateCommandServiceId;
     }
 
+=======
+<<<<<<< HEAD
+=======
+    /**
+     * @return void
+     */
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition($this->translatorServiceId)) {

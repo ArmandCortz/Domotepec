@@ -21,6 +21,7 @@ use Ramsey\Collection\Tool\ValueToStringTrait;
 use function array_combine;
 use function array_key_exists;
 use function is_int;
+use function var_export;
 
 /**
  * `NamedParameterMap` represents a mapping of values to a set of named keys
@@ -38,7 +39,15 @@ class NamedParameterMap extends AbstractMap
      *
      * @var array<string, string>
      */
+<<<<<<< HEAD
     protected $namedParameters;
+=======
+<<<<<<< HEAD
+    protected array $namedParameters;
+=======
+    private readonly array $namedParameters;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
 
     /**
      * Constructs a new `NamedParameterMap`.
@@ -67,6 +76,7 @@ class NamedParameterMap extends AbstractMap
      */
     public function offsetSet($offset, $value): void
     {
+<<<<<<< HEAD
         if ($offset === null) {
             throw new InvalidArgumentException(
                 'Map elements are key/value pairs; a key must be provided for '
@@ -78,6 +88,26 @@ class NamedParameterMap extends AbstractMap
             throw new InvalidArgumentException(
                 'Attempting to set value for unconfigured parameter \''
                 . $offset . '\''
+=======
+<<<<<<< HEAD
+        if ($offset === null) {
+            throw new InvalidArgumentException(
+                'Map elements are key/value pairs; a key must be provided for '
+                . 'value ' . var_export($value, true),
+            );
+        }
+
+        if (!array_key_exists($offset, $this->namedParameters)) {
+            throw new InvalidArgumentException(
+                'Attempting to set value for unconfigured parameter \''
+                . $offset . '\'',
+=======
+        if (!array_key_exists($offset, $this->namedParameters)) {
+            throw new InvalidArgumentException(
+                'Attempting to set value for unconfigured parameter \''
+                . $this->toolValueToString($offset) . '\'',
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
             );
         }
 

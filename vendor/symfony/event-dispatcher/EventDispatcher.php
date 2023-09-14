@@ -62,10 +62,20 @@ class EventDispatcher implements EventDispatcherInterface
         return $event;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getListeners(string $eventName = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getListeners(string $eventName = null): array
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (null !== $eventName) {
             if (empty($this->listeners[$eventName])) {
@@ -88,10 +98,20 @@ class EventDispatcher implements EventDispatcherInterface
         return array_filter($this->sorted);
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function getListenerPriority(string $eventName, $listener)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function getListenerPriority(string $eventName, callable|array $listener): ?int
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (empty($this->listeners[$eventName])) {
             return null;
@@ -117,10 +137,20 @@ class EventDispatcher implements EventDispatcherInterface
         return null;
     }
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
     public function hasListeners(string $eventName = null)
+=======
+<<<<<<< HEAD
+    /**
+     * {@inheritdoc}
+     */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
+    public function hasListeners(string $eventName = null): bool
+>>>>>>> 75bbd7bac1ee01ac0e3a7086264236361424330f
     {
         if (null !== $eventName) {
             return !empty($this->listeners[$eventName]);
