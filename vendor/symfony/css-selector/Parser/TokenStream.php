@@ -37,7 +37,11 @@ class TokenStream
     private array $used = [];
 
     private int $cursor = 0;
+<<<<<<< HEAD
     private $peeked;
+=======
+    private ?Token $peeked;
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
     private bool $peeking = false;
 
     /**
@@ -145,7 +149,7 @@ class TokenStream
     /**
      * Skips next whitespace if any.
      */
-    public function skipWhitespace()
+    public function skipWhitespace(): void
     {
         $peek = $this->getPeek();
 

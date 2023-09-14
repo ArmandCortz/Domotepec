@@ -1,6 +1,29 @@
 CHANGELOG
 =========
 
+<<<<<<< HEAD
+=======
+6.2.7
+-----
+
+ * [BC BREAK] The following data providers for `ProviderFactoryTestCase` are now static:
+   `supportsProvider()`, `createProvider()`, `unsupportedSchemeProvider()`and `incompleteDsnProvider()`
+ * [BC BREAK] `ProviderTestCase::toStringProvider()` is now static
+
+6.2
+---
+
+ * Deprecate `PhpStringTokenParser`
+ * Deprecate `PhpExtractor` in favor of `PhpAstExtractor`
+ * Add `PhpAstExtractor` (requires [nikic/php-parser](https://github.com/nikic/php-parser) to be installed)
+
+6.1
+---
+
+ * Parameters implementing `TranslatableInterface` are processed
+ * Add the file extension to the `XliffFileDumper` constructor
+
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
 5.4
 ---
 

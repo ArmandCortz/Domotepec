@@ -20,12 +20,15 @@ class PhpFileLoader extends FileLoader
 {
     private static ?array $cache = [];
 
+<<<<<<< HEAD
     /**
      * {@inheritdoc}
      */
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
     protected function loadResource(string $resource): array
     {
-        if ([] === self::$cache && \function_exists('opcache_invalidate') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOLEAN) && (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) || filter_var(\ini_get('opcache.enable_cli'), \FILTER_VALIDATE_BOOLEAN))) {
+        if ([] === self::$cache && \function_exists('opcache_invalidate') && filter_var(\ini_get('opcache.enable'), \FILTER_VALIDATE_BOOL) && (!\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) || filter_var(\ini_get('opcache.enable_cli'), \FILTER_VALIDATE_BOOL))) {
             self::$cache = null;
         }
 
@@ -33,10 +36,6 @@ class PhpFileLoader extends FileLoader
             return require $resource;
         }
 
-        if (isset(self::$cache[$resource])) {
-            return self::$cache[$resource];
-        }
-
-        return self::$cache[$resource] = require $resource;
+        return self::$cache[$resource] ??= require $resource;
     }
 }

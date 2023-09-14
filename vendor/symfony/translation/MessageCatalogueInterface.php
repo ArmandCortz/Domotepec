@@ -36,8 +36,11 @@ interface MessageCatalogueInterface
      * Gets the messages within a given domain.
      *
      * If $domain is null, it returns all messages.
+<<<<<<< HEAD
      *
      * @param string $domain The domain name
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
      */
     public function all(string $domain = null): array;
 
@@ -47,6 +50,8 @@ interface MessageCatalogueInterface
      * @param string $id          The message id
      * @param string $translation The messages translation
      * @param string $domain      The domain name
+     *
+     * @return void
      */
     public function set(string $id, string $translation, string $domain = 'messages');
 
@@ -79,6 +84,8 @@ interface MessageCatalogueInterface
      *
      * @param array  $messages An array of translations
      * @param string $domain   The domain name
+     *
+     * @return void
      */
     public function replace(array $messages, string $domain = 'messages');
 
@@ -87,6 +94,8 @@ interface MessageCatalogueInterface
      *
      * @param array  $messages An array of translations
      * @param string $domain   The domain name
+     *
+     * @return void
      */
     public function add(array $messages, string $domain = 'messages');
 
@@ -94,6 +103,8 @@ interface MessageCatalogueInterface
      * Merges translations from the given Catalogue into the current one.
      *
      * The two catalogues must have the same locale.
+     *
+     * @return void
      */
     public function addCatalogue(self $catalogue);
 
@@ -102,6 +113,8 @@ interface MessageCatalogueInterface
      * only when the translation does not exist.
      *
      * This is used to provide default translations when they do not exist for the current locale.
+     *
+     * @return void
      */
     public function addFallbackCatalogue(self $catalogue);
 
@@ -119,6 +132,8 @@ interface MessageCatalogueInterface
 
     /**
      * Adds a resource for this collection.
+     *
+     * @return void
      */
     public function addResource(ResourceInterface $resource);
 }

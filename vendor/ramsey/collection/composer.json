@@ -19,8 +19,12 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.4 || ^8.0",
         "symfony/polyfill-php81": "^1.23"
+=======
+        "php": "^8.1"
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
     },
     "require-dev": {
         "captainhook/plugin-composer": "^5.3",

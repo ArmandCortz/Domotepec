@@ -16,11 +16,12 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": ">=8.0.2",
+=======
+        "php": ">=8.1",
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
         "psr/event-dispatcher": "^1"
-    },
-    "suggest": {
-        "symfony/event-dispatcher-implementation": ""
     },
     "autoload": {
         "psr-4": { "Symfony\\Contracts\\EventDispatcher\\": "" }
@@ -28,7 +29,11 @@
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-main": "3.0-dev"
+=======
+            "dev-main": "3.4-dev"
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
         },
         "thanks": {
             "name": "symfony/contracts",

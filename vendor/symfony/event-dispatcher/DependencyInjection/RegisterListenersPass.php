@@ -48,6 +48,9 @@ class RegisterListenersPass implements CompilerPassInterface
         return $this;
     }
 
+    /**
+     * @return void
+     */
     public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition('event_dispatcher') && !$container->hasAlias('event_dispatcher')) {
@@ -73,7 +76,7 @@ class RegisterListenersPass implements CompilerPassInterface
                         continue;
                     }
 
-                    $event['method'] = $event['method'] ?? '__invoke';
+                    $event['method'] ??= '__invoke';
                     $event['event'] = $this->getEventFromTypeDeclaration($container, $id, $event['method']);
                 }
 
@@ -83,10 +86,18 @@ class RegisterListenersPass implements CompilerPassInterface
                     $event['method'] = 'on'.preg_replace_callback([
                         '/(?<=\b|_)[a-z]/i',
                         '/[^a-z0-9]/i',
-                    ], function ($matches) { return strtoupper($matches[0]); }, $event['event']);
+                    ], fn ($matches) => strtoupper($matches[0]), $event['event']);
                     $event['method'] = preg_replace('/[^a-z0-9]/i', '', $event['method']);
 
+<<<<<<< HEAD
                     if (null !== ($class = $container->getDefinition($id)->getClass()) && ($r = $container->getReflectionClass($class, false)) && !$r->hasMethod($event['method']) && $r->hasMethod('__invoke')) {
+=======
+                    if (null !== ($class = $container->getDefinition($id)->getClass()) && ($r = $container->getReflectionClass($class, false)) && !$r->hasMethod($event['method'])) {
+                        if (!$r->hasMethod('__invoke')) {
+                            throw new InvalidArgumentException(sprintf('None of the "%s" or "__invoke" methods exist for the service "%s". Please define the "method" attribute on "kernel.event_listener" tags.', $event['method'], $id));
+                        }
+
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
                         $event['method'] = '__invoke';
                     }
                 }
@@ -191,7 +202,11 @@ class ExtractingEventDispatcher extends EventDispatcher implements EventSubscrib
     public static array $aliases = [];
     public static string $subscriber;
 
+<<<<<<< HEAD
     public function addListener(string $eventName, callable|array $listener, int $priority = 0)
+=======
+    public function addListener(string $eventName, callable|array $listener, int $priority = 0): void
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
     {
         $this->listeners[] = [$eventName, $listener[1], $priority];
     }

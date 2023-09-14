@@ -26,8 +26,8 @@ use function var_export;
  *
  * @template K of array-key
  * @template T
- * @extends AbstractMap<T>
- * @implements TypedMapInterface<T>
+ * @extends AbstractMap<K, T>
+ * @implements TypedMapInterface<K, T>
  */
 abstract class AbstractTypedMap extends AbstractMap implements TypedMapInterface
 {
@@ -35,13 +35,18 @@ abstract class AbstractTypedMap extends AbstractMap implements TypedMapInterface
     use ValueToStringTrait;
 
     /**
-     * @param K|null $offset
+     * @param K $offset
      * @param T $value
      *
      * @inheritDoc
+<<<<<<< HEAD
+=======
+     * @psalm-suppress MoreSpecificImplementedParamType
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet(mixed $offset, mixed $value): void
     {
+<<<<<<< HEAD
         if ($offset === null) {
             throw new InvalidArgumentException(
                 'Map elements are key/value pairs; a key must be provided for '
@@ -49,6 +54,8 @@ abstract class AbstractTypedMap extends AbstractMap implements TypedMapInterface
             );
         }
 
+=======
+>>>>>>> 90e3ddc33631d40b7786e4906d9f64dd856a1066
         if ($this->checkType($this->getKeyType(), $offset) === false) {
             throw new InvalidArgumentException(
                 'Key must be of type ' . $this->getKeyType() . '; key is '
