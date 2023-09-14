@@ -93,22 +93,22 @@
             <div class="container py-2 text-center">
                 <div class="row">
                     <div class="col">
-                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fas fa-wifi"></i>
                         <p>Servicio 1</p>
-                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fas fa-wifi"></i>
                         <p>Servicio 2</p>
 
                     </div>
                     <div class="col">
-                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fas fa-wifi"></i>
                         <p>Servicio 3</p>
-                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fas fa-wifi"></i>
                         <p>Servicio 4</p>
                     </div>
                     <div class="col">
-                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fas fa-wifi"></i>
                         <p>Servicio 5</p>
-                        <i class="fa-solid fa-wifi"></i>
+                        <i class="fas fa-wifi"></i>
                         <p>Servicio 6</p>
                     </div>
                 </div>
