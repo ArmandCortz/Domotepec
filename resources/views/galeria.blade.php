@@ -20,73 +20,73 @@
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox"
                                         data-title="sample 1 - white" data-gallery="gallery">
-                                        <img src="../img/cabaña1.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña1.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/000000.png?text=2" data-toggle="lightbox"
                                         data-title="sample 2 - black" data-gallery="gallery">
-                                        <img src="../img/cabaña2.jpeg" class="img-fluid mb-1" alt="white sample" />
+                                        <img src="../img/cabaña2.jpeg" class="img-fluid mb-1" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=3"
                                         data-toggle="lightbox" data-title="sample 3 - red" data-gallery="gallery">
-                                        <img src="../img/cabaña12.jpeg" class="img-fluid mb-1" alt="white sample" />
+                                        <img src="../img/cabaña12.jpeg" class="img-fluid mb-1" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=4"
                                         data-toggle="lightbox" data-title="sample 4 - red" data-gallery="gallery">
-                                        <img src="../img/cabaña3.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña3.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/000000.png?text=5" data-toggle="lightbox"
                                         data-title="sample 5 - black" data-gallery="gallery">
-                                        <img src="../img/cabaña5.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña5.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FFFFFF.png?text=6" data-toggle="lightbox"
                                         data-title="sample 6 - white" data-gallery="gallery">
-                                        <img src="../img/cabaña6.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña6.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FFFFFF.png?text=7" data-toggle="lightbox"
                                         data-title="sample 7 - white" data-gallery="gallery">
-                                        <img src="../img/cabaña7.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña7.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/000000.png?text=8" data-toggle="lightbox"
                                         data-title="sample 8 - black" data-gallery="gallery">
-                                        <img src="../img/cabaña8.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña8.jpeg" class="img-fluid  mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FF0000/FFFFFF.png?text=9"
                                         data-toggle="lightbox" data-title="sample 9 - red" data-gallery="gallery">
-                                        <img src="../img/cabaña9.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña9.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FFFFFF.png?text=10" data-toggle="lightbox"
                                         data-title="sample 10 - white" data-gallery="gallery">
-                                        <img src="../img/cabaña10.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña10.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/FFFFFF.png?text=11" data-toggle="lightbox"
                                         data-title="sample 11 - white" data-gallery="gallery">
-                                        <img src="../img/cabaña11.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña11.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                                 <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
                                     <a href="https://via.placeholder.com/1200/000000.png?text=12" data-toggle="lightbox"
                                         data-title="sample 12 - black" data-gallery="gallery">
-                                        <img src="../img/cabaña12.jpeg" class="img-fluid mb-2" alt="white sample" />
+                                        <img src="../img/cabaña12.jpeg" class="img-fluid mb-2" style="height:100%;" alt="white sample" />
                                     </a>
                                 </div>
                             </div>
