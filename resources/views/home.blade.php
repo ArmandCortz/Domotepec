@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="carousel-item ">
-                <img src="/img/cabaña3.jpeg" class="img-fluid mx-auto"
+                <img src="/img/img/surfcity_3.jpg" class="img-fluid mx-auto"
                     style="width: 100%; height: 400px; object-fit: cover;" alt="...">
                 <div class="carousel-caption"
                     style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
