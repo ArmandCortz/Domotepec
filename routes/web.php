@@ -41,3 +41,6 @@ Route::prefix("/users")->group(function () {
     })->name('Reservaciones');
     Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
