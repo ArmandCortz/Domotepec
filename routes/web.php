@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Grupo de rutas para vista usuario
-Route::prefix("/")->group(function () {
+Route::prefix("/users")->group(function () {
 
     Route::get('/', function () {
         return view('users.home');
     })->name('Home');
+    
+    Route::get('#servicios', function () {
+        return view('users.home');
+    })->name('Servicios');
 
     Route::get('/galeria', function () {
         return view('users.galeria');
