@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app_users')
 
 @section('content')
-    @extends('layouts.components.navbar')
 
 
 

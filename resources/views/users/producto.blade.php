@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@extends('layouts.components.navbar')
+@extends('layouts.app_users')
 @section('content')
 <div>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">

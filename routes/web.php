@@ -13,16 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+// Grupo de rutas para vista usuario
+Route::prefix("/")->group(function () {
+
+    Route::get('/', function () {
+        return view('users.home');
+    })->name('Home');
+
+    Route::get('/galeria', function () {
+        return view('users.galeria');
+    })->name('Galeria');
+
+    Route::get('/producto', function () {
+        return view('users.producto');
+    })->name('Producto');
+
+    Route::get('/contacto', function () {
+        return view('users.contacto');
+    })->name('Contacto');
+
+    Route::get('/reservaciones', function () {
+        return view('users.reservaciones');
+    })->name('Reservaciones');
+    Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');
 });
-Route::get('/galeria', function () {
-    return view('galeria');
-});
-Route::get('/contacto', function () {
-    return view('contacto');
-});
-Route::get('/reservaciones', function () {
-    return view('reservaciones');
-});
-Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');

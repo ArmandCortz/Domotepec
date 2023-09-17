@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_users')
 
 @section('content')
     <!-- Agrega un margen superior para evitar que el contenido se superponga al navbar -->

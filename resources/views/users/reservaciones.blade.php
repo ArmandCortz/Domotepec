@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app_users')
 
 @section('content')
-    @include('layouts.components.navbar')
 
     <!-- Sección 1: Título centrado y cuadro de texto -->
 <section class="wpb_wrapper" style="background-color: #bfbcbc; padding: 20px;">

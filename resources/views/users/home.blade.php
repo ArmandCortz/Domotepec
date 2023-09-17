@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_users')
 @section('content')
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 
