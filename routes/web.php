@@ -45,4 +45,9 @@ Route::prefix("/users")->group(function () {
 Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
     Auth::routes();
     Route::get('/', "HomeController@index")->name('Home');
+
+
 });
+use App\Http\Controllers\UserController;
+
+Route::resource('users', UserController::class);
