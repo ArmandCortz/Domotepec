@@ -39,7 +39,7 @@ Route::prefix("/users")->group(function () {
     Route::get('/reservaciones', function () {
         return view('users.reservaciones');
     })->name('Reservaciones');
-    Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');
+    // Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');
 });
 
 Route::prefix("/administracion")->namespace("App\\Http\\Controllers")->group(function () {
