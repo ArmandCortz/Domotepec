@@ -42,7 +42,7 @@ Route::prefix("/users")->group(function () {
     // Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');
 });
 
-Route::prefix("/administracion")->namespace("App\\Http\\Controllers")->group(function () {
+Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
     Auth::routes();
     Route::get('/', "HomeController@index")->name('Home');
 });
