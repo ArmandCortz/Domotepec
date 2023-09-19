@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Grupo de rutas para vista usuario
 
-Route::prefix("/users")->group(function () {
+Route::prefix("/user")->group(function () {
     Route::get('/', function () {
         return view('users.home');
     })->name('Home');
@@ -39,15 +39,13 @@ Route::prefix("/users")->group(function () {
     Route::get('/reservaciones', function () {
         return view('users.reservaciones');
     })->name('Reservaciones');
-    // Route::post('/reservaciones', 'CabinReservationController@store')->name('cabin.reservation.store');
-});
-
-Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
-    Auth::routes();
-    Route::get('/', "HomeController@index")->name('Home');
-
-
 });
 use App\Http\Controllers\UserController;
 
-Route::resource('users', UserController::class);
+Route::prefix("/administracion")->namespace("App\\Http\\Controllers")->group(function () {
+    Auth::routes();
+    Route::get('/', "HomeController@index")->name('Home');
+
+    Route::resource('users', "UserController");
+});
+

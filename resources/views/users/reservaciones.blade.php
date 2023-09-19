@@ -34,7 +34,7 @@
     <!-- Sección 3: Formulario -->
     <section class="container" style="background-color: #f0f0f0; padding: 20px;">
         <h1 style="color: #007BFF;" class="mt-4">Reservación de Cabañas</h1>
-        <form action="{{ route('cabin.reservation.store') }}" method="POST">
+        <form action="" method="POST">
             @csrf
             <div class="form-group">
                 <label for="cabin">Selecciona una cabaña:</label>
