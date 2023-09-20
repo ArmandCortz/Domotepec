@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 // Grupo de rutas para vista usuario
 
-Route::prefix("/")->group(function () {
+Route::prefix("/users")->group(function () {
     Route::get('/', function () {
         return view('users.home');
-    })->name('Home');
+    })->name('/');
 
     Route::get('#servicios', function () {
         return view('users.home');
@@ -48,4 +48,3 @@ Route::prefix("/administracion")->namespace("App\\Http\\Controllers")->group(fun
 
     Route::resource('users', "UserController");
 });
-
