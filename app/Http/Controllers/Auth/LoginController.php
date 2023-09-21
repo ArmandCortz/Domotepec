@@ -38,5 +38,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
+    // Redireccion al hace rlogout
+    protected function loggedOut(Request $request)
+    {
+        return redirect()->route('login');
+
+    }
+    // Redireccion al hacer login
+    protected function redirectTo()
+    {
+        return route('home'); // Cambiar "home" por la ruta real a la que deseas redirigir
+    }
 }

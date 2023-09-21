@@ -1,0 +1,23 @@
+.preloader {
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f4f6f9;
+    height: 100%;
+    width: 100%;
+    transition: height 200ms linear;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+}
+.animation__shake {
+    -webkit-animation: shake 1500ms;
+    animation: shake 1500ms;
+}
+.animation__wobble {
+    -webkit-animation: wobble 1500ms;
+    animation: wobble 1500ms;
+}

@@ -1,9 +1,9 @@
 @extends('layouts.app')
-        @include('layouts.components.navbaradmin')
 
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
         <div class="col-md-12">
             <h1>Crear Usuario</h1>
             <form action="{{ route('users.store') }}" method="POST">
@@ -23,6 +23,7 @@
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>
+    </div>
     </div>
 </div>
 @endsection

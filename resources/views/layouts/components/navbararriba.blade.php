@@ -1,4 +1,4 @@
-  
+
   <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="/img/img/Logo-Domotepec-1.jpeg" alt="AdminLTELogo" height="600" width="600">
   </div><!-- Main Sidebar Container -->
