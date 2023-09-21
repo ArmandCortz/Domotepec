@@ -28,12 +28,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="tema" placeholder="Tema..." class="form-control">
+                                <input type="number" id="telefono" placeholder="Telefono" class="form-control">
                             </div>
                             <div class="form-group">
                                 <textarea id="mensaje" cols="30" rows="10" placeholder="Tu Mensaje..." class="form-control"></textarea>
                             </div>
-                            <button type="button" id="enviar" class="btn btn-primary btn-enviar">Enviar Mensaje</button>
+                            <button type="button" id="enviar" class="btn btn-primary btn-enviar">Enviar Mensaje </button>
                         </form>
                     </div>
                 </section>
@@ -46,7 +46,7 @@
                         <!-- Reemplaza el siguiente texto con tu mapa -->
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13635.569284418036!2d-89.18715542674451!3d13.692983824697966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f67487e7699f56b%3A0x47a1b29234ac4f21!2sSan%20Salvador%2C%20El%20Salvador!5e0!3m2!1sen!2sus!4v1661756912345!5m2!1sen!2sus"
-                            width="100%" height="400px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            width="100%" height="361px" style="border:0.5;" allowfullscreen="" loading="lazy"></iframe>
 
                     </div>
                 </section>
