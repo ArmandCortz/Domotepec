@@ -1,8 +1,7 @@
 @extends('layouts.app')
-        @include('layouts.components.navbaradmin')
 
 @section('content')
-<div class="container">
+<div class="content-wrapper">
     <div class="row">
         <div class="col-md-12">
             <h1>Detalles del Usuario</h1>

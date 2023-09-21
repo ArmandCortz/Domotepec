@@ -15,7 +15,7 @@
     <ul class="navbar-nav ml-auto">
         
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route("Home")}}" class="nav-link">Home</a>
+            <a href="{{ route("/")}}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route("Servicios")}}" class="nav-link">Servicios</a>
