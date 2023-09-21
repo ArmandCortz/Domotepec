@@ -14,14 +14,14 @@ class CreateServHabTable extends Migration
             $table->unsignedBigInteger('servicio')->nullable();
             $table->date('fecha');
             $table->time('hora');
-            $table->unsignedBigInteger('cabaña');
+            $table->unsignedBigInteger('cabana');
             $table->unsignedBigInteger('cliente');
             $table->unsignedBigInteger('reserva');
             $table->timestamps();
 
             $table->foreign('bien')->references('id')->on('bien');
             $table->foreign('servicio')->references('id')->on('servicio');
-            $table->foreign('cabaña')->references('id')->on('cabaña');
+            $table->foreign('cabana')->references('id')->on('cabana');
             $table->foreign('cliente')->references('id')->on('cliente');
             $table->foreign('reserva')->references('id')->on('reserva');
         });

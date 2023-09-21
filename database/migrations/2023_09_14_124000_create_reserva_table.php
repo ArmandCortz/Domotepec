@@ -11,13 +11,13 @@ class CreateReservaTable extends Migration
         Schema::create('reserva', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cliente');
-            $table->unsignedBigInteger('cabaña');
+            $table->unsignedBigInteger('cabana');
             $table->date('ingreso');
             $table->date('egreso');
             $table->timestamps();
 
             $table->foreign('cliente')->references('id')->on('cliente');
-            $table->foreign('cabaña')->references('id')->on('cabaña');
+            $table->foreign('cabana')->references('id')->on('cabana');
         });
     }
 

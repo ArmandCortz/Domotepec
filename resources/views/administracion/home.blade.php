@@ -21,9 +21,9 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box text-white" style="background-color: rgb(43, 42, 42);">
                         <div class="inner">
-                            <h3>Modulo</h3>
+                            <h3>Usuarios</h3>
 
-                            <p>Usuarios</p>
+                            <p>Modulo administrativo</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
