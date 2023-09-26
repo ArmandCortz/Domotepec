@@ -19,7 +19,7 @@
     overflow: hidden;
     outline: 2px solid white;
     outline-offset: -15px;
-    background-color: blue;
+    background-color: rgba(9, 9, 9, 0.403);
     box-shadow: 5px 10px 40px 5px rgba(0, 0, 0, 0.403);
 }
 
@@ -95,7 +95,7 @@
     overflow: hidden;
     outline: 2px solid white;
     outline-offset: -15px;
-    background-color: blue;
+    background-color: rgba(9, 9, 9, 0.427);
     box-shadow: 5px 10px 40px 5px rgba(0, 0, 0, 0.403);
 }
 .marco .thumbex .thumbnail {

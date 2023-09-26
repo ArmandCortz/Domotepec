@@ -63,7 +63,6 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 
         @stack('styles')
-        @stack('scripts')
 
 
 </head>
@@ -98,6 +97,7 @@
     <a href="#" class="back-to-top d- flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+        @stack('scripts')
 
 
 </body>

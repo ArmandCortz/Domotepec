@@ -6,7 +6,7 @@
                 style="max-height: 25px; max-width: 25px;">
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/" class="nav-link">Domotepec</a>
+            <a href="{{ route("/")}}" class="nav-link">Domotepec</a>
         </li>
 
     </ul>
