@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -16,6 +17,7 @@ class UserController extends Controller
     public function create()
     {
         return view('administracion.modules.users.create');
+
     }
 
     public function store(Request $request)
@@ -23,12 +25,20 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
+            'password' => ['required','confirmed',
+            // Password::min(8) //cantidad de caracteres
+            //         ->letters() //almenos una letra
+            //         ->mixedCase() //almenos una letra minuscula y una mayuscula
+            //         ->numbers() //almenos un numero
+            //         ->symbols() //almenos un simbolo
+        ],
         ]);
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
 
-        User::create($request->all());
+        User::create($data);
 
-        return redirect()->route('administracion.modules.users.index')->with('success', 'Usuario creado exitosamente.');
+        return redirect()->route('users.index')->with('success', 'Usuario creado exitosamente.');
     }
 
     public function show(User $user)
@@ -50,13 +60,13 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('administracion.modules.users.index')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('administracion.modules.users.index')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }

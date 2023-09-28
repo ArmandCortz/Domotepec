@@ -50,7 +50,10 @@ Route::prefix('/')->group(function () {
     Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
         Route::get('/', "HomeController@index")->name('home');
 
-        Route::resource('users', "UserController");
+        Route::get('/users', "UserController@index")->name('users.index');
+        Route::get('/users', "UserController@index")->name('users.create');
+        Route::resource('/users', "UserController");
+
     });
 
 });;
