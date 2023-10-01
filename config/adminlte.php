@@ -358,7 +358,7 @@ return [
                 [
                     'text'    => 'Home',
                     'url'     => '#',
-                    'icon'    => 'fas fa-fw ',
+                    'icon'    => 'fas fa-fw fas fa-house ',
 
                 ],
                 [
@@ -393,14 +393,14 @@ return [
             'icon'    => 'fas fa-users fa-fw',
 
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Configurración de cuenta',],
         [
-            'text' => 'profile',
+            'text' => 'Perfil',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Cambio de contraseña',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
