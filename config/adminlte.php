@@ -405,19 +405,15 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         
-        ['header' => 'labels'],
+        ['header' => 'Ayuda'],
+        
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'       => 'Manuales',
+            'icon_color' => 'cyan',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
+            'text'       => 'Tutoriales',
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
