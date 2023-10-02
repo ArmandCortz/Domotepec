@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -292,12 +292,12 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
+            'type' => 'navbar-search',
+            'text' => 'search',
             'topnav_right' => true,
         ],
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
@@ -305,117 +305,117 @@ return [
 
         [
             'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'url' => 'admin/blog',
+            'can' => 'manage-blog',
         ],
         [
-            'text'        => 'Home',
-            'url'         => '/',
-            'icon'        => 'far fa-house fa-fw ',
+            'text' => 'Home',
+            'route' => 'home',
+            'icon' => 'far fa-house fa-fw ',
         ],
         [
-            'text'    => 'Modulos',
-            'icon'    => 'fas fa-fw fa-book',
+            'text' => 'Modulos',
+            'icon' => 'fas fa-fw fa-book',
             'submenu' => [
                 [
-                    'text'    => 'Usuario',
-                    'url'     => 'users',
-                    'icon'    => 'fas fa-fw ',
+                    'text' => 'Usuario',
+                    'url' => 'users',
+                    'icon' => 'fas fa-fw ',
 
                 ],
                 [
-                    'text'    => 'Sucursales',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw ',
+                    'text' => 'Sucursales',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw ',
 
                 ],
                 [
-                    'text'    => 'Cabañas',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw',
+                    'text' => 'Cabañas',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw',
 
                 ],
                 [
-                    'text'    => 'Servicios',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw',
+                    'text' => 'Servicios',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw',
 
                 ],
                 [
-                    'text'    => 'Bienes',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw',
+                    'text' => 'Bienes',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw',
 
                 ],
-                
+
             ],
         ],
         [
-            'text'    => 'Vistas',
-            'icon'    => 'fas fa-fw fas fa-binoculars',
+            'text' => 'Vistas',
+            'icon' => 'fas fa-fw fas fa-binoculars',
             'submenu' => [
 
                 [
-                    'text'    => 'Home',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw fas fa-house ',
+                    'text' => 'Home',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw fas fa-house ',
 
                 ],
                 [
-                    'text'    => 'Galeria',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw ',
+                    'text' => 'Galeria',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw ',
 
                 ],
                 [
-                    'text'    => 'Contacto',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw',
+                    'text' => 'Contacto',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw',
 
                 ],
                 [
-                    'text'    => 'Reservaciones',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw',
+                    'text' => 'Reservaciones',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw',
 
                 ],
                 [
-                    'text'    => 'Reglas administrativas',
-                    'url'     => '#',
-                    'icon'    => 'fas fa-fw',
+                    'text' => 'Reglas administrativas',
+                    'url' => '#',
+                    'icon' => 'fas fa-fw',
 
                 ],
             ],
         ],
         [
-            'text'    => 'Clientes',
-            'url'     => '#',
-            'icon'    => 'fas fa-users fa-fw',
+            'text' => 'Clientes',
+            'url' => '#',
+            'icon' => 'fas fa-users fa-fw',
 
         ],
         ['header' => 'Configurración de cuenta',],
         [
             'text' => 'Perfil',
-            'url'  => 'admin/settings',
+            'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Cambio de contraseña',
-            'url'  => 'admin/settings',
+            'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        
+
         ['header' => 'Ayuda'],
-        
+
         [
-            'text'       => 'Manuales',
+            'text' => 'Manuales',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'url' => '#',
         ],
         [
-            'text'       => 'Tutoriales',
+            'text' => 'Tutoriales',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'url' => '#',
         ],
     ],
 

@@ -45,6 +45,8 @@ Route::prefix('/')->group(function () {
 
     Route::prefix("/")->group(function () {
         Auth::routes();
+        Route::get('/perfil', [PerfilController::class, 'mostrarPerfil'])->name('perfil');
+
     });
 
     Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {

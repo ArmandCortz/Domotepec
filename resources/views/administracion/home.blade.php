@@ -1,10 +1,8 @@
 {{-- @extends('layou --}}
-@push('styles')
-@endpush
 @extends('layouts.app')
 @section('title', 'Home')
 
-@section('container')
+@section('content')
     <div class="content-header">
         <div class="card">
             <div class="container-fluid card-header mb-5 text-center">

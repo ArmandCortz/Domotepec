@@ -15,7 +15,7 @@
 
 <body>
 
-    @extends('adminlte::page')
+    @yield('logincontainer')
     @stack('scripts')
 
 </body>
