@@ -53,7 +53,11 @@ Route::prefix('/')->group(function () {
         Route::get('/users', "UserController@index")->name('users.index');
         Route::get('/users', "UserController@index")->name('users.create');
         Route::resource('/users', "UserController");
+        // Rutas para sucursales
+        Route::get('/sucursales', "SucursalesController@index")->name('sucursales.index');
+        Route::get('/sucursales/{id}', "SucursalesController@show")->name('sucursales.show');
+        Route::resource('sucursales', 'SucursalesController');
 
-    });
+            });
 
 });;

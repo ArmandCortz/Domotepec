@@ -325,7 +325,7 @@ return [
                 ],
                 [
                     'text'    => 'Sucursales',
-                    'url'     => '#',
+                    'url'     => 'sucursales',
                     'icon'    => 'fas fa-fw ',
 
                 ],
