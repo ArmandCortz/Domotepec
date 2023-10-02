@@ -12,6 +12,7 @@ class CreateCabanaTable extends Migration
             $table->id();
             $table->string('nombre', 100);
             $table->string('ubicacion', 100);
+            $table->string('descripcion', 200);
             $table->integer('sucursal');
             $table->timestamps();
         });
