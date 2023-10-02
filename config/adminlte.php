@@ -324,6 +324,7 @@ return [
 
                 ],
                 [
+<<<<<<< HEAD
                     'text' => 'Sucursales',
                     'url' => '#',
                     'icon' => 'fas fa-fw ',
@@ -333,6 +334,17 @@ return [
                     'text' => 'Cabañas',
                     'url' => '#',
                     'icon' => 'fas fa-fw',
+=======
+                    'text'    => 'Sucursales',
+                    'url'     => 'sucursales',
+                    'icon'    => 'fas fa-fw ',
+
+                ],
+                [
+                    'text'    => 'Cabañas',
+                    'url'     => 'cabañas',
+                    'icon'    => 'fas fa-fw',
+>>>>>>> 84df80e5f37589b90b68ab95372fc1e0fbf1aa88
 
                 ],
                 [
