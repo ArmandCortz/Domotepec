@@ -11,9 +11,9 @@
                 <form method="POST" action="{{ route('sucursales.store') }}">
                     @csrf
                     <div class="form-group mx-sm-3 mb-2">
-                        <label for="otro_campo" class="sr-only">Empresa </label>
-                        <input type="text" class="form-control @error('Empresa') is-invalid @enderror" id="Empresa" name="Empresa" value="{{ old('Empresa') }}" placeholder="Empresa">
-                        @error('Empresa')
+                        <label for="empresa" class="sr-only">Empresa </label>
+                        <input type="text" class="form-control @error('empresa') is-invalid @enderror" id="empresa" name="empresa" value="{{ old('empresa') }}" placeholder="empresa">
+                        @error('empresa')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -41,7 +41,7 @@
 
                     <div class="form-group mx-sm-3 mb-2">
                         <label for="telefono" class="sr-only">Teléfono</label>
-                        <input type="tel" class="form-control @error('telefono') is-invalid @enderror" id="telefono" name="telefono" value="{{ old('telefono') }}" required autocomplete="telefono" placeholder="Teléfono">
+                        <input type="tel" class="form-control @error('telefono') is-invalid @enderror" id="telefono" name="telefono" value="{{ old('telefono') }}" required  placeholder="Teléfono">
                         @error('telefono')
                             <div class="invalid-feedback">
                                 {{ $message }}

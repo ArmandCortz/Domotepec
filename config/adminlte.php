@@ -331,7 +331,7 @@ return [
                 ],
                 [
                     'text'    => 'Cabañas',
-                    'url'     => '#',
+                    'url'     => 'cabañas',
                     'icon'    => 'fas fa-fw',
 
                 ],
