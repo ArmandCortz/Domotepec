@@ -23,7 +23,15 @@ class SucursalesController extends Controller
         // Mostrar la vista de detalles con la sucursal
         return view('administracion.modules.sucursales.show', compact('sucursal'));
     }
-    
+    public function edit($id)
+{
+    // Obtener la sucursal por su ID
+    $sucursal = Sucursal::findOrFail($id);
+
+    // Mostrar la vista de edición con la sucursal
+    return view('administracion.modules.sucursales.index', compact('sucursal'));
+}
+
  
     public function store(Request $request)
     {
@@ -41,4 +49,21 @@ class SucursalesController extends Controller
         return redirect()->route('sucursales.index')->with('success', 'Sucursal creada exitosamente.');
     }
     // Puedes agregar más métodos según tus necesidades, como create, edit, update, destroy, etc.
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'nombre' => 'required|string|max:100',
+        'empresa' => 'required|string|max:100',
+        'direccion' => 'required|string|max:255',
+        'telefono' => 'required|string|max:20',
+        'gerente' => 'required|string|max:100',
+        // Asegúrate de que los nombres de los campos coincidan con los de tu formulario
+    ]);
+
+    $sucursal = Sucursal::findOrFail($id);
+    $sucursal->update($request->all());
+
+    return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
+}
+
 }

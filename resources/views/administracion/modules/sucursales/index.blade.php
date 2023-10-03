@@ -2,7 +2,7 @@
 @section('title', 'Sucursal')
 
 @section('content')
-<div class="jumbotron" style="background: #999aac;">
+<div class="jumbotron" >
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -35,7 +35,13 @@
                                         <!-- Agrega aquí las acciones que desees, como editar y eliminar -->
                                         <td>
                                             {{-- Ejemplo de enlace para mostrar detalles --}}
-                                            <a href="{{ route('sucursales.show', $sucursal->id) }}" class="btn btn-info btn-sm">Detalles</a>
+                                            <a type="button"class="btn btn-info btn-sm" data-toggle="modal" data-target="#crearSucursalModal{{ $sucursal->id }}"> Detalles  </a>
+
+                                                <!-- Botón para eliminar -->
+                                              <a type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ route('sucursales.destroy', $sucursal->id) }}')">
+                                            <i class="fas fa-trash"></i> 
+
+                                        </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -48,12 +54,16 @@
     </div>
 </div>
 @include('administracion.modules.sucursales.modalCrearSucursal')
+@include('administracion.modules.sucursales.modalUpdateSucursal')
+@push('scripts')
+<script>
+    function confirmDelete(url) {
+        if (confirm('¿Estás seguro de que quieres eliminar esta sucursal?')) {
+            window.location.href = url;
+        }
+    }
+</script>
+@endpush
 
 @endsection
 
-@push('scripts')
-
-<script>
-
-</script>
-@endpush

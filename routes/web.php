@@ -57,7 +57,7 @@ Route::prefix('/')->group(function () {
         Route::resource('/users', "UserController");
         // Rutas para sucursales
         Route::get('/sucursales', "SucursalesController@index")->name('sucursales.index');
-        Route::get('/sucursales/{id}', "SucursalesController@show")->name('sucursales.show');
+        Route::put('/sucursales/{id}', 'SucursalesController@update')->name('sucursales.update');
         Route::resource('sucursales', 'SucursalesController');
         // Rutas para cabañas
         Route::get('/cabañas', "cabañasController@index")->name('cabañas.index');
