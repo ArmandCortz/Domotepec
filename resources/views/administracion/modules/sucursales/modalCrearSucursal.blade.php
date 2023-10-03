@@ -11,7 +11,7 @@
                 <form method="POST" action="{{ route('sucursales.store') }}">
                     @csrf
                     <div class="form-group mx-sm-3 mb-2">
-                        <label for="empresa" class="sr-only">Empresa </label>
+                        <label for="empresa" class="sr-only">Empresa</label>
                         <input type="text" class="form-control @error('empresa') is-invalid @enderror" id="empresa" name="empresa" value="{{ old('empresa') }}" placeholder="empresa">
                         @error('empresa')
                             <div class="invalid-feedback">

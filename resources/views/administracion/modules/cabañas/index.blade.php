@@ -33,6 +33,8 @@
                                         <td>
                                             {{-- Ejemplo de enlace para mostrar detalles --}}
                                             <a href="{{ route('cabañas.show', $cabaña->id) }}" class="btn btn-info btn-sm">Detalles</a>
+
+                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -50,6 +52,10 @@
 @push('scripts')
 
 <script>
-
+function confirmDelete(url) {
+        if (confirm('¿Estás seguro de que quieres eliminar esta sucursal?')) {
+            window.location.href = url;
+        }
+    }
 </script>
 @endpush

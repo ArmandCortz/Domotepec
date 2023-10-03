@@ -8,6 +8,7 @@ use App\Models\Sucursal; // Asegúrate de importar el modelo de Sucursal
 class SucursalesController extends Controller
 
 {
+    public $sucursal;
     public function index()
     {
         // Mostrar una lista de todas las sucursales
@@ -19,9 +20,9 @@ class SucursalesController extends Controller
     {
         // Obtener la sucursal por su ID
         $sucursal = Sucursal::findOrFail($id);
-    
-        // Mostrar la vista de detalles con la sucursal
-        return view('administracion.modules.sucursales.show', compact('sucursal'));
+        $sucursal->delete();
+
+        return redirect()->route('sucursales.index')->with('success', 'Usuario eliminado exitosamente.');
     }
     public function edit($id)
 {
