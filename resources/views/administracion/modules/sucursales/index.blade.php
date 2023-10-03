@@ -52,17 +52,17 @@
             </div>
         </div>
     </div>
-</div>
-@include('administracion.modules.sucursales.modalCrearSucursal')
-@include('administracion.modules.sucursales.modalUpdateSucursal')
-@push('scripts')
-<script>
+</div><script>
     function confirmDelete(url) {
         if (confirm('¿Estás seguro de que quieres eliminar esta sucursal?')) {
             window.location.href = url;
         }
     }
 </script>
+@include('administracion.modules.sucursales.modalCrearSucursal')
+@include('administracion.modules.sucursales.modalUpdateSucursal')
+@push('scripts')
+
 @endpush
 
 @endsection
