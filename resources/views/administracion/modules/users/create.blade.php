@@ -74,8 +74,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="{{route('users.index')}}" type="button" class="btn btn-danger">Cancelar</a>
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <a href="{{route('users.index')}}" type="button" class="btn btn-outline-danger">Cancelar</a>
+                                    <button type="submit" class="btn btn-outline-primary">Guardar</button>
                                 </div>
 
                             </form>
