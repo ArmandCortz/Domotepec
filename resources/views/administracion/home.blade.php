@@ -2,7 +2,7 @@
 @extends('layouts.app')
 @section('title', 'Home')
 
-@section('content')
+@section('content-admin')
     <div class="content-header">
         <div class="card">
             <div class="container-fluid card-header mb-5 text-center">

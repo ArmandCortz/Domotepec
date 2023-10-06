@@ -24,12 +24,12 @@
                                 con los siguientes datos?</h5>
                             <br>
                             <div class="row mb-3">
-                                <label for="name"
+                                <label for="name-{{ $user->id }}"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Nombre:') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="{{ $user->id }}" type="text"
-                                        name="name"
+                                    <input id="name-{{ $user->id }}" type="text"
+                                        name="name-{{ $user->id }}"
                                         class="form-control"
                                         value="{{ $user->name }}"
                                         disabled readonly>
@@ -37,12 +37,12 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="name"
+                                <label for="email-{{ $user->id }}"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Correo:') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name{{ $user->id }}" type="text"
-                                        name="name"
+                                    <input id="email-{{ $user->id }}" type="text"
+                                        name="email-{{ $user->id }}"
                                         class="form-control"
                                         value="{{ $user->email }}"
                                         disabled readonly>

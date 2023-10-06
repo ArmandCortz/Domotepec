@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => true,
+    'use_ico_only' => false,
     'use_full_favicon' => false,
 
     /*
@@ -68,7 +68,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Domotepec Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
     'auth_logo' => [
         'enabled' => false,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => '/img/img/Logo-Domotepec-1.jpeg',
             'alt' => 'Auth Logo',
             'class' => '',
             'width' => 50,
@@ -110,7 +110,7 @@ return [
         'enabled' => false,
         'img' => [
             'path' => '/img/img/Logo-Domotepec-1.jpeg',
-            'alt' => 'AdminLTE Preloader Image',
+            'alt' => 'Domotepec Preloader Image',
             'effect' => 'animation__shake',
             'width' => 200,
             'height' => 200,
@@ -212,8 +212,8 @@ return [
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
-    'sidebar_collapse_auto_size' => true,
-    'sidebar_collapse_remember' => true,
+    'sidebar_collapse_auto_size' => false,
+    'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '/',
+    'dashboard_url' => 'home',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -294,7 +294,7 @@ return [
         [
             'type' => 'navbar-search',
             'text' => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type' => 'fullscreen-widget',
@@ -309,6 +309,14 @@ return [
             'can' => 'manage-blog',
         ],
         [
+            'text' => 'pages',
+            'url' => 'admin/pages',
+            'icon' => 'far fa-fw fa-file',
+            'label' => 4,
+            'label_color' => 'success',
+            'can' => 'manage-blog',
+        ],
+        [
             'text' => 'Home',
             'route' => 'home',
             'icon' => 'far fa-house fa-fw ',
@@ -319,19 +327,22 @@ return [
             'submenu' => [
                 [
                     'text' => 'Usuario',
-                    'url' => 'users',
+                    'url' => '/users',
+                    'active' => ['users*'],
                     'icon' => 'fas fa-fw ',
 
                 ],
                 [
                     'text' => 'Sucursales',
-                    'url' => 'sucursales',
+                    'url' => '/sucursales',
+                    'active' => ['sucursales*'],
                     'icon' => 'fas fa-fw ',
 
                 ],
                 [
                     'text' => 'Cabañas',
-                    'url' => 'cabañas',
+                    'url' => '/cabañas',
+                    'active' => ['cabañas*'],
                     'icon' => 'fas fa-fw',
 
                 ],
@@ -347,8 +358,7 @@ return [
                     'icon' => 'fas fa-fw',
 
                 ],
-
-            ],
+            ]
         ],
         [
             'text' => 'Vistas',
@@ -393,18 +403,17 @@ return [
             'icon' => 'fas fa-users fa-fw',
 
         ],
-        ['header' => 'Configurración de cuenta',],
+        ['header' => 'Configuracion de cuenta'],
         [
             'text' => 'Perfil',
-            'url' => 'admin/settings',
+            'route' => 'Perfil',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'Cambio de contraseña',
+            'text' => 'Contraseña',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-
         ['header' => 'Ayuda'],
 
         [
@@ -455,22 +464,53 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'asset' => true,
+                    'location' => '/vendor/datatables/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js',
+                    'asset' => true,
+                    'location' => '/vendor/datatables/js/dataTables.bootstrap4.min.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                    'asset' => true,
+                    'location' => '/vendor/datatables/css/dataTables.bootstrap4.min.css',
+                ],
+            ],
+        ],
+        'Fontawesome' => [
+            'active' => true,
+            'files' => [
+                
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '/vendor/fontawesome-free/css/all.css',
+                ],
+            ],
+        ],
+        'Alertify' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '/vendor/alertify/js/alertify.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '/vendor/alertify/css/alertify.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '/vendor/alertify/css/themes/default.min.css',
                 ],
             ],
         ],

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,16 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-    // Redireccion al hace rlogout
-    protected function loggedOut(Request $request)
-    {
-        return redirect()->route('login');
-
-    }
-    // Redireccion al hacer login
-    protected function redirectTo()
-    {
-        return route('home'); // Cambiar "home" por la ruta real a la que deseas redirigir
     }
 }

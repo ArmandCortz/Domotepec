@@ -8,6 +8,11 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $users = User::all();
@@ -24,13 +29,15 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => ['required','confirmed',
-            // Password::min(8) //cantidad de caracteres
-            //         ->letters() //almenos una letra
-            //         ->mixedCase() //almenos una letra minuscula y una mayuscula
-            //         ->numbers() //almenos un numero
-            //         ->symbols() //almenos un simbolo
-        ],
+            'password' => [
+                'required',
+                'confirmed',
+                // Password::min(8) //cantidad de caracteres
+                //         ->letters() //almenos una letra
+                //         ->mixedCase() //almenos una letra minuscula y una mayuscula
+                //         ->numbers() //almenos un numero
+                //         ->symbols() //almenos un simbolo
+            ],
         ]);
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
@@ -59,13 +66,13 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
+        return redirect()->route('users.index')->with('info', 'Usuario actualizado exitosamente.');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente.');
+        return redirect()->route('users.index')->with('error', 'Usuario eliminado exitosamente.');
     }
 }

@@ -25,13 +25,14 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
-                                    <input type="text" name="name"
+                                    <label for="name-{{ $user->id }}">Name:</label>
+                                    <input id="name-{{ $user->id }}" type="text" name="name-{{ $user->id }}"
                                         class="form-control"
                                         value="{{ $user->name }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" name="email"
+                                    <label for="email-{{ $user->id }}">Email:</label>
+                                    <input id="email-{{ $user->id }}" type="email" name="email-{{ $user->id }}"
                                         class="form-control"
                                         value="{{ $user->email }}" required>
                                 </div>

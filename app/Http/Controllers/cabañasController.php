@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Models\cabañas; // Asegúrate de importar el modelo de Sucursal
+use App\Models\Cabaña; // Asegúrate de importar el modelo de Sucursal
 
 class cabañasController extends Controller
 {
@@ -10,7 +11,7 @@ class cabañasController extends Controller
     public function index()
     {
         // Mostrar una lista de todas las sucursales
-        $cabañas = cabañas::all();
+        $cabañas = Cabaña::all();
         return view('administracion.modules.cabañas.index', compact('cabañas'));
 
     }
@@ -24,7 +25,7 @@ class cabañasController extends Controller
             // Puedes agregar más reglas de validación según tus necesidades
         ]);
 
-        cabañas::create([
+        Cabaña::create([
             'nombre' => $request->input('nombre'),
             'ubicacion' => $request->input('ubicacion'),
             'sucursal' => $request->input('sucursal'),
@@ -37,15 +38,15 @@ class cabañasController extends Controller
     {
 
         // Obtener todas las cabañas
-        $cabañas = cabañas::findOrFail($id);
+        $cabañas = Cabaña::findOrFail($id);
 
         return redirect()->route('cabañas.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 
     public function edit($id)
-{
-    // Obtener la cabaña por su ID
-    $cabañas = cabañas::findOrFail($id);
+    {
+        // Obtener la cabaña por su ID
+        $cabañas = Cabaña::findOrFail($id);
 
         return view('administracion.modules.cabañas.modalShowCabañas', compact('cabañas'));
     }

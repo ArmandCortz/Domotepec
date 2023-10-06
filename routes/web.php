@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Grupo de rutas para vista usuario
-
 Route::prefix("/user")->group(function () {
     Route::get('/', function () {
         return view('users.home');
@@ -41,20 +38,27 @@ Route::prefix("/user")->group(function () {
     })->name('Reservaciones');
 });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::prefix('/')->group(function () {
 
     Route::prefix("/")->group(function () {
         Auth::routes();
-        Route::get('/perfil', [PerfilController::class, 'mostrarPerfil'])->name('perfil');
 
     });
 
     Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
         Route::get('/', "HomeController@index")->name('home');
+        Route::get('/perfil',"PerfilController@index")->name('Perfil');
 
+        // Rutas para users
         Route::get('/users', "UserController@index")->name('users.index');
-        Route::get('/users', "UserController@index")->name('users.create');
-        Route::resource('/users', "UserController");
+        Route::get('/users', "UserController@create")->name('users.create');
+        Route::resource('users', "UserController");
+
+        
         // Rutas para sucursales
         Route::get('/sucursales', "SucursalesController@index")->name('sucursales.index');
         Route::put('/sucursales/{id}', 'SucursalesController@update')->name('sucursales.update');
@@ -64,6 +68,7 @@ Route::prefix('/')->group(function () {
         Route::get('/cabañas/{id}', "cabañasController@show")->name('cabañas.show');
         Route::resource('cabañas', 'cabañasController');
 
-            });
+    });
 
-});;
+});
+;
