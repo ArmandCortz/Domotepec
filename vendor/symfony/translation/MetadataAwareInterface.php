@@ -31,8 +31,11 @@ interface MetadataAwareInterface
 
     /**
      * Adds metadata to a message domain.
+<<<<<<< HEAD
      *
      * @return void
+=======
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
      */
     public function setMetadata(string $key, mixed $value, string $domain = 'messages');
 

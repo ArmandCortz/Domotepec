@@ -62,16 +62,34 @@ class ImmutableEventDispatcher implements EventDispatcherInterface
         throw new \BadMethodCallException('Unmodifiable event dispatchers must not be modified.');
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getListeners(string $eventName = null): array
     {
         return $this->dispatcher->getListeners($eventName);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getListenerPriority(string $eventName, callable|array $listener): ?int
     {
         return $this->dispatcher->getListenerPriority($eventName, $listener);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function hasListeners(string $eventName = null): bool
     {
         return $this->dispatcher->hasListeners($eventName);

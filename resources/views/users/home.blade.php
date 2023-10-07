@@ -3,10 +3,8 @@
     @push('styles')
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     @endpush
+    {{-- inicio del carrusel --}}
     <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
-
-
-        <!-- Slides -->
         <div class="carousel-inner">
             <div class="carousel-item active ">
                 <img src="/img/img/boqueron_1.png" class="img-fluid mx-auto img" alt="...">
@@ -34,18 +32,18 @@
                 </div>
             </div>
         </div>
-
-        <!-- Controles de navegación -->
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Siguiente</span>
-        </a>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div id="nosotros" class="container-fluid bg-light ">
+    {{-- final del carrusel --}}
+
+    <div id="nosotros" class="container-fluid">
         <div class="d-sm-block d-lg-none">
             <div class="row">
                 <div class="col-lg-6">
@@ -63,21 +61,32 @@
             </div>
         </div>
         <div class="d-none d-lg-block">
-            <div class="row ">
-                <div class="col-6">
-                    <div class="container text-center">
-                        <div class="flex-column align-items-center"
-                            style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
-                            <p>Nosotros</p>
-                            <h1>Domotepec</h1> <br>
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quaerat cum eum veniam
-                                culpa
-                                voluptatum ipsum nam tempora! Quia cumque temporibus inventore suscipit nihil recusandae
-                                accusantium
-                                ipsum quibusdam vero perspiciatis?</h5>
+            <div class="row text-center">
+                <div class="col-6 mt-5 mb-5">
+                        <p>Nosotros</p>
+                        <h1>Domotepec</h1>
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quaerat cum eum veniam
+                            culpa
+                            voluptatum ipsum nam tempora! Quia cumque temporibus inventore suscipit nihil recusandae
+                            accusantium ipsum quibusdam vero perspiciatis?</h5>
+                </div>
+                <div class="col-6" style="background-image: url(../img/img/chalate_1.png); background-size: cover;">
+                    <div class="container text-center" style="position: relative; height: 300px;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <img src="/img/img/Logo-Domotepec-1.jpeg" alt="" class="rounded-circle img-fluid"
+                                style="max-height: 150px; max-width: 150px; opacity: 75%;">
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div id="nosotros" class="container-fluid bg-light ">
+        
+        <div class="d-none d-lg-block">
+            <div class="row ">
+                
 
                 <div class="col-6">
                     <img class="" src="/img/img/chalate_1.png" style="max-height: 500px; width: 100%;" alt="">
@@ -89,8 +98,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div id="servicios" class=" bg-dark  py-2">
+    </div> --}}
+    <div id="servicios" class=" bg-dark text-white py-2" style="">
         <div class="row mt-5 my-5">
 
             <div class="col-md-6 offset-md-3 text-center">
@@ -107,22 +116,22 @@
             <div class="container py-2 text-center">
                 <div class="row">
                     <div class="col">
-                        <i class="fas fa-binoculars"></i>
+                        <i class="fa fa-binoculars"></i>
                         <p>Servicio 1</p>
-                        <i class="fas fa-binoculars"></i>
+                        <i class="fa fa-binoculars"></i>
                         <p>Servicio 2</p>
 
                     </div>
                     <div class="col">
-                        <i class="fas fa-binoculars"></i>
+                        <i class="fa fa-binoculars"></i>
                         <p>Servicio 3</p>
-                        <i class="fas fa-binoculars"></i>
+                        <i class="fa fa-binoculars"></i>
                         <p>Servicio 4</p>
                     </div>
                     <div class="col">
-                        <i class="fas fa-binoculars"></i>
+                        <i class="fa fa-binoculars"></i>
                         <p>Servicio 5</p>
-                        <i class="fas fa-binoculars"></i>
+                        <i class="fa fa-binoculars"></i>
                         <p>Servicio 6</p>
                     </div>
                 </div>
@@ -130,7 +139,7 @@
         </div>
     </div>
 
-    <div id="habitaciones" class=" bg-light  py-2">
+    <div id="habitaciones" class=" py-2">
         <div class="row mt-5 my-5">
 
             <div class="col-md-6 offset-md-3 text-center">
@@ -147,7 +156,7 @@
 
 
             </div>
-            <div class="container py-2 text-center">
+            <div class="container text-center">
                 <div class="row">
                     <div class="col">
                         <img src="/img/cabaña2.jpeg" alt="" class="rounded-circle img-fluid"

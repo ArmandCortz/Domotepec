@@ -22,6 +22,12 @@ class IcuResFileDumper extends FileDumper
 {
     protected $relativePathTemplate = '%domain%/%locale%.%extension%';
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
     {
         $data = $indexes = $resources = '';
@@ -88,6 +94,12 @@ class IcuResFileDumper extends FileDumper
         return (\strlen($data) + 28) / 4;
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     protected function getExtension(): string
     {
         return 'res';

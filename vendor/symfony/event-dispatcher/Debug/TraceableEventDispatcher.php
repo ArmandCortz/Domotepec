@@ -37,10 +37,17 @@ class TraceableEventDispatcher implements EventDispatcherInterface, ResetInterfa
      * @var \SplObjectStorage<WrappedListener, array{string, string}>|null
      */
     private ?\SplObjectStorage $callStack = null;
+<<<<<<< HEAD
     private EventDispatcherInterface $dispatcher;
     private array $wrappedListeners = [];
     private array $orphanedEvents = [];
     private ?RequestStack $requestStack;
+=======
+    private $dispatcher;
+    private array $wrappedListeners = [];
+    private array $orphanedEvents = [];
+    private $requestStack;
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     private string $currentRequestHash = '';
 
     public function __construct(EventDispatcherInterface $dispatcher, Stopwatch $stopwatch, LoggerInterface $logger = null, RequestStack $requestStack = null)
@@ -93,11 +100,23 @@ class TraceableEventDispatcher implements EventDispatcherInterface, ResetInterfa
         $this->dispatcher->removeSubscriber($subscriber);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getListeners(string $eventName = null): array
     {
         return $this->dispatcher->getListeners($eventName);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getListenerPriority(string $eventName, callable|array $listener): ?int
     {
         // we might have wrapped listeners for the event (if called while dispatching)
@@ -113,6 +132,12 @@ class TraceableEventDispatcher implements EventDispatcherInterface, ResetInterfa
         return $this->dispatcher->getListenerPriority($eventName, $listener);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function hasListeners(string $eventName = null): bool
     {
         return $this->dispatcher->hasListeners($eventName);

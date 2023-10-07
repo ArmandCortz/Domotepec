@@ -33,29 +33,37 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 abstract class ProviderFactoryTestCase extends TestCase
 {
+<<<<<<< HEAD
     protected HttpClientInterface $client;
     protected LoggerInterface|MockObject $logger;
     protected string $defaultLocale;
     protected LoaderInterface|MockObject $loader;
     protected XliffFileDumper|MockObject $xliffFileDumper;
     protected TranslatorBagInterface|MockObject $translatorBag;
+=======
+    protected $client;
+    protected $logger;
+    protected string $defaultLocale;
+    protected $loader;
+    protected $xliffFileDumper;
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
     abstract public function createFactory(): ProviderFactoryInterface;
 
     /**
      * @return iterable<array{0: bool, 1: string}>
      */
-    abstract public static function supportsProvider(): iterable;
+    abstract public function supportsProvider(): iterable;
 
     /**
-     * @return iterable<array{0: string, 1: string}>
+     * @return iterable<array{0: string, 1: string, 2: TransportInterface}>
      */
-    abstract public static function createProvider(): iterable;
+    abstract public function createProvider(): iterable;
 
     /**
      * @return iterable<array{0: string, 1: string|null}>
      */
-    public static function unsupportedSchemeProvider(): iterable
+    public function unsupportedSchemeProvider(): iterable
     {
         return [];
     }
@@ -63,7 +71,7 @@ abstract class ProviderFactoryTestCase extends TestCase
     /**
      * @return iterable<array{0: string, 1: string|null}>
      */
-    public static function incompleteDsnProvider(): iterable
+    public function incompleteDsnProvider(): iterable
     {
         return [];
     }
@@ -146,10 +154,13 @@ abstract class ProviderFactoryTestCase extends TestCase
     protected function getXliffFileDumper(): XliffFileDumper
     {
         return $this->xliffFileDumper ??= $this->createMock(XliffFileDumper::class);
+<<<<<<< HEAD
     }
 
     protected function getTranslatorBag(): TranslatorBagInterface
     {
         return $this->translatorBag ??= $this->createMock(TranslatorBagInterface::class);
+=======
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     }
 }

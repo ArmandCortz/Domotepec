@@ -23,6 +23,12 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class IcuResFileLoader implements LoaderInterface
 {
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function load(mixed $resource, string $locale, string $domain = 'messages'): MessageCatalogue
     {
         if (!stream_is_local($resource)) {
@@ -68,7 +74,11 @@ class IcuResFileLoader implements LoaderInterface
      *
      * @param \ResourceBundle $rb       The ResourceBundle that will be flattened
      * @param array           $messages Used internally for recursive calls
+<<<<<<< HEAD
      * @param string|null     $path     Current path being parsed, used internally for recursive calls
+=======
+     * @param string          $path     Current path being parsed, used internally for recursive calls
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
      */
     protected function flatten(\ResourceBundle $rb, array &$messages = [], string $path = null): array
     {

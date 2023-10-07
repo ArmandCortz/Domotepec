@@ -24,6 +24,7 @@ use function is_callable;
 use function is_object;
 use function is_resource;
 use function is_scalar;
+use function var_export;
 
 /**
  * Provides functionality to express a value as string
@@ -45,7 +46,12 @@ trait ValueToStringTrait
      *
      * @param mixed $value the value to return as a string.
      */
+<<<<<<< HEAD
     protected function toolValueToString(mixed $value): string
+=======
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+    protected function toolValueToString($value): string
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     {
         // null
         if ($value === null) {
@@ -86,6 +92,11 @@ trait ValueToStringTrait
         }
 
         // unknown type
+<<<<<<< HEAD
         return '(' . $value::class . ' Object)';
+=======
+        // phpcs:ignore SlevomatCodingStandard.Classes.ModernClassNameReference.ClassNameReferencedViaFunctionCall
+        return '(' . get_class($value) . ' Object)';
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     }
 }

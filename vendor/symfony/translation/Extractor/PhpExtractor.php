@@ -320,6 +320,12 @@ class PhpExtractor extends AbstractFileExtractor implements ExtractorInterface
         return $this->isFile($file) && 'php' === pathinfo($file, \PATHINFO_EXTENSION);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * {@inheritdoc}
+     */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     protected function extractFromDirectory(string|array $directory): iterable
     {
         if (!class_exists(Finder::class)) {

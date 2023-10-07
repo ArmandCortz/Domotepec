@@ -7,17 +7,29 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    @stack('styles')
+    <link rel="icon" type="image/jpeg" href="{{ asset('/img/img/Logo-Domotepec-1.jpeg') }}" >
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
-
-    @extends('adminlte::page')
-    @stack('scripts')
-
+    <div id="app">
+        <main >
+            @extends('adminlte::page')
+            @section('content')
+                @yield('content-admin')
+            @endsection
+        </main>
+    </div>
 </body>
 
 </html>

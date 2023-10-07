@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Models\cabañas; // Asegúrate de importar el modelo de Sucursal
+use App\Models\Cabaña; // Asegúrate de importar el modelo de Sucursal
 
 class cabañasController extends Controller
 {
@@ -10,7 +11,7 @@ class cabañasController extends Controller
     public function index()
     {
         // Mostrar una lista de todas las sucursales
-        $cabañas = cabañas::all();
+        $cabañas = Cabaña::all();
         return view('administracion.modules.cabañas.index', compact('cabañas'));
 
     }
@@ -25,7 +26,7 @@ class cabañasController extends Controller
             // Puedes agregar más reglas de validación según tus necesidades
         ]);
 
-        cabañas::create([
+        Cabaña::create([
             'nombre' => $request->input('nombre'),
             'ubicacion' => $request->input('ubicacion'),
             'sucursal' => $request->input('sucursal'),
@@ -40,19 +41,25 @@ class cabañasController extends Controller
     $cabaña = cabañas::findOrFail($id);
     $cabaña->delete();
 
+<<<<<<< HEAD
     return redirect()->route('cabañas.index')->with('success', 'Cabaña eliminada exitosamente.');
 }
+=======
+        // Obtener todas las cabañas
+        $cabañas = Cabaña::findOrFail($id);
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
  
 
     public function edit($id)
-{
-    // Obtener la cabaña por su ID
-    $cabañas = cabañas::findOrFail($id);
+    {
+        // Obtener la cabaña por su ID
+        $cabañas = Cabaña::findOrFail($id);
 
         return view('administracion.modules.cabañas.modalShowCabañas', compact('cabañas'));
     }
     // Puedes agregar más métodos según tus necesidades, como create, edit, update, destroy, etc.
+<<<<<<< HEAD
 
     public function update(Request $request, $id)
 {
@@ -70,3 +77,6 @@ class cabañasController extends Controller
     return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
 }
 }
+=======
+}
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf

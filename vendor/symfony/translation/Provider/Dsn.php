@@ -29,7 +29,11 @@ final class Dsn
     private array $options = [];
     private string $originalDsn;
 
+<<<<<<< HEAD
     public function __construct(#[\SensitiveParameter] string $dsn)
+=======
+    public function __construct(string $dsn)
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     {
         $this->originalDsn = $dsn;
 
@@ -79,7 +83,11 @@ final class Dsn
         return $this->port ?? $default;
     }
 
+<<<<<<< HEAD
     public function getOption(string $key, mixed $default = null): mixed
+=======
+    public function getOption(string $key, mixed $default = null)
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     {
         return $this->options[$key] ?? $default;
     }

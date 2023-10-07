@@ -32,19 +32,46 @@ use function array_unshift;
 class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
 {
     /**
+<<<<<<< HEAD
      * Constructs a double-ended queue (dequeue) object of the specified type,
      * optionally with the specified data.
      *
      * @param string $queueType The type or class name associated with this dequeue.
      * @param array<array-key, T> $data The initial items to store in the dequeue.
+=======
+     * Index of the last element in the queue.
+     */
+    private int $tail = -1;
+
+    /**
+     * @inheritDoc
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
      */
     public function __construct(private readonly string $queueType, array $data = [])
     {
+<<<<<<< HEAD
         parent::__construct($this->queueType, $data);
+=======
+        if ($this->checkType($this->getType(), $value) === false) {
+            throw new InvalidArgumentException(
+                'Value must be of type ' . $this->getType() . '; value is '
+                . $this->toolValueToString($value),
+            );
+        }
+
+        $this->tail++;
+
+        $this->data[$this->tail] = $value;
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     }
 
     /**
      * @throws InvalidArgumentException if $element is of the wrong type
+<<<<<<< HEAD
+=======
+     *
+     * @inheritDoc
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
      */
     public function addFirst(mixed $element): bool
     {

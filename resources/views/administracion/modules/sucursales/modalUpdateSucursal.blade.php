@@ -1,4 +1,4 @@
-<div class="modal fade" id="crearSucursalModal{{ $sucursal->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="crearSucursalModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearSucursalModal-{{ $sucursal->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="crearCabañaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-dark">

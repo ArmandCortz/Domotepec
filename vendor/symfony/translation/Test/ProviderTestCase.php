@@ -30,19 +30,27 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 abstract class ProviderTestCase extends TestCase
 {
+<<<<<<< HEAD
     protected HttpClientInterface $client;
     protected LoggerInterface|MockObject $logger;
     protected string $defaultLocale;
     protected LoaderInterface|MockObject $loader;
     protected XliffFileDumper|MockObject $xliffFileDumper;
     protected TranslatorBagInterface|MockObject $translatorBag;
+=======
+    protected $client;
+    protected $logger;
+    protected string $defaultLocale;
+    protected $loader;
+    protected $xliffFileDumper;
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
-    abstract public static function createProvider(HttpClientInterface $client, LoaderInterface $loader, LoggerInterface $logger, string $defaultLocale, string $endpoint): ProviderInterface;
+    abstract public function createProvider(HttpClientInterface $client, LoaderInterface $loader, LoggerInterface $logger, string $defaultLocale, string $endpoint): ProviderInterface;
 
     /**
-     * @return iterable<array{0: ProviderInterface, 1: string}>
+     * @return iterable<array{0: string, 1: ProviderInterface}>
      */
-    abstract public static function toStringProvider(): iterable;
+    abstract public function toStringProvider(): iterable;
 
     /**
      * @dataProvider toStringProvider
@@ -75,10 +83,13 @@ abstract class ProviderTestCase extends TestCase
     protected function getXliffFileDumper(): XliffFileDumper
     {
         return $this->xliffFileDumper ??= $this->createMock(XliffFileDumper::class);
+<<<<<<< HEAD
     }
 
     protected function getTranslatorBag(): TranslatorBagInterface
     {
         return $this->translatorBag ??= $this->createMock(TranslatorBagInterface::class);
+=======
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     }
 }

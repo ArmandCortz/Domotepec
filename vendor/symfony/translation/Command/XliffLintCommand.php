@@ -45,8 +45,13 @@ class XliffLintCommand extends Command
     {
         parent::__construct($name);
 
+<<<<<<< HEAD
         $this->directoryIteratorProvider = null === $directoryIteratorProvider ? null : $directoryIteratorProvider(...);
         $this->isReadableProvider = null === $isReadableProvider ? null : $isReadableProvider(...);
+=======
+        $this->directoryIteratorProvider = null === $directoryIteratorProvider || $directoryIteratorProvider instanceof \Closure ? $directoryIteratorProvider : \Closure::fromCallable($directoryIteratorProvider);
+        $this->isReadableProvider = null === $isReadableProvider || $isReadableProvider instanceof \Closure ? $isReadableProvider : \Closure::fromCallable($isReadableProvider);
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
         $this->requireStrictFileNames = $requireStrictFileNames;
     }
 

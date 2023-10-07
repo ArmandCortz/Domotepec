@@ -26,6 +26,7 @@ final class WrappedListener
     private string $name;
     private bool $called = false;
     private bool $stoppedPropagation = false;
+<<<<<<< HEAD
     private Stopwatch $stopwatch;
     private ?EventDispatcherInterface $dispatcher;
     private string $pretty;
@@ -35,12 +36,25 @@ final class WrappedListener
     private static bool $hasClassStub;
 
     public function __construct(callable|array $listener, ?string $name, Stopwatch $stopwatch, EventDispatcherInterface $dispatcher = null, int $priority = null)
+=======
+    private $stopwatch;
+    private $dispatcher;
+    private string $pretty;
+    private $stub;
+    private ?int $priority = null;
+    private static bool $hasClassStub;
+
+    public function __construct(callable|array $listener, ?string $name, Stopwatch $stopwatch, EventDispatcherInterface $dispatcher = null)
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     {
         $this->listener = $listener;
         $this->optimizedListener = $listener instanceof \Closure ? $listener : (\is_callable($listener) ? $listener(...) : null);
         $this->stopwatch = $stopwatch;
         $this->dispatcher = $dispatcher;
+<<<<<<< HEAD
         $this->priority = $priority;
+=======
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
         if (\is_array($listener)) {
             [$this->name, $this->callableRef] = $this->parseListener($listener);
@@ -93,7 +107,11 @@ final class WrappedListener
 
     public function getInfo(string $eventName): array
     {
+<<<<<<< HEAD
         $this->stub ??= self::$hasClassStub ? new ClassStub($this->pretty.'()', $this->callableRef ?? $this->listener) : $this->pretty.'()';
+=======
+        $this->stub ??= self::$hasClassStub ? new ClassStub($this->pretty.'()', $this->listener) : $this->pretty.'()';
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
         return [
             'event' => $eventName,
@@ -112,12 +130,10 @@ final class WrappedListener
 
         $e = $this->stopwatch->start($this->name, 'event_listener');
 
-        try {
-            ($this->optimizedListener ?? $this->listener)($event, $eventName, $dispatcher);
-        } finally {
-            if ($e->isStarted()) {
-                $e->stop();
-            }
+        ($this->optimizedListener ?? $this->listener)($event, $eventName, $dispatcher);
+
+        if ($e->isStarted()) {
+            $e->stop();
         }
 
         if ($event instanceof StoppableEventInterface && $event->isPropagationStopped()) {

@@ -172,7 +172,12 @@ interface CollectionInterface extends ArrayInterface
      * @throws UnsupportedOperationException if unable to call where() on this
      *     collection.
      */
+<<<<<<< HEAD
     public function where(?string $propertyOrMethod, mixed $value): self;
+=======
+    // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
+    public function where(string $propertyOrMethod, $value): self;
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
     /**
      * Apply a given callback method on each item of the collection.
