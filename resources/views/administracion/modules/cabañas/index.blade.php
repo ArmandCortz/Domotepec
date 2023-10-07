@@ -35,7 +35,7 @@
                                         <td>{{ $cabaña->descripcion }}</td>
                                         <td>
                                             {{-- Ejemplo de enlace para mostrar detalles --}}
-                                            <a type="button"class="btn btn-info btn-sm" data-toggle="modal" data-target="#crearCabañaModalc{{ $cabaña->id }}"> Detalles  </a>
+                                            <a type="button"class="btn btn-info btn-sm" data-toggle="modal" data-target="#crearCabañaModal{{ $cabaña->id }}"> Detalles  </a>
 
 
                                              <!-- Botón para eliminar -->
@@ -55,7 +55,15 @@
             </div>
         </div>
     </div>
-</div>
+</div><script>
+    function confirmDelete(url) {
+        if (confirm('¿Estás seguro de que quieres eliminar esta cabaña?')) {
+            window.location.href = url;
+        }
+    }
+</script>
+@include('administracion.modules.cabañas.modalCrearCabañas')
+@include('administracion.modules.cabañas.modalUpdateCabañas')
 @section('js')
         <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -89,16 +97,5 @@
 
     @endsection
 @endsection
-@include('administracion.modules.cabañas.modalCrearCabañas')
-@push('scripts')
-
-<script>
-function confirmDelete(url) {
-        if (confirm('¿Estás seguro de que quieres eliminar esta sucursal?')) {
-            window.location.href = url;
-        }
-    }
-</script>
 
 
-@endpush

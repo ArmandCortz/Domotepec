@@ -14,6 +14,7 @@ class cabañasController extends Controller
         return view('administracion.modules.cabañas.index', compact('cabañas'));
 
     }
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -33,14 +34,16 @@ class cabañasController extends Controller
 
         return redirect()->route('cabañas.index')->with('success', 'Cabaña creada exitosamente.');
     }
-    public function show($id)
-    {
+    public function destroy($id)
+{
+    // Obtener la cabaña por su ID y eliminarla
+    $cabaña = cabañas::findOrFail($id);
+    $cabaña->delete();
 
-        // Obtener todas las cabañas
-        $cabañas = cabañas::findOrFail($id);
+    return redirect()->route('cabañas.index')->with('success', 'Cabaña eliminada exitosamente.');
+}
 
-        return redirect()->route('cabañas.index')->with('success', 'Usuario eliminado exitosamente.');
-    }
+ 
 
     public function edit($id)
 {
@@ -50,4 +53,20 @@ class cabañasController extends Controller
         return view('administracion.modules.cabañas.modalShowCabañas', compact('cabañas'));
     }
     // Puedes agregar más métodos según tus necesidades, como create, edit, update, destroy, etc.
+
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'nombre' => 'required|string|max:255',
+        'ubicacion' => 'required|string|max:255',
+        'sucursal' => 'required',
+        'descripcion' => 'nullable|string',
+        // Asegúrate de que los nombres de los campos coincidan con los de tu formulario
+    ]);
+
+    $cabañas = cabañas::findOrFail($id);
+    $cabañas->update($request->all());
+
+    return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
+}
 }
