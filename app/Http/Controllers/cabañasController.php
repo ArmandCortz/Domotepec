@@ -38,16 +38,11 @@ class cabañasController extends Controller
     public function destroy($id)
 {
     // Obtener la cabaña por su ID y eliminarla
-    $cabaña = cabañas::findOrFail($id);
+    $cabaña = Cabaña::findOrFail($id);
     $cabaña->delete();
 
-<<<<<<< HEAD
     return redirect()->route('cabañas.index')->with('success', 'Cabaña eliminada exitosamente.');
 }
-=======
-        // Obtener todas las cabañas
-        $cabañas = Cabaña::findOrFail($id);
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
  
 
@@ -59,7 +54,6 @@ class cabañasController extends Controller
         return view('administracion.modules.cabañas.modalShowCabañas', compact('cabañas'));
     }
     // Puedes agregar más métodos según tus necesidades, como create, edit, update, destroy, etc.
-<<<<<<< HEAD
 
     public function update(Request $request, $id)
 {
@@ -71,12 +65,9 @@ class cabañasController extends Controller
         // Asegúrate de que los nombres de los campos coincidan con los de tu formulario
     ]);
 
-    $cabañas = cabañas::findOrFail($id);
+    $cabañas = Cabaña::findOrFail($id);
     $cabañas->update($request->all());
 
-    return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
+    return redirect()->route('cabañas.index')->with('success', 'Cabaña actualizada exitosamente.');
 }
 }
-=======
-}
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf

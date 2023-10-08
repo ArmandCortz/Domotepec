@@ -1,5 +1,5 @@
-        <div class="modal fade" id="crearCabañaModal{{ $cabaña->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="crearCabaña-{{ $cabañaId }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header" style="background: rgb(176, 176, 176)">
                         <h5 class="modal-title" id="exampleModalLabel">Editar Cabaña</h5>
