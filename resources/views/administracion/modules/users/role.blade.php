@@ -28,56 +28,54 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                {{-- {{ route('users.update', $user->id) }} --}}
                             </form>
-                            <form action="{{ route('users.update', $user->id) }}" method="POST">
+                            {!! Form::model($user, [
+                                'route' => ['users.update', $user->id],
+                                'method' => 'PUT',
+                            ]) !!}
+                            <div class="col-12">
+                                <label for="rol-{{ $user->id }}">Rol:</label>
+                                <div>
+                                    {!! Form::select('roles[]', $roles->pluck('name', 'id'), null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
+                            
+
+                            <form action="" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
                                     <div class="row justify-content-center align-items-center g-2">
+
+                                        
+                                        
+                                        <div class="col">
+
+                                            <label for="">Permisos:</label>
+                                            <div class="row row-cols-3">
+
+
+                                                {!! Form::model($user, [
+                                                    'route' => ['users.update', $user->id],
+                                                    'method' => 'PUT',
+                                                ]) !!}
+                                                @foreach ($permisos as $permiso)
+                                                    <div class="col ">
+                                                        <div class="form-check">
+                                                            {!! Form::checkbox('permisos[]', $permiso->id, null, ['class' => 'form-check-input', 'id' => "permiso-$permiso->id"]) !!}
+                                                            {!! Form::label("permiso-$permiso->id", $permiso->name, ['class' => 'form-check-label']) !!}
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                                {!! Form::close() !!}
+                                                
+
+                                            </div>
+                                        </div>
                                         @if (Auth::user()->id === $user->id)
-                                            <div class="col-12">
-                                                <label for="rol-{{ $user->id }}">Rol:</label>
-                                                <select id="rol-{{ $user->id }}" class="form-control form-control-lg"
-                                                    disabled>
-                                                    <option selected value="1">Superadministrador</option>
-                                                    <option value="2">Administrador</option>
-                                                    <option value="3">Cliente</option>
-                                                </select>
-                                            </div>
-                                            <div class="col">
-                                                <label for="email-{{ $user->id }}">Email:</label>
-                                                <input id="email-{{ $user->id }}" type="email"
-                                                    name="email-{{ $user->id }}" class="form-control"
-                                                    value="{{ $user->email }}" disabled>
-                                            </div>
                                         @else
-                                            <div class="col-12">
-                                                <label for="rol-{{ $user->id }}">Rol:</label>
-                                                <select id="rol-{{ $user->id }}" class="form-control form-control-lg">
-                                                    <option selected value="1">Superadministrador</option>
-                                                    <option value="2">Administrador</option>
-                                                    <option value="3">Cliente</option>
-                                                </select>
-                                            </div>
-                                            <div class="col">
-                                                <br>
-                                                <label for="">Permisos:</label>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="defaultCheck1" checked>
-                                                    <label class="form-check-label" for="defaultCheck1">
-                                                        Permiso 1
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="defaultCheck1">
-                                                    <label class="form-check-label" for="defaultCheck1">
-                                                        Permiso 2
-                                                    </label>
-                                                </div>
-                                            </div>
                                         @endif
                                     </div>
                                 </div>

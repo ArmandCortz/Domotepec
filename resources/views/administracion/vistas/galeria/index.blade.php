@@ -8,10 +8,25 @@
                 <h1 class="text-center mt-3">Modulo Galeria</h1>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearGaleriaModal">
                     Crear Galería
-                </button>
-                <div class="card mt-3">
+                </button>                <div class="card mt-3">
                     <div class="card-body">
 
+                            <table class="table table-hover table-responsive-sm" id="myDataTable">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Imagen</th>
+                                        <th>Empresa</th>
+                                        <th>Sucursal</th>
+                                        <th>Descripción</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($galerias as $galeria)
+                                        <tr>
+                                            <td>{{ $galeria->id }}</td>
+                                            <td><img src="{{ asset('storage/images/' . $galeria->imagen) }}" alt="Imagen de la galería" style="max-width: 100px;"></td>
                         <table class="table table-hover table-responsive-sm" id="myDataTable">
                             <thead class="thead-dark">
                                 <tr>
@@ -38,28 +53,20 @@
                                             <form action="{{ route('galerias.destroy', $galeria->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('¿Estás seguro?')">Eliminar</button>
-                                                    <a type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target="#modal-edit-{{ $galeria->id }}">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                    @include('administracion.vistas.galeria.editar')
-                                                </a>
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
                                             </form>
-                                        </td>
-                                    </tr>
+                                        </td>                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="modal fade" id="crearGaleriaModal" tabindex="-1" role="dialog" aria-labelledby="crearGaleriaModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="crearGaleriaModal" tabindex="-1" role="dialog" aria-labelledby="crearGaleriaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -86,22 +93,20 @@
                         </div>
                         <div class="form-group">
                             <label for="empresa">Empresa:</label>
-                            <select id="empresa" name="empresa" class="form-control form-control-lg">
-                                @foreach ($empresas as $empresa)
-                                <option value="" selected>seleccionar empresa</option>
-                                    <option value="{{ $empresa->nombre }}">{{ $empresa->nombre }}</option>
-                                @endforeach
-
+                            <select class="form-control" name="empresa" id="empresa">
+                                <!-- Aquí puedes iterar sobre las empresas desde tu controlador o modelo y generar las opciones -->
+                                <option value="1">Empresa 1</option>
+                                <option value="2">Empresa 2</option>
+                                <!-- Agregar más opciones según tus datos -->
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="sucursal">Sucursal:</label>
-                            <select id="sucursal" name="sucursal" class="form-control form-control-lg">
-                                @foreach ($sucursales as $sucursal)
-                                <option value="" selected>seleccionar empresa</option>
-                                    <option value="{{ $sucursal->nombre }}">{{ $sucursal->nombre }}</option>
-                                @endforeach
-
+                            <select class="form-control" name="sucursal" id="sucursal">
+                                <!-- Similar a empresa, aquí iteras sobre tus sucursales -->
+                                <option value="1">Sucursal 1</option>
+                                <option value="2">Sucursal 2</option>
+                                <!-- Agregar más opciones según tus datos -->
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Crear Galería</button>
@@ -110,10 +115,12 @@
             </div>
         </div>
     </div>
-
+    
     <script>
         @include('administracion.vistas.galeria.modal_crear_img')
     </script>
 
 
 @endsection
+
+

@@ -73,6 +73,9 @@ Route::prefix('/')->group(function () {
         Route::get('/galeria', "GaleriaController@index")->name('galerias.index');
         Route::resource('/galerias', "GaleriaController");
 
+        //rutas para contacto
+        Route::resource('/contacto', "ContactoController");
+
     });
 
 });

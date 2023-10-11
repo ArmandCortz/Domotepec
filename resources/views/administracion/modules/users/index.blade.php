@@ -37,7 +37,7 @@
                                         <td style="width: 300px;">
                                             @if (Auth::user()->id === $user->id)
                                                 <button type="submit" class="btn btn-outline-success" disabled><i
-                                                        class="fas fa-trash"></i> Rol</button>
+                                                        class="fas fa-pen"></i> Rol</button>
                                                 </a>
                                             @else
                                                 <a type="button" href="{{ route('users.edit', $user->id) }}"
