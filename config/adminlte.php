@@ -381,7 +381,7 @@ return [
                 ],
                 [
                     'text' => 'Contacto',
-                    'url' => '#',
+                    'url' => 'contacto',
                     'icon' => 'fas fa-fw',
 
                 ],
