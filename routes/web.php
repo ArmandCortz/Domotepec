@@ -69,6 +69,7 @@ Route::prefix('/')->group(function () {
         Route::put('/cabañas/{id}', 'cabañasController@update')->name('cabañas.update');
         Route::resource('cabañas', 'cabañasController');
         //rutas para galeria
+        
         Route::get('/galeria', "GaleriaController@index")->name('galerias.index');
         Route::resource('/galerias', "GaleriaController");
 

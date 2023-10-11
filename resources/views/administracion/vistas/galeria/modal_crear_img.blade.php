@@ -1,5 +1,6 @@
 <!-- Modal Crear Galería -->
-<div class="modal fade" id="crearGaleriaModal" tabindex="-1" role="dialog" aria-labelledby="crearGaleriaModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearGaleriaModal" tabindex="-1" role="dialog" aria-labelledby="crearGaleriaModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <!-- Formulario para crear la galería -->
-                <form  method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="descripcion">Descripción:</label>
@@ -25,13 +26,7 @@
                         <input type="file" class="form-control-file" name="imagen" id="imagen">
                     </div>
                     <div class="form-group">
-                        <label for="empresa">Empresa:</label>
-                        <select class="form-control" name="empresa" id="empresa">
-                            <!-- Aquí puedes iterar sobre las empresas desde tu controlador o modelo y generar las opciones -->
-                            <option value="1">Empresa 1</option>
-                            <option value="2">Empresa 2</option>
-                            <!-- Agregar más opciones según tus datos -->
-                        </select>
+                        
                     </div>
                     <div class="form-group">
                         <label for="sucursal">Sucursal:</label>
