@@ -55,7 +55,6 @@ class GaleriaController extends Controller
     public function show(Galeria $galeria)
 {
     $sucursales = Sucursal::all(); 
-    dd($sucursales);
     return view('galerias.show', compact('galeria', 'sucursales')); // Cambia $sucursal a $sucursales
 }
 
