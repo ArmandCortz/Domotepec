@@ -16,7 +16,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
+        "php": ">=8.1",
+=======
         "php": ">=8.0.2",
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
         "symfony/polyfill-ctype": "~1.8",
         "symfony/polyfill-intl-grapheme": "~1.0",
         "symfony/polyfill-intl-normalizer": "~1.0",
@@ -24,12 +28,22 @@
     },
     "require-dev": {
         "symfony/error-handler": "^5.4|^6.0",
+<<<<<<< HEAD
+        "symfony/intl": "^6.2",
+        "symfony/http-client": "^5.4|^6.0",
+        "symfony/translation-contracts": "^2.5|^3.0",
+        "symfony/var-exporter": "^5.4|^6.0"
+    },
+    "conflict": {
+        "symfony/translation-contracts": "<2.5"
+=======
         "symfony/http-client": "^5.4|^6.0",
         "symfony/translation-contracts": "^2.0|^3.0",
         "symfony/var-exporter": "^5.4|^6.0"
     },
     "conflict": {
         "symfony/translation-contracts": "<2.0"
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     },
     "autoload": {
         "psr-4": { "Symfony\\Component\\String\\": "" },

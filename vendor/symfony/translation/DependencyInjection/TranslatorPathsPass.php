@@ -39,6 +39,9 @@ class TranslatorPathsPass extends AbstractRecursivePass
      */
     private array $controllers = [];
 
+    /**
+     * @return void
+     */
     public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition('translator')) {
@@ -120,11 +123,18 @@ class TranslatorPathsPass extends AbstractRecursivePass
 
     private function findControllerArguments(ContainerBuilder $container): array
     {
+<<<<<<< HEAD
+        if (!$container->has('argument_resolver.service')) {
+            return [];
+        }
+        $resolverDef = $container->findDefinition('argument_resolver.service');
+=======
         if ($container->hasDefinition('argument_resolver.service')) {
             $argument = $container->getDefinition('argument_resolver.service')->getArgument(0);
             if ($argument instanceof Reference) {
                 $argument = $container->getDefinition($argument);
             }
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
             return $argument->getArgument(0);
         }

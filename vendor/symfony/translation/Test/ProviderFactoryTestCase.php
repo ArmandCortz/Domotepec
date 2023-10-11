@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Translation\Test;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpClient\MockHttpClient;
@@ -20,6 +21,7 @@ use Symfony\Component\Translation\Exception\UnsupportedSchemeException;
 use Symfony\Component\Translation\Loader\LoaderInterface;
 use Symfony\Component\Translation\Provider\Dsn;
 use Symfony\Component\Translation\Provider\ProviderFactoryInterface;
+use Symfony\Component\Translation\TranslatorBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -31,11 +33,20 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 abstract class ProviderFactoryTestCase extends TestCase
 {
+<<<<<<< HEAD
+    protected HttpClientInterface $client;
+    protected LoggerInterface|MockObject $logger;
+    protected string $defaultLocale;
+    protected LoaderInterface|MockObject $loader;
+    protected XliffFileDumper|MockObject $xliffFileDumper;
+    protected TranslatorBagInterface|MockObject $translatorBag;
+=======
     protected $client;
     protected $logger;
     protected string $defaultLocale;
     protected $loader;
     protected $xliffFileDumper;
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
 
     abstract public function createFactory(): ProviderFactoryInterface;
 
@@ -143,5 +154,13 @@ abstract class ProviderFactoryTestCase extends TestCase
     protected function getXliffFileDumper(): XliffFileDumper
     {
         return $this->xliffFileDumper ??= $this->createMock(XliffFileDumper::class);
+<<<<<<< HEAD
+    }
+
+    protected function getTranslatorBag(): TranslatorBagInterface
+    {
+        return $this->translatorBag ??= $this->createMock(TranslatorBagInterface::class);
+=======
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     }
 }

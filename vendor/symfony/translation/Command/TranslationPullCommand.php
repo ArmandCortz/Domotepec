@@ -34,9 +34,15 @@ final class TranslationPullCommand extends Command
 {
     use TranslationTrait;
 
+<<<<<<< HEAD
+    private TranslationProviderCollection $providerCollection;
+    private TranslationWriterInterface $writer;
+    private TranslationReaderInterface $reader;
+=======
     private $providerCollection;
     private $writer;
     private $reader;
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     private string $defaultLocale;
     private array $transPaths;
     private array $enabledLocales;
@@ -64,9 +70,8 @@ final class TranslationPullCommand extends Command
         if ($input->mustSuggestOptionValuesFor('domains')) {
             $provider = $this->providerCollection->get($input->getArgument('provider'));
 
-            if ($provider && method_exists($provider, 'getDomains')) {
-                $domains = $provider->getDomains();
-                $suggestions->suggestValues($domains);
+            if (method_exists($provider, 'getDomains')) {
+                $suggestions->suggestValues($provider->getDomains());
             }
 
             return;
@@ -83,10 +88,7 @@ final class TranslationPullCommand extends Command
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
+    protected function configure(): void
     {
         $keys = $this->providerCollection->keys();
         $defaultProvider = 1 === \count($keys) ? $keys[0] : null;
@@ -120,9 +122,6 @@ EOF
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);

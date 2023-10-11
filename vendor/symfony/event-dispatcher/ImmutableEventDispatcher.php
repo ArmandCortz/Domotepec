@@ -18,23 +18,20 @@ namespace Symfony\Component\EventDispatcher;
  */
 class ImmutableEventDispatcher implements EventDispatcherInterface
 {
-    private $dispatcher;
+    private EventDispatcherInterface $dispatcher;
 
     public function __construct(EventDispatcherInterface $dispatcher)
     {
         $this->dispatcher = $dispatcher;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function dispatch(object $event, string $eventName = null): object
     {
         return $this->dispatcher->dispatch($event, $eventName);
     }
 
     /**
-     * {@inheritdoc}
+     * @return never
      */
     public function addListener(string $eventName, callable|array $listener, int $priority = 0)
     {
@@ -42,7 +39,7 @@ class ImmutableEventDispatcher implements EventDispatcherInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return never
      */
     public function addSubscriber(EventSubscriberInterface $subscriber)
     {
@@ -50,7 +47,7 @@ class ImmutableEventDispatcher implements EventDispatcherInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return never
      */
     public function removeListener(string $eventName, callable|array $listener)
     {
@@ -58,32 +55,41 @@ class ImmutableEventDispatcher implements EventDispatcherInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return never
      */
     public function removeSubscriber(EventSubscriberInterface $subscriber)
     {
         throw new \BadMethodCallException('Unmodifiable event dispatchers must not be modified.');
     }
 
+<<<<<<< HEAD
+=======
     /**
      * {@inheritdoc}
      */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getListeners(string $eventName = null): array
     {
         return $this->dispatcher->getListeners($eventName);
     }
 
+<<<<<<< HEAD
+=======
     /**
      * {@inheritdoc}
      */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getListenerPriority(string $eventName, callable|array $listener): ?int
     {
         return $this->dispatcher->getListenerPriority($eventName, $listener);
     }
 
+<<<<<<< HEAD
+=======
     /**
      * {@inheritdoc}
      */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function hasListeners(string $eventName = null): bool
     {
         return $this->dispatcher->hasListeners($eventName);

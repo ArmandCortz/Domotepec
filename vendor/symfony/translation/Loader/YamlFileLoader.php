@@ -26,9 +26,12 @@ class YamlFileLoader extends FileLoader
 {
     private $yamlParser;
 
+<<<<<<< HEAD
+=======
     /**
      * {@inheritdoc}
      */
+>>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     protected function loadResource(string $resource): array
     {
         if (null === $this->yamlParser) {

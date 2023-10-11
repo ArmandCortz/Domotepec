@@ -34,20 +34,19 @@
                                         <td>{{ $cabaña->descripcion }}</td>
                                         <td>
                                             {{-- Ejemplo de enlace para mostrar detalles --}}
-                                            <a type="button"class="btn btn-info btn-sm" data-toggle="modal"
-                                                data-target="#crearCabañaModalc{{ $cabaña->id }}"> Detalles </a>
-
+                                            <a type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#crearCabaña-{{ $cabaña->id }}"> Detalles </a>
 
                                             <!-- Botón para eliminar -->
                                             <a type="button" class="btn btn-danger btn-sm"
                                                 onclick="confirmDelete('{{ route('cabañas.destroy', $cabaña->id) }}')">
                                                 <i class="fas fa-trash"></i>
-
                                             </a>
 
 
                                         </td>
                                     </tr>
+                                    @include('administracion.modules.cabañas.modalUpdateCabañas', ['cabañaId' => $cabaña->id])
+
                                 @endforeach
                             </tbody>
                         </table>
@@ -56,10 +55,20 @@
             </div>
         </div>
     </div>
+</div>
+@include('administracion.modules.cabañas.modalCrearCabañas')
+<script>
+   
+        console.log("Modal ID: #crearCabaña-{{ $cabaña->id }}");
+   
+    function confirmDelete(url) {
+        if (confirm('¿Estás seguro de que quieres eliminar esta cabaña?')) {
+            window.location.href = url;
+        }
+    }
+</script>
+
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
         new DataTable('#myDataTable', {
@@ -88,17 +97,18 @@
                 [5, 10, 50, "Todos"]
             ]
         });
+          // Inicializar modales
+          $('[data-toggle="modal"]').each(function () {
+                let target = $(this).data('target');
+                $(target).modal({
+                    show: false,
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            });
     </script>
 
 @endsection
 @endsection
-@include('administracion.modules.cabañas.modalCrearCabañas')
-@push('scripts')
-<script>
-    function confirmDelete(url) {
-        if (confirm('¿Estás seguro de que quieres eliminar esta sucursal?')) {
-            window.location.href = url;
-        }
-    }
-</script>
-@endpush
+
+

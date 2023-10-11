@@ -1,52 +1,68 @@
-<div class="modal fade" id="crearCabañaModal{{ $Cabaña->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="crearCabañaModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header bg-dark">
-                <div class="container text-center">
-                    <h1 class="modal-title" id="crearCabañaModalLabel">Editar Cabañas</h1>
-                </div>
-                <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <form method="POST" action="{{ route('cabañas.update', $Cabañas->id) }}">
-                                @csrf
-                                @method('PUT')
-                                <div class="form-group">
-                                    <label for="empresa">Empresa:</label>
-                                    <input type="text" name="empresa" class="form-control" value="{{ $sucursal->empresa }}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nombre">Nombre de la Sucursal:</label>
-                                    <input type="text" name="nombre" class="form-control" value="{{ $sucursal->nombre }}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="direccion">Dirección:</label>
-                                    <input type="text" name="direccion" class="form-control" value="{{ $sucursal->direccion }}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="telefono">Teléfono:</label>
-                                    <input type="tel" name="telefono" class="form-control" value="{{ $sucursal->telefono }}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="gerente">Gerente:</label>
-                                    <input type="text" name="gerente" class="form-control" value="{{ $sucursal->gerente }}" required>
-                                </div>
-                                <!-- Otros campos relevantes para una sucursal hotelera -->
+        <div class="modal fade" id="crearCabaña-{{ $cabañaId }}" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header" style="background: rgb(176, 176, 176)">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Cabaña</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{ route('cabañas.update', $cabaña->id) }}">
+                            @csrf
+                            @method('PUT')
 
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="form-group">
+                                <label for="nombre">Nombre de la Cabaña</label>
+                                <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ $cabaña->nombre }}" required autocomplete="nombre" autofocus placeholder="Nombre de la Cabaña">
+                                @error('nombre')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ubicacion">Ubicación</label>
+                                <input type="text" class="form-control @error('ubicacion') is-invalid @enderror" id="ubicacion" name="ubicacion" value="{{ $cabaña->ubicacion }}" required autocomplete="ubicacion" placeholder="Ubicación">
+                                @error('ubicacion')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sucursal">Sucursal</label>
+                                <select class="form-control @error('sucursal') is-invalid @enderror" id="sucursal" name="sucursal" required>
+                                    <!-- Opciones del select -->
+                                    <option value="1" @if($cabaña->sucursal == 1) selected @endif>Sucursal 1</option>
+                                    <option value="2" @if($cabaña->sucursal == 2) selected @endif>Sucursal 2</option>
+                                    <!-- Agrega más opciones según tus necesidades -->
+                                </select>
+                                @error('sucursal')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" rows="3" placeholder="Descripción">{{ $cabaña->descripcion }}</textarea>
+                                @error('descripcion')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="modal-footer">
+                                <a href="{{ route('cabañas.index') }}" class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
