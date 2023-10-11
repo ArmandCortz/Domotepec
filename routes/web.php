@@ -55,8 +55,6 @@ Route::prefix('/')->group(function () {
 
         // Rutas para users
         // opcional llamar rutas como estan abajo
-        // Route::get('/users', "UserController@index")->name('users.index');
-        // Route::get('/users', "UserController@create")->name('users.create');
         Route::resource('users', "UserController")->names('users');
 
         
@@ -75,7 +73,6 @@ Route::prefix('/')->group(function () {
 
         //rutas para contacto
         Route::resource('/contacto', "ContactoController");
-
     });
 
 });

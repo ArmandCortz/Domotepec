@@ -336,14 +336,14 @@ return [
                 ],
                 [
                     'text' => 'Sucursales',
-                    'url' => '/sucursales',
+                    'url' => 'sucursales',
                     'active' => ['sucursales*'],
                     'icon' => 'fas fa-fw ',
 
                 ],
                 [
                     'text' => 'Cabañas',
-                    'url' => '/cabañas',
+                    'url' => 'cabañas',
                     'active' => ['cabañas*'],
                     'icon' => 'fas fa-fw',
 
