@@ -320,6 +320,8 @@ return [
             'text' => 'Home',
             'route' => 'home',
             'icon' => 'far fa-house fa-fw ',
+            'can' => 'SuperAdministrador',
+
         ],
         [
             'text' => 'Modulos',

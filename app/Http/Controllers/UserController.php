@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -54,7 +56,9 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('administracion.modules.users.role', compact('user'));
+        $roles = Role::all();
+        $permisos = Permission::all();
+        return view('administracion.modules.users.role', compact('user','roles','permisos'));
     }
 
     public function update(Request $request, User $user)
