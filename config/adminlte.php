@@ -373,7 +373,7 @@ return [
                 ],
                 [
                     'text' => 'Galeria',
-                    'url' => '#',
+                    'url' => 'galeria',
                     'icon' => 'fas fa-fw ',
 
                 ],

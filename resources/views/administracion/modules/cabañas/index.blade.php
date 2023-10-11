@@ -58,9 +58,7 @@
 </div>
 @include('administracion.modules.cabañas.modalCrearCabañas')
 <script>
-   
-        console.log("Modal ID: #crearCabaña-{{ $cabaña->id }}");
-   
+    
     function confirmDelete(url) {
         if (confirm('¿Estás seguro de que quieres eliminar esta cabaña?')) {
             window.location.href = url;
