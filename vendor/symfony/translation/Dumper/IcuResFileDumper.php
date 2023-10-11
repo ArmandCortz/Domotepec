@@ -20,14 +20,14 @@ use Symfony\Component\Translation\MessageCatalogue;
  */
 class IcuResFileDumper extends FileDumper
 {
-    protected $relativePathTemplate = '%domain%/%locale%.%extension%';
-
-<<<<<<< HEAD
-=======
     /**
      * {@inheritdoc}
      */
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
+    protected $relativePathTemplate = '%domain%/%locale%.%extension%';
+
+    /**
+     * {@inheritdoc}
+     */
     public function formatCatalogue(MessageCatalogue $messages, string $domain, array $options = []): string
     {
         $data = $indexes = $resources = '';
@@ -89,17 +89,14 @@ class IcuResFileDumper extends FileDumper
         return $padding ? str_repeat("\xAA", 4 - $padding) : null;
     }
 
-    private function getPosition(string $data): float|int
+    private function getPosition(string $data)
     {
         return (\strlen($data) + 28) / 4;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * {@inheritdoc}
      */
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     protected function getExtension(): string
     {
         return 'res';

@@ -29,25 +29,21 @@ final class Dsn
     private array $options = [];
     private string $originalDsn;
 
-<<<<<<< HEAD
-    public function __construct(#[\SensitiveParameter] string $dsn)
-=======
     public function __construct(string $dsn)
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     {
         $this->originalDsn = $dsn;
 
         if (false === $parsedDsn = parse_url($dsn)) {
-            throw new InvalidArgumentException('The translation provider DSN is invalid.');
+            throw new InvalidArgumentException(sprintf('The "%s" translation provider DSN is invalid.', $dsn));
         }
 
         if (!isset($parsedDsn['scheme'])) {
-            throw new InvalidArgumentException('The translation provider DSN must contain a scheme.');
+            throw new InvalidArgumentException(sprintf('The "%s" translation provider DSN must contain a scheme.', $dsn));
         }
         $this->scheme = $parsedDsn['scheme'];
 
         if (!isset($parsedDsn['host'])) {
-            throw new InvalidArgumentException('The translation provider DSN must contain a host (use "default" by default).');
+            throw new InvalidArgumentException(sprintf('The "%s" translation provider DSN must contain a host (use "default" by default).', $dsn));
         }
         $this->host = $parsedDsn['host'];
 
@@ -83,16 +79,12 @@ final class Dsn
         return $this->port ?? $default;
     }
 
-<<<<<<< HEAD
-    public function getOption(string $key, mixed $default = null): mixed
-=======
     public function getOption(string $key, mixed $default = null)
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     {
         return $this->options[$key] ?? $default;
     }
 
-    public function getRequiredOption(string $key): mixed
+    public function getRequiredOption(string $key)
     {
         if (!\array_key_exists($key, $this->options) || '' === trim($this->options[$key])) {
             throw new MissingRequiredOptionException($key);

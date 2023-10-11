@@ -21,8 +21,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, LocaleAwareInterface
 {
-    private TranslatorInterface $translator;
-    private LoggerInterface $logger;
+    private $translator;
+    private $logger;
 
     /**
      * @param TranslatorInterface&TranslatorBagInterface&LocaleAwareInterface $translator The translator must implement TranslatorBagInterface
@@ -37,12 +37,9 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
         $this->logger = $logger;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * {@inheritdoc}
      */
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function trans(?string $id, array $parameters = [], string $domain = null, string $locale = null): string
     {
         $trans = $this->translator->trans($id = (string) $id, $parameters, $domain, $locale);
@@ -52,7 +49,7 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
     }
 
     /**
-     * @return void
+     * {@inheritdoc}
      */
     public function setLocale(string $locale)
     {
@@ -65,28 +62,25 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
         $this->logger->debug(sprintf('The locale of the translator has changed from "%s" to "%s".', $prev, $locale));
     }
 
-<<<<<<< HEAD
-=======
     /**
      * {@inheritdoc}
      */
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getLocale(): string
     {
         return $this->translator->getLocale();
     }
 
-<<<<<<< HEAD
-=======
     /**
      * {@inheritdoc}
      */
->>>>>>> 6f111f94ea227f79697cd9b5057e32b9b3fc8ddf
     public function getCatalogue(string $locale = null): MessageCatalogueInterface
     {
         return $this->translator->getCatalogue($locale);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getCatalogues(): array
     {
         return $this->translator->getCatalogues();
@@ -115,9 +109,11 @@ class LoggingTranslator implements TranslatorInterface, TranslatorBagInterface, 
     /**
      * Logs for missing translations.
      */
-    private function log(string $id, ?string $domain, ?string $locale): void
+    private function log(string $id, ?string $domain, ?string $locale)
     {
-        $domain ??= 'messages';
+        if (null === $domain) {
+            $domain = 'messages';
+        }
 
         $catalogue = $this->translator->getCatalogue($locale);
         if ($catalogue->defines($id, $domain)) {
