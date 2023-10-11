@@ -51,12 +51,12 @@ Route::prefix('/')->group(function () {
 
     Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
         Route::get('/', "HomeController@index")->name('home');
-        Route::get('/perfil',"PerfilController@index")->name('Perfil');
+        Route::get('/perfil',"PerfilController@index")->name('perfil');
 
         // Rutas para users
-        Route::get('/users', "UserController@index")->name('users.index');
-        Route::get('/users', "UserController@create")->name('users.create');
-        Route::resource('users', "UserController");
+        // Route::get('/users', "UserController@index")->name('users.index');
+        // Route::get('/users', "UserController@create")->name('users.create');
+        Route::resource('users', "UserController")->names('users');
 
         
         // Rutas para sucursales

@@ -54,17 +54,21 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('administracion.modules.users.edit', compact('user'));
+        return view('administracion.modules.users.role', compact('user'));
     }
 
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name-'. $user->id => 'required',
-            'email-'. $user->id => 'required|email|unique:users,email,' . $user->id,
+            'name-' . $user->id => 'required',
+            'email-' . $user->id => 'required|email|unique:users,email,' . $user->id,
         ]);
-
-        $user->update($request->all());
+        // dd($request->all());
+        
+        $user->update([
+            'name' => $request->input('name-' . $user->id),
+            'email' => $request->input('email-' . $user->id),
+        ]);
 
         return redirect()->route('users.index')->with('info', 'Usuario actualizado exitosamente.');
     }

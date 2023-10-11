@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Usuarios')
 @section('css')
-    <link rel="stylesheet" href="{{asset('/css/admin/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
 @endsection
 
 @section('content-admin')
@@ -34,19 +34,26 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td width="200px">
-
+                                        <td style="width: 300px;">
+                                            @if (Auth::user()->id === $user->id)
+                                                <button type="submit" class="btn btn-outline-success" disabled><i
+                                                        class="fas fa-trash"></i> Rol</button>
+                                                </a>
+                                            @else
+                                                <a type="button" href="{{ route('users.edit', $user->id) }}"
+                                                    class="btn btn-outline-success">
+                                                    <i class="fas fa-pen"></i> Rol
+                                                </a>
+                                            @endif
 
                                             <a type="button" class="btn btn-outline-primary" data-toggle="modal"
                                                 data-target="#modal-edit-{{ $user->id }}">
                                                 <i class="fas fa-pen"></i> Editar
                                             </a>
-
-
                                             @include('administracion.modules.users.editar')
 
 
-                                            @if (Auth::user()->name === $user->name)
+                                            @if (Auth::user()->id === $user->id)
                                                 <button type="submit" class="btn btn-outline-danger" disabled><i
                                                         class="fas fa-trash"></i> Eliminar</button>
                                             @else

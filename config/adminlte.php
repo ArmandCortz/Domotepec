@@ -405,8 +405,8 @@ return [
         ],
         ['header' => 'Configuracion de cuenta'],
         [
-            'text' => 'Perfil',
-            'route' => 'Perfil',
+            'text' => 'perfil',
+            'route' => 'perfil',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -486,7 +486,7 @@ return [
         'Fontawesome' => [
             'active' => true,
             'files' => [
-                
+
                 [
                     'type' => 'css',
                     'asset' => true,
