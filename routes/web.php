@@ -70,6 +70,7 @@ Route::prefix('/')->group(function () {
         
         Route::get('/galeria', "GaleriaController@index")->name('galerias.index');
         Route::resource('/galerias', "GaleriaController");
+        Route::get('/user/galeria', 'GaleriaController@indexs')->name('galerias.indexs');
 
         //rutas para contacto
         Route::resource('/contacto', "ContactoController");

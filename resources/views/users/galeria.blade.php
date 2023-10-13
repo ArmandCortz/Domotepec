@@ -8,392 +8,62 @@
         {{-- primera galeria --}}
         <div class="row">
             <div class="col-12">
-                <h1 style="color: #s007bff;line-height: 50px;text-align: center" class="vc_custom_heading">Galería
-                </h1>
-                <p style="color: #480d0d;text-align: center" class="vc_custom_heading vc_custom_1491259691992">
-                    Conoce
-                    más detalles sobre Domotepec</p>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal1">
-                                            <img src="../img/cabaña1.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña1.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
+                <div class="section rounded p-4" style="background-color: rgba(140, 160, 165, 0.8); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h1 style="color: #fbfbfb; line-height: 50px; text-align: center;">Galería</h1>
+                    <p style="color: #000000; text-align: center;">
+                        Conoce más detalles sobre Domotepec
+                    </p>
+                    <div class="card-body">
+                        <div class="container mt-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6">
+                                    <form action="{{ route('galerias.indexs') }}" method="GET" class="mb-3">
+                                        <div class="form-group text-center">
+                                            <label for="sucursal" class="mb-2">Seleccionar Sucursal:</label>
+                                            <select class="form-control" name="sucursal" id="sucursal">
+                                                <option value="">Todas las Sucursales</option>
+                                                @foreach ($sucursales as $sucursal)
+                                                    <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
+                                                @endforeach
+                                            </select>
+                                            <br>
+                                            <button type="submit" class="btn btn-primary btn-block">Filtrar</button>
                                         </div>
-                                    </div>
+                                    
+                                    </form>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal2">
-                                            <img src="../img/cabaña2.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña2.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
+    
+        
+                </div>
+                
+          
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach ($galerias as $galeria)
+                                <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
+                                    {{-- imagen con zoom --}}
+                                    <div class="zoom">
+                                        <div class="thumbex">
+                                            <div class="thumbnail">
+                                                <a data-bs-toggle="modal" data-bs-target="#modal{{ $galeria->id }}">
+                                                    <img src="{{ asset('storage/images/' . $galeria->imagen) }}"
+                                                        class="img-fluid mb-2" style="height:110%; width:110%;"
+                                                        alt="Galería Image" />
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
+    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal{{ $galeria->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <!-- Contenido del modal -->
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal3">
-                                            <img src="../img/cabaña3.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal3" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña3.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal4">
-                                            <img src="../img/cabaña4.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal4" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña4.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal5">
-                                            <img src="../img/cabaña5.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal5" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña5.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal6">
-                                            <img src="../img/cabaña6.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal6" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña6.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal7">
-                                            <img src="../img/cabaña7.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal7" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña7.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal8">
-                                            <img src="../img/cabaña8.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal8" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña8.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal9">
-                                            <img src="../img/cabaña9.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal9" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña9.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2 col-md-4 col-lg-3 mb-4">
-                            {{-- imagen con zoom --}}
-                            <div class="zoom">
-                                <div class="thumbex">
-                                    <div class="thumbnail">
-                                        <a data-bs-toggle="modal" data-bs-target="#modal11">
-                                            <img src="../img/cabaña11.jpeg" class="img-fluid mb-2"
-                                                style="height:110%; width:110%;" alt="white sample" />
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Modal -->
-                            <div class="modal fade " id="modal11" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-xl" style="height: 500px">
-                                    <div class="modal-body">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                        </button>
-                                        <div class="marco" style="height: 100%; width:100%;">
-                                            <div class="thumbex">
-                                                <div class="thumbnail">
-                                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                        <img src="../img/cabaña11.jpeg" class="img-fluid mb-2"
-                                                            style="height:100%; width:100%;" alt="white sample" />
-                                                    </a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
                     </div>
                 </div>
 

@@ -19,7 +19,7 @@
                     <a href="{{ route('Servicios') }}" class="nav-link">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('Galeria') }}" class="nav-link">Galeria</a>
+                    <a class="nav-link" href="{{ route('galerias.indexs') }}">Galería</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('Contacto') }}" class="nav-link">Contacto</a>
