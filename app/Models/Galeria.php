@@ -9,6 +9,7 @@ class Galeria extends Model
 {
 // En el archivo del modelo
    protected $table = 'galerias';
-    protected $fillable = ['empresa', 'sucursal', 'descripcion', 'ubicacion', 'imagen'];
+    protected $fillable = ['empresa', 'sucursal', 'descripcion','empresa','sucursal', 'ubicacion', 'imagen'];
 }
+
 

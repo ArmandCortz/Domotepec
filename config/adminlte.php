@@ -320,6 +320,8 @@ return [
             'text' => 'Home',
             'route' => 'home',
             'icon' => 'far fa-house fa-fw ',
+            // 'can' => 'SuperAdministrador',
+
         ],
         [
             'text' => 'Modulos',
@@ -334,14 +336,14 @@ return [
                 ],
                 [
                     'text' => 'Sucursales',
-                    'url' => '/sucursales',
+                    'url' => 'sucursales',
                     'active' => ['sucursales*'],
                     'icon' => 'fas fa-fw ',
 
                 ],
                 [
                     'text' => 'Cabañas',
-                    'url' => '/cabañas',
+                    'url' => 'cabañas',
                     'active' => ['cabañas*'],
                     'icon' => 'fas fa-fw',
 
@@ -373,13 +375,13 @@ return [
                 ],
                 [
                     'text' => 'Galeria',
-                    'url' => '#',
+                    'url' => 'galeria',
                     'icon' => 'fas fa-fw ',
 
                 ],
                 [
                     'text' => 'Contacto',
-                    'url' => '#',
+                    'url' => 'contacto',
                     'icon' => 'fas fa-fw',
 
                 ],
@@ -405,8 +407,8 @@ return [
         ],
         ['header' => 'Configuracion de cuenta'],
         [
-            'text' => 'Perfil',
-            'route' => 'Perfil',
+            'text' => 'perfil',
+            'route' => 'perfil',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
@@ -486,7 +488,7 @@ return [
         'Fontawesome' => [
             'active' => true,
             'files' => [
-                
+
                 [
                     'type' => 'css',
                     'asset' => true,

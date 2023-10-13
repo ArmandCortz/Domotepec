@@ -4,19 +4,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Galeria; // Asegúrate de importar el modelo de Sucursal
 use App\Http\Controllers\GaleriaRequest;
-
+use App\Models\Sucursal;
+use App\Models\Empresa;
 class GaleriaController extends Controller
 {
+    public $sucursal;
     public function index()
     {   // Mostrar una lista de todas las sucursales
 
         $galerias = Galeria::all();
-        return view('administracion.vistas.galeria.index', compact('galerias'));
+        $sucursales = Sucursal::all();
+        $empresas = Empresa::all();
+        
+        return view('administracion.vistas.galeria.index', compact('galerias','sucursales','empresas'));
     }
 
     public function create()
     {
-        return view('galerias.create');
+        return view('galerias.create', compact('galerias'));
     }
 
     public function store(Request $request)
@@ -48,13 +53,13 @@ class GaleriaController extends Controller
     }
 
     public function show(Galeria $galeria)
-    {
-        return view('galerias.show', compact('galeria'));
-    }
+{
+    $sucursales = Sucursal::all(); 
+    return view('galerias.show', compact('galeria', 'sucursales')); // Cambia $sucursal a $sucursales
+}
 
     public function edit(Galeria $galeria)
     {
-        return view('galerias.edit', compact('galeria'));
     }
 
     public function update(Request $request, Galeria $galeria)

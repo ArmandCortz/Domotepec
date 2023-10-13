@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -54,17 +56,23 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('administracion.modules.users.edit', compact('user'));
+        $roles = Role::all();
+        $permisos = Permission::all();
+        return view('administracion.modules.users.role', compact('user','roles','permisos'));
     }
 
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'name-' . $user->id => 'required',
+            'email-' . $user->id => 'required|email|unique:users,email,' . $user->id,
         ]);
-
-        $user->update($request->all());
+        // dd($request->all());
+        
+        $user->update([
+            'name' => $request->input('name-' . $user->id),
+            'email' => $request->input('email-' . $user->id),
+        ]);
 
         return redirect()->route('users.index')->with('info', 'Usuario actualizado exitosamente.');
     }

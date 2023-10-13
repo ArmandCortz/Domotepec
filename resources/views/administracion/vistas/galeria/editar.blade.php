@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-edit-{{ $user->id }}"
+<div class="modal fade" id="modal-edit-{{ $galeria->id }}"
     data-backdrop="static" data-keyboard="false" tabindex="-1"
     aria-labelledby="modal-editLabel" aria-hidden="true">
     <div
@@ -20,21 +20,21 @@
                     <div class="row">
                         <div class="col-md-12">
                             <form
-                                action="{{ route('users.update', $user->id) }}"
+                                {{-- action="{{ route('galeria.update', $galeria->id) }}" --}}
                                 method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
-                                    <label for="name-{{ $user->id }}">Name:</label>
-                                    <input id="name-{{ $user->id }}" type="text" name="name-{{ $user->id }}"
+                                    <label for="name-{{ $galeria->id }}">Name:</label>
+                                    <input id="name-{{ $galeria->id }}" type="text" name="name-{{ $galeria->id }}"
                                         class="form-control"
-                                        value="{{ $user->name }}" required>
+                                        value="{{ $galeria->name }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="email-{{ $user->id }}">Email:</label>
-                                    <input id="email-{{ $user->id }}" type="email" name="email-{{ $user->id }}"
+                                    <label for="email-{{ $galeria->id }}">Email:</label>
+                                    <input id="email-{{ $galeria->id }}" type="email" name="email-{{ $galeria->id }}"
                                         class="form-control"
-                                        value="{{ $user->email }}" required>
+                                        value="{{ $galeria->email }}" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button"
@@ -43,7 +43,6 @@
                                     <button type="submit"
                                         class="btn btn-outline-primary">Guardar</button>
                                 </div>
-                                
                             </form>
 
                         </div>
