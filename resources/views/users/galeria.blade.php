@@ -13,8 +13,7 @@
                     <p style="color: #000000; text-align: center;">
                         Conoce más detalles sobre Domotepec
                     </p>
-                    <div class="card-body">
-                        <div class="container mt-5">
+                        <div class="container mt-1">
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
                                     <form action="{{ route('galerias.indexs') }}" method="GET" class="mb-3">
@@ -28,13 +27,13 @@
                                             </select>
                                             <br>
                                             <button type="submit" class="btn btn-primary btn-block">Filtrar</button>
+
                                         </div>
                                     
                                     </form>
                                 </div>
                             </div>
-                        </div>
-    
+   
         
                 </div>
                 
