@@ -74,7 +74,11 @@ Route::prefix('/')->group(function () {
 
         //rutas para contacto
         Route::resource('/contacto', "ContactoController");
-    });
+
+        //RUTA PARA BIENES
+        Route::get('/bienes', "BienesController@index")->name('bienes.index');
+
+    }); 
 
 });
 ;
