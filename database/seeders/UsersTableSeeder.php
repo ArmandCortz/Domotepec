@@ -17,17 +17,89 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            
-                'name' => 'administrador',
-                'email' => 'admin@admin.com',
-                'password' => Hash::make('adminadmin')
-            
+
+            'name' => 'administrador',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('adminadmin')
+
         ])->assignRole("SuperAdministrador");
+
+        User::create([
+            'name' => 'Leonel',
+            'email' => 'armand1515.lc@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("SuperAdministrador");
+
+        User::create([
+            'name' => 'Victor',
+            'email' => 'victor@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Javier',
+            'email' => 'javier@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Stanley',
+            'email' => 'stanley@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
         
         User::create([
-                'name' => 'Leonel',
-                'email' => 'armand1515.lc@gmail.com',
-                'password' => Hash::make('adminadmin')
-            ])->assignRole("Administrador");
+            'name' => 'Jonathan',
+            'email' => 'jonathan@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Oscar',
+            'email' => 'oscar@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Nathaly',
+            'email' => 'nathaly@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Rosemary',
+            'email' => 'rosemary@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Enrique',
+            'email' => 'enrique@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Daniel',
+            'email' => 'daniel@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Andres',
+            'email' => 'andres@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Raul',
+            'email' => 'raul@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
+
+        User::create([
+            'name' => 'Armando',
+            'email' => 'armando@gmail.com',
+            'password' => Hash::make('adminadmin')
+        ])->assignRole("Administrador");
     }
 }

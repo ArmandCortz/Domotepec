@@ -10,11 +10,11 @@ use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('can:users.index')->only('index');
+        $this->middleware('can:users.create')->only('create');
+        $this->middleware('can:users.edit')->only('edit');
+    }
     public function index()
     {
         $users = User::all();
@@ -57,22 +57,33 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::all();
+        // $user->load('permissions'); // Cargar los permisos del usuario
+        $user = User::find($user->id);
+
         $permisos = Permission::all();
-        return view('administracion.modules.users.role', compact('user','roles','permisos'));
+        return view('administracion.modules.users.role', compact('user', 'roles', 'permisos'));
     }
+
+
 
     public function update(Request $request, User $user)
     {
+        // dd($request->roles);
+        // dd($user->all());
         $request->validate([
             'name-' . $user->id => 'required',
             'email-' . $user->id => 'required|email|unique:users,email,' . $user->id,
         ]);
-        // dd($request->all());
-        
+
         $user->update([
             'name' => $request->input('name-' . $user->id),
             'email' => $request->input('email-' . $user->id),
         ]);
+
+        $user->roles()->sync($request->roles);
+
+        // $user->permissions()->sync($request->permisos);
+        $user->syncPermissions($request->permisos);
 
         return redirect()->route('users.index')->with('info', 'Usuario actualizado exitosamente.');
     }

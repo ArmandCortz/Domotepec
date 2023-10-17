@@ -50,8 +50,8 @@ Route::prefix('/')->group(function () {
     });
 
     Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
-        Route::get('/', "HomeController@index")->name('home');
-        Route::get('/perfil',"PerfilController@index")->name('perfil');
+        Route::get('/', "HomeController@index")->middleware('can:home')->name('home');
+        Route::get('/perfil',"PerfilController@index")->middleware('can:perfil')->name('perfil');
 
         // Rutas para users
         // opcional llamar rutas como estan abajo

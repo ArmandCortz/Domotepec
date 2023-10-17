@@ -30,42 +30,38 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                    <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td style="width: 300px;">
-                                            @if (Auth::user()->id === $user->id)
-                                                <button type="submit" class="btn btn-outline-success" disabled><i
-                                                        class="fas fa-pen"></i> Rol</button>
-                                                </a>
-                                            @else
-                                                <a type="button" href="{{ route('users.edit', $user->id) }}"
-                                                    class="btn btn-outline-success">
-                                                    <i class="fas fa-pen"></i> Rol
-                                                </a>
-                                            @endif
+                                    @if (Auth::user()->id !== $user->id)
+                                        <tr>
+                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td style="width: 200px;">
+                                                
+                                                    <a type="button" href="{{ route('users.edit', $user->id) }}"
+                                                        class="btn btn-outline-primary">
+                                                        <i class="fas fa-pen"></i> Editar
+                                                    </a>
+                                                    
 
-                                            <a type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                                data-target="#modal-edit-{{ $user->id }}">
-                                                <i class="fas fa-pen"></i> Editar
-                                            </a>
-                                            @include('administracion.modules.users.editar')
+                                                {{-- <a type="button" class="btn btn-outline-primary" data-toggle="modal"
+                                                    data-target="#modal-edit-{{ $user->id }}">
+                                                    <i class="fas fa-pen"></i> Editar
+                                                </a> 
+                                                @include('administracion.modules.users.editar')--}}
 
+                                                @can('users.destroy')
+                                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                        data-target="#modal-eliminar-{{ $user->id }}">
+                                                        <i class="fas fa-trash"></i> Eliminar
+                                                    </a>
+                                                    @include('administracion.modules.users.eliminar')
+                                                @endcan
 
-                                            @if (Auth::user()->id === $user->id)
-                                                <button type="submit" class="btn btn-outline-danger" disabled><i
-                                                        class="fas fa-trash"></i> Eliminar</button>
-                                            @else
-                                                <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modal-eliminar-{{ $user->id }}">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </a>
-                                                @include('administracion.modules.users.eliminar')
-                                            @endif
+                                                    
 
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
@@ -95,20 +91,22 @@
         @endif
     </script>
     <script>
+        
+
         new DataTable('#usuarios', {
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ Usuarios",
+                "infoEmpty": "",
+                "infoFiltered": "(_MAX_ usuarios filtrados)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "lengthMenu": "Mostrar _MENU_ Usuarios",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",
-                "zeroRecords": "Sin resultados encontrados",
+                "zeroRecords": "No se encontraron coincidencias",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",

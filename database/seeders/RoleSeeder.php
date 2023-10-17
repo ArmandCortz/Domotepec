@@ -19,23 +19,14 @@ class RoleSeeder extends Seeder
         $role2 = Role::create(['name' => 'Administrador']);
         $role3 = Role::create(['name' => 'Cliente']);
 
-        Permission::create(['name' => 'home'])->syncRoles([$role1,$role2]);
-        Permission::create(['name' => 'perfil'])->syncRoles([$role1, $role2]);
-        
-        Permission::create(['name' => 'users.index'])->syncRoles([$role1]);
-        Permission::create(['name' => 'users.create'])->syncRoles([$role1]);
-        Permission::create(['name' => 'users.update'])->syncRoles([$role1]);
-        Permission::create(['name' => 'users.destroy'])->syncRoles([$role1]);
-        
-        Permission::create(['name' => 'sucursales.index'])->syncRoles([$role1]);
-        Permission::create(['name' => 'sucursales.create'])->syncRoles([$role1]);
-        Permission::create(['name' => 'sucursales.update'])->syncRoles([$role1]);
-        Permission::create(['name' => 'sucursales.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'home', 'description' => 'Ver Dashboard'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'perfil', 'description' => 'Ver Perfil'])->syncRoles([$role1, $role2]);
 
-        Permission::create(['name' => 'cabañas.index'])->syncRoles([$role1]);
-        Permission::create(['name' => 'cabañas.create'])->syncRoles([$role1]);
-        Permission::create(['name' => 'cabañas.update'])->syncRoles([$role1]);
-        Permission::create(['name' => 'cabañas.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'users.index', 'description' => 'Ver Usuarios'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'users.create', 'description' => 'Crear Usuarios'])->syncRoles([$role1]);
+        Permission::create(['name' => 'users.edit', 'description' => 'Editar Usuarios'])->syncRoles([$role1]);
+        Permission::create(['name' => 'users.destroy', 'description' => 'Destruir Usuarios'])->syncRoles([$role1]);
+
 
     }
 }

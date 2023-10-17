@@ -326,12 +326,15 @@ return [
         [
             'text' => 'Modulos',
             'icon' => 'fas fa-fw fa-book',
+            'can' => 'home',
+
             'submenu' => [
                 [
                     'text' => 'Usuario',
                     'url' => '/users',
                     'active' => ['users*'],
                     'icon' => 'fas fa-fw ',
+                    'can' => 'users.index',
 
                 ],
                 [
