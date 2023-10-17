@@ -319,14 +319,14 @@ return [
         [
             'text' => 'Home',
             'route' => 'home',
-            'icon' => 'far fa-house fa-fw ',
+            'icon' => 'fas fa-fw fa-home',
             // 'can' => 'SuperAdministrador',
 
         ],
         [
             'text' => 'Modulos',
             'icon' => 'fas fa-fw fa-book',
-            'can' => 'home',
+            'can' => 'modulos',
 
             'submenu' => [
                 [
