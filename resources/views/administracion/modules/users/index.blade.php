@@ -15,7 +15,9 @@
                 {{-- <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">
                     Crear Usuario
                 </a> --}}
-                <a href="{{ route('users.create') }}" class="btn btn-primary"><i class="fas fa-user"></i> Crear Usuario</a>
+                @can('users.create')
+                    <a href="{{ route('users.create') }}" class="btn btn-primary"><i class="fas fa-user"></i> Crear Usuario</a>
+                @endcan
                 <div class="card mt-3">
                     <div class="card-body ">
 
@@ -35,20 +37,24 @@
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td style="width: 200px;">
-                                                
+                                            <td
+                                                @if (auth()->user()->can('users.edit') &&
+                                                        auth()->user()->can('users.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+                                            
+
+
+                                            
+                                                @can('users.edit')
                                                     <a type="button" href="{{ route('users.edit', $user->id) }}"
                                                         class="btn btn-outline-primary">
                                                         <i class="fas fa-pen"></i> Editar
                                                     </a>
-                                                    
-
+                                                @endcan
                                                 {{-- <a type="button" class="btn btn-outline-primary" data-toggle="modal"
                                                     data-target="#modal-edit-{{ $user->id }}">
                                                     <i class="fas fa-pen"></i> Editar
                                                 </a> 
-                                                @include('administracion.modules.users.editar')--}}
-
+                                                @include('administracion.modules.users.editar') --}}
                                                 @can('users.destroy')
                                                     <a type="button" class="btn btn-outline-danger" data-toggle="modal"
                                                         data-target="#modal-eliminar-{{ $user->id }}">
@@ -56,9 +62,6 @@
                                                     </a>
                                                     @include('administracion.modules.users.eliminar')
                                                 @endcan
-
-                                                    
-
                                             </td>
                                         </tr>
                                     @endif
@@ -91,8 +94,6 @@
         @endif
     </script>
     <script>
-        
-
         new DataTable('#usuarios', {
             language: {
                 "decimal": "",

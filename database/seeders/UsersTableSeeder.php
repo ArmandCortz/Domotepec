@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Leonel',
             'email' => 'armand1515.lc@gmail.com',
             'password' => Hash::make('adminadmin')
-        ])->assignRole("SuperAdministrador");
+        ])->assignRole("Administrador");
 
         User::create([
             'name' => 'Victor',
