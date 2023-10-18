@@ -40,7 +40,7 @@
                                     <div class="icon">
                                         <i class="ion ion-bag"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i
+                                    <a href="sucursales" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     <div class="icon">
                                         <i class="ion ion-bag"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">More info <i
+                                    <a href="cabañas" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
@@ -85,7 +85,112 @@
                                     <div class="icon">
                                         <i class="ion ion-bag"></i>
                                     </div>
-                                    <a href="users" class="small-box-footer">More info <i
+                                    <a href="bienes" class="small-box-footer">More info <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box text-white" style="background-color: rgb(73, 73, 73);">
+                                    <div class="inner">
+                                        <h3>Home</h3>
+
+                                        <p>Modulo administrativo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box text-white" style="background-color: rgb(107, 105, 105);">
+                                    <div class="inner">
+                                        <h3>Galeria</h3>
+
+                                        <p>Modulo administrativo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="galeria" class="small-box-footer">More info <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box text-white" style="background-color: rgb(155, 152, 152);">
+                                    <div class="inner">
+                                        <h3>Contacto</h3>
+
+                                        <p>Modulo administrativo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="contacto" class="small-box-footer">More info <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box text-white" style="background-color: rgb(43, 42, 42);">
+                                    <div class="inner">
+                                        <h3>Reservaciones</h3>
+
+                                        <p>Modulo administrativo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="reservaciones" class="small-box-footer">More info <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box text-white" style="background-color: rgb(73, 73, 73);">
+                                    <div class="inner">
+                                        <h3>Reglas Admin...</h3>
+
+                                        <p>Modulo administrativo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="reglas" class="small-box-footer">More info <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box text-white" style="background-color: rgb(107, 105, 105);">
+                                    <div class="inner">
+                                        <h3>Manuales</h3>
+
+                                        <p>Modulo administrativo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-6">
+                                <div class="small-box text-white" style="background-color: rgb(155, 152, 152);">
+                                    <div class="inner">
+                                        <h3>Tutoriales</h3>
+
+                                        <p>Modulo administrativo</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">More info <i
                                             class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
