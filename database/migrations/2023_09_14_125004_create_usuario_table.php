@@ -10,8 +10,8 @@ class CreateUsuarioTable extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 100);
-            $table->string('apellido', 100);
+            $table->string('nombres', 100);
+            $table->string('apellidos', 100);
             $table->unsignedBigInteger('rol');
             $table->timestamps();
 

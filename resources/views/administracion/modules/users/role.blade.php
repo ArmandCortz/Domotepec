@@ -19,7 +19,7 @@
                                 <div class="row justify-content-center align-items-center g-2">
                                     <div class="col">
                                         <div class="form-group{{ $errors->has('name-' . $user->id) ? ' has-error' : '' }}">
-                                            {!! Form::label('name-' . $user->id, 'Nombre:') !!}
+                                            {!! Form::label('name-' . $user->id, 'Usuario:') !!}
                                             {!! Form::text('name-' . $user->id, $user->name, [
                                                 'class' => 'form-control',
                                                 'disabled' => Auth::user()->id === $user->id ? true : false,

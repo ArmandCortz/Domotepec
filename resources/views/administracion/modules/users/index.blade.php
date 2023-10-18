@@ -25,7 +25,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nombre</th>
+                                    <th>Usuario</th>
                                     <th>Email</th>
                                     <th>Acciones</th>
                                 </tr>
