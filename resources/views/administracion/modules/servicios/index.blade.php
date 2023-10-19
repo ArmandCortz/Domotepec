@@ -17,7 +17,7 @@
                 </a> --}}
                 @can('servicios.create')
                 @endcan
-                <a href="{{ route('servicios.create') }}" class="btn btn-primary"><i class="fas fa-user"></i> Crear
+                <a href="{{ route('servicios.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
                     Servicio</a>
 
                 <div class="card mt-3">
@@ -56,7 +56,7 @@
                                         @endif
                                         <td
                                             @if (auth()->user()->can('servicios.edit') &&
-                                                    auth()->user()->can('users.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+                                                    auth()->user()->can('servicios.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
 
 
 
@@ -67,17 +67,11 @@
                                                     <i class="fas fa-pen"></i> Editar
                                                 </a>
                                             @endcan
-                                            {{-- <a type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target="#modal-edit-{{ $user->id }}">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                </a> 
-                                                @include('administracion.modules.users.editar') --}}
                                             @can('servicios.destroy')
                                                 <a type="button" class="btn btn-outline-danger" data-toggle="modal"
                                                     data-target="#modal-eliminar-{{ $servicio->id }}">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
-                                                {{-- @include('administracion.modules.users.eliminar') --}}
                                             @endcan
                                         </td>
                                     </tr>

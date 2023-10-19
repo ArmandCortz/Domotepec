@@ -1,19 +1,30 @@
 @extends('layouts.app')
-@section('title', 'Cabañas')
+@section('title', 'Servicios')
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
-
+    <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
 @endsection
+
 @section('content-admin')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center mt-3">Modulo Cabañas</h1>
-                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#crearCabaña">Crear Cabaña</button>
-                <div class="card mt-3">
-                    <div class="card-body">
 
-                        <table class="table table-hover table-responsive-sm" id="myDataTable" style=" border-radius: 5px; overflow: hidden;">
+                {{-- <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" 
+                    <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">Crear Usuario</a> --}}
+                {{-- <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">
+                    Crear Usuario
+                </a> --}}
+                @can('cabañas.create')
+                    <a href="{{ route('cabañas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
+                        Cabañas</a>
+                @endcan
+
+                <div class="card mt-3">
+                    <div class="card-body ">
+
+                        <table class="table table-hover table-responsive-sm" id="cabañas"
+                            style=" border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
@@ -36,25 +47,28 @@
                                             @endif
                                         @endforeach
                                         <td>{{ $cabaña->descripcion }}</td>
-                                        <td>
-                                            {{-- Ejemplo de enlace para mostrar detalles --}}
-                                            <a type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
-                                                data-target="#crearCabaña-{{ $cabaña->id }}"><i class="fas fa-pen"></i>
-                                                Editar </a>
-
-                                            <!-- Botón para eliminar -->
-                                            <a type="button" class="btn btn-outline-danger btn-sm"
-                                                onclick="confirmDelete('{{ route('cabañas.destroy', $cabaña->id) }}')">
-                                                <i class="fas fa-trash"></i>
-                                                Eliminar </a>
+                                        <td
+                                            @if (auth()->user()->can('cabañas.edit') &&
+                                                    auth()->user()->can('cabañas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
 
 
+
+
+                                            @can('cabañas.edit')
+                                                <a type="button" href="{{ route('cabañas.edit', $cabaña->id) }}"
+                                                    class="btn btn-outline-primary">
+                                                    <i class="fas fa-pen"></i> Editar {{$cabaña->id}}
+                                                </a>
+                                            @endcan
+                                            @can('cabañas.destroy')
+                                                <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                    data-target="#modal-eliminar-{{ $cabaña->id }}">
+                                                    <i class="fas fa-trash"></i> Eliminar
+                                                </a>
+                                            @endcan
                                         </td>
-                                        
+
                                     </tr>
-                                    @include('administracion.modules.cabañas.modalUpdateCabañas', [
-                                        'cabañaId' => $cabaña->id,
-                                    ])
                                 @endforeach
                             </tbody>
                         </table>
@@ -63,33 +77,41 @@
             </div>
         </div>
     </div>
-    </div>
-    @include('administracion.modules.cabañas.modalCrearCabañas')
-    <script>
-        function confirmDelete(url) {
-            if (confirm('¿Estás seguro de que quieres eliminar esta cabaña?')) {
-                window.location.href = url;
-            }
-        }
-    </script>
+
 
 @section('js')
-
     <script>
-        new DataTable('#myDataTable', {
+        @if (session('success'))
+            {
+                alertify.notify("{{ session('success') }}", 'success', 5);
+            }
+        @endif
+        @if (session('error'))
+            {
+                alertify.error("{{ session('error') }}", 'error', 5);
+            }
+        @endif
+        @if (session('info'))
+            {
+                alertify.notify("{{ session('info') }}", 'custom', 5);
+            }
+        @endif
+    </script>
+    <script>
+        new DataTable('#cabañas', {
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ servicios",
+                "infoEmpty": "",
+                "infoFiltered": "(_MAX_ servicios filtrados)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "lengthMenu": "Mostrar _MENU_ servicios",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",
-                "zeroRecords": "Sin resultados encontrados",
+                "zeroRecords": "No se encontraron coincidencias",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",
@@ -101,15 +123,6 @@
                 [5, 10, 50, -1],
                 [5, 10, 50, "Todos"]
             ]
-        });
-        // Inicializar modales
-        $('[data-toggle="modal"]').each(function() {
-            let target = $(this).data('target');
-            $(target).modal({
-                show: false,
-                backdrop: 'static',
-                keyboard: false
-            });
         });
     </script>
 

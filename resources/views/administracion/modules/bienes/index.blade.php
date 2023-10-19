@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <h1 class="text-center mt-3">Modulo Bienes</h1>
 
-                <a href="" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear Bien</a>
+                <a href="{{ route('bienes.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear Bienes</a>
                 <div class="card mt-3">
                     <div class="card-body ">
 
@@ -47,31 +47,25 @@
                                         <td>${{ number_format($bien->costo, 2, '.', ',') }}</td>
                                         <td>{{ $bien->stock }}</td>
 
-                                        <td>
-                                            {{-- @if (auth()->user()->can('servicios.edit') &&
-                                                    auth()->user()->can('users.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+                                        <td
+                                            @if (auth()->user()->can('bienes.edit') &&
+                                                    auth()->user()->can('bienes.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
 
 
 
-
-                                            @can('servicios.edit')
-                                                <a type="button" href="{{ route('servicios.edit', $servicio->id) }}"
+                                            @can('bienes.edit')
+                                                <a type="button" href="{{ route('bienes.edit', $bien->id) }}"
                                                     class="btn btn-outline-primary">
                                                     <i class="fas fa-pen"></i> Editar
                                                 </a>
                                             @endcan
-                                            {{-- <a type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target="#modal-edit-{{ $user->id }}">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                </a> 
-                                                @include('administracion.modules.users.editar') --}}
-                                            {{-- @can('servicios.destroy')
+                                            @can('bienes.destroy')
                                                 <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modal-eliminar-{{ $servicio->id }}">
+                                                    data-target="#modal-eliminar-{{ $bien->id }}">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
-                                                {{-- @include('administracion.modules.users.eliminar') --}}
-                                            {{-- @endcan --}}
+                                                {{-- @include('administracion.modules.users.eliminar')  --}}
+                                            @endcan 
                                         </td>
                                     </tr>
                                 @endforeach

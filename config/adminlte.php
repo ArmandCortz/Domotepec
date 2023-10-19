@@ -331,7 +331,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Usuario',
-                    'url' => '/users',
+                    'route' => 'users.index',
                     'active' => ['users*'],
                     'icon' => 'fas fa-fw ',
                     'can' => 'users.index',
@@ -339,29 +339,35 @@ return [
                 ],
                 [
                     'text' => 'Sucursales',
-                    'url' => 'sucursales',
+                    'route' => 'sucursales.index',
                     'active' => ['sucursales*'],
                     'icon' => 'fas fa-fw ',
+                    'can' => 'sucursales.index',
+
 
                 ],
                 [
                     'text' => 'Cabañas',
-                    'url' => 'cabañas',
-                    'active' => ['cabañas*'],
+                    'route' => 'cabañas.index',
+                    'active' => ['cabañas*', 'route' => 'cabañas.create'],
                     'icon' => 'fas fa-fw',
+                    'can' => 'cabañas.index',
 
                 ],
                 [
                     'text' => 'Servicios',
-                    'url' => 'servicios',
+                    'route' => 'servicios.index',
+                    'active' => ['servicios*'],
                     'icon' => 'fas fa-fw',
+                    'can' => 'servicios.index',
 
                 ],
                 [
                     'text' => 'Bienes',
-                    'url' => 'bienes',
+                    'route' => 'bienes.index',
+                    'active' => ['bienes*'],
                     'icon' => 'fas fa-fw',
-
+                    'can' => 'bienes.index',
                 ],
             ]
         ],

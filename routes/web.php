@@ -62,22 +62,23 @@ Route::prefix('/')->group(function () {
         // Rutas para sucursales
         Route::get('/sucursales', "SucursalesController@index")->name('sucursales.index');
         Route::put('/sucursales/{id}', 'SucursalesController@update')->name('sucursales.update');
-        Route::resource('sucursales', 'SucursalesController');
+        Route::resource('sucursales', 'SucursalesController')->except('index','update');
+        
         // Rutas para cabañas
-        Route::get('/cabañas', "cabañasController@index")->name('cabañas.index');
-        Route::put('/cabañas/{id}', 'cabañasController@update')->name('cabañas.update');
-        Route::resource('cabañas', 'cabañasController');
+        Route::get('cabañas/{id}/edit', 'CabañasController@edit')->name('cabañas.edit');
+        Route::resource('cabañas', 'CabañasController')->names('cabañas')->except('edit');
+
         //rutas para galeria
         
         Route::get('/galeria', "GaleriaController@index")->name('galerias.index');
-        Route::resource('/galerias', "GaleriaController");
+        Route::resource('/galerias', "GaleriaController")->except('index');
         Route::get('/user/galeria', 'GaleriaController@indexs')->name('galerias.indexs');
 
         //rutas para contacto
-        Route::resource('/contacto', "ContactoController");
+        Route::resource('contacto', "ContactoController");
 
         //RUTA PARA BIENES
-        Route::get('/bienes', "BienesController@index")->name('bienes.index');
+        Route::resource('bienes', "BienesController")->names('bienes');
 
         // rutas para servicios
         Route::resource('servicios', "ServiciosController")->names('servicios');
