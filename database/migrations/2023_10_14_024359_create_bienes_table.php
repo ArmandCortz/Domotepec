@@ -14,8 +14,8 @@ class CreateBienesTable extends Migration
             $table->string('nombre');
             $table->decimal('costo', 8, 2); // Puedes ajustar la precisión y escala según tus necesidades
             $table->text('descripcion');
-            $table->Integer('id_sucursal');
-            $table->Integer('id_empresa');
+            $table->Integer('sucursal');
+            $table->Integer('empresa');
             $table->integer('stock')->nullable();
             $table->timestamps();
 

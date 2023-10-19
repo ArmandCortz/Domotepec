@@ -11,7 +11,7 @@ class Bienes extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nombre', 'costo', 'descripcion', 'id_sucursal', 'id_empresa', 'stock',
+        'nombre', 'costo', 'descripcion', 'sucursal', 'empresa', 'stock',
     ];
 
 }

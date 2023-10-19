@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Usuarios')
 @section('css')
-    <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
+
+
 @endsection
 
 @section('content-admin')
@@ -21,7 +22,7 @@
                 <div class="card mt-3">
                     <div class="card-body ">
 
-                        <table id="usuarios" class="table table-hover table-striped table-responsive-lg">
+                        <table id="usuarios" class="table table-hover table-striped table-responsive-lg" style=" border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
@@ -40,10 +41,10 @@
                                             <td
                                                 @if (auth()->user()->can('users.edit') &&
                                                         auth()->user()->can('users.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
-                                            
 
 
-                                            
+
+
                                                 @can('users.edit')
                                                     <a type="button" href="{{ route('users.edit', $user->id) }}"
                                                         class="btn btn-outline-primary">

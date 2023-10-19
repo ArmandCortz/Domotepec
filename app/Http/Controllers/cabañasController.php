@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cabaña; // Asegúrate de importar el modelo de Sucursal
+use App\Models\Cabaña; 
+use App\Models\Sucursal;
 
 class cabañasController extends Controller
 {
     public $cabañas;
     public function index()
     {
-        // Mostrar una lista de todas las sucursales
+        $sucursales = Sucursal::all();
         $cabañas = Cabaña::all();
-        return view('administracion.modules.cabañas.index', compact('cabañas'));
+        return view('administracion.modules.cabañas.index', compact('cabañas','sucursales'));
 
     }
    

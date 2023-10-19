@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Sucursales')
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
 
 @endsection
 
@@ -15,7 +14,7 @@
                 <div class="card mt-3">
                     <div class="card-body">
 
-                        <table class="table table-hover table-responsive-sm" id="myDataTable">
+                        <table class="table table-hover table-responsive-sm" id="sucursales" style=" border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
@@ -34,24 +33,29 @@
                                         <td>{{ $sucursal->nombre }}</td>
                                         <td>{{ $sucursal->empresa }}</td>
                                         <td>{{ $sucursal->direccion }}</td>
-                                        <td>{{ $sucursal->telefono }}</td>
+                                        <td>(+{{ substr($sucursal->telefono, 0, 3) }}) {{ substr($sucursal->telefono, 3, 4) }}-{{ substr($sucursal->telefono, 7) }}</td>
+
+
                                         <td>{{ $sucursal->gerente }}</td>
                                         <!-- Agrega aquí las acciones que desees, como editar y eliminar -->
                                         <td>
                                             {{-- Ejemplo de enlace para mostrar detalles --}}
-                                            <a type="button"class="btn btn-info btn-sm" data-toggle="modal"
-                                                data-target="#crearSucursalModal-{{ $sucursal->id }}"> Detalles </a>
+                                            <a type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
+                                                data-target="#sucursal-{{ $sucursal->id }}"><i class="fas fa-pen"></i>
+                                                Editar </a>
 
                                             <!-- Botón para eliminar -->
-                                            <a type="button" class="btn btn-danger btn-sm"
+                                            <a type="button" class="btn btn-outline-danger btn-sm"
                                                 onclick="confirmDelete('{{ route('sucursales.destroy', $sucursal->id) }}')">
                                                 <i class="fas fa-trash"></i>
-                                            </a>
+                                                Eliminar </a>
+
                                             @include('administracion.modules.sucursales.modalUpdateSucursal')
 
                                         </td>
+
                                     </tr>
-                                @endforeach    
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -73,21 +77,18 @@
 @endsection
 
 @section('js')
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
 
     <script>
-        new DataTable('#myDataTable', {
+        new DataTable('#sucursales', {
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Sucursales",
+                "infoEmpty": "",
+                "infoFiltered": "( _MAX_ Sucursales filtradas)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "lengthMenu": "Mostrar _MENU_ Sucursales",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",

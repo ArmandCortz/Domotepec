@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Bienes')
+@section('title', 'Servicios')
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
 @endsection
@@ -8,47 +8,54 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mt-3">Modulo Bienes</h1>
+                <h1 class="text-center mt-3">Modulo Servicios</h1>
 
-                <a href="" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear Bien</a>
+                {{-- <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" 
+                    <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">Crear Usuario</a> --}}
+                {{-- <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">
+                    Crear Usuario
+                </a> --}}
+                @can('servicios.create')
+                @endcan
+                <a href="{{ route('servicios.create') }}" class="btn btn-primary"><i class="fas fa-user"></i> Crear
+                    Servicio</a>
+
                 <div class="card mt-3">
                     <div class="card-body ">
 
-                        <table id="bienes" class="table table-hover table-striped table-responsive-lg"
-                            style=" border-radius: 5px; overflow: hidden;">
+                        <table id="servicios" class="table table-hover table-striped table-responsive-lg" style=" border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Descripción</th>
                                     <th>Sucursal</th>
-                                    <th>Empresa</th>
+                                    <th>Descripcion</th>
                                     <th>Costo</th>
-                                    <th>Stock</th>
+                                    <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($bienes as $bien)
+                                @foreach ($servicios as $servicio)
                                     <tr>
-                                        <td>{{ $bien->id }}</td>
-                                        <td>{{ $bien->nombre }}</td>
-                                        <td>{{ $bien->descripcion }}</td>
+                                        <td>{{ $servicio->id }}</td>
+                                        <td>{{ $servicio->nombre }}</td>
                                         @foreach ($sucursales as $sucursal)
-                                            @if ($bien->sucursal === $sucursal->id)
+                                            @if ($servicio->sucursal === $sucursal->id)
                                                 <td>{{ $sucursal->nombre }}</td>
                                             @endif
                                         @endforeach
-                                        @foreach ($empresas as $empresa)
-                                            @if ($bien->empresa === $empresa->id)
-                                                <td>{{ $empresa->nombre }}</td>
-                                            @endif
-                                        @endforeach
-                                        <td>${{ number_format($bien->costo, 2, '.', ',') }}</td>
-                                        <td>{{ $bien->stock }}</td>
-
-                                        <td>
-                                            {{-- @if (auth()->user()->can('servicios.edit') &&
+                                        <td>{{ $servicio->descripcion }}</td>
+                                        <td>${{ number_format($servicio->costo, 2, '.', ',') }}</td>
+                                        @if ($servicio->estado === 1)
+                                            <td class="text-green">Activo</td>
+                                        @else
+                                        @if ($servicio->estado === 2)
+                                            <td class="text-danger">Inactivo</td>
+                                        @endif
+                                        @endif
+                                        <td
+                                            @if (auth()->user()->can('servicios.edit') &&
                                                     auth()->user()->can('users.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
 
 
@@ -65,13 +72,13 @@
                                                     <i class="fas fa-pen"></i> Editar
                                                 </a> 
                                                 @include('administracion.modules.users.editar') --}}
-                                            {{-- @can('servicios.destroy')
+                                            @can('servicios.destroy')
                                                 <a type="button" class="btn btn-outline-danger" data-toggle="modal"
                                                     data-target="#modal-eliminar-{{ $servicio->id }}">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
                                                 {{-- @include('administracion.modules.users.eliminar') --}}
-                                            {{-- @endcan --}}
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -86,20 +93,37 @@
 
 @section('js')
     <script>
-        new DataTable('#bienes', {
+        @if (session('success'))
+            {
+                alertify.notify("{{ session('success') }}", 'success', 5);
+            }
+        @endif
+        @if (session('error'))
+            {
+                alertify.error("{{ session('error') }}", 'error', 5);
+            }
+        @endif
+        @if (session('info'))
+            {
+                alertify.notify("{{ session('info') }}", 'custom', 5);
+            }
+        @endif
+    </script>
+    <script>
+        new DataTable('#servicios', {
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ servicios",
+                "infoEmpty": "",
+                "infoFiltered": "(_MAX_ servicios filtrados)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "lengthMenu": "Mostrar _MENU_ servicios",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",
-                "zeroRecords": "Sin resultados encontrados",
+                "zeroRecords": "No se encontraron coincidencias",
                 "paginate": {
                     "first": "Primero",
                     "last": "Último",

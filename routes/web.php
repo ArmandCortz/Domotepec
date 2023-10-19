@@ -79,6 +79,9 @@ Route::prefix('/')->group(function () {
         //RUTA PARA BIENES
         Route::get('/bienes', "BienesController@index")->name('bienes.index');
 
+        // rutas para servicios
+        Route::resource('servicios', "ServiciosController")->names('servicios');
+
     }); 
 
 });

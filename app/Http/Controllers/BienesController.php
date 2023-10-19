@@ -14,10 +14,10 @@ class BienesController extends Controller
     public function index()
     {   // Mostrar una lista de todas las sucursales
 
-        $galerias = Galeria::all();
+        $bienes = Bienes::all();
         $sucursales = Sucursal::all();
         $empresas = Empresa::all();
         
-        return view('administracion.modules.bienes.index', compact('galerias','sucursales','empresas'));
+        return view('administracion.modules.bienes.index', compact('bienes','sucursales','empresas'));
     }
 }
