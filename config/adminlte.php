@@ -132,7 +132,7 @@ return [
     'usermenu_enabled' => true,
     'usermenu_header' => true,
     'usermenu_header_class' => 'bg-dark',
-    'usermenu_image' => true,
+    'usermenu_image' => false,
     'usermenu_desc' => true,
     'usermenu_profile_url' => true,
 
@@ -413,11 +413,6 @@ return [
             'text' => 'perfil',
             'route' => 'perfil',
             'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Contraseña',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
         ],
         ['header' => 'Ayuda'],
 

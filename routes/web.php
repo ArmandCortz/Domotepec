@@ -52,6 +52,7 @@ Route::prefix('/')->group(function () {
     Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
         Route::get('/', "HomeController@index")->middleware('can:home')->name('home');
         Route::get('/perfil',"PerfilController@index")->middleware('can:perfil')->name('perfil');
+        Route::put('/perfil/{id}', "PerfilController@update")->middleware('can:perfil')->name('perfil.update');
 
         // Rutas para users
         // opcional llamar rutas como estan abajo

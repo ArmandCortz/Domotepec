@@ -19,9 +19,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        "img",
         'name',
         'email',
         'password',
+        'nombres',
+        'apellidos',
+        'telefono',
+        'dui',
     ];
 
     /**
@@ -49,8 +54,8 @@ class User extends Authenticatable
 
     public function adminlte_desc()
     {
-        $roles = auth()->user()->getRoleNames();
-        return $roles;
+        $role = auth()->user()->getRoleNames();
+        return $role;
     }
 
     public function adminlte_profile_url()
