@@ -15,4 +15,6 @@ class Empresa extends Model
         'nombre',
         // Puedes agregar más campos aquí si es necesario
     ];
+    
+
 }

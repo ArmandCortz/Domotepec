@@ -18,4 +18,5 @@ class Sucursal extends Model
         'gerente',
         // Puedes agregar más campos aquí si es necesario
     ];
+
 }

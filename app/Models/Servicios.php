@@ -19,8 +19,4 @@ class Servicios extends Model
         'sucursal',
         // Puedes agregar más campos aquí si es necesario
     ];
-    public function sucursal()
-    {
-        return $this->belongsTo(Sucursal::class, 'sucursal', 'id');
-    }
 }

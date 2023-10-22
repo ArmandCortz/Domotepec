@@ -11,7 +11,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('bienes.store') }}">
+                            <form method="POST" action="{{ route('bienes.store',$bien->id) }}">
                                 @csrf
 
                                 <div class="row row-cols-2">
@@ -23,7 +23,7 @@
                                             <div class="col-md-8">
                                                 <input id="nombre" type="text"
                                                     class="form-control @error('nombre') is-invalid @enderror"
-                                                    name="nombre" value="{{ old('nombre') }}" autocomplete="nombre"
+                                                    name="nombre" value="{{ $bien->nombre }}" autocomplete="nombre"
                                                     autofocus>
 
                                                 @error('nombre')
@@ -45,9 +45,12 @@
                                                     class="form-control @error('sucursal') is-invalid @enderror"
                                                     autocomplete="sucursal">
                                                     @foreach ($sucursales as $sucursal)
-                                                        <option value="{{$sucursal->id}}">{{ $sucursal->nombre }} </option>
+                                                        <option value="{{ $sucursal->id }}"
+                                                            {{ $sucursal->id == $bien->sucursal ? 'selected' : '' }}>
+                                                            {{ $sucursal->nombre }} </option>
                                                     @endforeach
-                                                    
+
+
                                                 </select>
 
                                                 @error('sucursal')
@@ -62,7 +65,7 @@
 
                                     <div class="col">
                                         <div class="row mb-3">
-                                            <label for="nombre"
+                                            <label for="costo"
                                                 class="col-md-4 col-form-label text-md-end">{{ __('Costo') }}</label>
 
                                             <div class="col-md-8">
@@ -70,13 +73,13 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">$</span>
                                                     </div>
-                                                    <input id="cantidad" type="number"
-                                                        class="form-control @error('cantidad') is-invalid @enderror"
-                                                        name="cantidad" value="{{ old('cantidad') }}" step="0.01"
-                                                        min="0.01" autocomplete="cantidad" autofocus>
+                                                    <input id="costo" type="number"
+                                                        class="form-control @error('costo') is-invalid @enderror"
+                                                        name="costo" value="{{ $bien->costo }}" step="0.01"
+                                                        min="0.01" autocomplete="costo" autofocus>
                                                 </div>
 
-                                                @error('cantidad')
+                                                @error('costo')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -95,10 +98,14 @@
                                                 <select id="empresa" name="empresa"
                                                     class="form-control @error('empresa') is-invalid @enderror"
                                                     autocomplete="empresa">
+                                                    <option value="" selected disabled>Selecciona una empresa</option>
+
                                                     @foreach ($empresas as $empresa)
-                                                        <option value="{{$empresa->id}}">{{ $empresa->nombre }} </option>
+                                                        <option value="{{ $sucursal->id }}"
+                                                            {{ $empresa->id == $bien->sucursal ? 'selected' : '' }}>
+                                                            {{ $empresa->nombre }} </option>
                                                     @endforeach
-                                                    
+
                                                 </select>
 
                                                 @error('empresa')
@@ -116,7 +123,7 @@
 
                                             <div class="col-md-10">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="6" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para el servicio">{{ old('descripcion') }}</textarea>
+                                                    rows="6" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para el servicio">{{ $bien->descripcion }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">

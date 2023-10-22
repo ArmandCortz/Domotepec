@@ -44,10 +44,14 @@
                                                 <select id="sucursal" name="sucursal"
                                                     class="form-control @error('sucursal') is-invalid @enderror"
                                                     autocomplete="sucursal">
+                                                    <option value="" selected disabled>Selecciona una sucursal
+                                                    </option>
+
                                                     @foreach ($sucursales as $sucursal)
-                                                        <option value="{{$sucursal->id}}">{{ $sucursal->nombre }} </option>
+                                                        <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}
+                                                        </option>
                                                     @endforeach
-                                                    
+
                                                 </select>
 
                                                 @error('sucursal')
@@ -62,7 +66,7 @@
 
                                     <div class="col">
                                         <div class="row mb-3">
-                                            <label for="nombre"
+                                            <label for="costo"
                                                 class="col-md-4 col-form-label text-md-end">{{ __('Costo') }}</label>
 
                                             <div class="col-md-8">
@@ -70,13 +74,13 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">$</span>
                                                     </div>
-                                                    <input id="cantidad" type="number"
-                                                        class="form-control @error('cantidad') is-invalid @enderror"
-                                                        name="cantidad" value="{{ old('cantidad') }}" step="0.01"
-                                                        min="0.01" autocomplete="cantidad" autofocus>
+                                                    <input id="costo" type="number"
+                                                        class="form-control @error('costo') is-invalid @enderror"
+                                                        name="costo" value="{{ old('costo') }}" step="0.01"
+                                                        min="0.01" autocomplete="costo" autofocus>
                                                 </div>
 
-                                                @error('cantidad')
+                                                @error('costo')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -95,10 +99,13 @@
                                                 <select id="empresa" name="empresa"
                                                     class="form-control @error('empresa') is-invalid @enderror"
                                                     autocomplete="empresa">
+                                                    <option value="" selected disabled>Selecciona una empresa</option>
+
                                                     @foreach ($empresas as $empresa)
-                                                        <option value="{{$empresa->id}}">{{ $empresa->nombre }} </option>
+                                                        <option value="{{ $empresa->id }}">{{ $empresa->nombre }}
+                                                        </option>
                                                     @endforeach
-                                                    
+
                                                 </select>
 
                                                 @error('empresa')

@@ -24,7 +24,7 @@
                                     <th>Sucursal</th>
                                     <th>Empresa</th>
                                     <th>Costo</th>
-                                    <th>Stock</th>
+                                    {{-- <th>Stock</th> --}}
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -45,7 +45,7 @@
                                             @endif
                                         @endforeach
                                         <td>${{ number_format($bien->costo, 2, '.', ',') }}</td>
-                                        <td>{{ $bien->stock }}</td>
+                                        {{-- <td>{{ $bien->stock }}</td> --}}
 
                                         <td
                                             @if (auth()->user()->can('bienes.edit') &&
@@ -56,14 +56,22 @@
                                             @can('bienes.edit')
                                                 <a type="button" href="{{ route('bienes.edit', $bien->id) }}"
                                                     class="btn btn-outline-primary">
-                                                    <i class="fas fa-pen"></i> Editar
+                                                    <i class="fas fa-pen"></i> Editar 
                                                 </a>
                                             @endcan
                                             @can('bienes.destroy')
                                                 <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modal-eliminar-{{ $bien->id }}">
+                                                    href="{{ route('bienes.destroy', $bien->id) }}">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
+                                                {{-- <form action="{{ route('bienes.destroy', $bien->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a type="submit" class="btn btn-outline-danger" data-toggle="modal"
+                                                    href="{{ route('bienes.destroy', $bien->id) }}">
+                                                    <i class="fas fa-trash"></i> Eliminar
+                                                </a>
+                                                </form> --}}
                                                 {{-- @include('administracion.modules.users.eliminar')  --}}
                                             @endcan 
                                         </td>

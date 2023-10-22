@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sucursal; // Asegúrate de importar el modelo de Sucursal
+use App\Models\Empresa;
 
 class SucursalesController extends Controller
 
@@ -12,8 +13,9 @@ class SucursalesController extends Controller
     public function index()
     {
         // Mostrar una lista de todas las sucursales
+        $empresas = Empresa::all();
         $sucursales = Sucursal::all();
-        return view('administracion.modules.sucursales.index', compact('sucursales'));
+        return view('administracion.modules.sucursales.index', compact('sucursales','empresas'));
     }
 
     public function show($id)

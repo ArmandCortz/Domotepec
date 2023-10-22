@@ -19,7 +19,7 @@ class SucursalesSeeder extends Seeder
             'nombre' => 'Ilopango',
             'empresa' => 'Domotepec',
             'direccion' => 'Ilopango',
-            'telefono' => '50360043157',
+            'telefono' => '+5036004-3157',
             'gerente' => 'Leonel',
 
         ]);
@@ -29,7 +29,7 @@ class SucursalesSeeder extends Seeder
             'nombre' => 'La Libertad',
             'empresa' => 'Domotepec',
             'direccion' => 'La Libertad',
-            'telefono' => '50360043157',
+            'telefono' => '+5036004-3157',
             'gerente' => 'Leonel',
 
         ]);

@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('title', 'Sucursales')
 @section('css')
-
+<link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+   />
 @endsection
 
 @section('content-admin')
@@ -14,7 +17,8 @@
                 <div class="card mt-3">
                     <div class="card-body">
 
-                        <table class="table table-hover table-responsive-sm" id="sucursales" style=" border-radius: 5px; overflow: hidden;">
+                        <table class="table table-hover table-responsive-sm" id="sucursales"
+                            style=" border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
@@ -32,8 +36,13 @@
                                         <td>{{ $sucursal->id }}</td>
                                         <td>{{ $sucursal->nombre }}</td>
                                         <td>{{ $sucursal->empresa }}</td>
+                                        @foreach ($empresas as $empresa)
+                                            
+                                        @endforeach
                                         <td>{{ $sucursal->direccion }}</td>
-                                        <td>(+{{ substr($sucursal->telefono, 0, 3) }}) {{ substr($sucursal->telefono, 3, 4) }}-{{ substr($sucursal->telefono, 7) }}</td>
+                                        <td>({{ substr($sucursal->telefono, 0, 4) }})
+                                            {{ substr($sucursal->telefono, 4, 3) }}{{ substr($sucursal->telefono, 7) }}
+                                        </td>
 
 
                                         <td>{{ $sucursal->gerente }}</td>
@@ -49,6 +58,7 @@
                                                 onclick="confirmDelete('{{ route('sucursales.destroy', $sucursal->id) }}')">
                                                 <i class="fas fa-trash"></i>
                                                 Eliminar </a>
+                                                
 
                                             @include('administracion.modules.sucursales.modalUpdateSucursal')
 
@@ -106,5 +116,44 @@
             ]
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+        const phoneInputField = document.querySelector("#telefono");
+        let selectedCountry = null;
+
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "auto",
+            separateDialCode: true,
+            preferredCountries: ["sv", "us", "ca", "gb", "au"],
+            geoIpLookup: function(callback) {
+                jQuery.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+        phoneInput.promise.then(function() {
+            selectedCountry = phoneInput.getSelectedCountryData();
+            const maxLength = selectedCountry.dialCode.length +
+            11; // Ajusta el número máximo según tus necesidades para El Salvador
+
+            phoneInputField.setAttribute("maxlength", maxLength);
+        });
+
+        phoneInputField.addEventListener("input", function() {
+            const phoneNumber = phoneInput.getNumber();
+
+            if (selectedCountry && phoneNumber) {
+                const numericPhoneNumber = phoneNumber.replace("+" + selectedCountry.dialCode, "").replace(/\D/g,
+                    "");
+                const formattedPhoneNumber = numericPhoneNumber.slice(0, selectedCountry.dialCode.length+1) + "-" +
+                    numericPhoneNumber.slice(selectedCountry.dialCode.length+1);
+                phoneInputField.value = "+" + selectedCountry.dialCode + " " + formattedPhoneNumber;
+            }
+        });
+    </script>
+
 
 @endsection
