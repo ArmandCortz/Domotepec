@@ -8,61 +8,117 @@
     <div class="container">
         <h1 class="text-center py-4">Modulo Contacto</h1>
         <div class="card">
-            <form method="POST" action="{{ route('cabañas.store') }}">
-                @csrf
-
-                <div class="form-group">
-                    <label for="nombre">Nombre de la Cabaña</label>
-                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus placeholder="Nombre de la Cabaña">
-                    @error('nombre')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+            <div class="card-body">
+                <div class="mb-3">
+                    <button class="btn btn-danger" id="eliminarTodos">
+                        <i class="fas fa-trash-alt"></i> Eliminar Todos
+                    </button>
                 </div>
-
-                <div class="form-group">
-                    <label for="ubicacion">Ubicación</label>
-                    <input type="text" class="form-control @error('ubicacion') is-invalid @enderror" id="ubicacion" name="ubicacion" value="{{ old('ubicacion') }}" required autocomplete="ubicacion" placeholder="Ubicación">
-                    @error('ubicacion')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="sucursal">Sucursal</label>
-                    <select class="form-control @error('sucursal') is-invalid @enderror" id="sucursal" name="sucursal" required>
-                        <!-- Opciones del select -->
-                        <option value="1">Sucursal 1</option>
-                        <option value="2">Sucursal 2</option>
-                        <!-- Agrega más opciones según tus necesidades -->
-                    </select>
-                    @error('sucursal')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="descripcion">Descripción</label>
-                    <textarea class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" rows="3" placeholder="Descripción">{{ old('descripcion') }}</textarea>
-                    @error('descripcion')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-            </form>
+                <table class="table table-hover table-responsive-sm" id="contacto" style="border-radius: 5px; overflow: hidden;">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="col-xs-1">ID</th>
+                            <th class="col-xs-2">Nombre</th>
+                            <th class="col-xs-4">Mensaje</th>
+                            <th class="col-xs-2">Telefono</th>
+                            <th class="col-xs-3">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($contactos as $contacto)
+                            <tr>
+                                <td>{{ $contacto->id }}</td>
+                                <td>{{ $contacto->nombre }}</td>
+                                <td>{{ $contacto->mensaje }}</td>
+                                <td>{{ $contacto->telefono }}</td>
+                                <td>{{ $contacto->email }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
-
 @endsection
+@section('js')
+    <script>
+     document.getElementById('eliminarTodos').addEventListener('click', function () {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: '¿Estás seguro?',
+        text: "No podrás revertir esto",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminarlo',
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Enviar una solicitud AJAX para eliminar todos los contactos
+            axios.delete('{{ route('contacto.eliminarTodos') }}')
+                .then(response => {
+                    // Limpiar y recargar los datos en la tabla
+                    let contactoTable = $('#contacto').DataTable();
+                    contactoTable.clear().draw();
+                    swalWithBootstrapButtons.fire(
+                        'Eliminados',
+                        'Todos los contactos han sido eliminados correctamente.',
+                        'success'
+                    );
+                })
+                .catch(error => {
+                    console.error('Error al eliminar todos los contactos:', error);
+                    swalWithBootstrapButtons.fire(
+                        'Error',
+                        'Hubo un error al intentar eliminar todos los contactos.',
+                        'error'
+                    );
+                });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+                'Cancelado',
+                'Tus contactos están seguros :)',
+                'error'
+            );
+        }
+    });
+});
+
+
+
+        new DataTable('#contacto', {
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Sucursales",
+                "infoEmpty": "",
+                "infoFiltered": "( _MAX_ Sucursales filtradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Sucursales",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            lengthMenu: [
+                [5, 10, 50, -1],
+                [5, 10, 50, "Todos"]
+            ]
+        });
+    </script>
+@endsection
+

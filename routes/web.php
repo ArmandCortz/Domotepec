@@ -75,13 +75,18 @@ Route::prefix('/')->group(function () {
         Route::get('/user/galeria', 'GaleriaController@indexs')->name('galerias.indexs');
 
         //rutas para contacto
-        Route::resource('contacto', "ContactoController");
+       // Route::resource('contacto', "ContactoController");
 
         //RUTA PARA BIENES
         Route::resource('bienes', "BienesController")->names('bienes');
 
         // rutas para servicios
         Route::resource('servicios', "ServiciosController")->names('servicios');
+        // Rutas para contacto
+        Route::resource('contacto', 'ContactoController')->only(['index', 'store']);
+        Route::delete('/contacto/eliminar-todos', 'ContactoController@eliminarTodos')->name('contacto.eliminarTodos');
+
+
 
     }); 
 

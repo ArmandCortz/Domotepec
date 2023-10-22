@@ -29,17 +29,34 @@ class ContactoController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        // Validar los datos del formulario
+        $request->validate([
+            'nombre' => 'required',
+            'email' => 'required',
+            'telefono' => 'nullable',
+            'mensaje' => 'nullable',
+        ]);
+    
+        // Crear un nuevo contacto con los datos del formulario
+        Contacto::create([
+            'nombre' => $request->input('nombre'),
+            'email' => $request->input('email'),
+            'telefono' => $request->input('telefono'),
+            'mensaje' => $request->input('mensaje'),
+        ]);
+    
+        // Redireccionar o retornar la respuesta que desees
+        return redirect()->route('Contacto')->with('success', 'Mensaje enviado correctamente');
     }
+    public function eliminarTodos(Request $request)
+    {
+        // Lógica para eliminar todos los contactos
+        Contacto::truncate();  // Elimina todos los registros de la tabla
 
+        return response()->json(['message' => 'Todos los contactos han sido eliminados correctamente.']);
+    }
     /**
      * Display the specified resource.
      *
