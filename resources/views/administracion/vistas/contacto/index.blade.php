@@ -62,7 +62,7 @@
     }).then((result) => {
         if (result.isConfirmed) {
             // Enviar una solicitud AJAX para eliminar todos los contactos
-            axios.delete('{{ route('contacto.eliminarTodos') }}')
+            axios.delete('{{ url('/contacto/eliminar-todos') }}')
                 .then(response => {
                     // Limpiar y recargar los datos en la tabla
                     let contactoTable = $('#contacto').DataTable();

@@ -10,10 +10,12 @@ class CreateBienTable extends Migration
         Schema::create('bien', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
-            $table->integer('estado');
-            $table->float('costo');
-            $table->string('descripcion', 200);
+            $table->decimal('costo', 13, 2);
+            $table->Integer('empresa');
             $table->integer('sucursal');
+            $table->integer('estado');
+            $table->integer('stock')->nullable();
+            $table->string('descripcion', 200);
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" type="image/jpeg" href="{{ asset('/img/img/Logo-Domotepec-1.jpeg') }}" >
+    <link rel="icon" type="image/jpeg" href="{{ asset('/img/img/Logo-Domotepec-1.jpeg') }}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -16,8 +16,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-<!-- Agrega esto en la sección head -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Agrega esto en la sección head -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -25,7 +25,7 @@
 
 <body>
     <div id="app">
-        <main >
+        <main>
             @extends('adminlte::page')
             @section('content')
                 @yield('content-admin')

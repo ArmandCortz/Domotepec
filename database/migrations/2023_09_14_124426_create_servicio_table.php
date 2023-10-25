@@ -11,10 +11,12 @@ class CreateServicioTable extends Migration
         Schema::create('servicio', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
-            $table->integer('estado');
-            $table->float('costo');
-            $table->string('descripcion', 200);
+            $table->decimal('costo', 13, 2);
+            $table->Integer('empresa');
             $table->integer('sucursal');
+            $table->integer('estado');
+            $table->integer('stock')->nullable();
+            $table->string('descripcion', 200);
             $table->timestamps();
         });
     }
@@ -24,4 +26,3 @@ class CreateServicioTable extends Migration
         Schema::dropIfExists('servicio');
     }
 }
-

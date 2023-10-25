@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bienes;
-use App\Models\Galeria;
 use App\Models\Empresa;
 use App\Models\Sucursal;
 
@@ -34,26 +33,26 @@ class BienesController extends Controller
     {
         $messages = [
             'nombre.required' => 'El campo nombre es obligatorio.',
-            'sucursal.required' => 'El campo sucursal es obligatorio.',
             'costo.required' => 'El campo costo es obligatorio.',
             'empresa.required' => 'El campo empresa es obligatorio.',
+            'sucursal.required' => 'El campo sucursal es obligatorio.',
+            'estado.required' => 'El campo estado es obligatorio.',
+            'stock.required' => 'El campo stock es obligatorio.',
+            'stock.integer' => 'El campo stock debe ser un número entero.',
             'descripcion.required' => 'El campo descripcion es obligatorio.',
         ];
         $request->validate([
             'nombre' => 'required',
-            'sucursal' => 'required',
             'costo' => 'required',
             'empresa' => 'required',
+            'sucursal' => 'required',
+            'estado' => 'required',
+            'stock' => 'required|integer',
             'descripcion' => 'required',
         ], $messages);
-        
-        Bienes::create([
-            'nombre' => $request->input('nombre'),
-            'sucursal' => $request->input('sucursal'),
-            'costo' => $request->input('costo'),
-            'empresa' => $request->input('empresa'),
-            'descripcion' => $request->input('descripcion'),
-        ]);
+
+        Bienes::create($request->all());
+                // dd($request->estado);
 
         return redirect()->route('bienes.index')->with('success', 'Bien creado exitosamente.');
     }
@@ -71,27 +70,36 @@ class BienesController extends Controller
 
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request,  $id)
     {
+        
+        
+        $bien = Bienes::find($id);
+        // dd($bien);
         $messages = [
             'nombre.required' => 'El campo nombre es obligatorio.',
-            'sucursal.required' => 'El campo sucursal es obligatorio.',
             'costo.required' => 'El campo costo es obligatorio.',
             'empresa.required' => 'El campo empresa es obligatorio.',
+            'sucursal.required' => 'El campo sucursal es obligatorio.',
+            'estado.required' => 'El campo estado es obligatorio.',
+            'stock.required' => 'El campo stock es obligatorio.',
+            'stock.integer' => 'El campo stock debe ser un número entero.',
             'descripcion.required' => 'El campo descripcion es obligatorio.',
         ];
         $request->validate([
             'nombre' => 'required',
-            'sucursal' => 'required',
-            'costo' => 'required',
+            'costo' => 'required|numeric',
             'empresa' => 'required',
+            'sucursal' => 'required',
+            'estado' => 'required',
+            'stock' => 'required|integer',
             'descripcion' => 'required',
         ], $messages);
 
-        $bienes = Bienes::find($id);
-        $bienes->update($request->all());
 
-        return redirect()->route('bienes.index')->with('success', 'Bien actualizado exitosamente.');
+        $bien->update($request->all());
+
+        return redirect()->route('bienes.index')->with('info', 'Bien actualizado exitosamente.');
     }
 
     public function destroy(Bienes $bien, $id)
@@ -104,7 +112,7 @@ class BienesController extends Controller
 
         $bien->delete();
 
-        return redirect()->route('bienes.index')->with('info', 'Bien eliminado exitosamente.');
+        return redirect()->route('bienes.index')->with('error', 'Bien eliminado exitosamente.');
 
     }
 }

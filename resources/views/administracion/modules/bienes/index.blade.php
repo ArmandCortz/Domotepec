@@ -10,7 +10,8 @@
             <div class="col-md-12">
                 <h1 class="text-center mt-3">Modulo Bienes</h1>
 
-                <a href="{{ route('bienes.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear Bienes</a>
+                <a href="{{ route('bienes.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
+                    Bienes</a>
                 <div class="card mt-3">
                     <div class="card-body ">
 
@@ -20,10 +21,10 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
-                                    <th>Descripción</th>
                                     <th>Sucursal</th>
                                     <th>Empresa</th>
                                     <th>Costo</th>
+                                    <th>Stock</th>
                                     {{-- <th>Stock</th> --}}
                                     <th>Acciones</th>
                                 </tr>
@@ -33,7 +34,6 @@
                                     <tr>
                                         <td>{{ $bien->id }}</td>
                                         <td>{{ $bien->nombre }}</td>
-                                        <td>{{ $bien->descripcion }}</td>
                                         @foreach ($sucursales as $sucursal)
                                             @if ($bien->sucursal === $sucursal->id)
                                                 <td>{{ $sucursal->nombre }}</td>
@@ -45,7 +45,7 @@
                                             @endif
                                         @endforeach
                                         <td>${{ number_format($bien->costo, 2, '.', ',') }}</td>
-                                        {{-- <td>{{ $bien->stock }}</td> --}}
+                                        <td>{{ $bien->stock }}</td>
 
                                         <td
                                             @if (auth()->user()->can('bienes.edit') &&
@@ -56,24 +56,16 @@
                                             @can('bienes.edit')
                                                 <a type="button" href="{{ route('bienes.edit', $bien->id) }}"
                                                     class="btn btn-outline-primary">
-                                                    <i class="fas fa-pen"></i> Editar 
+                                                    <i class="fas fa-pen"></i> Editar
                                                 </a>
                                             @endcan
                                             @can('bienes.destroy')
                                                 <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    href="{{ route('bienes.destroy', $bien->id) }}">
+                                                    data-target="#modal-eliminar-{{ $bien->id }}">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
-                                                {{-- <form action="{{ route('bienes.destroy', $bien->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a type="submit" class="btn btn-outline-danger" data-toggle="modal"
-                                                    href="{{ route('bienes.destroy', $bien->id) }}">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </a>
-                                                </form> --}}
-                                                {{-- @include('administracion.modules.users.eliminar')  --}}
-                                            @endcan 
+                                                @include('administracion.modules.bienes.delete')
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -87,6 +79,23 @@
 
 
 @section('js')
+    <script>
+        @if (session('success'))
+            {
+                alertify.notify("{{ session('success') }}", 'success', 5);
+            }
+        @endif
+        @if (session('error'))
+            {
+                alertify.error("{{ session('error') }}", 'error', 5);
+            }
+        @endif
+        @if (session('info'))
+            {
+                alertify.notify("{{ session('info') }}", 'custom', 5);
+            }
+        @endif
+    </script>
     <script>
         new DataTable('#bienes', {
             language: {

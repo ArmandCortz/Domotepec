@@ -8,7 +8,6 @@
             <div class="col-md-12">
                 <h1 class="text-center mt-3">Perfil de usuario</h1>
 
-
                 <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">Información de usuario</h3>
@@ -21,8 +20,6 @@
                     </div>
 
                     <div class="card-body">
-
-                        <br>
                         <div class="row row-cols-2 py-2">
                             <div class="col-4">
                                 <h2>Información del usuario</h2>
@@ -39,12 +36,12 @@
                                         <div class="form-group">
                                             <div class="row row-cols-2 justify-content-center align-items-center g-2">
                                                 <div class="col">
-                                                    <div class="form-group{{ $errors->has('name-'.$user->id,) ? ' has-error' : '' }}">
-                                                        {!! Form::label('name-'.$user->id, 'Usuario:') !!}
-                                                        {!! Form::text('name-'.$user->id, $user->name, [
+                                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                        {!! Form::label('name', 'Usuario:') !!}
+                                                        {!! Form::text('name', $user->name, [
                                                             'class' => 'form-control',
                                                         ]) !!}
-                                                        <small class="text-danger">{{ $errors->first('name-'.$user->id) }}</small>
+                                                        <small class="text-danger">{{ $errors->first('name') }}</small>
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -121,82 +118,79 @@
                     </div>
 
                     <div class="card-body">
-
                         <div class="row row-cols-2 py-2">
                             <div class="col-4">
                                 <h2>Actualizar contraseña</h2>
                                 <small> Asegúrese de que su cuenta utilice una contraseña larga y aleatoria para mantenerse
                                     segura.</small>
                             </div>
-                            <div class="col-8 ">
+                            <div class="col-8">
                                 {!! Form::model($user, [
-                                    'route' => ['users.update', $user->id],
+                                    'route' => ['perfil.updatePassword', $user->id],
                                     'method' => 'PUT',
                                 ]) !!}
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="form-group">
-                                            <div class="row row-cols-1 justify-content-center align-items-center g-2">
-                                                <div class="col">
-                                                    <div
-                                                        class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                                        {!! Form::label('password', 'Contraseña actual:') !!}
-                                                        {!! Form::password('password', [
-                                                            'class' => 'form-control',
-                                                        ]) !!}
-                                                        <small class="text-danger">{{ $errors->first('password') }}</small>
-                                                    </div>
-
+                                <div class="col">
+                                    <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
+                                        {!! Form::label('current-password', 'Contraseña actual:') !!}
+                                        <div class="input-group">
+                                            {!! Form::password('current-password', [
+                                                'class' => 'form-control',
+                                            ]) !!}
+                                            <button type="button" class="toggle-password btn btn-link">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <small class="text-danger">{{ $errors->first('current-password') }}</small>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
+                                                {!! Form::label('new-password', 'Nueva contraseña:') !!}
+                                                <div class="input-group">
+                                                    {!! Form::password('new-password', [
+                                                        'class' => 'form-control',
+                                                    ]) !!}
+                                                    <button type="button" class="toggle-password btn btn-link">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
                                                 </div>
-                                                <div class="col">
-                                                    <div class="row row-cols-2">
-                                                        <div class="col">
-                                                            <div
-                                                                class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                                                {!! Form::label('new-password', 'Nueva contraseña:') !!}
-                                                                {!! Form::password('new-password', [
-                                                                    'class' => 'form-control',
-                                                                ]) !!}
-                                                                <small
-                                                                    class="text-danger">{{ $errors->first('new-password') }}</small>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col">
-
-                                                            <div
-                                                                class="form-group{{ $errors->has('new-password-confirm') ? ' has-error' : '' }}">
-                                                                {!! Form::label('new-password-confirm', 'Confirmar nueva contraseña:') !!}
-                                                                {!! Form::password('new-password-confirm', [
-                                                                    'class' => 'form-control',
-                                                                ]) !!}
-                                                                <small
-                                                                    class="text-danger">{{ $errors->first('new-password-confirm') }}</small>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <small class="text-danger">{{ $errors->first('new-password') }}</small>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group{{ $errors->has('new-password_confirm') ? ' has-error' : '' }}">
+                                                {!! Form::label('new-password_confirm', 'Confirmar nueva contraseña:') !!}
+                                                <div class="input-group">
+                                                    {!! Form::password('new-password_confirm', [
+                                                        'class' => 'form-control',
+                                                    ]) !!}
+                                                    <button type="button" class="toggle-password btn btn-link">
+                                                        <i class="fas fa-eye"></i>
+                                                    </button>
                                                 </div>
-
+                                                <small class="text-danger">{{ $errors->first('new-password_confirm') }}</small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="modal-footer">
                             {!! Form::submit('Actualizar', ['class' => 'btn btn-outline-primary']) !!}
                         </div>
                         {!! Form::close() !!}
                     </div>
                 </div>
+
+
+
             </div>
         </div>
     </div>
 
 @endsection
-
-
 @section('js')
     <script>
         @if (session('success'))
@@ -215,5 +209,19 @@
             }
         @endif
     </script>
-
+    <script>
+        $(document).ready(function() {
+            $(".toggle-password").on('click', function() {
+                var passwordField = $(this).closest('.input-group').find('input');
+                var passwordFieldType = passwordField.attr('type');
+                if (passwordFieldType === 'password') {
+                    passwordField.attr('type', 'text');
+                    $(this).html('<i class="fas fa-eye-slash"></i>');
+                } else {
+                    passwordField.attr('type', 'password');
+                    $(this).html('<i class="fas fa-eye"></i>');
+                }
+            });
+        });
+    </script>
 @endsection

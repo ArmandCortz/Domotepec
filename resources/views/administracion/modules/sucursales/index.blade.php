@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Sucursales')
 @section('css')
-<link
-     rel="stylesheet"
-     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-   />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+    <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
+@
 @endsection
 
 @section('content-admin')
@@ -37,7 +36,6 @@
                                         <td>{{ $sucursal->nombre }}</td>
                                         <td>{{ $sucursal->empresa }}</td>
                                         @foreach ($empresas as $empresa)
-                                            
                                         @endforeach
                                         <td>{{ $sucursal->direccion }}</td>
                                         <td>({{ substr($sucursal->telefono, 0, 4) }})
@@ -58,7 +56,7 @@
                                                 onclick="confirmDelete('{{ route('sucursales.destroy', $sucursal->id) }}')">
                                                 <i class="fas fa-trash"></i>
                                                 Eliminar </a>
-                                                
+
 
                                             @include('administracion.modules.sucursales.modalUpdateSucursal')
 
@@ -137,7 +135,7 @@
         phoneInput.promise.then(function() {
             selectedCountry = phoneInput.getSelectedCountryData();
             const maxLength = selectedCountry.dialCode.length +
-            11; // Ajusta el número máximo según tus necesidades para El Salvador
+                11; // Ajusta el número máximo según tus necesidades para El Salvador
 
             phoneInputField.setAttribute("maxlength", maxLength);
         });
@@ -148,8 +146,9 @@
             if (selectedCountry && phoneNumber) {
                 const numericPhoneNumber = phoneNumber.replace("+" + selectedCountry.dialCode, "").replace(/\D/g,
                     "");
-                const formattedPhoneNumber = numericPhoneNumber.slice(0, selectedCountry.dialCode.length+1) + "-" +
-                    numericPhoneNumber.slice(selectedCountry.dialCode.length+1);
+                const formattedPhoneNumber = numericPhoneNumber.slice(0, selectedCountry.dialCode.length + 1) +
+                    "-" +
+                    numericPhoneNumber.slice(selectedCountry.dialCode.length + 1);
                 phoneInputField.value = "+" + selectedCountry.dialCode + " " + formattedPhoneNumber;
             }
         });

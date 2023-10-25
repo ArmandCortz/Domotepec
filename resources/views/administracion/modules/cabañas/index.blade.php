@@ -57,7 +57,7 @@
                                             @can('cabañas.edit')
                                                 <a type="button" href="{{ route('cabañas.edit', $cabaña->id) }}"
                                                     class="btn btn-outline-primary">
-                                                    <i class="fas fa-pen"></i> Editar {{$cabaña->id}}
+                                                    <i class="fas fa-pen"></i> Editar
                                                 </a>
                                             @endcan
                                             @can('cabañas.destroy')

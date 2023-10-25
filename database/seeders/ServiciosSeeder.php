@@ -16,19 +16,23 @@ class ServiciosSeeder extends Seeder
         Servicios::create([
 
             'nombre' => 'Cayac',
-            'sucursal' => '1',
-            'descripcion' => 'Cayac en el lago',
             'costo' => '500',
+            'empresa' => '1',
+            'sucursal' => '1',
             'estado' => '1',
+            'stock' => '1',
+            'descripcion' => 'Cayac en el lago',
 
         ]);
         Servicios::create([
 
             'nombre' => 'Lancha',
-            'sucursal' => '2',
-            'descripcion' => 'Lancha en altamar',
             'costo' => '700',
+            'empresa' => '1',
+            'sucursal' => '2',
             'estado' => '2',
+            'stock' => '1',
+            'descripcion' => 'Lancha en altamar',
 
         ]);
     }

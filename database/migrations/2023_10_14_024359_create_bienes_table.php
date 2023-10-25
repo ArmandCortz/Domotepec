@@ -12,11 +12,12 @@ class CreateBienesTable extends Migration
         Schema::create('bienes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->decimal('costo', 8, 2); // Puedes ajustar la precisión y escala según tus necesidades
-            $table->text('descripcion');
-            $table->Integer('sucursal');
+            $table->float('costo', 8, 2); // Puedes ajustar la precisión y escala según tus necesidades
             $table->Integer('empresa');
+            $table->Integer('sucursal');
+            $table->integer('estado');
             $table->integer('stock')->nullable();
+            $table->text('descripcion');
             $table->timestamps();
 
             

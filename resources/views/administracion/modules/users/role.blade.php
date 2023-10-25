@@ -54,7 +54,7 @@
 
                                     <div class="col">
                                         {{-- {!! Form::label('permisos[]', 'Permisos:') !!} --}}
-                                        {{"Permisos:"}}
+                                        {{ 'Permisos:' }}
                                         <div class="row row-cols-3">
 
                                             @foreach ($permisos as $permiso)
@@ -72,31 +72,28 @@
                                             @endforeach
 
 
-                                            
+
                                         </div>
                                     </div>
 
-                                    
+
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <div class="modal-footer">
-
-                            {!! link_to(route('users.index'), 'Cancelar', [
-                                'class' => 'btn btn-outline-danger',
-                            ]) !!}
-
-                            @if (Auth::user()->id === $user->id)
-                                {!! Form::submit('Guardar', ['class' => 'btn btn-outline-primary', 'disabled' => 'disabled']) !!}
-                            @else
-                                {!! Form::submit('Guardar', ['class' => 'btn btn-outline-primary']) !!}
-                            @endif
-                        </div>
-                        {!! Form::close() !!}
                     </div>
+                    <div class="modal-footer">
+
+                        {!! link_to(route('users.index'), 'Cancelar', [
+                            'class' => 'btn btn-outline-danger',
+                        ]) !!}
+
+                        @if (Auth::user()->id === $user->id)
+                            {!! Form::submit('Guardar', ['class' => 'btn btn-outline-primary', 'disabled' => 'disabled']) !!}
+                        @else
+                            {!! Form::submit('Guardar', ['class' => 'btn btn-outline-primary']) !!}
+                        @endif
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

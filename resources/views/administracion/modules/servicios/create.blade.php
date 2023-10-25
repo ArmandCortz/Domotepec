@@ -11,7 +11,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('users.store') }}">
+                            <form method="POST" action="{{ route('servicios.store') }}">
                                 @csrf
 
                                 <div class="row row-cols-2">
@@ -35,6 +35,57 @@
 
                                         </div>
                                     </div>
+
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="sucursal"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
+
+                                            <div class="col-md-8">
+                                                <select id="empresa" name="empresa"
+                                                    class="form-control @error('empresa') is-invalid @enderror"
+                                                    autocomplete="empresa">
+                                                    <option value="" selected disabled>Selecciona una empresa</option>
+
+                                                    @foreach ($empresas as $empresa)
+                                                        <option value="{{ $empresa->id }}">{{ $empresa->nombre }}
+                                                        </option>
+                                                    @endforeach
+
+                                                </select>
+
+                                                @error('empresa')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="costo"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Costo') }}</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input id="costo" type="number"
+                                                        class="form-control @error('costo') is-invalid @enderror"
+                                                        name="costo" value="{{ old('costo') }}" autocomplete="costo"
+                                                        step="0.01" min="0.01" autofocus>
+                                                @error('costo')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col">
                                         <div class="row mb-3">
                                             <label for="sucursal"
@@ -44,10 +95,14 @@
                                                 <select id="sucursal" name="sucursal"
                                                     class="form-control @error('sucursal') is-invalid @enderror"
                                                     autocomplete="sucursal">
+                                                    <option value="" selected disabled>Selecciona una sucursal
+                                                    </option>
+
                                                     @foreach ($sucursales as $sucursal)
-                                                        <option value="{{$sucursal->id}}">{{ $sucursal->nombre }} </option>
+                                                        <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}
+                                                        </option>
                                                     @endforeach
-                                                    
+
                                                 </select>
 
                                                 @error('sucursal')
@@ -59,36 +114,26 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col">
                                         <div class="row mb-3">
-                                            <label for="nombre"
-                                                class="col-md-4 col-form-label text-md-end">{{ __('Costo') }}</label>
-
+                                            <label for="stock"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Stock') }}</label>
                                             <div class="col-md-8">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">$</span>
-                                                    </div>
-                                                    <input id="cantidad" type="number"
-                                                        class="form-control @error('cantidad') is-invalid @enderror"
-                                                        name="cantidad" value="{{ old('cantidad') }}" step="0.01"
-                                                        min="0.01" autocomplete="cantidad" autofocus>
-                                                </div>
-
-                                                @error('cantidad')
+                                                <input id="stock" type="number"
+                                                    class="form-control @error('stock') is-invalid @enderror" name="stock"
+                                                    value="{{ old('stock') }}" autocomplete="stock" autofocus>
+                                                @error('stock')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-
-
                                         </div>
                                     </div>
+
                                     <div class="col">
                                         <div class="row mb-3">
-                                            <label for="nombre"
+                                            <label for="estado"
                                                 class="col-md-4 col-form-label text-md-end">{{ __('Estado') }}</label>
 
                                             <div class="col-md-8">
@@ -109,9 +154,9 @@
                                                 @enderror
                                             </div>
 
-
                                         </div>
                                     </div>
+
                                     <div class="col col-12">
                                         <div class="row mb-3">
                                             <label for="nombre"

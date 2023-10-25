@@ -11,8 +11,9 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('users.store') }}">
+                            <form method="POST" action="{{ route('servicios.update', $servicio->id) }}">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="row row-cols-2">
                                     <div class="col">
@@ -38,19 +39,73 @@
                                     <div class="col">
                                         <div class="row mb-3">
                                             <label for="sucursal"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
+
+                                            <div class="col-md-8">
+                                                <select id="empresa" name="empresa"
+                                                    class="form-control @error('empresa') is-invalid @enderror"
+                                                    autocomplete="empresa">
+                                                    <option value="" selected>Selecciona una empresa</option>
+
+                                                    @foreach ($empresas as $empresa)
+                                                        <option value="{{ $empresa->id }}"
+                                                            {{ $empresa->id == $servicio->sucursal ? 'selected' : '' }}>
+                                                            {{ $empresa->nombre }} </option>
+                                                    @endforeach
+
+                                                </select>
+
+                                                @error('empresa')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="costo"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Costo') }}</label>
+
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input id="costo" type="number"
+                                                        class="form-control @error('costo') is-invalid @enderror"
+                                                        name="costo" value="{{ $servicio->costo }}" step="0.01"
+                                                        min="0.01" autocomplete="costo" autofocus>
+                                                </div>
+
+                                                @error('costo')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="sucursal"
                                                 class="col-md-4 col-form-label text-md-end">{{ __('Sucursal') }}</label>
 
                                             <div class="col-md-8">
                                                 <select id="sucursal" name="sucursal"
                                                     class="form-control @error('sucursal') is-invalid @enderror"
                                                     autocomplete="sucursal">
-                                                    <option value="{{ $servicio->sucursal }}"
-                                                        >
+                                                    <option value="{{ $servicio->sucursal }}">
 
-                                                    @foreach ($sucursales as $sucursal)
-                                                        <option value="{{ $sucursal->id }}"
-                                                            {{ $sucursal->id == $servicio->sucursal ? 'selected' : '' }}>
-                                                            {{ $sucursal->nombre }} </option>
+                                                        @foreach ($sucursales as $sucursal)
+                                                    <option value="{{ $sucursal->id }}"
+                                                        {{ $sucursal->id == $servicio->sucursal ? 'selected' : '' }}>
+                                                        {{ $sucursal->nombre }} </option>
                                                     @endforeach
 
                                                 </select>
@@ -64,36 +119,26 @@
                                         </div>
                                     </div>
 
-
+                                    
                                     <div class="col">
                                         <div class="row mb-3">
-                                            <label for="nombre"
-                                                class="col-md-4 col-form-label text-md-end">{{ __('Costo') }}</label>
-
+                                            <label for="stock"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Stock') }}</label>
                                             <div class="col-md-8">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">$</span>
-                                                    </div>
-                                                    <input id="cantidad" type="number"
-                                                        class="form-control @error('cantidad') is-invalid @enderror"
-                                                        name="cantidad" value="{{$servicio->costo}}" step="0.01"
-                                                        min="0.01" autocomplete="cantidad" autofocus>
-                                                </div>
-
-                                                @error('cantidad')
+                                                <input id="stock" type="number"
+                                                    class="form-control @error('stock') is-invalid @enderror" name="stock"
+                                                    value="{{ $servicio->stock }}" autocomplete="stock" autofocus>
+                                                @error('stock')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-
-
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="row mb-3">
-                                            <label for="nombre"
+                                            <label for="estado"
                                                 class="col-md-4 col-form-label text-md-end">{{ __('Estado') }}</label>
 
                                             <div class="col-md-8">
@@ -119,12 +164,12 @@
                                     </div>
                                     <div class="col col-12">
                                         <div class="row mb-3">
-                                            <label for="nombre"
+                                            <label for="descripcion"
                                                 class="col-md-2 col-form-label text-md-end">{{ __('Descripción') }}</label>
 
                                             <div class="col-md-10">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="6" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para el servicio">{{$servicio->descripcion}}</textarea>
+                                                    rows="6" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para el servicio">{{ $servicio->descripcion }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">

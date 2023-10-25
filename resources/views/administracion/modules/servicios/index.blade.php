@@ -23,15 +23,16 @@
                 <div class="card mt-3">
                     <div class="card-body ">
 
-                        <table id="servicios" class="table table-hover table-striped table-responsive-lg" style=" border-radius: 5px; overflow: hidden;">
+                        <table id="servicios" class="table table-hover table-striped table-responsive-lg"
+                            style=" border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Sucursal</th>
-                                    <th>Descripcion</th>
+                                    <th>Empresa</th>
                                     <th>Costo</th>
-                                    <th>Estado</th>
+                                    <th>Stock</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -45,15 +46,14 @@
                                                 <td>{{ $sucursal->nombre }}</td>
                                             @endif
                                         @endforeach
-                                        <td>{{ $servicio->descripcion }}</td>
+                                        @foreach ($empresas as $empresa)
+                                            @if ($servicio->empresa === $empresa->id)
+                                                <td>{{ $empresa->nombre }}</td>
+                                            @endif
+                                        @endforeach
                                         <td>${{ number_format($servicio->costo, 2, '.', ',') }}</td>
-                                        @if ($servicio->estado === 1)
-                                            <td class="text-green">Activo</td>
-                                        @else
-                                        @if ($servicio->estado === 2)
-                                            <td class="text-danger">Inactivo</td>
-                                        @endif
-                                        @endif
+                                        <td>{{ $servicio->stock }}</td>
+
                                         <td
                                             @if (auth()->user()->can('servicios.edit') &&
                                                     auth()->user()->can('servicios.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
@@ -72,6 +72,7 @@
                                                     data-target="#modal-eliminar-{{ $servicio->id }}">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
+                                                @include('administracion.modules.servicios.delete')
                                             @endcan
                                         </td>
                                     </tr>

@@ -51,11 +51,15 @@ Route::prefix('/')->group(function () {
 
     Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
         Route::get('/', "HomeController@index")->middleware('can:home')->name('home');
-        Route::get('/perfil',"PerfilController@index")->middleware('can:perfil')->name('perfil');
-        Route::put('/perfil/{id}', "PerfilController@update")->middleware('can:perfil')->name('perfil.update');
+
+         Route::get('/perfil', 'PerfilController@index')->name('perfil'); // Vista de perfil
+         Route::put('/perfil/{user}', 'PerfilController@update')->name('perfil.update'); // Actualizar perfil
+         Route::put('/perfil/{user}/password', 'PerfilController@updatePassword')->name('perfil.updatePassword'); // Actualizar contraseña
+        
+
 
         // Rutas para users
-        // opcional llamar rutas como estan abajo
+        
         Route::resource('users', "UserController")->names('users');
 
         
@@ -82,9 +86,10 @@ Route::prefix('/')->group(function () {
 
         // rutas para servicios
         Route::resource('servicios', "ServiciosController")->names('servicios');
+        
         // Rutas para contacto
-        Route::resource('contacto', 'ContactoController')->only(['index', 'store']);
         Route::delete('/contacto/eliminar-todos', 'ContactoController@eliminarTodos')->name('contacto.eliminarTodos');
+        Route::resource('contacto', 'ContactoController')->only(['index', 'store']);
 
 
 
