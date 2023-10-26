@@ -11,8 +11,9 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('cabañas.store') }}">
+                            <form method="POST" action="{{ route('cabañas.update', $cabañas->id) }}">
                                 @csrf
+                                @method('PUT')
 
                                 <div class="row row-cols-2">
                                     <div class="col">
@@ -65,8 +66,13 @@
                                                 <select id="sucursal" name="sucursal"
                                                     class="form-control @error('sucursal') is-invalid @enderror"
                                                     autocomplete="sucursal">
+                                                    <option value="" selected disabled>Selecciona una sucursal
                                                     @foreach ($sucursales as $sucursal)
-                                                        <option value="{{$sucursal->id}}">{{ $sucursal->nombre }} </option>
+
+                                                        <option value="{{ $sucursal->id }}"
+                                                            {{ $sucursal->id == $cabañas->sucursal ? 'selected' : '' }}>
+                                                            {{ $sucursal->nombre }} </option>
+                                                            
                                                     @endforeach
                                                     
                                                 </select>

@@ -41,6 +41,7 @@
                                         <td>{{ $cabaña->id }}</td>
                                         <td>{{ $cabaña->nombre }}</td>
                                         <td>{{ $cabaña->ubicacion }}</td>
+
                                         @foreach ($sucursales as $sucursal)
                                             @if ($cabaña->sucursal === $sucursal->id)
                                                 <td>{{ $sucursal->nombre }}</td>
@@ -65,6 +66,8 @@
                                                     data-target="#modal-eliminar-{{ $cabaña->id }}">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
+                                                                                                @include('administracion.modules.cabañas.delete')
+
                                             @endcan
                                         </td>
 

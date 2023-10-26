@@ -65,6 +65,8 @@
                                                 <select id="sucursal" name="sucursal"
                                                     class="form-control @error('sucursal') is-invalid @enderror"
                                                     autocomplete="sucursal">
+                                                    <option value="" selected disabled>Selecciona una sucursal
+
                                                     @foreach ($sucursales as $sucursal)
                                                         <option value="{{$sucursal->id}}">{{ $sucursal->nombre }} </option>
                                                     @endforeach

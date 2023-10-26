@@ -12,8 +12,10 @@
         <div class="row">
             <div class="col-md-12">
                 <h1 class="text-center mt-3">Modulo Sucursal</h1>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#crearSucursalModal">Crear Sucursal</button>
-                <div class="card mt-3">
+                @can('sucursales.create')
+                <a href="{{ route('sucursales.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
+                    Sucursales</a>
+            @endcan                <div class="card mt-3">
                     <div class="card-body">
 
                         <table class="table table-hover table-responsive-sm" id="sucursales"
@@ -45,21 +47,26 @@
 
                                         <td>{{ $sucursal->gerente }}</td>
                                         <!-- Agrega aquí las acciones que desees, como editar y eliminar -->
-                                        <td>
-                                            {{-- Ejemplo de enlace para mostrar detalles --}}
-                                            <a type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal"
-                                                data-target="#sucursal-{{ $sucursal->id }}"><i class="fas fa-pen"></i>
-                                                Editar </a>
-
-                                            <!-- Botón para eliminar -->
-                                            <a type="button" class="btn btn-outline-danger btn-sm"
-                                                onclick="confirmDelete('{{ route('sucursales.destroy', $sucursal->id) }}')">
-                                                <i class="fas fa-trash"></i>
-                                                Eliminar </a>
+                                        <td
+                                            @if (auth()->user()->can('sucursales.edit') &&
+                                                    auth()->user()->can('sucursales.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
 
 
-                                            @include('administracion.modules.sucursales.modalUpdateSucursal')
 
+
+                                            @can('sucursales.edit')
+                                                <a type="button" href="{{ route('sucursales.edit', $sucursal->id) }}"
+                                                    class="btn btn-outline-primary">
+                                                    <i class="fas fa-pen"></i> Editar
+                                                </a>
+                                            @endcan
+                                            @can('sucursales.destroy')
+                                                <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                    data-target="#modal-eliminar-{{ $sucursal->id }}">
+                                                    <i class="fas fa-trash"></i> Eliminar
+                                                </a>
+                                                @include('administracion.modules.sucursales.delete')
+                                            @endcan
                                         </td>
 
                                     </tr>
@@ -114,45 +121,7 @@
             ]
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <script>
-        const phoneInputField = document.querySelector("#telefono");
-        let selectedCountry = null;
-
-        const phoneInput = window.intlTelInput(phoneInputField, {
-            initialCountry: "auto",
-            separateDialCode: true,
-            preferredCountries: ["sv", "us", "ca", "gb", "au"],
-            geoIpLookup: function(callback) {
-                jQuery.get('https://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-                    var countryCode = (resp && resp.country) ? resp.country : "";
-                    callback(countryCode);
-                });
-            },
-            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-        });
-
-        phoneInput.promise.then(function() {
-            selectedCountry = phoneInput.getSelectedCountryData();
-            const maxLength = selectedCountry.dialCode.length +
-                11; // Ajusta el número máximo según tus necesidades para El Salvador
-
-            phoneInputField.setAttribute("maxlength", maxLength);
-        });
-
-        phoneInputField.addEventListener("input", function() {
-            const phoneNumber = phoneInput.getNumber();
-
-            if (selectedCountry && phoneNumber) {
-                const numericPhoneNumber = phoneNumber.replace("+" + selectedCountry.dialCode, "").replace(/\D/g,
-                    "");
-                const formattedPhoneNumber = numericPhoneNumber.slice(0, selectedCountry.dialCode.length + 1) +
-                    "-" +
-                    numericPhoneNumber.slice(selectedCountry.dialCode.length + 1);
-                phoneInputField.value = "+" + selectedCountry.dialCode + " " + formattedPhoneNumber;
-            }
-        });
-    </script>
+    
 
 
 @endsection

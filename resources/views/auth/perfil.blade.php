@@ -15,7 +15,7 @@
                         padding: 20px;">
 
                 <h1 class="text-end mt-2">Perfil de usuario</h1>
-                <div class="container">
+                <div class="">
                     <div class="row align-items-end">
 
                         <div class="col col-2 ">
@@ -58,11 +58,11 @@
 
                     <div class="card-body">
                         <div class="row row-cols-2 py-2">
-                            <div class="col-4">
-                                <h2>Información del usuario</h2>
-                                <small> Actualice la información del perfil y la dirección de correo electrónico de
+                            <div class="col-4 d-flex align-items-center justify-content-center">
+                                {{-- <h2>Información del usuario</h2> --}}
+                                <h5> Actualice la información del perfil y la dirección de correo electrónico de
                                     su
-                                    cuenta.</small>
+                                    cuenta.</h5>
                             </div>
                             <div class="col-8 ">
                                 {!! Form::model($user, [
@@ -158,11 +158,11 @@
 
                     <div class="card-body">
                         <div class="row row-cols-2 py-2">
-                            <div class="col-4">
-                                <h2>Actualizar contraseña</h2>
-                                <small> Asegúrese de que su cuenta utilice una contraseña larga y aleatoria para
+                            <div class="col-4 d-flex align-items-center justify-content-center">
+                                {{-- <h2>Actualizar contraseña</h2> --}}
+                                <h5> Asegúrese de que su cuenta utilice una contraseña larga y aleatoria para
                                     mantenerse
-                                    segura.</small>
+                                    segura.</h5>
                             </div>
                             <div class="col-8">
                                 {!! Form::model($user, [

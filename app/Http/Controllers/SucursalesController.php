@@ -3,71 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal; // Asegúrate de importar el modelo de Sucursal
 use App\Models\Empresa;
+use App\Models\Sucursal;
 
 class SucursalesController extends Controller
-
 {
-    public $sucursal;
     public function index()
     {
-        // Mostrar una lista de todas las sucursales
         $empresas = Empresa::all();
         $sucursales = Sucursal::all();
-        return view('administracion.modules.sucursales.index', compact('sucursales','empresas'));
+        return view('administracion.modules.sucursales.index', compact('sucursales', 'empresas'));
+    }
+
+    public function create()
+    { 
+        $empresas = Empresa::all();
+        $sucursales = Sucursal::all();
+        return view('administracion.modules.sucursales.create', compact('sucursales', 'empresas'));
+    }
+
+    public function store(Request $request)
+    {
+        //
     }
 
     public function show($id)
     {
-        // Obtener la sucursal por su ID
-        $sucursal = Sucursal::findOrFail($id);
-        $sucursal->delete();
-
-        return redirect()->route('sucursales.index')->with('success', 'Usuario eliminado exitosamente.');
+        //
     }
-    
-    public function edit($id)
-{
-    // Obtener la sucursal por su ID
-    $sucursal = Sucursal::findOrFail($id);
 
-    // Mostrar la vista de edición con la sucursal
-    return view('administracion.modules.sucursales.index', compact('sucursal'));
-}
-
- 
-    public function store(Request $request)
+    public function edit(Sucursal $sucursales, $id)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:100',
-            'empresa' => 'required|string|max:100',
-            'direccion' => 'required|string|max:255',
-            'telefono' => 'required|string|max:20',
-            'gerente' => 'required|string|max:100',
-            // Asegúrate de que los nombres de los campos coincidan con los de tu formulario
-        ]);
+        $sucursal = Sucursal::find($id);
+        $empresas = Empresa::all();
 
-        Sucursal::create($request->all());
 
-        return redirect()->route('sucursales.index')->with('success', 'Sucursal creada exitosamente.');
+        // Mostrar la vista de edición con la sucursal
+        return view('administracion.modules.sucursales.edit', compact('sucursal','empresas'));
     }
-    // Puedes agregar más métodos según tus necesidades, como create, edit, update, destroy, etc.
+
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'nombre' => 'required|string|max:100',
-        'empresa' => 'required|string|max:100',
-        'direccion' => 'required|string|max:255',
-        'telefono' => 'required|string|max:20',
-        'gerente' => 'required|string|max:100',
-        // Asegúrate de que los nombres de los campos coincidan con los de tu formulario
-    ]);
+    {
+        //
+    }
 
-    $sucursal = Sucursal::findOrFail($id);
-    $sucursal->update($request->all());
-
-    return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
-}
-
+    public function destroy($id)
+    {
+        //
+    }
 }
