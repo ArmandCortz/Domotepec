@@ -73,10 +73,13 @@
                                                         <br>
                                                     <p><strong>Descripción:</strong> {{ $galeria->descripcion }}</p>
                                                     <p><strong>Ubicación:</strong> {{ $galeria->ubicacion }}</p>
+                                                    <button type="submit" class="btn btn-primary btn-block" onclick="window.location.href = 'reservaciones';">Reservar</button>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cerrar</button>
+                                                        
+
                                                 </div>
                                             </div>
                                         </div>
