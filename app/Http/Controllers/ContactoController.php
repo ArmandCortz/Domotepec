@@ -47,7 +47,7 @@ class ContactoController extends Controller
             'mensaje' => $request->input('mensaje'),
         ]);
     
-        // Redireccionar o retornar la respuesta que desees
+        // Redireccionar o retornar la respuesta que desees 
         return redirect()->route('Contacto')->with('success', 'Mensaje enviado correctamente');
     }
     public function eliminarTodos(Request $request)
