@@ -79,7 +79,9 @@ Route::prefix('/')->group(function () {
         
         // Rutas para contacto
         Route::delete('/contacto/eliminar-todos', 'ContactoController@eliminarTodos')->name('contacto.eliminarTodos');
-        Route::resource('contacto', 'ContactoController')->only(['index', 'store']);
+        Route::resource('contacto', 'ContactoController')->only(['index', 'store','edit']);
+        
+
 
 
 

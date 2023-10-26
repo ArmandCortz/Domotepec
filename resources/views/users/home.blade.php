@@ -104,7 +104,7 @@
 
             <div class="col-md-6 offset-md-3 text-center">
 
-                <h1>Servicios</h1>
+                <h1>Sucursales</h1>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, inventore. Quisquam repellendus
                     voluptatum
                     doloribus minus dignissimos fuga porro dicta, nostrum aspernatur sequi, illum temporibus! Placeat aut
@@ -144,14 +144,9 @@
 
             <div class="col-md-6 offset-md-3 text-center">
 
-                <h1>Habitaciones</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, inventore. Quisquam repellendus
-                    voluptatum
-                    doloribus minus dignissimos fuga porro dicta, nostrum aspernatur sequi, illum temporibus! Placeat aut
-                    sed iusto explicabo neque.</p>
+                <h1>Sucursales</h1>
                 <br>
-                <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos voluptatem suscipit eligendi
-                    necessitatibus odit neque deserunt?
+                <h5>Selecciona la sucursal que deseas ver:
                 </h5>
 
 
@@ -161,14 +156,14 @@
                     <div class="col">
                         <img src="/img/cabaña2.jpeg" alt="" class="rounded-circle img-fluid"
                             style="max-height: 100px; max-width: 100px;">
-                        <h5>Nombre de cabaña</h5>
-                        <a href="" class="btn btn-outline-success">Descripción</a>
+                        <h5>La libertad</h5>
+                        <a href="" class="btn btn-outline-success">Ver Sucursal</a>
                     </div>
                     <div class="col">
                         <img src="/img/cabaña2.jpeg" alt="" class="rounded-circle img-fluid"
                             style="max-height: 100px; max-width: 100px;">
-                        <h5>Nombre de cabaña</h5>
-                        <a href="" class="btn btn-outline-success">Descripción</a>
+                        <h5>Ilopango</h5>
+                        <a href="" class="btn btn-outline-success">Ver Sucursal</a>
                     </div>
                     <div class="col">
                         <img src="/img/cabaña2.jpeg" alt="" class="rounded-circle img-fluid"

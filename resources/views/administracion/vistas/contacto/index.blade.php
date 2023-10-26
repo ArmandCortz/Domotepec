@@ -22,6 +22,7 @@
                             <th class="col-xs-4">Mensaje</th>
                             <th class="col-xs-2">Telefono</th>
                             <th class="col-xs-3">Email</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,7 +33,21 @@
                                 <td>{{ $contacto->mensaje }}</td>
                                 <td>{{ $contacto->telefono }}</td>
                                 <td>{{ $contacto->email }}</td>
+                                <td>
+
+
+
+                                    <a type="button" href="{{ route('contacto.edit', $contacto->id) }}"
+                                        class="btn btn-outline-primary">
+                                        <i class="fas fa-pen"></i> Editar
+                                    </a>
+                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                        data-target="#modal-eliminar-{{ $contacto->id }}">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </a>
+                            </td>
                             </tr>
+                            
                         @endforeach
                     </tbody>
                 </table>
