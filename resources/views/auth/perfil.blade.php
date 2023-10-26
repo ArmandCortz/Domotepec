@@ -1,12 +1,49 @@
 @extends('layouts.app')
 @section('title', 'Perfil')
-
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
+@endsection
 @section('content-admin')
 
-    <div class="container">
+    <div class="col col-12 py-2">
+        <div class="card card-dark card-outline ">
+            <div class="card-body box-profile text-white"
+                style=" background: url('/img/img-perfil/portada1.jpg') center center no-repeat;
+                        background-size: cover;
+                        position: relative;
+                        background-color: rgba(0, 0, 0, 0.3); 
+                        padding: 20px;">
+
+                <h1 class="text-end mt-2">Perfil de usuario</h1>
+                <div class="container">
+                    <div class="row align-items-end">
+
+                        <div class="col col-2 ">
+                            <div class="text-center">
+                                <div class="profile-image-container" style="position: relative; display: inline-block;">
+                                    <img class="profile-user-img img-fluid img-circle" src="/img/img/ilopango_2.png"
+                                        alt="User profile picture" style="width: 100px; height: 100px;">
+                                    <button class="btn btn-link" id="edit-image-button">
+                                        <i class="fas fa-camera"
+                                            style="color: black; position: absolute; background-color: gray; border-radius: 50%; padding: 5px; bottom: 0; right: 0;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-2 d-flex align-items-center justify-content-center">
+                            <div>
+                                <h3 class="profile-username text-left">{{ $user->name }}</h3>
+                                <p class="text-muted text-left">{{ $role->name }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mt-3">Perfil de usuario</h1>
 
                 <div class="card card-default">
                     <div class="card-header">
@@ -23,7 +60,8 @@
                         <div class="row row-cols-2 py-2">
                             <div class="col-4">
                                 <h2>Información del usuario</h2>
-                                <small> Actualice la información del perfil y la dirección de correo electrónico de su
+                                <small> Actualice la información del perfil y la dirección de correo electrónico de
+                                    su
                                     cuenta.</small>
                             </div>
                             <div class="col-8 ">
@@ -70,7 +108,8 @@
                                                         {!! Form::text('apellidos', $user->apellidos, [
                                                             'class' => 'form-control',
                                                         ]) !!}
-                                                        <small class="text-danger">{{ $errors->first('apellidos') }}</small>
+                                                        <small
+                                                            class="text-danger">{{ $errors->first('apellidos') }}</small>
                                                     </div>
                                                 </div>
                                                 <div class="col">
@@ -121,7 +160,8 @@
                         <div class="row row-cols-2 py-2">
                             <div class="col-4">
                                 <h2>Actualizar contraseña</h2>
-                                <small> Asegúrese de que su cuenta utilice una contraseña larga y aleatoria para mantenerse
+                                <small> Asegúrese de que su cuenta utilice una contraseña larga y aleatoria para
+                                    mantenerse
                                     segura.</small>
                             </div>
                             <div class="col-8">
@@ -160,7 +200,8 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <div class="form-group{{ $errors->has('new-password_confirm') ? ' has-error' : '' }}">
+                                            <div
+                                                class="form-group{{ $errors->has('new-password_confirm') ? ' has-error' : '' }}">
                                                 {!! Form::label('new-password_confirm', 'Confirmar nueva contraseña:') !!}
                                                 <div class="input-group">
                                                     {!! Form::password('new-password_confirm', [
@@ -170,7 +211,8 @@
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>
-                                                <small class="text-danger">{{ $errors->first('new-password_confirm') }}</small>
+                                                <small
+                                                    class="text-danger">{{ $errors->first('new-password_confirm') }}</small>
                                             </div>
                                         </div>
                                     </div>
@@ -184,12 +226,10 @@
                     </div>
                 </div>
 
-
-
             </div>
+
         </div>
     </div>
-
 @endsection
 @section('js')
     <script>

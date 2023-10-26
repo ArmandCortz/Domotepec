@@ -35,6 +35,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'cabañas.edit', 'description' => 'Editar Cabañas'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'cabañas.destroy', 'description' => 'Eliminar Cabañas'])->syncRoles([$role1]);
 
+        // permisos para modulo empresas
+        Permission::create(['name' => 'empresas.index', 'description' => 'Ver Empresas'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'empresas.create', 'description' => 'Crear Empresas'])->syncRoles([$role1]);
+        Permission::create(['name' => 'empresas.edit', 'description' => 'Editar Empresas'])->syncRoles([$role1, $role2]);
+        Permission::create(['name' => 'empresas.destroy', 'description' => 'Eliminar Empresas'])->syncRoles([$role1]);
+
         // permisos para modulo sucursales
         Permission::create(['name' => 'sucursales.index', 'description' => 'Ver Sucursales'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'sucursales.create', 'description' => 'Crear Sucursales'])->syncRoles([$role1]);

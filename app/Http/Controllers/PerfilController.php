@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Spatie\Permission\Models\Role;
 
 
 class PerfilController extends Controller
@@ -14,7 +14,9 @@ class PerfilController extends Controller
     public function index()
     {
         $user = User::find(Auth::user()->id);
-        return view('auth.perfil', compact('user'));
+        $role = Role::find(Auth::user()->id);
+        
+        return view('auth.perfil', compact('user','role'));
     }
 
     public function update(Request $request, User $user)

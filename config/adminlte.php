@@ -338,6 +338,13 @@ return [
 
                 ],
                 [
+                    'text' => 'Empresas',
+                    'route' => 'empresas.index',
+                    'active' => ['empresas*'],
+                    'icon' => 'fas fa-fw',
+                    'can' => 'empresas.index',
+                ],
+                [
                     'text' => 'Sucursales',
                     'route' => 'sucursales.index',
                     'active' => ['sucursales*'],
