@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Servicios')
+@section('title', 'Cabañas')
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
 @endsection
@@ -22,59 +22,73 @@
 
                 <div class="card mt-3">
                     <div class="card-body ">
-
-                        <table class="table table-hover table-responsive-sm" id="cabañas"
-                            style=" border-radius: 5px; overflow: hidden;">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Ubicación</th>
-                                    <th>Sucursal</th>
-                                    <th>Descripción</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($cabañas as $cabaña)
+                        <div class="table-responsive">
+                            <table id="cabañas" class="table table-hover table-responsive-md"
+                                style=" border-radius: 5px; overflow: hidden;">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <td>{{ $cabaña->id }}</td>
-                                        <td>{{ $cabaña->nombre }}</td>
-                                        <td>{{ $cabaña->ubicacion }}</td>
-
-                                        @foreach ($sucursales as $sucursal)
-                                            @if ($cabaña->sucursal === $sucursal->id)
-                                                <td>{{ $sucursal->nombre }}</td>
-                                            @endif
-                                        @endforeach
-                                        <td>{{ $cabaña->descripcion }}</td>
-                                        <td
-                                            @if (auth()->user()->can('cabañas.edit') &&
-                                                    auth()->user()->can('cabañas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
-
-
-
-
-                                            @can('cabañas.edit')
-                                                <a type="button" href="{{ route('cabañas.edit', $cabaña->id) }}"
-                                                    class="btn btn-outline-primary">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                </a>
-                                            @endcan
-                                            @can('cabañas.destroy')
-                                                <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modal-eliminar-{{ $cabaña->id }}">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </a>
-                                                                                                @include('administracion.modules.cabañas.delete')
-
-                                            @endcan
-                                        </td>
-
+                                        <th>ID</th>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Ubicación</th>
+                                        <th>Sucursal</th>
+                                        <th>Descripción</th>
+                                        <th>Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($cabañas as $cabaña)
+                                        <tr>
+                                            <td>{{ $cabaña->id }}</td>
+                                            <td>
+                                                @if ($cabaña->imagen)
+                                                    <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}"
+                                                        alt="Imagen de la cabaña"
+                                                        style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
+                                                @else
+                                                    <img src="{{ asset('img/cabañas/img.png') }}" alt="No hay imagen"
+                                                        style="max-width: 50px;  border-radius: 5px; overflow: hidden;">
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                <p class="d-flex align-items-center justify-content-center">
+                                                    {{ $cabaña->nombre }}</p>
+                                            </td>
+                                            <td>{{ $cabaña->ubicacion }}</td>
+                                            @foreach ($sucursales as $sucursal)
+                                                @if ($cabaña->sucursal === $sucursal->id)
+                                                    <td>{{ $sucursal->nombre }}</td>
+                                                @endif
+                                            @endforeach
+                                            <td>{{ $cabaña->descripcion }}</td>
+                                            <td
+                                                @if (auth()->user()->can('cabañas.edit') &&
+                                                        auth()->user()->can('cabañas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+
+
+
+
+                                                @can('cabañas.edit')
+                                                    <a type="button" href="{{ route('cabañas.edit', $cabaña->id) }}"
+                                                        class="btn btn-outline-primary">
+                                                        <i class="fas fa-pen"></i> Editar
+                                                    </a>
+                                                @endcan
+                                                @can('cabañas.destroy')
+                                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                        data-target="#modal-eliminar-{{ $cabaña->id }}">
+                                                        <i class="fas fa-trash"></i> Eliminar
+                                                    </a>
+                                                    @include('administracion.modules.cabañas.delete')
+                                                @endcan
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

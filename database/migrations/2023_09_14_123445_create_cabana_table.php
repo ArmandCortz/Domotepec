@@ -10,6 +10,7 @@ class CreateCabanaTable extends Migration
     {
         Schema::create('cabana', function (Blueprint $table) {
             $table->id();
+            $table->string('imagen')->nullable();
             $table->string('nombre', 100);
             $table->string('ubicacion', 100);
             $table->string('descripcion', 200);

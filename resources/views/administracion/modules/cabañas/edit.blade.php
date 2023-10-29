@@ -11,7 +11,8 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('cabañas.update', $cabañas->id) }}">
+                            <form method="POST" action="{{ route('cabañas.update', $cabañas->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -24,7 +25,7 @@
                                             <div class="col-md-8">
                                                 <input id="nombre" type="text"
                                                     class="form-control @error('nombre') is-invalid @enderror"
-                                                    name="nombre" value="{{$cabañas->nombre}}" autocomplete="nombre"
+                                                    name="nombre" value="{{ $cabañas->nombre }}" autocomplete="nombre"
                                                     autofocus>
 
                                                 @error('nombre')
@@ -44,8 +45,8 @@
                                             <div class="col-md-8">
                                                 <input id="ubicacion" type="text"
                                                     class="form-control @error('ubicacion') is-invalid @enderror"
-                                                    name="ubicacion" value="{{ $cabañas->ubicacion }}" autocomplete="ubicacion"
-                                                    autofocus>
+                                                    name="ubicacion" value="{{ $cabañas->ubicacion }}"
+                                                    autocomplete="ubicacion" autofocus>
 
                                                 @error('ubicacion')
                                                     <span class="invalid-feedback" role="alert">
@@ -67,14 +68,12 @@
                                                     class="form-control @error('sucursal') is-invalid @enderror"
                                                     autocomplete="sucursal">
                                                     <option value="" selected disabled>Selecciona una sucursal
-                                                    @foreach ($sucursales as $sucursal)
-
-                                                        <option value="{{ $sucursal->id }}"
-                                                            {{ $sucursal->id == $cabañas->sucursal ? 'selected' : '' }}>
-                                                            {{ $sucursal->nombre }} </option>
-                                                            
+                                                        @foreach ($sucursales as $sucursal)
+                                                    <option value="{{ $sucursal->id }}"
+                                                        {{ $sucursal->id == $cabañas->sucursal ? 'selected' : '' }}>
+                                                        {{ $sucursal->nombre }} </option>
                                                     @endforeach
-                                                    
+
                                                 </select>
 
                                                 @error('sucursal')
@@ -84,16 +83,17 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
 
-                                    <div class="col col-12">
+                                    <div class="col"></div>
+                                    <div class="col col-6">
                                         <div class="row mb-3">
                                             <label for="nombre"
-                                                class="col-md-2 col-form-label text-md-end">{{ __('Descripción') }}</label>
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Descripción') }}</label>
 
-                                            <div class="col-md-10">
+                                            <div class="col-md-8">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="6" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ $cabañas->descripcion }}</textarea>
+                                                    rows="8" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ $cabañas->descripcion }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">
@@ -104,9 +104,36 @@
                                         </div>
                                     </div>
 
+                                    <div class="col col-6">
+                                        <div class="row mb-3">
+                                            <label for="imagen"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Imagen') }}</label>
+
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <input type="file" name="imagen" id="imagen" accept="image/*" 
+                                                        class="form-control @error('imagen') is-invalid @enderror"
+                                                        >
+                                                    @error('imagen')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="text-align: center;">
+                                            <div class="img-fluid">
+                                                <img id="imagen-preview"
+                                                    src="{{ asset('img/cabañas/' . ($cabañas->imagen ?? 'img.png')) }}"
+                                                    alt="Imagen de la cabaña"
+                                                    style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
-
-
 
                         </div>
                         <div class="modal-footer">
@@ -122,4 +149,22 @@
         </div>
     </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        document.getElementById('imagen').addEventListener('change', function() {
+            const imagenPreview = document.getElementById('imagen-preview');
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagenPreview.src = e.target.result;
+                    imagenPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
 @endsection

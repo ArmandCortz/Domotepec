@@ -19,6 +19,7 @@ class Servicios extends Model
         'sucursal',
         'empresa',
         'stock',
+        'imagen'
         // Puedes agregar más campos aquí si es necesario
     ];
 }

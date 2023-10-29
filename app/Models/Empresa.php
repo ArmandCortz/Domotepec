@@ -13,6 +13,7 @@ class Empresa extends Model
     protected $fillable = [
         'id',
         'nombre',
+        'imagen',
         // Puedes agregar más campos aquí si es necesario
     ];
     

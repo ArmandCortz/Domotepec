@@ -14,46 +14,58 @@
                     Empresa</a>
                 <div class="card mt-3">
                     <div class="card-body ">
-
-                        <table id="empresa" class="table table-hover table-striped table-responsive-lg"
-                            style=" border-radius: 5px; overflow: hidden;">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    {{-- <th>Stock</th> --}}
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($empresas as $empresa)
+                        <div class="table-responsive">
+                            <table id="empresa" class="table table-hover table-responsive-md"
+                                style=" border-radius: 5px; overflow: hidden;">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <td>{{ $empresa->id }}</td>
-                                        <td>{{ $empresa->nombre }}</td>
-                                        <td
-                                            @if (auth()->user()->can('empresas.edit') &&
-                                                    auth()->user()->can('empresas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
-
-
-
-                                            @can('empresas.edit')
-                                                <a type="button" href="{{ route('empresas.edit', $empresa->id) }}"
-                                                    class="btn btn-outline-primary">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                </a>
-                                            @endcan
-                                            @can('empresas.destroy')
-                                                <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modal-eliminar-{{ $empresa->id }}">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </a>
-                                                @include('administracion.modules.empresas.delete')
-                                            @endcan
-                                        </td>
+                                        <th>ID</th>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        {{-- <th>Stock</th> --}}
+                                        <th>Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($empresas as $empresa)
+                                        <tr>
+                                            <td>{{ $empresa->id }}</td>
+                                            <td>
+                                                @if ($empresa->imagen)
+                                                    <img src="{{ asset('img/empresas/' . $empresa->imagen) }}"
+                                                        alt="Imagen de la empresa"
+                                                        style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
+                                                @else
+                                                    <img src="{{ asset('img/empresas/img.png') }}" alt="No hay imagen"
+                                                        style="max-width: 50px;  border-radius: 5px; overflow: hidden;">
+                                                @endif
+                                            </td>
+                                            <td>{{ $empresa->nombre }}</td>
+                                            <td
+                                                @if (auth()->user()->can('empresas.edit') &&
+                                                        auth()->user()->can('empresas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+
+
+
+                                                @can('empresas.edit')
+                                                    <a type="button" href="{{ route('empresas.edit', $empresa->id) }}"
+                                                        class="btn btn-outline-primary">
+                                                        <i class="fas fa-pen"></i> Editar
+                                                    </a>
+                                                @endcan
+                                                @can('empresas.destroy')
+                                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                        data-target="#modal-eliminar-{{ $empresa->id }}">
+                                                        <i class="fas fa-trash"></i> Eliminar
+                                                    </a>
+                                                    @include('administracion.modules.empresas.delete')
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

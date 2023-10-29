@@ -168,7 +168,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-success"
                                 data-dismiss="modal">Cancelar</button>
-                            <form action="{{ route('bienes.destroy', $servicio->id) }}" method="POST"
+                            <form action="{{ route('servicios.destroy', $servicio->id) }}" method="POST"
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')

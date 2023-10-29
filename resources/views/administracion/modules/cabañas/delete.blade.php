@@ -22,11 +22,11 @@
                         <div class="row row-cols-2">
                             <div class="col">
                                 <div class="row mb-3">
-                                    <label for="nombre"
+                                    <label for="nombre-{{ $cabaña->id }}"
                                         class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
 
                                     <div class="col-md-8">
-                                        <input id="nombre" type="text"
+                                        <input id="nombre-{{ $cabaña->id }}" type="text"
                                             class="form-control @error('nombre') is-invalid @enderror" name="nombre"
                                             value="{{ $cabaña->nombre }}" autocomplete="nombre" autofocus disabled>
 

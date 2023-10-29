@@ -78,7 +78,7 @@ class UserController extends Controller
         $user = User::find($user->id);
 
         $permisos = Permission::all();
-        return view('administracion.modules.users.role', compact('user', 'roles', 'permisos'));
+        return view('administracion.modules.users.edit', compact('user', 'roles', 'permisos'));
     }
 
 

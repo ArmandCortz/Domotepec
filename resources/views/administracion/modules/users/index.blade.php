@@ -21,7 +21,7 @@
                 <div class="card mt-3">
                     <div class="card-body ">
 
-                        <table id="usuarios" class="table table-hover table-striped table-responsive-lg" style=" border-radius: 5px; overflow: hidden;">
+                        <table id="usuarios" class="table table-hover table-responsive-sm"  style=" border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>

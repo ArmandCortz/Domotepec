@@ -14,63 +14,75 @@
                     Bienes</a>
                 <div class="card mt-3">
                     <div class="card-body ">
-
-                        <table id="bienes" class="table table-hover table-striped table-responsive-lg"
-                            style=" border-radius: 5px; overflow: hidden;">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Sucursal</th>
-                                    <th>Empresa</th>
-                                    <th>Costo</th>
-                                    <th>Stock</th>
-                                    {{-- <th>Stock</th> --}}
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($bienes as $bien)
+                        <div class="table-responsive">
+                            <table id="bienes" class="table table-hover table-responsive-md"
+                                style=" border-radius: 5px; overflow: hidden;">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <td>{{ $bien->id }}</td>
-                                        <td>{{ $bien->nombre }}</td>
-                                        @foreach ($sucursales as $sucursal)
-                                            @if ($bien->sucursal === $sucursal->id)
-                                                <td>{{ $sucursal->nombre }}</td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($empresas as $empresa)
-                                            @if ($bien->empresa === $empresa->id)
-                                                <td>{{ $empresa->nombre }}</td>
-                                            @endif
-                                        @endforeach
-                                        <td>${{ number_format($bien->costo, 2, '.', ',') }}</td>
-                                        <td>{{ $bien->stock }}</td>
-
-                                        <td
-                                            @if (auth()->user()->can('bienes.edit') &&
-                                                    auth()->user()->can('bienes.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
-
-
-
-                                            @can('bienes.edit')
-                                                <a type="button" href="{{ route('bienes.edit', $bien->id) }}"
-                                                    class="btn btn-outline-primary">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                </a>
-                                            @endcan
-                                            @can('bienes.destroy')
-                                                <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modal-eliminar-{{ $bien->id }}">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </a>
-                                                @include('administracion.modules.bienes.delete')
-                                            @endcan
-                                        </td>
+                                        <th>ID</th>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Sucursal</th>
+                                        <th>Empresa</th>
+                                        <th>Costo</th>
+                                        <th>Stock</th>
+                                        {{-- <th>Stock</th> --}}
+                                        <th>Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($bienes as $bien)
+                                        <tr>
+                                            <td>{{ $bien->id }}</td>
+                                            <td>
+                                                @if ($bien->imagen)
+                                                    <img src="{{ asset('img/bienes/' . $bien->imagen) }}"
+                                                        alt="Imagen de la cabaña"
+                                                        style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
+                                                @else
+                                                    <img src="{{ asset('img/bienes/img.png') }}" alt="No hay imagen"
+                                                        style="max-width: 50px;  border-radius: 5px; overflow: hidden;">
+                                                @endif
+                                            </td>
+                                            <td>{{ $bien->nombre }}</td>
+                                            @foreach ($sucursales as $sucursal)
+                                                @if ($bien->sucursal === $sucursal->id)
+                                                    <td>{{ $sucursal->nombre }}</td>
+                                                @endif
+                                            @endforeach
+                                            @foreach ($empresas as $empresa)
+                                                @if ($bien->empresa === $empresa->id)
+                                                    <td>{{ $empresa->nombre }}</td>
+                                                @endif
+                                            @endforeach
+                                            <td>${{ number_format($bien->costo, 2, '.', ',') }}</td>
+                                            <td>{{ $bien->stock }}</td>
+
+                                            <td
+                                                @if (auth()->user()->can('bienes.edit') &&
+                                                        auth()->user()->can('bienes.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+
+
+
+                                                @can('bienes.edit')
+                                                    <a type="button" href="{{ route('bienes.edit', $bien->id) }}"
+                                                        class="btn btn-outline-primary">
+                                                        <i class="fas fa-pen"></i> Editar
+                                                    </a>
+                                                @endcan
+                                                @can('bienes.destroy')
+                                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                        data-target="#modal-eliminar-{{ $bien->id }}">
+                                                        <i class="fas fa-trash"></i> Eliminar
+                                                    </a>
+                                                    @include('administracion.modules.bienes.delete')
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,6 +110,8 @@
     </script>
     <script>
         new DataTable('#bienes', {
+            responsive: true,
+
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",

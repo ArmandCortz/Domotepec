@@ -10,13 +10,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Crear Sucursal</h1>
+                    <h1 class="text-center py-2 mb-2">Editar Sucursal</h1>
 
                     <div class="card">
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('sucursales.update', $sucursal->id) }}">
                                 @csrf
+                                @method("PUT")
 
                                 <div class="row row-cols-2">
                                     <div class="col">

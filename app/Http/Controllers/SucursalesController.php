@@ -24,7 +24,10 @@ class SucursalesController extends Controller
 
     public function store(Request $request)
     {
-        //
+        Sucursal::create($request->all());
+
+        return redirect()->route('sucursales.index')->with('success', 'Sucursal creada exitosamente.');
+
     }
 
     public function show($id)
@@ -44,11 +47,17 @@ class SucursalesController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+        $sucursal->update($request->all());
+
+        return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
+
     }
 
     public function destroy($id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+        $sucursal->delete();
+        return redirect()->route('sucursales.index')->with('error', 'Sucursal eliminada exitosamente.');
     }
 }

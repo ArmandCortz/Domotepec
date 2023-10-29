@@ -11,7 +11,7 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('servicios.store') }}">
+                            <form method="POST" action="{{ route('servicios.store') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row row-cols-2">
@@ -157,20 +157,47 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-12">
+                                    <div class="col col-6">
                                         <div class="row mb-3">
                                             <label for="nombre"
-                                                class="col-md-2 col-form-label text-md-end">{{ __('Descripción') }}</label>
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Descripción') }}</label>
 
-                                            <div class="col-md-10">
+                                            <div class="col-md-8">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="6" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para el servicio">{{ old('descripcion') }}</textarea>
+                                                    rows="10" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ old('descripcion') }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col col-6">
+                                        <div class="row mb-3">
+                                            <label for="imagen"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Imagen') }}</label>
+
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <input type="file" name="imagen" id="imagen" accept="image/*"
+                                                        class="form-control @error('imagen') is-invalid @enderror">
+                                                    @error('imagen')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="text-align: center;">
+                                            <div class="img-fluid">
+                                                <img id="imagen-preview" src="#" alt="Vista previa de la imagen"
+                                                    style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; display: none; margin: 0 auto;">
+
                                             </div>
                                         </div>
                                     </div>
@@ -193,4 +220,23 @@
         </div>
     </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        document.getElementById('imagen').addEventListener('change', function() {
+            const imagenPreview = document.getElementById('imagen-preview');
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagenPreview.src = e.target.result;
+                    imagenPreview.style.display = 'block';
+                    imagenPreview.style.borderRadius = '15px'; // Propiedad corregida
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
 @endsection

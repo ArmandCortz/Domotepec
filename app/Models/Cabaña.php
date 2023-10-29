@@ -15,7 +15,8 @@ class Cabaña extends Model
         'nombre',
         'ubicacion',
         'sucursal',
-        'descripcion'
+        'descripcion',
+        'imagen',
     ];
 
     // Relación con la sucursal

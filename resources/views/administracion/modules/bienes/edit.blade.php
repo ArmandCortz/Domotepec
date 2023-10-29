@@ -11,7 +11,8 @@
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('bienes.update', $bien->id) }}">
+                            <form method="POST" action="{{ route('bienes.update', $bien->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -80,11 +81,11 @@
                                                         name="costo" value="{{ $bien->costo }}" step="0.01"
                                                         min="0.01" autocomplete="costo" autofocus>
 
-                                                @error('costo')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+                                                    @error('costo')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -145,10 +146,10 @@
                                                 <select id="estado" name="estado"
                                                     class="form-control @error('estado') is-invalid @enderror"
                                                     autocomplete="estado" autofocus>
-                                                    <option value="1"
-                                                        {{ $bien->estado == '1' ? 'selected' : '' }}>Activo</option>
-                                                    <option value="2"
-                                                        {{ $bien->estado == '2' ? 'selected' : '' }}>Inactivo
+                                                    <option value="1" {{ $bien->estado == '1' ? 'selected' : '' }}>
+                                                        Activo</option>
+                                                    <option value="2" {{ $bien->estado == '2' ? 'selected' : '' }}>
+                                                        Inactivo
                                                     </option>
                                                 </select>
 
@@ -162,20 +163,48 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-12">
+                                    <div class="col col-6">
                                         <div class="row mb-3">
                                             <label for="nombre"
-                                                class="col-md-2 col-form-label text-md-end">{{ __('Descripción') }}</label>
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Descripción') }}</label>
 
-                                            <div class="col-md-10">
+                                            <div class="col-md-8">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="6" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para el servicio">{{ $bien->descripcion }}</textarea>
+                                                    rows="8" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ $bien->descripcion }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col col-6">
+                                        <div class="row mb-3">
+                                            <label for="imagen"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Imagen') }}</label>
+
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <input type="file" name="imagen" id="imagen" accept="image/*"
+                                                        class="form-control @error('imagen') is-invalid @enderror">
+                                                    @error('imagen')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="text-align: center;">
+                                            <div class="img-fluid">
+                                                <img id="imagen-preview"
+                                                    src="{{ asset('img/bienes/' . ($bien->imagen ?? 'img.png')) }}"
+                                                    alt="Imagen de la cabaña"
+                                                    style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
                                             </div>
                                         </div>
                                     </div>
@@ -198,4 +227,21 @@
         </div>
     </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        document.getElementById('imagen').addEventListener('change', function() {
+            const imagenPreview = document.getElementById('imagen-preview');
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagenPreview.src = e.target.result;
+                    imagenPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+
 @endsection

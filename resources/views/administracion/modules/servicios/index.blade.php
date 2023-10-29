@@ -22,63 +22,75 @@
 
                 <div class="card mt-3">
                     <div class="card-body ">
-
-                        <table id="servicios" class="table table-hover table-striped table-responsive-lg"
-                            style=" border-radius: 5px; overflow: hidden;">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Sucursal</th>
-                                    <th>Empresa</th>
-                                    <th>Costo</th>
-                                    <th>Stock</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($servicios as $servicio)
+                        <div class="table-responsive">
+                            <table id="servicios" class="table table-hover table-responsive-md"
+                                style=" border-radius: 5px; overflow: hidden;">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <td>{{ $servicio->id }}</td>
-                                        <td>{{ $servicio->nombre }}</td>
-                                        @foreach ($sucursales as $sucursal)
-                                            @if ($servicio->sucursal === $sucursal->id)
-                                                <td>{{ $sucursal->nombre }}</td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($empresas as $empresa)
-                                            @if ($servicio->empresa === $empresa->id)
-                                                <td>{{ $empresa->nombre }}</td>
-                                            @endif
-                                        @endforeach
-                                        <td>${{ number_format($servicio->costo, 2, '.', ',') }}</td>
-                                        <td>{{ $servicio->stock }}</td>
-
-                                        <td
-                                            @if (auth()->user()->can('servicios.edit') &&
-                                                    auth()->user()->can('servicios.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
-
-
-
-
-                                            @can('servicios.edit')
-                                                <a type="button" href="{{ route('servicios.edit', $servicio->id) }}"
-                                                    class="btn btn-outline-primary">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                </a>
-                                            @endcan
-                                            @can('servicios.destroy')
-                                                <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                    data-target="#modal-eliminar-{{ $servicio->id }}">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </a>
-                                                @include('administracion.modules.servicios.delete')
-                                            @endcan
-                                        </td>
+                                        <th>ID</th>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Sucursal</th>
+                                        <th>Empresa</th>
+                                        <th>Costo</th>
+                                        <th>Stock</th>
+                                        <th>Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($servicios as $servicio)
+                                        <tr>
+                                            <td>{{ $servicio->id }}</td>
+                                            <td>
+                                                @if ($servicio->imagen)
+                                                    <img src="{{ asset('img/servicios/' . $servicio->imagen) }}"
+                                                        alt="Imagen de la cabaña"
+                                                        style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
+                                                @else
+                                                    <img src="{{ asset('img/servicios/img.png') }}" alt="No hay imagen"
+                                                        style="max-width: 50px;  border-radius: 5px; overflow: hidden;">
+                                                @endif
+                                            </td>
+                                            <td>{{ $servicio->nombre }}</td>
+                                            @foreach ($sucursales as $sucursal)
+                                                @if ($servicio->sucursal === $sucursal->id)
+                                                    <td>{{ $sucursal->nombre }}</td>
+                                                @endif
+                                            @endforeach
+                                            @foreach ($empresas as $empresa)
+                                                @if ($servicio->empresa === $empresa->id)
+                                                    <td>{{ $empresa->nombre }}</td>
+                                                @endif
+                                            @endforeach
+                                            <td>${{ number_format($servicio->costo, 2, '.', ',') }}</td>
+                                            <td>{{ $servicio->stock }}</td>
+
+                                            <td
+                                                @if (auth()->user()->can('servicios.edit') &&
+                                                        auth()->user()->can('servicios.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+
+
+
+
+                                                @can('servicios.edit')
+                                                    <a type="button" href="{{ route('servicios.edit', $servicio->id) }}"
+                                                        class="btn btn-outline-primary">
+                                                        <i class="fas fa-pen"></i> Editar
+                                                    </a>
+                                                @endcan
+                                                @can('servicios.destroy')
+                                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                        data-target="#modal-eliminar-{{ $servicio->id }}">
+                                                        <i class="fas fa-trash"></i> Eliminar
+                                                    </a>
+                                                    @include('administracion.modules.servicios.delete')
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
