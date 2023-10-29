@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminReservasController;
 
 Route::prefix("/user")->group(function () {
     Route::get('/', function () {
@@ -82,10 +83,16 @@ Route::prefix('/')->group(function () {
 
         // Rutas para contacto
         Route::delete('/contacto/eliminar-todos', 'ContactoController@eliminarTodos')->name('contacto.eliminarTodos');
-        Route::resource('contacto', 'ContactoController')->only(['index', 'store', 'edit']);
+        Route::resource('contacto', 'ContactoController')->only(['index', 'store','edit']);
+        
+        Route::get('/reservas', 'AdminReservasController@index')->name('admin.reservas.index');
+        Route::post('/reservas/store', [AdminReservasController::class, 'storeReserva'])->name('reservas.store');
+
 
 
     });
 
 });
+
+
 ;
