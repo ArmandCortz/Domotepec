@@ -24,7 +24,56 @@ class SucursalesController extends Controller
 
     public function store(Request $request)
     {
-        Sucursal::create($request->all());
+        $messages = [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'empresa.required' => 'El campo empresa es obligatorio.',
+            'direccion.required' => 'El campo direccion es obligatorio.',
+            'telefono.required' => 'El campo telefono es obligatorio.',
+            'gerente.required' => 'El campo gerente es obligatorio.',
+            'imagen.required' => 'El campo imagen es obligatorio.',
+            'imagen.image' => 'El archivo debe ser una imagen válida.',
+            'imagen.mimes' => 'El archivo debe ser de tipo JPEG, PNG o GIF.',
+            // 'imagen.dimensions' => 'La imagen debe tener al menos 200x200 píxeles de dimensiones.',
+            'imagen.max' => 'El tamaño máximo de la imagen es 5 megabytes.',
+        ];
+        $request->validate([
+            'nombre' => 'required',
+            'empresa' => 'required',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'gerente' => 'required',
+            'imagen' => 'required|image|mimes:jpeg,png,gif|max:5120',
+
+        ], $messages);
+
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen');
+            $imageName = time() . '.' . $imagen->getClientOriginalExtension();
+            $path = public_path('img/sucursales/' . $imageName);
+
+            // Guarda la imagen original
+            $imagen->move('img/sucursales/', $imageName);
+
+            // Convierte la imagen a PNG y ajusta dimensiones
+            $img = Image::make($path);
+            $img->encode('png', 75); // Convierte a PNG con calidad del 75%
+            $img->resize(400, 200); // Ajusta a dimensiones específicas (200x200)
+
+            $request->imagen = $imageName;
+
+            // Guarda la imagen convertida
+            $img->save($path);
+        }
+
+
+        Sucursal::create([
+            'nombre' => $request->nombre,
+            'empresa'=> $request->empresa,
+            'direccion'=> $request->direccion,
+            'telefono'=> $request->telefono,
+            'gerente'=> $request->gerente,
+            'imagen'=> $request->imagen,
+        ]);
 
         return redirect()->route('sucursales.index')->with('success', 'Sucursal creada exitosamente.');
 
@@ -48,7 +97,66 @@ class SucursalesController extends Controller
     public function update(Request $request, $id)
     {
         $sucursal = Sucursal::find($id);
-        $sucursal->update($request->all());
+
+        $messages = [
+            'nombre.required' => 'El campo nombre es obligatorio.',
+            'empresa.required' => 'El campo empresa es obligatorio.',
+            'direccion.required' => 'El campo direccion es obligatorio.',
+            'telefono.required' => 'El campo telefono es obligatorio.',
+            'gerente.required' => 'El campo gerente es obligatorio.',
+            'imagen.required' => 'El campo imagen es obligatorio.',
+            'imagen.image' => 'El archivo debe ser una imagen válida.',
+            'imagen.mimes' => 'El archivo debe ser de tipo JPEG, PNG o GIF.',
+            // 'imagen.dimensions' => 'La imagen debe tener al menos 200x200 píxeles de dimensiones.',
+            'imagen.max' => 'El tamaño máximo de la imagen es 5 megabytes.',
+        ];
+        $request->validate([
+            'nombre' => 'required',
+            'empresa' => 'required',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'gerente' => 'required',
+            'imagen' => 'required|image|mimes:jpeg,png,gif|max:5120',
+
+        ], $messages);
+
+        if ($request->hasFile('imagen')) {
+            // Elimina la imagen anterior si existe
+            if ($sucursal->imagen) {
+                $imagenPath = public_path('img/sucursales/' . $sucursal->imagen);
+                if (file_exists($imagenPath)) {
+                    unlink($imagenPath);
+                }
+            }
+
+            $imagen = $request->file('imagen');
+            $imageName = time() . '.' . $imagen->getClientOriginalExtension();
+            $path = public_path('img/sucursales/' . $imageName);
+
+            // Guarda la imagen original
+            $imagen->move('img/sucursales/', $imageName);
+
+            // Convierte la imagen a PNG y ajusta dimensiones
+            $img = Image::make($path);
+            $img->encode('png', 75); // Convierte a PNG con calidad del 75%
+            $img->resize(400, 200); // Ajusta a dimensiones específicas (400x200)
+
+            // Guarda la imagen convertida
+            $img->save($path);
+
+            // Actualiza el nombre de la imagen en la base de datos
+            $sucursal->update([
+                'imagen' => $imageName,
+            ]);
+        }
+
+        Sucursal::update([
+            'nombre' => $request->nombre,
+            'empresa'=> $request->empresa,
+            'direccion'=> $request->direccion,
+            'telefono'=> $request->telefono,
+            'gerente'=> $request->gerente,
+        ]);
 
         return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
 
@@ -57,6 +165,15 @@ class SucursalesController extends Controller
     public function destroy($id)
     {
         $sucursal = Sucursal::find($id);
+        if (!$sucursal) {
+            return redirect()->route('sucursales.index')->with('error', 'La sucursal no se encontró.');
+        }
+        if ($sucursal->imagen) {
+            $imagenPath = public_path('img/sucursales/' . $sucursal->imagen);
+            if (file_exists($imagenPath)) {
+                unlink($imagenPath);
+            }
+        }
         $sucursal->delete();
         return redirect()->route('sucursales.index')->with('error', 'Sucursal eliminada exitosamente.');
     }
