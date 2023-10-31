@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminReservasController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\HomeuserController;
+
+Route::get('/userss', [HomeuserController::class, 'index'])->name('users.home');
 
 Route::prefix("/user")->group(function () {
     Route::get('/', function () {
@@ -32,6 +36,7 @@ Route::prefix("/user")->group(function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
+Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
 
 Route::prefix('/')->group(function () {
 
@@ -88,8 +93,7 @@ Route::prefix('/')->group(function () {
         Route::get('/reservas', 'AdminReservasController@index')->name('admin.reservas.index');
         Route::post('/reservas/store', [AdminReservasController::class, 'storeReserva'])->name('reservas.store');
 
-
-
+        Route::post('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
     });
 
 });

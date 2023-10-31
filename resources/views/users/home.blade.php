@@ -138,7 +138,20 @@
             </div>
         </div>
     </div>
-
+    <div class="container py-2 text-center">
+        <div class="row">
+            @foreach($sucursales as $sucursal)
+                <div class="col">
+                    <img src="{{ $sucursal->imagen }}" alt="{{ $sucursal->nombre }}" class="rounded-circle img-fluid"
+                        style="max-height: 100px; max-width: 100px;">
+                    <h5>{{ $sucursal->nombre }}</h5>
+                    <a href="#" class="btn btn-outline-success ver-sucursal" data-sucursal-id="{{ $sucursal->id }}">Ver Sucursal</a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    
+    
     <div id="habitaciones" class=" py-2">
         <div class="row mt-5 my-5">
 
@@ -180,5 +193,22 @@
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.ver-sucursal').on('click', function (e) {
+                    e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+                    var sucursalId = $(this).data('sucursal-id');
+                    console.log(sucursalId);
+                    // Llamar a una función o realizar alguna acción con el ID de la sucursal
+                    // Por ejemplo, podrías realizar una solicitud AJAX para obtener más detalles sobre la sucursal
+                    console.log('ID de la Sucursal:', sucursalId);
+                    window.location.href = "/reservaciones?id=" + sucursalId;
+
+                    // Luego, puedes redirigir a la página de reservaciones o realizar otra acción según tus necesidades
+                });
+            });
+        </script>
+
     </div>
-@endsection
+@endsection 

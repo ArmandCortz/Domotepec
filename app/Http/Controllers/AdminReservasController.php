@@ -44,4 +44,5 @@ class AdminReservasController extends Controller
         // Puedes retornar una respuesta JSON si es necesario
         return response()->json(['success' => true]);
     }
+    
 }

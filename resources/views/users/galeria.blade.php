@@ -1,4 +1,5 @@
 @extends('layouts.app_users')
+
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/galeria.css') }}">
 @endpush
@@ -17,23 +18,21 @@
                     </p>
                     <div class="container mt-1">
                         <div class="row justify-content-center">
-                                <div class="col-md-6">
-                                    <form action="{{ route('galerias.indexs') }}" method="GET" class="mb-3">
-                                        <div class="form-group text-center">
-                                            <label for="sucursal" class="mb-2">Seleccionar Sucursal:</label>
-                                            <select class="form-control" name="sucursal" id="sucursal">
-                                                <option value="">Todas las Sucursales</option>
-                                                @foreach ($sucursales as $sucursal)
-                                                    <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
-                                                @endforeach
-                                            </select>
-                                            <br>
-                                            <button type="submit" class="btn btn-primary btn-block">Filtrar</button>
-
-                                        </div>
-
-                                    </form>
-                                </div>
+                            <div class="col-md-6">
+                                <form action="{{ route('galerias.indexs') }}" method="GET" class="mb-3">
+                                    <div class="form-group text-center">
+                                        <label for="sucursal" class="mb-2">Seleccionar Sucursal:</label>
+                                        <select class="form-control" name="sucursal" id="sucursalSelect">
+                                            <option value="">Todas las Sucursales</option>
+                                            @foreach ($sucursales as $sucursal)
+                                                <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary btn-block">Filtrar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
 
@@ -69,17 +68,21 @@
                                                 <div class="modal-body">
                                                     <img src="{{ asset('storage/images/' . $galeria->imagen) }}"
                                                         class="img-fluid" alt="Galería Image" />
-                                                        <br>
-                                                        <br>
+                                                    <br>
+                                                    <br>
                                                     <p><strong>Descripción:</strong> {{ $galeria->descripcion }}</p>
                                                     <p><strong>Ubicación:</strong> {{ $galeria->ubicacion }}</p>
-                                                    <button type="submit" class="btn btn-primary btn-block" onclick="window.location.href = 'reservaciones';">Reservar</button>
+                                                    
+                                                    <!-- Formulario de reserva -->
+                                                    <form action="{{ route('reservaciones') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="galeria_id" value="{{ $galeria->id }}">
+                                                        <button type="submit" class="btn btn-primary btn-block">Reservar</button>
+                                                    </form>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Cerrar</button>
-                                                        
-
                                                 </div>
                                             </div>
                                         </div>
@@ -93,8 +96,10 @@
         </div>
     </section>
 @endsection
+
 @section('js')
     <script>
+        // Tu script JS aquí (sin cambios)
         document.getElementById('sucursalSelect').addEventListener('change', function () {
             // Obtener el valor seleccionado del select
             var selectedSucursal = this.value;
@@ -139,4 +144,3 @@
         });
     </script>
 @endsection
-
