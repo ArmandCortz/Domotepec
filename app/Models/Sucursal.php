@@ -1,5 +1,7 @@
 <?php
 
+// app\Models\Sucursal.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,10 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Sucursal extends Model
 {
     use HasFactory;
-    protected $table = 'sucursal'; // Nombre de la tabla en la base de datos
+
+    protected $table = 'sucursal';
 
     protected $fillable = [
-        'nombre',
+        'nombre', 'nombre',
         'empresa',
         'direccion',
         'telefono',
@@ -20,4 +23,9 @@ class Sucursal extends Model
         // Puedes agregar más campos aquí si es necesario
     ];
 
+    // Relación con las cabañas
+    public function cabañas()
+    {
+        return $this->hasMany(Cabaña::class, 'sucursal');
+    }
 }

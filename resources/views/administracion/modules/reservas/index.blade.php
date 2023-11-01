@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Empresas')
+@section('title', 'Reservas')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">

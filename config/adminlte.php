@@ -403,7 +403,8 @@ return [
                 ],
                 [
                     'text' => 'Reservaciones',
-                    'url' => '#',
+                    'url' => 'reservas',
+                    'active' => ['reservas*'],
                     'icon' => 'fas fa-fw',
 
                 ],
