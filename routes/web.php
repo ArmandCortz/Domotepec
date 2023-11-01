@@ -90,7 +90,7 @@ Route::prefix('/')->group(function () {
 
 
 
-    });
+    })->middleware('auth');
 
 });
 

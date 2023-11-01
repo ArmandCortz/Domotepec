@@ -16,6 +16,7 @@ class Sucursal extends Model
         'direccion',
         'telefono',
         'gerente',
+        'imagen',
         // Puedes agregar más campos aquí si es necesario
     ];
 

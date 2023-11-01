@@ -13,9 +13,9 @@
             <div class="col-md-12">
                 <h1 class="text-center mt-3">Modulo Sucursal</h1>
                 @can('sucursales.create')
-                <a href="{{ route('sucursales.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
-                    Sucursales</a>
-            @endcan                <div class="card mt-3">
+                    <a href="{{ route('sucursales.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
+                        Sucursales</a>
+                @endcan <div class="card mt-3">
                     <div class="card-body">
 
                         <table class="table table-hover table-responsive-sm" id="sucursales"
@@ -23,6 +23,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
+                                    <th>Imagen</th>
                                     <th>Nombre</th>
                                     <th>Empresa</th>
                                     <th>Dirección</th>
@@ -35,6 +36,16 @@
                                 @foreach ($sucursales as $sucursal)
                                     <tr>
                                         <td>{{ $sucursal->id }}</td>
+                                        <td>
+                                            @if ($sucursal->imagen)
+                                                <img src="{{ asset('img/sucursales/' . $sucursal->imagen) }}"
+                                                    alt="Imagen de la empresa"
+                                                    style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
+                                            @else
+                                                <img src="{{ asset('img/sucursales/img.png') }}" alt="No hay imagen"
+                                                    style="max-width: 50px;  border-radius: 5px; overflow: hidden;">
+                                            @endif
+                                        </td>
                                         <td>{{ $sucursal->nombre }}</td>
                                         <td>{{ $sucursal->empresa }}</td>
                                         @foreach ($empresas as $empresa)
@@ -83,7 +94,23 @@
 @endsection
 
 @section('js')
-
+    <script>
+        @if (session('success'))
+            {
+                alertify.notify("{{ session('success') }}", 'success', 5);
+            }
+        @endif
+        @if (session('error'))
+            {
+                alertify.error("{{ session('error') }}", 'error', 5);
+            }
+        @endif
+        @if (session('info'))
+            {
+                alertify.notify("{{ session('info') }}", 'custom', 5);
+            }
+        @endif
+    </script>
     <script>
         new DataTable('#sucursales', {
             language: {
@@ -112,7 +139,7 @@
             ]
         });
     </script>
-    
+
 
 
 @endsection

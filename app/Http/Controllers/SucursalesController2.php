@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 use Illuminate\Http\Request;
-use App\Models\Sucursal; // Asegúrate de importar el modelo de Sucursal
+use App\Models\Sucursal;
 use App\Models\Empresa;
 
 class SucursalesController extends Controller
-
 {
-    public $sucursal;
+    public function __construct()
+    {
+        $this->middleware('can:sucursales.index')->only('index');
+        $this->middleware('can:sucursales.create')->only('create');
+        $this->middleware('can:sucursales.edit')->only('edit');
+    }
     public function index()
     {
         // Mostrar una lista de todas las sucursales

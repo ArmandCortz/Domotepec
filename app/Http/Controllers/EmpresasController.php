@@ -15,11 +15,6 @@ class EmpresasController extends Controller
         return view("administracion.modules.empresas.index", compact("empresas"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view("administracion.modules.empresas.create");
