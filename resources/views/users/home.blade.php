@@ -139,11 +139,18 @@
         </div>
     </div>
     <div class="container py-2 text-center">
+        <div class="col-md-6 offset-md-3 text-center">
+
+            <h1>Sucursales</h1>
+            <h5>Selecciona la sucursal que deseas ver:
+            </h5>
+        </div>
         <div class="row">
             @foreach($sucursales as $sucursal)
                 <div class="col">
-                    <img src="{{ $sucursal->imagen }}" alt="{{ $sucursal->nombre }}" class="rounded-circle img-fluid"
-                        style="max-height: 100px; max-width: 100px;">
+                    <img src="{{ asset('img/sucursales/' . $sucursal->imagen) }}" alt="{{ $sucursal->nombre }}" 
+                    class="img-fluid mb-2" style="height:90%; width:70%;"
+                    >
                     <h5>{{ $sucursal->nombre }}</h5>
                     <a href="#" class="btn btn-outline-success ver-sucursal" data-sucursal-id="{{ $sucursal->id }}">Ver Sucursal</a>
                 </div>
@@ -155,16 +162,8 @@
     <div id="habitaciones" class=" py-2">
         <div class="row mt-5 my-5">
 
-            <div class="col-md-6 offset-md-3 text-center">
-
-                <h1>Sucursales</h1>
-                <br>
-                <h5>Selecciona la sucursal que deseas ver:
-                </h5>
-
-
-            </div>
-            <div class="container text-center">
+           
+   {{--          <div class="container text-center">
                 <div class="row">
                     <div class="col">
                         <img src="/img/cabaña2.jpeg" alt="" class="rounded-circle img-fluid"
@@ -191,7 +190,7 @@
                         <a href="" class="btn btn-outline-success">Descripción</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
