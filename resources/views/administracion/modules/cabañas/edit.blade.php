@@ -111,9 +111,8 @@
 
                                             <div class="col-md-8">
                                                 <div class="form-group">
-                                                    <input type="file" name="imagen" id="imagen" accept="image/*" 
-                                                        class="form-control @error('imagen') is-invalid @enderror"
-                                                        >
+                                                    <input type="file" name="imagen" id="imagen" accept="image/*"
+                                                        class="form-control @error('imagen') is-invalid @enderror">
                                                     @error('imagen')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -137,10 +136,17 @@
 
                         </div>
                         <div class="modal-footer">
-                            <a href="{{ route('cabañas.index') }}" type="button"
-                                class="btn btn-outline-danger">Cancelar</a>
-                            <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                            <div class="justify-content-start">
+                                <a href="" type="button" class="btn btn-outline-success">Galeria</a>
+                            </div>
+                            <div class="justify-content-end">
+                                <a href="{{ route('cabañas.index') }}" type="button"
+                                    class="btn btn-outline-danger">Cancelar</a>
+                                <button type="submit" class="btn btn-outline-primary">Guardar</button>
+                            </div>
                         </div>
+
+
 
                         </form>
                     </div>
