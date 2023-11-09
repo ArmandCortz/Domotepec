@@ -7,6 +7,7 @@ use App\Models\Sucursal;
 
 class HomeuserController extends Controller
 {
+    
     public function index()
     {
         // Obtén todas las sucursales desde el modelo

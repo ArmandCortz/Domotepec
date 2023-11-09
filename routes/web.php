@@ -5,12 +5,12 @@ use App\Http\Controllers\AdminReservasController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\HomeuserController;
 
-Route::get('/userss', [HomeuserController::class, 'index'])->name('users.home');
 
-Route::prefix("/user")->group(function () {
-    Route::get('/', function () {
+Route::prefix("/user")->namespace("App\\Http\\Controllers")->group(function () {
+    
+    Route::get('/', [HomeuserController::class, 'index'] ,function () {
         return view('users.home');
-    })->name('/');
+    })->name('Inicio');
 
     Route::get('#servicios', function () {
         return view('users.home');
@@ -28,14 +28,11 @@ Route::prefix("/user")->group(function () {
         return view('users.contacto');
     })->name('Contacto');
 
-    Route::get('/reservaciones', function () {
-        return view('users.reservaciones');
-    })->name('Reservaciones');
+
+    Route::get('/reservaciones',"ReservaController@reservar")->name('Reservaciones');
+
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
 
 Route::prefix('/')->group(function () {

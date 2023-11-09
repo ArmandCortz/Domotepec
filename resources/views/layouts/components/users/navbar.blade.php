@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('/') }}">
+        <a class="navbar-brand" href="{{ route('Inicio') }}">
             <img src="/img/img/Logo-Domotepec-1.jpeg" class="rounded-circle img-fluid" alt="Domotepec" width="25" height="25">
             {{ env('APP_NAME') }}
         </a>
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ route('/') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Home</a>
+                    <a href="{{ route('Inicio') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('Servicios') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Servicios</a>
@@ -23,9 +23,9 @@
                 <li class="nav-item">
                     <a href="{{ route('Contacto') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Contacto</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('Reservaciones') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Reservaciones</a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
