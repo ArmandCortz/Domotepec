@@ -111,8 +111,14 @@
 
                                             <div class="col-md-8">
                                                 <div class="form-group">
+                                                    <label for="imagen">
+
+                                                        <div class="upload-button form-control @error('imagen') is-invalid @enderror" style="cursor: pointer; width: auto; border-radius: 8px; height: 40px; background-color: rgb(255, 255, 255); border-color:rgb(206, 207, 208); display: grid; justify-content: center; align-items: center; font-size: 20px; font-weight: 600"> 
+                                                        Seleccionar Archivo 
+                                                    </div>
+                                                    </label> 
                                                     <input type="file" name="imagen" id="imagen" accept="image/*"
-                                                        class="form-control @error('imagen') is-invalid @enderror">
+                                                        class="form-control @error('imagen') is-invalid @enderror" style="display: none">
                                                     @error('imagen')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -132,12 +138,15 @@
                                         </div>
                                     </div>
 
+                                    
+
                                 </div>
 
                         </div>
                         <div class="modal-footer">
                             <div class="justify-content-start">
-                                <a href="" type="button" class="btn btn-outline-success">Galeria</a>
+                                <a href="{{ route('cabañas.imagenes', $cabañas->id) }}" type="button"
+                                    class="btn btn-outline-success">Imagenes</a>
                             </div>
                             <div class="justify-content-end">
                                 <a href="{{ route('cabañas.index') }}" type="button"

@@ -104,7 +104,7 @@
 
             <div class="col-md-6 offset-md-3 text-center">
 
-                <h1>Sucursales</h1>
+                <h1>Servicios</h1>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, inventore. Quisquam repellendus
                     voluptatum
                     doloribus minus dignissimos fuga porro dicta, nostrum aspernatur sequi, illum temporibus! Placeat aut

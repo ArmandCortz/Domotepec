@@ -24,4 +24,8 @@ class Cabaña extends Model
     {
         return $this->belongsTo(Sucursal::class, 'sucursal');
     }
+    public function imagenes()
+    {
+        return $this->hasMany(Imagenes::class,'cabaña');
+    }
 }
