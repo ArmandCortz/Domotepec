@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ route('Inicio') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Home</a>
+                    <a href="{{ route('Inicio') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('Servicios') }}" class="nav-link" style="font-size: 18px; margin-right: 15px;">Servicios</a>
