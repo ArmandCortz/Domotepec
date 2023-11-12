@@ -43,38 +43,36 @@
     </div>
     {{-- final del carrusel --}}
 
-    <div id="nosotros" class="container-fluid">
-        <div class="d-sm-block d-lg-none">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="container text-center ">
-                        <div class="d-flex flex-column align-items-center  mt-5 mb-5">
-                            <p>Nosotros</p>
-                            <h1>Domotepec</h1>
-                            <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quaerat cum eum veniam
-                                culpa
-                                voluptatum ipsum nam tempora! Quia cumque temporibus inventore suscipit nihil recusandae
-                                accusantium ipsum quibusdam vero perspiciatis?</h5>
+    <div class="container-xxl">
+        <div id="nosotros" class="container-fluid">
+            <div class="d-sm-block d-lg-none">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="container text-center ">
+                            <div class="d-flex flex-column align-items-center  mt-5 mb-5">
+                                <p>Nosotros</p>
+                                <h1>Domotepec</h1>
+                                <h5>En Domotepec buscamos brindar una experiencia Unica a nuestros huéspedes combinando
+                                    excelencia en el servicio con la mejor calidad y la mejor atención</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="d-none d-lg-block">
-            <div class="row text-center">
-                <div class="col-6 mt-5 mb-5">
+            <div class="d-none d-lg-block">
+                <div class="row text-center">
+                    <div class="col-6 mt-5 mb-5">
                         <p>Nosotros</p>
                         <h1>Domotepec</h1>
-                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quaerat cum eum veniam
-                            culpa
-                            voluptatum ipsum nam tempora! Quia cumque temporibus inventore suscipit nihil recusandae
-                            accusantium ipsum quibusdam vero perspiciatis?</h5>
-                </div>
-                <div class="col-6" style="background-image: url(../img/img/chalate_1.png); background-size: cover;">
-                    <div class="container text-center" style="position: relative; height: 300px;">
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            <img src="/img/img/Logo-Domotepec-1.jpeg" alt="" class="rounded-circle img-fluid"
-                                style="max-height: 150px; max-width: 150px; opacity: 75%;">
+                        <h5>En Domotepec buscamos brindar una experiencia Unica a nuestros huéspedes combinando
+                            excelencia en el servicio con la mejor calidad y la mejor atención.</h5>
+                    </div>
+                    <div class="col-6" style="background-image: url(../img/img/chalate_1.png); background-size: cover;">
+                        <div class="container text-center" style="position: relative; height: 300px;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <img src="/img/img/Logo-Domotepec-1.jpeg" alt="" class="rounded-circle img-fluid"
+                                    style="max-height: 150px; max-width: 150px; opacity: 75%;">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,43 +100,43 @@
     <div id="servicios" class=" bg-dark text-white py-2" style="">
         <div class="row mt-5 my-5">
 
-            <div class="col-md-6 offset-md-3 text-center">
+            <div class="container-xxl">
+                <div class="col-md-6 offset-md-3 text-center">
 
-                <h1>Servicios</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, inventore. Quisquam repellendus
-                    voluptatum
-                    doloribus minus dignissimos fuga porro dicta, nostrum aspernatur sequi, illum temporibus! Placeat aut
-                    sed iusto explicabo neque.</p>
-                <br>
+                    <h1>Servicios</h1>
+                    <p>En Domotepec buscamos brindar servicios de alta calidad, todo con el objetivo de que nuestros
+                        huespedes encuentren una experiencia personal y unica.</p>
+                    <br>
 
 
-            </div>
-            <div class="container py-2 text-center">
-                <div class="row">
-                    <div class="col">
-                        <i class="fa fa-binoculars"></i>
-                        <p>Servicio 1</p>
-                        <i class="fa fa-binoculars"></i>
-                        <p>Servicio 2</p>
+                </div>
+                <div class="container py-2 text-center">
+                    <div class="row">
+                        <div class="col">
+                            <i class="fa fa-binoculars"></i>
+                            <p>Servicio 1</p>
+                            <i class="fa fa-binoculars"></i>
+                            <p>Servicio 2</p>
 
-                    </div>
-                    <div class="col">
-                        <i class="fa fa-binoculars"></i>
-                        <p>Servicio 3</p>
-                        <i class="fa fa-binoculars"></i>
-                        <p>Servicio 4</p>
-                    </div>
-                    <div class="col">
-                        <i class="fa fa-binoculars"></i>
-                        <p>Servicio 5</p>
-                        <i class="fa fa-binoculars"></i>
-                        <p>Servicio 6</p>
+                        </div>
+                        <div class="col">
+                            <i class="fa fa-binoculars"></i>
+                            <p>Servicio 3</p>
+                            <i class="fa fa-binoculars"></i>
+                            <p>Servicio 4</p>
+                        </div>
+                        <div class="col">
+                            <i class="fa fa-binoculars"></i>
+                            <p>Servicio 5</p>
+                            <i class="fa fa-binoculars"></i>
+                            <p>Servicio 6</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container py-2 text-center">
+    <div class="container-xxl py-2 text-center">
         <div class="col-md-6 offset-md-3 text-center">
 
             <h1>Sucursales</h1>
@@ -146,24 +144,24 @@
             </h5>
         </div>
         <div class="row">
-            @foreach($sucursales as $sucursal)
+            @foreach ($sucursales as $sucursal)
                 <div class="col">
-                    <img src="{{ asset('img/sucursales/' . $sucursal->imagen) }}" alt="{{ $sucursal->nombre }}" 
-                    class="img-fluid mb-2" style="height:90%; width:70%;"
-                    >
+                    <img src="{{ asset('img/sucursales/' . $sucursal->imagen) }}" alt="{{ $sucursal->nombre }}"
+                        class="img-fluid mb-2" style="height:90%; width:70%;">
                     <h5>{{ $sucursal->nombre }}</h5>
-                    <a href="#" class="btn btn-outline-success ver-sucursal" data-sucursal-id="{{ $sucursal->id }}">Ver Sucursal</a>
+                    <a href="#" class="btn btn-outline-success ver-sucursal"
+                        data-sucursal-id="{{ $sucursal->id }}">Ver Sucursal</a>
                 </div>
             @endforeach
         </div>
     </div>
-    
-    
+
+
     <div id="habitaciones" class=" py-2">
         <div class="row mt-5 my-5">
 
-           
-   {{--          <div class="container text-center">
+
+            {{--          <div class="container text-center">
                 <div class="row">
                     <div class="col">
                         <img src="/img/cabaña2.jpeg" alt="" class="rounded-circle img-fluid"
@@ -194,8 +192,8 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            $(document).ready(function () {
-                $('.ver-sucursal').on('click', function (e) {
+            $(document).ready(function() {
+                $('.ver-sucursal').on('click', function(e) {
                     e.preventDefault(); // Evita el comportamiento predeterminado del enlace
                     var sucursalId = $(this).data('sucursal-id');
                     console.log(sucursalId);
@@ -210,4 +208,4 @@
         </script>
 
     </div>
-@endsection 
+@endsection

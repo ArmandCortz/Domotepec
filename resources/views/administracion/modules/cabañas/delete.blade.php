@@ -5,7 +5,7 @@
             <div class="modal-header bg-dark">
                 <div class="container text-center">
                     <h1 class="modal-title" id="modal-perfilLabel">Eliminar
-                        Empresa</h1>
+                        Cabaña</h1>
                 </div>
                 <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="card-body">
                         <h5 class="text-center" style="color: red">
-                            ¿Estas seguro de querer eliminar la empresa
+                            ¿Estas seguro de querer eliminar la Cabaña
                             con los siguientes datos?</h5>
                         <br>
                         <div class="row row-cols-2">
