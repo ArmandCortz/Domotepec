@@ -182,4 +182,23 @@
         });
     </script>
 
+    <script>
+        @if (session('success'))
+            {
+                alertify.notify("{{ session('success') }}", 'success', 5);
+            }
+        @endif
+        @if (session('error'))
+            {
+                alertify.error("{{ session('error') }}", 'error', 5);
+            }
+        @endif
+        @if (session('info'))
+            {
+                alertify.notify("{{ session('info') }}", 'custom', 5);
+            }
+        @endif
+    </script>
+    
+
 @endsection

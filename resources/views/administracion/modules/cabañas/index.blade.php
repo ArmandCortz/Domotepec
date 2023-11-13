@@ -96,6 +96,8 @@
     </div>
 
 
+
+@endsection
 @section('js')
     <script>
         @if (session('success'))
@@ -143,5 +145,4 @@
         });
     </script>
 
-@endsection
 @endsection

@@ -65,6 +65,7 @@ Route::prefix('/')->group(function () {
         // Route::post('cabañas', 'CabañasController@store')->name('cabañas.store');
         Route::get('cabañas/{id}/edit', 'CabañasController@edit')->name('cabañas.edit');
         Route::get('cabañas/{id}/imagenes/edit', 'ImagenesCabañasController@edit')->name('cabañas.imagenes');
+        Route::put('cabañas/{id}/imagenes/update', 'ImagenesCabañasController@update')->name('cabañas.imagenes.update');
         Route::put('cabañas/{id}', 'CabañasController@update')->name('cabañas.update');
         Route::delete('cabañas/{id}', 'CabañasController@destroy')->name('cabañas.destroy');
         Route::resource('cabañas', 'CabañasController')->except('edit','update','destroy')->names('cabañas');

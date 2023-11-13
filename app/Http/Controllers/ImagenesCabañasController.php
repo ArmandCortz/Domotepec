@@ -8,54 +8,6 @@ use App\Models\Imagenes;
 
 class ImagenesCabañasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     
     public function edit(Imagenes $imagenes,Cabaña $cabañas, $cabaña)
     {
@@ -65,32 +17,40 @@ class ImagenesCabañasController extends Controller
         return view("administracion.modules.cabañas.imagenes",compact("cabaña","imagenes"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $cabaña = Cabaña::find($id);
-        $imagenes = $cabaña->imagenes;
-
-        $imagenes->update([
-            'nombre' => $request->nombre,
-            'ubicacion' => $request->ubicacion,
-            'sucursal' => $request->sucursal,
-            'descripcion' => $request->descripcion,
+        $request->validate([
+            'imagen.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if ($request->hasFile('imagen')) {
+            foreach ($request->file('imagen') as $key => $file) {
+                $imageName = 'imagen_' . $key . '_' . time() . '.' . $file->extension();
+                $file->move(public_path('img/cabañas/imagenes'), $imageName);
+
+                $imagen = Imagenes::where('cabaña', $cabaña->id)->where('clase', $key + 1)->first();
+                if ($imagen) {
+                    $imagen->update(['imagen' => $imageName]);
+                } else {
+                    Imagenes::create([
+                        'cabaña_id' => $cabaña->id,
+                        'clase' => $key + 1,
+                        'imagen' => $imageName,
+                    ]);
+                }
+            }
+        } else {
+            // El formulario está vacío, redirige sin procesar la actualización
+            return redirect()->route('cabañas.edit', $cabaña->id)->with('success', 'No se proporcionaron imágenes nuevas.');
+        }
+        
+        
+
+        return redirect()->route('cabañas.edit', $cabaña->id)->with('success', 'Imágenes actualizadas correctamente.');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
