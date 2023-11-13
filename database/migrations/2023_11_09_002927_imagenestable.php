@@ -17,6 +17,7 @@ class Imagenestable extends Migration
             $table->id();
             $table->string('imagen')->nullable();
             $table->integer('cabaña');
+            $table->integer('clase');
             $table->timestamps();
         });
     }

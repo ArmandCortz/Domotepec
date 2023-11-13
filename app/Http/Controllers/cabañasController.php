@@ -7,6 +7,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use App\Models\Cabaña;
 use App\Models\Sucursal;
+use App\Models\Imagenes;
 
 class CabañasController extends Controller
 {
@@ -76,13 +77,24 @@ class CabañasController extends Controller
         // dd($request);
         // dd($imageName, $request->imagen, $request->all());
 
-        Cabaña::create([
+        // Crear la cabaña
+        $cabaña = Cabaña::create([
             'nombre' => $request->nombre,
             'ubicacion' => $request->ubicacion,
             'sucursal' => $request->sucursal,
             'descripcion' => $request->descripcion,
             'imagen' => $request->imagen,
         ]);
+
+        // Crear las seis imágenes asociadas a la cabaña
+        for ($count = 1; $count <= 6; $count++) {
+            Imagenes::create([
+                'cabaña' => $cabaña->id,
+                'clase' => $count,
+            ]);
+        }
+
+
         return redirect()->route('cabañas.index')->with('success', 'Cabaña creada exitosamente.');
     }
 

@@ -25,6 +25,12 @@ class ImagenesCabañasController extends Controller
         ]);
 
         if ($request->hasFile('imagen')) {
+            if ($cabaña->imagen) {
+                $imagenPath = public_path('img/cabañas/' . $cabaña->imagen);
+                if (file_exists($imagenPath)) {
+                    unlink($imagenPath);
+                }
+            }
             foreach ($request->file('imagen') as $key => $file) {
                 $imageName = 'imagen_' . $key . '_' . time() . '.' . $file->extension();
                 $file->move(public_path('img/cabañas/imagenes'), $imageName);

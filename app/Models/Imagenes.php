@@ -12,5 +12,6 @@ class Imagenes extends Model
         'id',
         'imagen',
         'cabaña',
+        'clase',
     ];
 }
