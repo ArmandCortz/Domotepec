@@ -139,8 +139,8 @@
     <div class="container-xxl py-2 text-center">
         <div class="col-md-6 offset-md-3 text-center">
 
-            <h1>Sucursales</h1>
-            <h5>Selecciona la sucursal que deseas ver:
+            <h1>Cabañas</h1>
+            <h5>Selecciona las cabañas que deseas ver:
             </h5>
         </div>
         <div class="row">

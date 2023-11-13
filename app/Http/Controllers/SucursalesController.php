@@ -112,7 +112,7 @@ class SucursalesController extends Controller
             'direccion' => 'required',
             'telefono' => 'required',
             'gerente' => 'required',
-            'imagen' => 'required|image|mimes:jpeg,png,gif|max:5120',
+            'imagen' => 'image|mimes:jpeg,png,gif|max:5120',
         ], $messages);
         if ($request->hasFile('imagen')) {
             // Elimina la imagen anterior si existe
