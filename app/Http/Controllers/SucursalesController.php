@@ -18,7 +18,7 @@ class SucursalesController extends Controller
     }
 
     public function create()
-    { 
+    {
         $empresas = Empresa::all();
         $sucursales = Sucursal::all();
         return view('administracion.modules.sucursales.create', compact('sucursales', 'empresas'));
@@ -26,7 +26,7 @@ class SucursalesController extends Controller
 
     public function store(Request $request)
     {
-        $messages=[
+        $messages = [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'empresa.required' => 'El campo empresa es obligatorio.',
             'direccion.required' => 'El campo dirección es obligatorio.',
@@ -38,11 +38,11 @@ class SucursalesController extends Controller
             'imagen.max' => 'El tamaño máximo de la imagen es 5 megabytes.',
         ];
         $request->validate([
-            'nombre'=> 'required',
-            'empresa'=> 'required',
-            'direccion'=> 'required',
-            'telefono'=> 'required',
-            'gerente'=> 'required',
+            'nombre' => 'required',
+            'empresa' => 'required',
+            'direccion' => 'required',
+            'telefono' => 'required',
+            'gerente' => 'required',
             'imagen' => 'required|image|mimes:jpeg,png,gif|max:5120',
         ], $messages);
         if ($request->hasFile('imagen')) {
@@ -65,10 +65,10 @@ class SucursalesController extends Controller
         }
         Sucursal::create([
             'nombre' => $request->nombre,
-            'empresa'=> $request->empresa,
-            'direccion'=> $request->direccion,
-            'telefono'=> $request->telefono,
-            'gerente'=> $request->gerente,
+            'empresa' => $request->empresa,
+            'direccion' => $request->direccion,
+            'telefono' => $request->telefono,
+            'gerente' => $request->gerente,
             'imagen' => $request->imagen,
         ]);
 
@@ -88,7 +88,7 @@ class SucursalesController extends Controller
 
 
         // Mostrar la vista de edición con la sucursal
-        return view('administracion.modules.sucursales.edit', compact('sucursal','empresas'));
+        return view('administracion.modules.sucursales.edit', compact('sucursal', 'empresas'));
     }
 
     public function update(Request $request, $id)
@@ -143,13 +143,14 @@ class SucursalesController extends Controller
                 'imagen' => $imageName,
             ]);
         }
-        
+
         $sucursal->update([
             'nombre' => $request->nombre,
             'empresa' => $request->empresa,
             'direccion' => $request->direccion,
             'telefono' => $request->telefono,
-            'gerente' => $request->gerente,        ]);
+            'gerente' => $request->gerente,
+        ]);
 
         return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada exitosamente.');
 
@@ -168,7 +169,7 @@ class SucursalesController extends Controller
                 unlink($imagenPath);
             }
         }
-        
+
         $sucursal->delete();
         return redirect()->route('sucursales.index')->with('error', 'Sucursal eliminada exitosamente.');
     }

@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Galeria extends Model
 {
-// En el archivo del modelo
-   protected $table = 'galerias';
-    protected $fillable = ['empresa', 'sucursal', 'descripcion','empresa','sucursal', 'ubicacion', 'imagen'];
-    
+    use HasFactory;
+    protected $fillable = [
+        'empresa',
+        'sucursal',
+        'descripcion',
+        'empresa',
+        'sucursal',
+        'ubicacion',
+        'imagen'
+    ];
+
 }
-
-

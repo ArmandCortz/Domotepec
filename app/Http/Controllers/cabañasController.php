@@ -103,18 +103,20 @@ class CabañasController extends Controller
         //
     }
 
-    public function edit(Cabaña $cabañas, $cabaña)
+    public function edit($id)
     {
         $sucursales = Sucursal::all();
-        $cabañas = Cabaña::find($cabaña);
-
+        $cabañas = Cabaña::find($id);
+        // dd($cabañas);
         return view("administracion.modules.cabañas.edit", compact("sucursales", "cabañas"));
+        
+        // dd($cabaña);
     }
 
     public function update(Request $request, $id)
     {
         $cabaña = Cabaña::find($id);
-        // dd($cabaña);
+        //dd($cabaña);
         $messages = [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'ubicacion.required' => 'El campo ubicacion es obligatorio.',

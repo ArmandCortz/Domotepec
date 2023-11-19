@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Servicios extends Model
 {
     use HasFactory;
-
-    protected $table = 'servicio'; // Nombre de la tabla en la base de datos
-
     protected $fillable = [
         'nombre',
         'estado',

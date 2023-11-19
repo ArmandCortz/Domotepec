@@ -18,7 +18,7 @@ class ServiciosController extends Controller
         $servicios = Servicios::all();
         $sucursales = Sucursal::all();
         $empresas = Empresa::all();
-        return view("administracion.modules.servicios.index", compact("servicios", 'sucursales','empresas'));
+        return view("administracion.modules.servicios.index", compact("servicios", 'sucursales', 'empresas'));
     }
 
     public function create()
@@ -26,7 +26,7 @@ class ServiciosController extends Controller
         $sucursales = Sucursal::all();
         $empresas = Empresa::all();
         $servicios = Servicios::all();
-        return view("administracion.modules.servicios.create", compact("servicios", 'sucursales','empresas'));
+        return view("administracion.modules.servicios.create", compact("servicios", 'sucursales', 'empresas'));
     }
     public function store(Request $request)
     {
@@ -76,7 +76,7 @@ class ServiciosController extends Controller
             // Guarda la imagen convertida
             $img->save($path);
         }
-        
+
         Servicios::create([
             'nombre' => $request->nombre,
             'estado' => $request->estado,
@@ -88,7 +88,7 @@ class ServiciosController extends Controller
             'imagen' => $request->imagen,
         ]);
 
-        return redirect()->route('servicios.index')->with('success', 'Servicio creado exitosamente.');
+        return redirect()->route('servicios.index')->with('success', 'Servicios creado exitosamente.');
 
 
     }
@@ -103,7 +103,7 @@ class ServiciosController extends Controller
         $sucursales = Sucursal::all();
         $empresas = Empresa::all();
         $servicio = Servicios::find($servicio->id);
-        return view("administracion.modules.servicios.edit", compact("servicio", 'sucursales','empresas'));
+        return view("administracion.modules.servicios.edit", compact("servicio", 'sucursales', 'empresas'));
 
     }
 
@@ -165,7 +165,7 @@ class ServiciosController extends Controller
                 'imagen' => $imageName,
             ]);
         }
-        
+
 
         $servicio->update([
             'nombre' => $request->nombre,
@@ -177,10 +177,10 @@ class ServiciosController extends Controller
             'stock' => $request->stock,
         ]);
 
-        return redirect()->route('servicios.index')->with('info', 'Servicio actualizado exitosamente.');
+        return redirect()->route('servicios.index')->with('info', 'Servicios actualizado exitosamente.');
     }
 
-    public function destroy( $id)
+    public function destroy($id)
     {
         $servicio = Servicios::find($id);
 
@@ -195,7 +195,7 @@ class ServiciosController extends Controller
         }
         $servicio->delete();
 
-        return redirect()->route('servicios.index')->with('error', 'Servicio eliminado exitosamente.');
+        return redirect()->route('servicios.index')->with('error', 'Servicios eliminado exitosamente.');
 
     }
 }

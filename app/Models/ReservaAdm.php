@@ -19,6 +19,4 @@ class ReservaAdm extends Model
         'fecha_salida',
         'n_personas',
     ];
-
-    // otras relaciones o métodos del modelo
 }

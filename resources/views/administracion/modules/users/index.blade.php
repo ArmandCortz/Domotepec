@@ -21,7 +21,8 @@
                 <div class="card mt-3">
                     <div class="card-body ">
 
-                        <table id="usuarios" class="table table-hover table-responsive-sm"  style=" border-radius: 5px; overflow: hidden;">
+                        <table id="usuarios" class="table table-hover table-responsive-sm"
+                            style="border-radius: 5px; overflow: hidden;">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>ID</th>
@@ -31,32 +32,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $contador = 1 @endphp <!-- Inicializar el contador en 1 -->
                                 @foreach ($users as $user)
                                     @if (Auth::user()->id !== $user->id)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
+                                            <td>{{ $contador }}</td> <!-- Mostrar el valor del contador como ID -->
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td
                                                 @if (auth()->user()->can('users.edit') &&
                                                         auth()->user()->can('users.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
-
-
-
-
                                                 @can('users.edit')
-                                                    <a type="button" href="{{ route('users.edit', $user->id) }}"
+                                                    <a href="{{ route('users.edit', $user->id) }}"
                                                         class="btn btn-outline-primary">
                                                         <i class="fas fa-pen"></i> Editar
                                                     </a>
                                                 @endcan
-                                                {{-- <a type="button" class="btn btn-outline-primary" data-toggle="modal"
-                                                    data-target="#modal-edit-{{ $user->id }}">
-                                                    <i class="fas fa-pen"></i> Editar
-                                                </a> 
-                                                @include('administracion.modules.users.editar') --}}
                                                 @can('users.destroy')
-                                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                    <a href="#" class="btn btn-outline-danger" data-toggle="modal"
                                                         data-target="#modal-eliminar-{{ $user->id }}">
                                                         <i class="fas fa-trash"></i> Eliminar
                                                     </a>
@@ -64,10 +57,12 @@
                                                 @endcan
                                             </td>
                                         </tr>
+                                        @php $contador++ @endphp <!-- Incrementar el contador después de cada fila -->
                                     @endif
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>

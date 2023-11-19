@@ -1,16 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AdminReservasController;
 use App\Http\Controllers\ReservaController;
-use App\Http\Controllers\HomeuserController;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-Route::prefix("/user")->namespace("App\\Http\\Controllers")->group(function () {
-    
-    Route::get('/', [HomeuserController::class, 'index'] ,function () {
-        return view('users.home');
-    })->name('Inicio');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Definicion de rutas necesarias para el proyecto
+
+Route::prefix('/user')->namespace("App\\Http\\Controllers")->group(function () {
+
+    Route::get('/', 'HomeUserController@index')->name('Inicio');
 
     Route::get('#servicios', function () {
         return view('users.home');
@@ -28,11 +46,8 @@ Route::prefix("/user")->namespace("App\\Http\\Controllers")->group(function () {
         return view('users.contacto');
     })->name('Contacto');
 
-
-    Route::get('/reservaciones',"ReservaController@reservar")->name('Reservaciones');
-
+    Route::get('/reservaciones', "ReservaController@reservar")->name('Reservaciones');
 });
-
 Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
 
 Route::prefix('/')->group(function () {
@@ -42,16 +57,15 @@ Route::prefix('/')->group(function () {
 
     });
 
-    Route::prefix("/")->namespace("App\\Http\\Controllers")->group(function () {
-        Route::get('/', "HomeController@index")->middleware('can:home')->name('home');
-
-        Route::get('/perfil', 'PerfilController@index')->name('perfil'); // Vista de perfil
-        Route::put('/perfil/{user}', 'PerfilController@update')->name('perfil.update'); // Actualizar perfil
-        Route::put('/perfil/{user}/password', 'PerfilController@updatePassword')->name('perfil.updatePassword'); // Actualizar contraseña
+    Route::prefix('/')->namespace("App\\Http\\Controllers")->group(function () {
+        Route::get('/', "HomeController@index")->name('home');
 
         // Rutas para users
-
         Route::resource('users', "UserController")->names('users');
+
+        // Rutas para Perfil de usuario
+        Route::resource('/perfil', 'PerfilController')->only('index', 'update')->names('Perfil');
+        Route::put('/perfil/{user}/password', 'PerfilController@updatePassword')->name('Perfil.updatePassword'); // Actualizar contraseña
 
         // rutas para empresas
         Route::resource('empresas', "EmpresasController")->names('empresas');
@@ -60,25 +74,10 @@ Route::prefix('/')->group(function () {
         Route::resource('sucursales', 'SucursalesController')->names('sucursales');
 
         // Rutas para cabañas
-        // Route::get('cabañas', 'CabañasController@index')->name('cabañas.index');
-        // Route::get('cabañas/create', 'CabañasController@create')->name('cabañas.create');
-        // Route::post('cabañas', 'CabañasController@store')->name('cabañas.store');
-        Route::get('cabañas/{id}/edit', 'CabañasController@edit')->name('cabañas.edit');
-        Route::get('cabañas/{id}/imagenes/edit', 'ImagenesCabañasController@edit')->name('cabañas.imagenes');
-        Route::put('cabañas/{id}/imagenes/update', 'ImagenesCabañasController@update')->name('cabañas.imagenes.update');
-        Route::put('cabañas/{id}', 'CabañasController@update')->name('cabañas.update');
-        Route::delete('cabañas/{id}', 'CabañasController@destroy')->name('cabañas.destroy');
-        Route::resource('cabañas', 'CabañasController')->except('edit','update','destroy')->names('cabañas');
 
-
-        //rutas para galeria
-
-        Route::get('/galeria', "GaleriaController@index")->name('galerias.index');
-        Route::resource('/galerias', "GaleriaController")->except('index');
-        Route::get('/user/galeria', 'GaleriaController@indexs')->name('galerias.indexs');
-
-        //rutas para contacto
-        // Route::resource('contacto', "ContactoController");
+        Route::resource('cabanas', 'CabañasController')->names('cabañas');
+        Route::get('cabanas/{id}/imagenes/edit', 'ImagenesCabañasController@edit')->name('cabañas.imagenes');
+        Route::put('cabanas/{id}/imagenes/update', 'ImagenesCabañasController@update')->name('cabañas.imagenes.update');
 
         //Rutas para bienes
         Route::resource('bienes', "BienesController")->names('bienes');
@@ -86,17 +85,21 @@ Route::prefix('/')->group(function () {
         // Rutas para servicios
         Route::resource('servicios', "ServiciosController")->names('servicios');
 
+        //rutas para galeria
+
+        Route::get('/galeria', "GaleriaController@index")->name('galerias.index');
+        Route::resource('/galerias', "GaleriaController")->except('index');
+        Route::get('/user/galeria', 'GaleriaController@indexs')->name('galerias.indexs');
+
         // Rutas para contacto
         Route::delete('/contacto/eliminar-todos', 'ContactoController@eliminarTodos')->name('contacto.eliminarTodos');
-        Route::resource('contacto', 'ContactoController')->only(['index', 'store','edit']);
-        
+        Route::resource('contacto', 'ContactoController')->only(['index', 'store', 'edit']);
+
+        // Rutas para reservas
+        // Route::resource('/reservas', 'AdminReservasController')->only(['index', 'store']);
         Route::get('/reservas', 'AdminReservasController@index')->name('admin.reservas.index');
         Route::post('/reservas/store', [AdminReservasController::class, 'storeReserva'])->name('reservas.store');
 
         Route::post('/reservaciones', [ReservaController::class, 'reservar'])->name('reservas');
     });
-
 });
-
-
-;

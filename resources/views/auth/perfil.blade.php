@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-8 ">
                                 {!! Form::model($user, [
-                                    'route' => ['perfil.update', $user->id],
+                                    'route' => ['Perfil.update', $user->id],
                                     'method' => 'PUT',
                                 ]) !!}
                                 <div class="card">
@@ -166,7 +166,7 @@
                             </div>
                             <div class="col-8">
                                 {!! Form::model($user, [
-                                    'route' => ['perfil.updatePassword', $user->id],
+                                    'route' => ['Perfil.updatePassword', $user->id],
                                     'method' => 'PUT',
                                 ]) !!}
                                 <div class="col">

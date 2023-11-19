@@ -9,8 +9,6 @@ class Cabaña extends Model
 {
     use HasFactory;
 
-    protected $table = 'cabana';
-
     protected $fillable = [
         'nombre',
         'ubicacion',
@@ -19,13 +17,12 @@ class Cabaña extends Model
         'imagen',
     ];
 
-    // Relación con la sucursal
     public function sucursal()
     {
         return $this->belongsTo(Sucursal::class, 'sucursal');
     }
     public function imagenes()
     {
-        return $this->hasMany(Imagenes::class,'cabaña');
+        return $this->hasMany(Imagenes::class, 'cabaña');
     }
 }

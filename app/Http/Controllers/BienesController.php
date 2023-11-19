@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Intervention\Image\ImageManagerStatic as Image;
 
 use Illuminate\Http\Request;
-use App\Models\Bienes;
+use App\Models\Bien;
 use App\Models\Empresa;
 use App\Models\Sucursal;
 
@@ -15,7 +15,7 @@ class BienesController extends Controller
     public function index()
     { // Mostrar una lista de todas las sucursales
 
-        $bienes = Bienes::all();
+        $bienes = Bien::all();
         $sucursales = Sucursal::all();
         $empresas = Empresa::all();
 
@@ -25,10 +25,10 @@ class BienesController extends Controller
     public function create()
     {
         $sucursales = Sucursal::all();
-        $bienes = Bienes::all();
+        $bienes = Bien::all();
         $empresas = Empresa::all();
 
-        return view("administracion.modules.bienes.create", compact("bienes", 'sucursales','empresas'));
+        return view("administracion.modules.bienes.create", compact("bienes", 'sucursales', 'empresas'));
     }
 
     public function store(Request $request)
@@ -77,7 +77,7 @@ class BienesController extends Controller
             // Guarda la imagen convertida
             $img->save($path);
         }
-        Bienes::create([
+        Bien::create([
             'nombre' => $request->nombre,
             'costo' => $request->costo,
             'descripcion' => $request->descripcion,
@@ -87,7 +87,7 @@ class BienesController extends Controller
             'estado' => $request->estado,
             'imagen' => $request->imagen,
         ]);
-                // dd($request->estado);
+        // dd($request->estado);
 
         return redirect()->route('bienes.index')->with('success', 'Bien creado exitosamente.');
     }
@@ -96,21 +96,21 @@ class BienesController extends Controller
     {
         //
     }
-    public function edit(Bienes $bienes,$id)
+    public function edit(Bien $bienes, $id)
     {
         $sucursales = Sucursal::all();
-        $bien = Bienes::find($id);
+        $bien = Bien::find($id);
         $empresas = Empresa::all();
-        return view("administracion.modules.bienes.edit", compact("bien", 'sucursales','empresas'));
+        return view("administracion.modules.bienes.edit", compact("bien", 'sucursales', 'empresas'));
 
     }
 
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
-        
-        
-        $bien = Bienes::find($id);
-        // dd($bien);
+
+
+        $bien = Bien::find($id);
+        //dd($bien);
         $messages = [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'costo.required' => 'El campo costo es obligatorio.',
@@ -181,9 +181,9 @@ class BienesController extends Controller
         return redirect()->route('bienes.index')->with('info', 'Bien actualizado exitosamente.');
     }
 
-    public function destroy(Bienes $bien, $id)
+    public function destroy(Bien $bien, $id)
     {
-        $bien = Bienes::find($id);
+        $bien = Bien::find($id);
 
         if (!$bien) {
             return redirect()->route('bienes.index')->with('error', 'El bien no se encontró.');

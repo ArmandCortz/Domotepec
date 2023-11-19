@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Password;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('can:users.index')->only('index');
         $this->middleware('can:users.create')->only('create');
         $this->middleware('can:users.edit')->only('edit');
+
+        
     }
     public function index()
     {
@@ -85,7 +87,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        
+
         // dd($request->roles);
         // dd($user->all());
         $messages = [

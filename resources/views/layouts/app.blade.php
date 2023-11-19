@@ -21,6 +21,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
+
 </head>
 
 <body>
@@ -29,9 +31,12 @@
             @extends('adminlte::page')
             @section('content')
                 @yield('content-admin')
-            @endsection
-        </main>
-    </div>
+        @endsection
+
+    </main>
+</div>
+
+
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Bienes;
+use App\Models\Bien;
 class BienesSeeder extends Seeder
 {
     /**
@@ -13,7 +13,7 @@ class BienesSeeder extends Seeder
      */
     public function run()
     {
-        Bienes::create([
+        Bien::create([
             'nombre' => 'papas fritas',
             'costo' => '1.25',
             'empresa' => '1',
@@ -23,7 +23,7 @@ class BienesSeeder extends Seeder
             'descripcion' => 'Ricas papas fritas a la francesa',
         ]);
         
-        Bienes::create([
+        Bien::create([
             'nombre' => 'Papas twister',
             'costo' => '1.25',
             'empresa' => '1',

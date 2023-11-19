@@ -54,7 +54,7 @@ class EmpresasController extends Controller
             // Guarda la imagen convertida
             $img->save($path);
         }
-        
+
         Empresa::create([
             'nombre' => $request->nombre,
             'imagen' => $request->imagen,
@@ -71,7 +71,7 @@ class EmpresasController extends Controller
      */
     public function show($id)
     {
-//
+        //
     }
 
     /**
@@ -82,7 +82,7 @@ class EmpresasController extends Controller
      */
     public function edit($id)
     {
-        
+
         $empresa = Empresa::find($id);
         return view("administracion.modules.empresas.edit", compact('empresa'));
 
@@ -104,7 +104,7 @@ class EmpresasController extends Controller
             'imagen' => 'image|mimes:jpeg,png,gif|max:5120',
 
         ], $messages);
-        
+
         if ($request->hasFile('imagen')) {
             // Elimina la imagen anterior si existe
             if ($empresa->imagen) {
@@ -134,7 +134,7 @@ class EmpresasController extends Controller
                 'imagen' => $imageName,
             ]);
         }
-        
+
         $empresa->update([
             'nombre' => $request->nombre,
         ]);
@@ -161,7 +161,7 @@ class EmpresasController extends Controller
                 unlink($imagenPath);
             }
         }
-        
+
         $empresa->delete();
         return redirect()->route('empresas.index')->with('error', 'Empresa eliminada exitosamente.');
 

@@ -15,8 +15,8 @@ class PerfilController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $role = Role::find(Auth::user()->id);
-        
-        return view('auth.perfil', compact('user','role'));
+
+        return view('auth.perfil', compact('user', 'role'));
     }
 
     public function update(Request $request, User $user)
@@ -46,7 +46,7 @@ class PerfilController extends Controller
             'current-password.required' => 'El campo de contraseña actual es obligatorio.',
             'new-password.required' => 'El campo de nueva contraseña es obligatorio.',
             'new-password.min' => 'La nueva contraseña debe tener al menos :min caracteres.',
-            
+
             'new-password.same' => 'El campo de nueva contraseña debe coincidir con la confirmación.',
 
             'new-password_confirm.required' => 'El campo de confirmación de nueva contraseña es obligatorio.',

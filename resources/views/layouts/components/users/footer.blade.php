@@ -13,11 +13,11 @@
             <div class="col">
                 <h2 style="text-align: left">Siguenos</h2>
                 <div class="container" style="padding-left: 20px; text-align: left">
-                    <a><i class="fa fa-facebook"></i> @ {{ env('APP_NAME') }}</a> <br>
+                    <a><i class="fa fa-facebook"></i> @ {{ config('app.name') }} </a> <br>
 
-                    <a><i class="fa fa-instagram"></i> @ {{ env('APP_NAME') }}</a> <br>
+                    <a><i class="fa fa-instagram"></i> @ {{ config('app.name') }} </a> <br>
 
-                    <a><i class="fa fa-twitter-square"></i> @ {{ env('APP_NAME') }}</a>
+                    <a><i class="fa fa-twitter-square"></i> @ {{ config('app.name') }} </a>
                 </div>
             </div>
             <div class="col">

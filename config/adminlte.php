@@ -355,8 +355,8 @@ return [
                 ],
                 [
                     'text' => 'Cabañas',
-                    'route' => 'cabañas.index',
-                    'active' => ['cabañas*', 'route' => 'cabañas.create'],
+                    'url' => '/cabanas',
+                    'active' => ['/cabanas/*'],
                     'icon' => 'fas fa-fw',
                     'can' => 'cabañas.index',
 
@@ -425,7 +425,7 @@ return [
         ['header' => 'Configuracion de cuenta'],
         [
             'text' => 'perfil',
-            'route' => 'perfil',
+            'route' => 'Perfil.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'Ayuda'],
@@ -508,7 +508,7 @@ return [
                 ],
             ],
         ],
-        'Alertify' => [
+        'alertify' => [
             'active' => true,
             'files' => [
                 [
