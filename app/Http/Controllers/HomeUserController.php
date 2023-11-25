@@ -16,12 +16,13 @@ class HomeUserController extends Controller
      */
     public function index()
     {
-        $sucursales = Sucursal::all();
-        $servicios = Servicios::all();
-        $cabañas = Cabaña::all();
+        $sucursales = Sucursal::inRandomOrder()->distinct()->take(3)->get();
+        $servicios = Servicios::inRandomOrder()->distinct()->take(6)->get();
+        $cabañas = Cabaña::inRandomOrder()->distinct()->take(4)->get();
+        $carrusel = Cabaña::inRandomOrder()->distinct()->take(4)->get();
 
         // Pasa las variables a la vista
-        return view('users.home', compact('sucursales', 'servicios', 'cabañas'));
+        return view('users.home', compact('sucursales', 'servicios', 'cabañas','carrusel'));
 
     }
 

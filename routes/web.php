@@ -46,9 +46,10 @@ Route::prefix('/user')->namespace("App\\Http\\Controllers")->group(function () {
         return view('users.contacto');
     })->name('Contacto');
 
-    Route::get('/reservaciones', "ReservaController@reservar")->name('Reservaciones');
+    Route::get('/reservaciones', "ReservaController@reservar")->name('reservaciones');
+    Route::get('/reservaciones/{id}/cabaña', "ReservaController@reservar")->name('reservaciones.cabaña');
 });
-Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
+// Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
 
 Route::prefix('/')->group(function () {
 

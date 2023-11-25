@@ -477,6 +477,23 @@ return [
     */
 
     'plugins' => [
+        'Bootstrap5' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
+                ],
+                
+            ],
+        ],
+        
         'Datatables' => [
             'active' => true,
             'files' => [
