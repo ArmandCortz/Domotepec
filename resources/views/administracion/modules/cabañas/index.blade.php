@@ -32,7 +32,7 @@
                                         <th>Nombre</th>
                                         <th>Ubicación</th>
                                         <th>Sucursal</th>
-                                        <th>Descripción</th>
+                                        {{-- <th>Descripción</th> --}}
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -61,13 +61,10 @@
                                                     <td>{{ $sucursal->nombre }}</td>
                                                 @endif
                                             @endforeach
-                                            <td>{{ $cabaña->descripcion }}</td>
+                                            {{-- <td>{{ $cabaña->descripcion }}</td> --}}
                                             <td
                                                 @if (auth()->user()->can('cabañas.edit') &&
                                                         auth()->user()->can('cabañas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
-
-
-
 
                                                 @can('cabañas.edit')
                                                     <a type="button" href="{{ route('cabañas.edit', $cabaña->id) }}"
@@ -121,7 +118,7 @@
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ servicios",
+                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ cabañas",
                 "infoEmpty": "",
                 "infoFiltered": "(_MAX_ servicios filtrados)",
                 "infoPostFix": "",

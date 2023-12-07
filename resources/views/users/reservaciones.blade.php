@@ -37,7 +37,10 @@
                         <h5 class="card-title">{{ $cabaña->nombre }}</h5>
                         <p class="card-text">{{ $cabaña->descripcion }}</p>
                         <!-- Agrega aquí cualquier otra información que desees mostrar -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservaModal" data-cabana-nombre="{{ $cabaña->nombre }}" data-cabana-descripcion="{{ $cabaña->descripcion }}">Reservar</button>
+                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservaModal" data-cabana-nombre="{{ $cabaña->nombre }}" data-cabana-descripcion="{{ $cabaña->descripcion }}">Reservar</button> --}}
+                        <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
+                                    class="btn btn-outline-primary ver-cabaña" style="width: 100%" data-cabaña-id="{{ $cabaña->id }}">Ver
+                                    Cabaña</a>
                     </div>
                 </div>
             </div>

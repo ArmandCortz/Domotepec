@@ -138,50 +138,65 @@
                     @endforeach --}}
             </div>
         </div>
+    </div>
 
-        <div id="cabañas" class="bg-dark text-white py-2 ">
-            <div class="row mt-5 my-5">
-                <div class="container-xxl text-center">
-                    <div class="col-md-6 offset-md-3 text-center">
+    <div id="cabañas" class="bg-dark text-white py-2 ">
+        <div class="row mt-5 my-5">
+            <div class="container-xxl text-center">
+                <div class="col-md-6 offset-md-3 text-center">
 
 
-                        <h1>Cabañas</h1>
-                        <h5>Selecciona la cabaña que desees ver: </h5>
-                    </div>
+                    <h1>Cabañas</h1>
+                    <h5>Selecciona la cabaña que desees ver: </h5>
+                </div>
 
-                    <div class="container text-center py-2">
-                        <div class="row">
-                            @foreach ($cabañas as $cabaña)
-                                <div class="col mt-2">
-                                    <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt=""
-                                        class="rounded-circle img-fluid"
-                                        style="max-height: 200px; max-width: 200px; height: 200px;  width: 200px;">
-                                    <br><br>
-                                    <h5>{{ $cabaña->nombre }}</h5>
-                                    <a href="" class="btn btn-outline-success">Ver Cabaña</a>
-                                </div>
-                            @endforeach
-                        </div>
+                <div class="container text-center py-2">
+                    <div class="row">
+                        @foreach ($cabañas as $cabaña)
+                            <div class="col mt-2">
+                                <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt=""
+                                    class="rounded-circle img-fluid"
+                                    style="max-height: 200px; max-width: 200px; height: 200px;  width: 200px;">
+                                <br><br>
+                                <h5>{{ $cabaña->nombre }}</h5>
+
+                                <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
+                                    class="btn btn-outline-success ver-cabaña" data-cabaña-id="{{ $cabaña->id }}">Ver
+                                    Cabaña</a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    $('.ver-sucursal').on('click', function(e) {
-                        e.preventDefault(); // Evita el comportamiento predeterminado del enlace
-                        var sucursalId = $(this).data('sucursal-id');
-                        console.log(sucursalId);
-                        // Llamar a una función o realizar alguna acción con el ID de la sucursal
-                        // Por ejemplo, podrías realizar una solicitud AJAX para obtener más detalles sobre la sucursal
-                        console.log('ID de la Sucursal:', sucursalId);
-                        window.location.href = "{{ route('reservaciones') }}?id=" + sucursalId;
-
-                        // Luego, puedes redirigir a la página de reservaciones o realizar otra acción según tus necesidades
-                    });
-                });
-            </script>
-
         </div>
-    @endsection
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.ver-sucursal').on('click', function(e) {
+                e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+                var sucursalId = $(this).data('sucursal-id');
+                console.log(sucursalId);
+                // Llamar a una función o realizar alguna acción con el ID de la sucursal
+                // Por ejemplo, podrías realizar una solicitud AJAX para obtener más detalles sobre la sucursal
+                console.log('ID de la Sucursal:', sucursalId);
+                window.location.href = "{{ route('reservaciones.sucursal') }}?id=" + sucursalId;
+
+                // Luego, puedes redirigir a la página de reservaciones o realizar otra acción según tus necesidades
+            });
+        });
+        // $(document).ready(function() {
+        //     $('.ver-cabaña').on('click', function(e) {
+        //         e.preventDefault(); // Evita el comportamiento predeterminado del enlace
+        //         var cabañaId = $(this).data('cabaña-id');
+        //         console.log(cabañaId);
+
+        //         // Redirigir a la ruta con el parámetro de ID
+        //         window.location.href = "/reservaciones/cabaña/" + cabañaId;
+        //     });
+        // });
+    </script>
+
+    </div>
+@endsection

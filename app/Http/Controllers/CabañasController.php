@@ -34,8 +34,14 @@ class CabañasController extends Controller
             'empresa.required' => 'El campo empresa es obligatorio.',
             'sucursal.required' => 'El campo sucursal es obligatorio.',
             'estado.required' => 'El campo estado es obligatorio.',
-            'stock.required' => 'El campo stock es obligatorio.',
-            'stock.integer' => 'El campo stock debe ser un número entero.',
+            'precio.required' => 'El campo precio es obligatorio.',
+            'precio.integer' => 'El campo precio debe ser un número entero.',
+            'huespedes.required' => 'El campo maximo de huespedes es obligatorio.',
+            'habitaciones.required' => 'El campo habitaciones es obligatorio.',
+            'camas.required' => 'El campo camas es obligatorio.',
+            'baños.required' => 'El campo baños es obligatorio.',
+            'limpieza.required' => 'El campo tarifa de limpieza es obligatorio.',
+            'limpieza.integer' => 'El campo tarifa de limpieza debe ser un número entero.',
             'descripcion.required' => 'El campo descripcion es obligatorio.',
             'imagen.required' => 'El campo imagen es obligatorio.',
             'imagen.image' => 'El archivo debe ser una imagen válida.',
@@ -46,13 +52,15 @@ class CabañasController extends Controller
         $request->validate([
             'nombre' => 'required',
             'ubicacion' => 'required',
-            // 'empresa' => 'required',
             'sucursal' => 'required',
-            // 'estado' => 'required',
-            // 'stock' => 'required|integer',
+            'precio' => 'required',
+            'huespedes' => 'required|integer',
+            'habitaciones' => 'required|integer',
+            'camas' => 'required|integer',
+            'baños' => 'required|integer',
+            'limpieza' => 'required|integer',
             'descripcion' => 'required',
             'imagen' => 'required|image|mimes:jpeg,png,gif|max:5120',
-            // 'imagen' => 'required|image|mimes:jpeg,png,gif|dimensions:min_width=200,min_height=200|max:5120',
 
         ], $messages);
 
@@ -82,6 +90,12 @@ class CabañasController extends Controller
             'nombre' => $request->nombre,
             'ubicacion' => $request->ubicacion,
             'sucursal' => $request->sucursal,
+            'precio' => $request->precio,
+            'huespedes' => $request->huespedes,
+            'habitaciones' => $request->habitaciones,
+            'camas' => $request->camas,
+            'baños' => $request->baños,
+            'limpieza' => $request->limpieza,
             'descripcion' => $request->descripcion,
             'imagen' => $request->imagen,
         ]);
@@ -100,7 +114,8 @@ class CabañasController extends Controller
 
     public function show($id)
     {
-        //
+        
+
     }
 
     public function edit($id)
@@ -123,8 +138,14 @@ class CabañasController extends Controller
             'empresa.required' => 'El campo empresa es obligatorio.',
             'sucursal.required' => 'El campo sucursal es obligatorio.',
             'estado.required' => 'El campo estado es obligatorio.',
-            'stock.required' => 'El campo stock es obligatorio.',
-            'stock.integer' => 'El campo stock debe ser un número entero.',
+            'precio.required' => 'El campo precio es obligatorio.',
+            'precio.integer' => 'El campo precio debe ser un número entero.',
+            'huespedes.required' => 'El campo maximo de huespedes es obligatorio.',
+            'habitaciones.required' => 'El campo habitaciones es obligatorio.',
+            'camas.required' => 'El campo camas es obligatorio.',
+            'baños.required' => 'El campo baños es obligatorio.',
+            'limpieza.required' => 'El campo tarifa de limpieza es obligatorio.',
+            'limpieza.integer' => 'El campo tarifa de limpieza debe ser un número entero.',
             'descripcion.required' => 'El campo descripcion es obligatorio.',
             'imagen.required' => 'El campo imagen es obligatorio.',
             'imagen.image' => 'El archivo debe ser una imagen válida.',
@@ -135,13 +156,14 @@ class CabañasController extends Controller
         $request->validate([
             'nombre' => 'required',
             'ubicacion' => 'required',
-            // 'empresa' => 'required',
             'sucursal' => 'required',
-            // 'estado' => 'required',
-            // 'stock' => 'required|integer',
+            'precio' => 'required',
+            'huespedes' => 'required|integer',
+            'habitaciones' => 'required|integer',
+            'camas' => 'required|integer',
+            'baños' => 'required|integer',
+            'limpieza' => 'required|integer',
             'descripcion' => 'required',
-            // 'imagen' => 'required|image|mimes:jpeg,png,gif|dimensions:min_width=200,min_height=200|max:5120',
-            // 'imagen' => 'required|image|mimes:jpeg,png,gif|dimensions:min_width=200,min_height=200|max:5120',
             'imagen' => 'image|mimes:jpeg,png,gif|max:5120',
 
         ], $messages);
@@ -180,6 +202,12 @@ class CabañasController extends Controller
             'nombre' => $request->nombre,
             'ubicacion' => $request->ubicacion,
             'sucursal' => $request->sucursal,
+            'precio' => $request->precio,
+            'huespedes' => $request->huespedes,
+            'habitaciones' => $request->habitaciones,
+            'camas' => $request->camas,
+            'baños' => $request->baños,
+            'limpieza' => $request->limpieza,
             'descripcion' => $request->descripcion,
         ]);
 

@@ -25,13 +25,9 @@ class CreateServicioTable extends Migration
             $table->string('descripcion', 200);
             $table->timestamps();
         });
+        
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('servicio');

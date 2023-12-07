@@ -10,11 +10,17 @@ class Cabaña extends Model
     use HasFactory;
 
     protected $fillable = [
+        'imagen',
         'nombre',
         'ubicacion',
-        'sucursal',
         'descripcion',
-        'imagen',
+        'sucursal',
+        'precio',
+        'huespedes',
+        'habitaciones',
+        'camas',
+        'baños',
+        'limpieza',
     ];
 
     public function sucursal()
@@ -24,5 +30,9 @@ class Cabaña extends Model
     public function imagenes()
     {
         return $this->hasMany(Imagenes::class, 'cabaña');
+    }
+    public function servicios()
+    {
+        return $this->belongsToMany(Servicios::class, 'cabañas_has_servicios', 'cabaña', 'servicio');
     }
 }

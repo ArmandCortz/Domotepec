@@ -17,6 +17,5 @@ class Servicios extends Model
         'empresa',
         'stock',
         'imagen'
-        // Puedes agregar más campos aquí si es necesario
     ];
 }

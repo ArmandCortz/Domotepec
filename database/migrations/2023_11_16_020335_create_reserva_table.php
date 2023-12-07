@@ -19,6 +19,10 @@ class CreateReservaTable extends Migration
             $table->unsignedBigInteger('cabaña');
             $table->date('ingreso');
             $table->date('egreso');
+            $table->float('estadia', 8, 2);
+            $table->unsignedBigInteger('huespedes');
+            $table->unsignedBigInteger('estado');
+
             $table->timestamps();
 
             $table->foreign('cliente')->references('id')->on('cliente');
