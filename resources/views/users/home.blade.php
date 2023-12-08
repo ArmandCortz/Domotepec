@@ -20,7 +20,9 @@
                     <div class="carousel-caption"
                         style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
                         <h5>{{ $cabaña->nombre }}</h5>
-                        <p>{{ $cabaña->descripcion }}</p>
+                        <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
+                                    class="btn btn-outline-light ver-cabaña" data-cabaña-id="{{ $cabaña->id }}">Ver
+                                    Cabaña</a>
                     </div>
                 </div>
             @endforeach

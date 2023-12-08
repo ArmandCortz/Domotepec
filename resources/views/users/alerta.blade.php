@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="row row-cols-2 py-4">
-                    <div class="col-8">
+                    <div class="col-6">
                         <h1>Nombre de la cabaña: {{ $cabaña->nombre }}</h1>
                         <p>{{ $cabaña->huespedes }} huéspedes . {{ $cabaña->habitaciones }} habitaciones .
                             {{ $cabaña->camas }} camas . {{ $cabaña->baños }} baños completos</p>
@@ -59,20 +59,19 @@
 
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="card shadow-lg bg-light mb-3" style="max-width: 100$;">
 
                             <div class="card-body">
                                 <h3>${{ $cabaña->precio }} USD por noche</h3>
-                                <form action="{{ route('reservaciones.solicitud', $cabaña->id) }}" method="POST">
-                                    @csrf
+                                    
                                     <div class="row row-cols-2">
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="fecha_entrada" class="form-label">Fecha de entrada:</label>
                                                 <input type="date" class="form-control" id="fecha_entrada"
                                                     name="fecha_entrada" required
-                                                    value="{{ date('Y-m-d', strtotime('+1 day')) }}">
+                                                    value="{{ date('Y-m-d', strtotime($reserva->fecha_entrada)) }}" disabled>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -80,20 +79,52 @@
                                                 <label for="fecha_salida" class="form-label">Fecha de salida:</label>
                                                 <input type="date" class="form-control" id="fecha_salida"
                                                     name="fecha_salida" required
-                                                    value="{{ date('Y-m-d', strtotime('+2 day')) }}">
+                                                    value="{{ date('Y-m-d', strtotime($reserva->fecha_salida)) }}" disabled>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="nombres" class="form-label">Nombres:</label>
+                                                <input type="text" class="form-control" name="nombres" id="nombres" value="{{$reserva->nombres}}" disabled>
+                                            </div>
 
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="apellidos" class="form-label">Apellidos:</label>
+                                                <input type="text" class="form-control" name="apellidos" id="apellidos" value="{{$reserva->apellidos}}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Correo:</label>
+                                                <input type="email" class="form-control" name="email" id="email" value="{{$reserva->email}}" disabled>
+                                            </div>
+
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="huespedes" class="form-label">Cantidad de huéspedes:</label>
+                                                <input type="number" class="form-control" name="huespedes" id="huespedes"
+                                                    min="1" value="{{$reserva->huespedes}}" max="{{ $cabaña->huespedes }}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                    </div>
                                     <div class="mb-3">
-                                        <label for="huespedes" class="form-label">Cantidad de huéspedes:</label>
-                                        <input type="number" class="form-control" name="huespedes" id="huespedes"
-                                            min="1" value="1" max="{{ $cabaña->huespedes }}">
+                                        <label for="telefono" class="form-label">Teléfono:</label>
+                                        <input type="tel" class="form-control" name="telefono" id="telefono" placeholder="Ejemplo: 50309876543" value="{{$reserva->telefono}}" disabled>
                                     </div>
 
-                                    <button type="submit" class="btn btn-outline-primary mb-2" style="width: 100%">Solicitar
-                                        Reserva</button>
-                                    <p class="text-center">Aun no se te cobrara nada.</p>
+
+
+                                    <a type="button"  class="btn btn-outline-primary mb-2" href="{{ route('Inicio') }}" style="width: 100%">Inicio</a>
+                                    <p class="text-center">Nos contactaremos con tigo en un lapso de 15 min para confirmar la reserva</p>
 
                                     <!-- Elemento para mostrar el total de gastos -->
                                     <div class="row row-cols-2">
@@ -104,7 +135,7 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <p id="total_cabaña" class="text-end"><span id="total_cabaña"></p>
+                                            <p id="total_cabaña" class="text-end">{{$reserva->costo}}</p>
                                         </div>
                                     </div>
 
@@ -142,11 +173,10 @@
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <p class="text-end" id="total_estadia"> </p>
+                                                <p class="text-end" id="total_estadia"> ${{$reserva->costo}} USD</p>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -190,4 +220,72 @@
         </div><br>
     </section>
 
+    <script>
+        // Calcular diferencia de días entre dos fechas
+        function calcularDiferenciaDias(fechaEntrada, fechaSalida) {
+            const unDia = 24 * 60 * 60 * 1000; // 1 día en milisegundos
+            const diffTiempo = Math.abs(new Date(fechaSalida) - new Date(fechaEntrada));
+            const diffDias = Math.ceil(diffTiempo / unDia);
+            return diffDias;
+        }
+
+        // Función para calcular el total de la cabaña
+        function calcularTotalCabaña(precio, fechaEntrada, fechaSalida) {
+            const diffDias = calcularDiferenciaDias(fechaEntrada, fechaSalida);
+            const totalCabaña = precio * diffDias;
+            return totalCabaña.toFixed(2);
+        }
+
+        // Función para calcular los impuestos (20% del total de la cabaña)
+        function calcularImpuestos(totalCabaña) {
+            const impuestos = totalCabaña * 0.2;
+            return impuestos.toFixed(2);
+        }
+
+        // Función para calcular el total de la estadia (Total cabaña + Impuestos + Tarifa de limpieza)
+        function calcularTotalEstadia(totalCabaña, impuestos, tarifaLimpieza) {
+            const totalEstadia = parseFloat(totalCabaña) + parseFloat(impuestos) + parseFloat(tarifaLimpieza);
+            return totalEstadia.toFixed(2);
+        }
+
+        // Obtener elementos del DOM
+        const fechaEntrada = document.getElementById('fecha_entrada');
+        const fechaSalida = document.getElementById('fecha_salida');
+        const diferenciaDiasElemento = document.getElementById('diferencia_dias');
+        const totalCabañaElemento = document.getElementById('total_cabaña');
+        const impuestosElemento = document.getElementById('impuestos');
+        const tarifaLimpiezaElemento = document.getElementById('tarifa_limpieza');
+        const totalEstadiaElemento = document.getElementById('total_estadia');
+        const inputTotal = document.getElementById('costo');
+
+
+        // Agregar evento 'input' a los campos de fecha para actualizar los cálculos
+        fechaEntrada.addEventListener('input', actualizarCalculos);
+        fechaSalida.addEventListener('input', actualizarCalculos);
+
+        // Función para actualizar los cálculos al cambiar las fechas
+        function actualizarCalculos() {
+            const precio = parseFloat({{ $cabaña->precio }});
+            const fechaEntradaValue = fechaEntrada.value;
+            const fechaSalidaValue = fechaSalida.value;
+            const diffDias = calcularDiferenciaDias(fechaEntradaValue, fechaSalidaValue);
+
+            const totalCabaña = calcularTotalCabaña(precio, fechaEntradaValue, fechaSalidaValue);
+            const impuestos = calcularImpuestos(totalCabaña);
+            const tarifaLimpieza = parseFloat({{ $cabaña->limpieza }}); // Valor de tarifa de limpieza
+
+            diferenciaDiasElemento.textContent = diffDias;
+            totalCabañaElemento.textContent = `$${totalCabaña} USD`;
+            impuestosElemento.textContent = `$${impuestos} USD`;
+            tarifaLimpiezaElemento.textContent = `$${tarifaLimpieza} USD`;
+
+            const totalEstadia = calcularTotalEstadia(totalCabaña, impuestos, tarifaLimpieza);
+            inputTotal.value = totalCabaña;
+        }
+
+        // Ejecutar cálculos al cargar la página
+        actualizarCalculos();
+    </script>
+
+    
 @endsection

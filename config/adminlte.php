@@ -320,7 +320,7 @@ return [
             'text' => 'Home',
             'route' => 'home',
             'icon' => 'fas fa-fw fa-home',
-            // 'can' => 'SuperAdministrador',
+            'can' => 'home',
 
         ],
         [
@@ -387,12 +387,15 @@ return [
                     'text' => 'Home',
                     'url' => '#',
                     'icon' => 'fas fa-fw fas fa-house ',
+                    'can' => 'manage-blog',
+
 
                 ],
                 [
                     'text' => 'Galeria',
                     'url' => 'galeria',
                     'icon' => 'fas fa-fw ',
+                    'can' => 'manage-blog',
 
                 ],
                 [
@@ -412,6 +415,8 @@ return [
                     'text' => 'Reglas administrativas',
                     'url' => '#',
                     'icon' => 'fas fa-fw',
+                    'can' => 'manage-blog',
+
 
                 ],
             ],
@@ -420,6 +425,8 @@ return [
             'text' => 'Clientes',
             'url' => '#',
             'icon' => 'fas fa-users fa-fw',
+            'can' => 'manage-blog',
+
 
         ],
         ['header' => 'Configuracion de cuenta'],

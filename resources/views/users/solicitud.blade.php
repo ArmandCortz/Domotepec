@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="row row-cols-2 py-4">
-                    <div class="col-8">
+                    <div class="col-6">
                         <h1>Nombre de la cabaña: {{ $cabaña->nombre }}</h1>
                         <p>{{ $cabaña->huespedes }} huéspedes . {{ $cabaña->habitaciones }} habitaciones .
                             {{ $cabaña->camas }} camas . {{ $cabaña->baños }} baños completos</p>
@@ -59,41 +59,88 @@
 
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <div class="card shadow-lg bg-light mb-3" style="max-width: 100$;">
 
                             <div class="card-body">
                                 <h3>${{ $cabaña->precio }} USD por noche</h3>
-                                <form action="" method="POST">
+                                <form action="{{ route('reservaciones.enviar', $cabaña->id) }}" method="POST">
                                     @csrf
+
                                     <div class="row row-cols-2">
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label for="fecha_entrada" class="form-label">Fecha de entrada</label>
+                                                <label for="fecha_entrada" class="form-label">Fecha de entrada:</label>
                                                 <input type="date" class="form-control" id="fecha_entrada"
                                                     name="fecha_entrada" required
-                                                    value="{{ date('Y-m-d', strtotime('+1 day')) }}">
+                                                    value="{{ date('Y-m-d', strtotime($fecha_entrada)) }}" required>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label for="fecha_salida" class="form-label">Fecha de salida</label>
+                                                <label for="fecha_salida" class="form-label">Fecha de salida:</label>
                                                 <input type="date" class="form-control" id="fecha_salida"
                                                     name="fecha_salida" required
-                                                    value="{{ date('Y-m-d', strtotime('+2 day')) }}">
+                                                    value="{{ date('Y-m-d', strtotime($fecha_salida)) }}" required>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="nombres" class="form-label">Nombres:</label>
+                                                <input type="text" class="form-control" name="nombres" id="nombres" required>
+                                            </div>
 
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="apellidos" class="form-label">Apellidos:</label>
+                                                <input type="text" class="form-control" name="apellidos" id="apellidos" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-cols-2">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Correo:</label>
+                                                <input type="email" class="form-control" name="email" id="email" required>
+                                            </div>
+
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label for="huespedes" class="form-label">Cantidad de huéspedes:</label>
+                                                <input type="number" class="form-control" name="huespedes" id="huespedes" required
+                                                    min="1" value="1" max="{{ $cabaña->huespedes }}">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                    </div>
                                     <div class="mb-3">
-                                        <label for="huespedes" class="form-label">Huéspedes</label>
-                                        <input type="number" class="form-control" name="huespedes" id="huespedes"
-                                            min="1" value="1">
+                                        <label for="telefono" class="form-label">Teléfono:</label>
+                                        <input type="tel" class="form-control" name="telefono" id="telefono" required
+                                            placeholder="Ejemplo: 50309876543">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary mb-2" style="width: 100%">Solicitar
+                                    <div class="mb-3">
+                                        <input type="number" class="form-control" style="display: none" name="costo"
+                                            id="costo" >
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="number" class="form-control" style="display: none" name="estado"
+                                            id="estado" value="1">
+                                    </div>
+
+
+
+                                    <button type="submit" class="btn btn-outline-primary mb-2" style="width: 100%">Enviar
+                                        Solicitud
+                                        de
                                         Reserva</button>
-                                    <p class="text-center">Aun no se te cobrara nada.</p>
+                                    <p class="text-center">Nos contactaremos con tigo en un lapso de 15 min para confirmar
+                                        la reserva</p>
 
                                     <!-- Elemento para mostrar el total de gastos -->
                                     <div class="row row-cols-2">
@@ -215,7 +262,6 @@
         // Función para calcular el total de la estadia (Total cabaña + Impuestos + Tarifa de limpieza)
         function calcularTotalEstadia(totalCabaña, impuestos, tarifaLimpieza) {
             const totalEstadia = parseFloat(totalCabaña) + parseFloat(impuestos) + parseFloat(tarifaLimpieza);
-            console.log(totalEstadia);
             return totalEstadia.toFixed(2);
         }
 
@@ -227,6 +273,8 @@
         const impuestosElemento = document.getElementById('impuestos');
         const tarifaLimpiezaElemento = document.getElementById('tarifa_limpieza');
         const totalEstadiaElemento = document.getElementById('total_estadia');
+        const inputTotal = document.getElementById('costo');
+
 
         // Agregar evento 'input' a los campos de fecha para actualizar los cálculos
         fechaEntrada.addEventListener('input', actualizarCalculos);
@@ -249,8 +297,8 @@
             tarifaLimpiezaElemento.textContent = `$${tarifaLimpieza} USD`;
 
             const totalEstadia = calcularTotalEstadia(totalCabaña, impuestos, tarifaLimpieza);
-            console.log(totalEstadia);
             totalEstadiaElemento.textContent = `$${totalEstadia} USD`;
+            inputTotal.value = totalEstadia;
         }
 
         // Ejecutar cálculos al cargar la página

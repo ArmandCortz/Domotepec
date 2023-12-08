@@ -15,17 +15,19 @@ class CreateReservaTable extends Migration
     {
         Schema::create('reserva', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cliente');
+            $table->string('cliente', 100);
+            $table->string('email');
+            $table->bigInteger('telefono');
             $table->unsignedBigInteger('cabaña');
             $table->date('ingreso');
             $table->date('egreso');
-            $table->float('estadia', 8, 2);
+            $table->float('costo', 8, 2);
             $table->unsignedBigInteger('huespedes');
             $table->unsignedBigInteger('estado');
 
             $table->timestamps();
 
-            $table->foreign('cliente')->references('id')->on('cliente');
+            // $table->foreign('cliente')->references('id')->on('cliente');
             $table->foreign('cabaña')->references('id')->on('cabañas');
         });
     }

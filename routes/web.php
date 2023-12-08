@@ -48,7 +48,8 @@ Route::prefix('/user')->namespace("App\\Http\\Controllers")->group(function () {
 
     Route::get('/reservaciones', "ReservaController@show")->name('reservaciones.sucursal');
     Route::get('/reservaciones/cabaña/{id}', "ReservaController@cabaña")->name('reservaciones.cabaña');
-    Route::get('/reservaciones/cabaña/solicitud/{id}', "ReservaController@solicitud")->name('reservaciones.solicitud');
+    Route::post('/reservaciones/cabaña/solicitud/{id}', "ReservaController@solicitud")->name('reservaciones.solicitud');
+    Route::post('/reservaciones/cabaña/solicitud/enviar/{id}', "ReservaController@enviar")->name('reservaciones.enviar');
 });
 // Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
 
