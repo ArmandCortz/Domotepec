@@ -15,6 +15,7 @@ class ImagenesCabañasController extends Controller
     {
         $cabaña = Cabaña::find($cabaña);
         $imagenes = $cabaña->imagenes;
+        
         // dd($imagenes);
         return view("administracion.modules.cabañas.imagenes", compact("cabaña", "imagenes"));
     }

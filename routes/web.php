@@ -105,9 +105,12 @@ Route::prefix('/')->group(function () {
 
         // Rutas para reservas
         // Route::resource('/reservas', 'AdminReservasController')->only(['index', 'store']);
-        Route::get('/reservas', 'AdminReservasController@index')->name('admin.reservas.index');
-        Route::post('/reservas/store', [AdminReservasController::class, 'storeReserva'])->name('reservas.store');
+        // Route::get('/reservas', 'AdminReservasController@index')->name('reservas.index');
+        // Route::post('/reservas/store','AdminReservasController@storeReserva')->name('reservas.store');
 
-        Route::post('/reservaciones', [ReservaController::class, 'reservar'])->name('reservas');
+        // Route::post('/reservaciones', 'AdminReservasController@reservar')->name('reservas');
+
+        Route::resource('reservas', "AdminReservasController")->names('reservas');
+
     });
 });

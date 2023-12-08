@@ -21,4 +21,8 @@ class Reserva extends Model
         'huespedes',
         'estado',
     ];
+    public function cabaña()
+    {
+        return $this->belongsTo(Cabaña::class, 'cabañas');
+    }
 }
