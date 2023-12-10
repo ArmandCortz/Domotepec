@@ -298,7 +298,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <a href="{{ route('cabañas.index') }}" type="button"
+                        <a href="{{ route('reservas.index') }}" type="button"
                             class="btn btn-outline-danger">Cancelar</a>
                         <button type="submit" class="btn btn-outline-primary">Guardar</button>
                     </div>
@@ -341,6 +341,7 @@
     <script src="{{ asset('/js/moment.js') }}"></script>
 
     <script>
+        var calendar = null;
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendario');
             var startDateInput = $('#startDate');
@@ -370,6 +371,7 @@
                     }
                     createEvent(); // Crear evento al seleccionar fechas
                 }
+
             });
 
             calendar.render();
@@ -393,6 +395,7 @@
                     });
                 }
             }
+
 
             // Detectar cambios en los inputs de fecha y actualizar el evento
             startDateInput.on('change', function() {
@@ -490,6 +493,100 @@
 
             totalEstadiatext.textContent = `$${totalEstadia} USD`;
             inputTotal.value = totalEstadia;
+
+            const cabanaId = document.getElementById('cabaña');
+            const cabanaIdValue = cabanaId.value;
+
+            console.log(cabanaIdValue);
+
+            var events = cargarReservasPorCabaña(cabanaIdValue);
+
+            if (calendar) {
+                calendar.getEvents().forEach(function(event) {
+                    event.remove();
+                });
+                calendar.addEventSource(events);
+            }
+
+        }
+
+        function cargarReservasPorCabaña(cabanaId) {
+                        var calendarEl = document.getElementById('calendario');
+
+            var events = [];
+            @foreach ($reservaciones as $reserva)
+                var cabañaNombre = '';
+                @foreach ($cabañas as $cabaña)
+                    @if ($reserva->cabaña === $cabaña->id)
+                        cabañaNombre = '{{ $cabaña->nombre }}';
+                    @endif
+                @endforeach
+                @if ($reserva->estado >= 1 && $reserva->estado <= 4)
+
+                    events.push({
+                        title: cabañaNombre,
+                        start: '{{ $reserva->ingreso }}T17:00:00', // Agrega la hora 17:00:00 (5 pm) al inicio
+                        end: '{{ $reserva->egreso }}T14:00:00', // Agrega la hora 14:00:00 (2 pm) al final
+                        state: '{{ $reserva->estado }}',
+                        backgroundColor: getBackgroundColor('{{ $reserva->estado }}'),
+                        borderColor: getBorderColor('{{ $reserva->estado }}')
+                    });
+                @endif
+            @endforeach
+
+            return events;
+        }
+
+        $('#cabaña').change(function() {
+            var selectedCabañaId = $(this).val();
+            var events = cargarReservasPorCabaña(selectedCabañaId);
+
+            if (calendar) {
+                calendar.getEvents().forEach(function(event) {
+                    event.remove();
+                });
+                calendar.addEventSource(events);
+            }
+        });
+
+        function getBackgroundColor(state) {
+            switch (state) {
+                case '1':
+                    return '#17a2b8'; // Color celeste para estado Espera
+                case '2':
+                    return '#ffc107'; // Color amarillo para estado Reservada
+                case '3':
+                    return '#28a745'; // Color verde para estado Confirmada
+                case '4':
+                    return '#007bff'; // Color azul para estado Pagada
+                case '5':
+                    return '#6c757d'; // Color gris para estado Vencida
+                case '6':
+                    return '#dc3545'; // Color rojo para estado Cancelada
+                default:
+                    return '#f8f9fa'; // Color por defecto
+            }
+
+        }
+
+        function getBorderColor(state) {
+            switch (state) {
+                case '1':
+                    return '#17a2b8'; // Color celeste para estado Espera
+                case '2':
+                    return '#ffc107'; // Color amarillo para estado Reservada
+                case '3':
+                    return '#28a745'; // Color verde para estado Confirmada
+                case '4':
+                    return '#007bff'; // Color azul para estado Pagada
+                case '5':
+                    return '#6c757d'; // Color gris para estado Vencida
+                case '6':
+                    return '#dc3545'; // Color rojo para estado Cancelada
+                default:
+                    return '#f8f9fa'; // Color por defecto
+            }
+
         }
     </script>
 

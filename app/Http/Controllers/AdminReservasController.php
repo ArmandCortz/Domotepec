@@ -48,8 +48,9 @@ class AdminReservasController extends Controller
     public function edit($id)
     {
         $reserva = Reserva::findOrFail($id);
+        $reservaciones = Reserva::with('cabaña')->get();
         $cabañas = Cabaña::all();
-        return view("administracion.modules.reservas.edit", compact("cabañas", 'reserva'));
+        return view("administracion.modules.reservas.edit", compact("cabañas", 'reserva','reservaciones'));
     }
 
     public function update(Request $request, $id)

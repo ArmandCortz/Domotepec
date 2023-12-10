@@ -259,7 +259,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <a href="{{ route('cabañas.index') }}" type="button"
+                        <a href="{{ route('reservas.index') }}" type="button"
                             class="btn btn-outline-danger">Cancelar</a>
                         <button type="submit" class="btn btn-outline-primary">Reservar</button>
                     </div>
