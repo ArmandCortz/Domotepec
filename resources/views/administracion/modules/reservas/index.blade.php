@@ -22,7 +22,7 @@
                     Crear Usuario
                 </a> --}}
                 @can('cabañas.create')
-                    <a href="" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
+                    <a href="{{ route('reservas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
                         Reservaciones</a>
                 @endcan
 
@@ -85,33 +85,20 @@
                                                         auth()->user()->can('cabañas.destroy')) style="width: 100px;" @else style="width: 100px;" @endif>
 
                                                 @can('cabañas.edit')
-                                                    @if ($reserva->estado == 1)
-                                                        <a type="button" href="" class="btn btn-outline-info">
-                                                            <i class="fas fa-pen"></i> Revisar
-                                                        </a>
-                                                    @endif
-                                                    @if ($reserva->estado == 2)
-                                                        <a type="button" href="" class="btn btn-outline-warning">
-                                                            <i class="fas fa-pen"></i> Revisar
-                                                        </a>
-                                                    @endif
-                                                    @if ($reserva->estado == 3)
-                                                        <a type="button" href="" class="btn btn-outline-success">
-                                                            <i class="fas fa-pen"></i> Revisar
-                                                        </a>
-                                                    @endif
-                                                    @if ($reserva->estado == 4)
-                                                        <a type="button" href="" class="btn btn-outline-primary">
-                                                            <i class="fas fa-pen"></i> Revisar
-                                                        </a>
-                                                    @endif
-                                                    @if ($reserva->estado == 5)
-                                                        <a type="button" href="" class="btn btn-outline-secundary">
-                                                            <i class="fas fa-pen"></i> Revisar
-                                                        </a>
-                                                    @endif
-                                                    @if ($reserva->estado == 6)
-                                                        <a type="button" href="" class="btn btn-outline-danger">
+                                                    @php
+                                                        $estados = [
+                                                            1 => 'outline-info',
+                                                            2 => 'outline-warning',
+                                                            3 => 'outline-success',
+                                                            4 => 'outline-primary',
+                                                            5 => 'outline-secondary',
+                                                            6 => 'outline-danger',
+                                                        ];
+                                                    @endphp
+
+                                                    @if (array_key_exists($reserva->estado, $estados))
+                                                        <a type="button" href="{{ route('reservas.edit', $reserva->estado) }}"
+                                                            class="btn btn-{{ $estados[$reserva->estado] }}">
                                                             <i class="fas fa-pen"></i> Revisar
                                                         </a>
                                                     @endif
@@ -140,9 +127,11 @@
                     <div class="card-body ">
                         {{-- coloca el calendario dentro de esta tarjeta --}}
                         <div class="card-body">
-                            <div id="calendario"></div>
+                            {{-- <div id="calendario"></div> --}}
 
+                            <div id="calendario"></div>
                         </div>
+
                     </div>
                 </div>
 

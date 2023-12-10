@@ -167,7 +167,7 @@
                                             <p class="text-end"><span id="impuestos"></span></p>
                                         </div>
                                     </div>
-
+                                    
                                     <!-- Aquí se mostrará la tarifa de limpieza -->
                                     <div class="row row-cols-2">
                                         <div class="col">
