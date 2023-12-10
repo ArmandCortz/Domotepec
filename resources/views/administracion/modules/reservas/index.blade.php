@@ -64,16 +64,19 @@
                                                 <td>Espera</td>
                                             @endif
                                             @if ($reserva->estado == 2)
-                                                <td>Cancelada</td>
+                                                <td>Reservada</td>
                                             @endif
                                             @if ($reserva->estado == 3)
                                                 <td>Confirmada</td>
                                             @endif
                                             @if ($reserva->estado == 4)
-                                                <td>Pagada</td>
+                                                <td>Ocupada</td>
                                             @endif
                                             @if ($reserva->estado == 5)
                                                 <td>Vencida</td>
+                                            @endif
+                                            @if ($reserva->estado == 6)
+                                                <td>Cancelada</td>
                                             @endif
 
 
@@ -83,12 +86,12 @@
 
                                                 @can('cabañas.edit')
                                                     @if ($reserva->estado == 1)
-                                                        <a type="button" href="" class="btn btn-outline-warning">
+                                                        <a type="button" href="" class="btn btn-outline-info">
                                                             <i class="fas fa-pen"></i> Revisar
                                                         </a>
                                                     @endif
                                                     @if ($reserva->estado == 2)
-                                                        <a type="button" href="" class="btn btn-outline-danger">
+                                                        <a type="button" href="" class="btn btn-outline-warning">
                                                             <i class="fas fa-pen"></i> Revisar
                                                         </a>
                                                     @endif
@@ -103,7 +106,12 @@
                                                         </a>
                                                     @endif
                                                     @if ($reserva->estado == 5)
-                                                        <a type="button" href="" class="btn btn-outline-secondary">
+                                                        <a type="button" href="" class="btn btn-outline-secundary">
+                                                            <i class="fas fa-pen"></i> Revisar
+                                                        </a>
+                                                    @endif
+                                                    @if ($reserva->estado == 6)
+                                                        <a type="button" href="" class="btn btn-outline-danger">
                                                             <i class="fas fa-pen"></i> Revisar
                                                         </a>
                                                     @endif
@@ -209,22 +217,24 @@
                         cabañaNombre = '{{ $cabaña->nombre }}';
                     @endif
                 @endforeach
+                @if ($reserva->estado >= 1 && $reserva->estado <= 4)
 
-                events.push({
-                    title: cabañaNombre,
-                    start: '{{ $reserva->ingreso }}T17:00:00', // Agrega la hora 17:00:00 (5 pm) al inicio
-                    end: '{{ $reserva->egreso }}T14:00:00', // Agrega la hora 14:00:00 (2 pm) al final
-                    state: '{{ $reserva->estado }}',
-                    backgroundColor: getBackgroundColor('{{ $reserva->estado }}'),
-                    borderColor: getBorderColor('{{ $reserva->estado }}')
-                });
+                    events.push({
+                        title: cabañaNombre,
+                        start: '{{ $reserva->ingreso }}T17:00:00', // Agrega la hora 17:00:00 (5 pm) al inicio
+                        end: '{{ $reserva->egreso }}T14:00:00', // Agrega la hora 14:00:00 (2 pm) al final
+                        state: '{{ $reserva->estado }}',
+                        backgroundColor: getBackgroundColor('{{ $reserva->estado }}'),
+                        borderColor: getBorderColor('{{ $reserva->estado }}')
+                    });
+                @endif
             @endforeach
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridDay,listWeek'
+                    right: 'listWeek,dayGridMonth,timeGridDay,multiMonthYear'
                 },
                 events: events
             });
@@ -234,35 +244,41 @@
             function getBackgroundColor(state) {
                 switch (state) {
                     case '1':
-                        return '#FFD700'; // Color amarillo para estado 1
+                        return '#17a2b8'; // Color celeste para estado Espera
                     case '2':
-                        return '#DC3545'; // Color rojo para estado 2
+                        return '#ffc107'; // Color amarillo para estado Reservada
                     case '3':
-                        return '#28A745'; // Color verde para estado 3
+                        return '#28a745'; // Color verde para estado Confirmada
                     case '4':
-                        return '#007BFF'; // Color azul para estado 4
+                        return '#007bff'; // Color azul para estado Pagada
                     case '5':
-                        return '#6C757D'; // Color gris para estado 5
+                        return '#6c757d'; // Color gris para estado Vencida
+                    case '6':
+                        return '#dc3545'; // Color rojo para estado Cancelada
                     default:
-                        return '#f7f7f7'; // Color por defecto
+                        return '#f8f9fa'; // Color por defecto
                 }
+
             }
 
             function getBorderColor(state) {
                 switch (state) {
                     case '1':
-                        return '#FFD700'; // Color amarillo para estado 1
+                        return '#17a2b8'; // Color celeste para estado Espera
                     case '2':
-                        return '#DC3545'; // Color rojo para estado 2
+                        return '#ffc107'; // Color amarillo para estado Reservada
                     case '3':
-                        return '#28A745'; // Color verde para estado 3
+                        return '#28a745'; // Color verde para estado Confirmada
                     case '4':
-                        return '#007BFF'; // Color azul para estado 4
+                        return '#007bff'; // Color azul para estado Pagada
                     case '5':
-                        return '#6C757D'; // Color gris para estado 5
+                        return '#6c757d'; // Color gris para estado Vencida
+                    case '6':
+                        return '#dc3545'; // Color rojo para estado Cancelada
                     default:
-                        return '#ccc'; // Color por defecto
+                        return '#f8f9fa'; // Color por defecto
                 }
+
             }
 
         });
