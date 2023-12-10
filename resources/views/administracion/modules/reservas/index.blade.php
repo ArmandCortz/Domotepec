@@ -132,7 +132,8 @@
                     <div class="card-body ">
                         {{-- coloca el calendario dentro de esta tarjeta --}}
                         <div class="card-body">
-                            <div id="calendario" class=""></div>
+                            <div id="calendario"></div>
+
                         </div>
                     </div>
                 </div>
@@ -193,83 +194,80 @@
         });
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 
-    <!-- Script adicional para manejar el modal -->
+    <!-- Luego carga FullCalendar -->
+    <script src="{{ asset('/js/fullcalendar.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            // Obtén las reservas desde el controlador
-            var reservas = <?php echo $reservaciones->toJson(); ?>;
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendario');
+            var events = [];
 
-            // Configura FullCalendar
-            $('#calendario').fullCalendar({
-                header: {
+            @foreach ($reservaciones as $reserva)
+                var cabañaNombre = '';
+                @foreach ($cabañas as $cabaña)
+                    @if ($reserva->cabaña === $cabaña->id)
+                        cabañaNombre = '{{ $cabaña->nombre }}';
+                    @endif
+                @endforeach
+
+                events.push({
+                    title: cabañaNombre,
+                    start: '{{ $reserva->ingreso }}T17:00:00', // Agrega la hora 17:00:00 (5 pm) al inicio
+                    end: '{{ $reserva->egreso }}T14:00:00', // Agrega la hora 14:00:00 (2 pm) al final
+                    state: '{{ $reserva->estado }}',
+                    backgroundColor: getBackgroundColor('{{ $reserva->estado }}'),
+                    borderColor: getBorderColor('{{ $reserva->estado }}')
+                });
+            @endforeach
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
+                    right: 'dayGridMonth,timeGridDay,listWeek'
                 },
-                defaultView: 'month',
-                events: reservas.map(function(reserva) {
-                    return {
-                        title: reserva.id_cliente + ' Reserva ' + reserva.id,
-                        start: reserva.fecha_ingreso,
-                        end: reserva.fecha_salida,
-                        description: 'Cabaña: ' + reserva.id_cabaña + ', Personas: ' + reserva
-                            .n_personas
-                    };
-                }),
-                editable: false,
-                eventLimit: true,
-                dayClick: function(date, jsEvent, view) {
-                    // Abre el modal al hacer clic en un día
-                    $('#agregarReservaModal').modal('show');
-                    // Puedes actualizar el modal con información adicional si es necesario
-                    // Por ejemplo, puedes establecer la fecha del día seleccionado en el modal
-                    $('#checkInDateModal').val(date.format('YYYY-MM-DD'));
-                }
+                events: events
             });
+
+            calendar.render();
+
+            function getBackgroundColor(state) {
+                switch (state) {
+                    case '1':
+                        return '#FFD700'; // Color amarillo para estado 1
+                    case '2':
+                        return '#DC3545'; // Color rojo para estado 2
+                    case '3':
+                        return '#28A745'; // Color verde para estado 3
+                    case '4':
+                        return '#007BFF'; // Color azul para estado 4
+                    case '5':
+                        return '#6C757D'; // Color gris para estado 5
+                    default:
+                        return '#f7f7f7'; // Color por defecto
+                }
+            }
+
+            function getBorderColor(state) {
+                switch (state) {
+                    case '1':
+                        return '#FFD700'; // Color amarillo para estado 1
+                    case '2':
+                        return '#DC3545'; // Color rojo para estado 2
+                    case '3':
+                        return '#28A745'; // Color verde para estado 3
+                    case '4':
+                        return '#007BFF'; // Color azul para estado 4
+                    case '5':
+                        return '#6C757D'; // Color gris para estado 5
+                    default:
+                        return '#ccc'; // Color por defecto
+                }
+            }
+
         });
-
-        // Función para agregar reserva (la puedes ajustar según tus necesidades)
-        function agregarReserva() {
-            // Obtén los datos del formulario del modal
-            var clientName = document.getElementById('clientName').value;
-            var checkInDate = document.getElementById('checkInDate').value;
-            var checkOutDate = document.getElementById('checkOutDate').value;
-            var id_empresa = document.getElementById('id_empresa').value;
-            var id_sucursal = document.getElementById('id_sucursal').value;
-            var id_cabaña = document.getElementById('id_cabaña').value;
-            var n_personas = document.getElementById('n_personas').value;
-
-            // Enviar datos al backend (si es necesario)
-            // ...
-            fetch("{{ route('reservas.store') }}", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': "{{ csrf_token() }}"
-                    },
-                    body: JSON.stringify({
-                        clientName: clientName,
-                        checkInDate: checkInDate,
-                        checkOutDate: checkOutDate,
-                        id_empresa: id_empresa,
-                        id_sucursal: id_sucursal,
-                        id_cabaña: id_cabaña,
-                        n_personas: n_personas
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Procesar la respuesta del backend según sea necesario
-                    console.log(data);
-                    // Puedes actualizar el calendario con la nueva reserva
-                    mostrarReservaEnCalendario(clientName, checkInDate, checkOutDate);
-                })
-            // Cierra el modal después de agregar la reserva
-            $('#agregarReservaModal').modal('hide');
-        }
     </script>
+
+
 
 @endsection
