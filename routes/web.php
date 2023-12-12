@@ -46,9 +46,12 @@ Route::prefix('/user')->namespace("App\\Http\\Controllers")->group(function () {
         return view('users.contacto');
     })->name('Contacto');
 
-    Route::get('/reservaciones', "ReservaController@reservar")->name('Reservaciones');
+    Route::get('/reservaciones', "ReservaController@show")->name('reservaciones.sucursal');
+    Route::get('/reservaciones/cabaña/{id}', "ReservaController@cabaña")->name('reservaciones.cabaña');
+    Route::post('/reservaciones/cabaña/solicitud/{id}', "ReservaController@solicitud")->name('reservaciones.solicitud');
+    Route::post('/reservaciones/cabaña/solicitud/enviar/{id}', "ReservaController@enviar")->name('reservaciones.enviar');
 });
-Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
+// Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
 
 Route::prefix('/')->group(function () {
 
@@ -57,7 +60,7 @@ Route::prefix('/')->group(function () {
 
     });
 
-    Route::prefix('/')->namespace("App\\Http\\Controllers")->group(function () {
+    Route::middleware('auth')->prefix('/')->namespace("App\\Http\\Controllers")->group(function () {
         Route::get('/', "HomeController@index")->name('home');
 
         // Rutas para users
@@ -76,8 +79,13 @@ Route::prefix('/')->group(function () {
         // Rutas para cabañas
 
         Route::resource('cabanas', 'CabañasController')->names('cabañas');
+        
         Route::get('cabanas/{id}/imagenes/edit', 'ImagenesCabañasController@edit')->name('cabañas.imagenes');
         Route::put('cabanas/{id}/imagenes/update', 'ImagenesCabañasController@update')->name('cabañas.imagenes.update');
+        
+        Route::get('cabanas/{id}/servicios/edit', 'ServiciosCabañasController@index')->name('cabañas.servicios');
+        Route::post('/agregar-servicio', 'ServiciosCabañasController@store')->name('cabañas.servicios.store');
+        Route::post('/eliminar-servicio', 'ServiciosCabañasController@update')->name('cabañas.servicios.delete');
 
         //Rutas para bienes
         Route::resource('bienes', "BienesController")->names('bienes');
@@ -97,9 +105,12 @@ Route::prefix('/')->group(function () {
 
         // Rutas para reservas
         // Route::resource('/reservas', 'AdminReservasController')->only(['index', 'store']);
-        Route::get('/reservas', 'AdminReservasController@index')->name('admin.reservas.index');
-        Route::post('/reservas/store', [AdminReservasController::class, 'storeReserva'])->name('reservas.store');
+        // Route::get('/reservas', 'AdminReservasController@index')->name('reservas.index');
+        // Route::post('/reservas/store','AdminReservasController@storeReserva')->name('reservas.store');
 
-        Route::post('/reservaciones', [ReservaController::class, 'reservar'])->name('reservas');
+        // Route::post('/reservaciones', 'AdminReservasController@reservar')->name('reservas');
+
+        Route::resource('reservas', "AdminReservasController")->names('reservas');
+
     });
 });

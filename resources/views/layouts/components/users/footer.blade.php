@@ -1,4 +1,4 @@
-<footer class="bg-dark text-white  text-center text-white-50 py-3 shadow">
+<footer class="bg-dark text-white  text-center text-white-50 py-5 shadow">
     <div class="container mt-4">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 ">
             <div class="col">
@@ -35,7 +35,7 @@
                 <div class="container" style="padding-left: 20px; text-align: left">
                     <p>
                         Fundadores <br>
-                        Politicas 
+                        Politicas
                     </p>
                 </div>
             </div>

@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cabaña;
 use App\Models\Sucursal;
+use App\Models\Servicios;
+use App\Models\Reserva;
+
 class ReservaController extends Controller
 {
-    public function reservar(Request $request)
+    public function show(Request $request)
     {
         // Obtén el ID de la sucursal desde la solicitud
         $sucursalId = $request->input('id');
@@ -18,80 +21,61 @@ class ReservaController extends Controller
 
         return view('users.reservaciones', compact('cabañas'));
     }
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function cabaña(Request $request, $id)
     {
-        //
+        // Obtener la cabaña por su ID
+        $cabaña = Cabaña::with('servicios')->find($id);
+        // dd($cabaña);
+        $imagenes = $cabaña->imagenes;
+        //dd($imagenes);
+        $cabañas = Cabaña::inRandomOrder()->distinct()->take(3)->get();
+        // Pasar los datos de la cabaña a la vista
+        $servicios = Servicios::all();
+        return view('users.cabaña', compact('cabaña', 'cabañas', 'imagenes', 'servicios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function solicitud(Request $request, $id)
     {
-        //
-    }
+        $fecha_entrada = $request->fecha_entrada;
+        $fecha_salida = $request->fecha_salida;
+        $huespedes = $request->huespedes;
+        $cabaña = Cabaña::with('servicios')->find($id);
+        $imagenes = $cabaña->imagenes;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $cabañas = Cabaña::inRandomOrder()->distinct()->take(3)->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $servicios = Servicios::all();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        return view('users.solicitud', compact('cabaña', 'cabañas', 'imagenes', 'servicios', 'fecha_entrada', 'fecha_salida', 'huespedes'));
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    }
+    public function enviar(Request $request, $id)
     {
-        //
+        $cabaña = Cabaña::with('servicios')->find($id);
+        // dd($cabaña);
+        $imagenes = $cabaña->imagenes;
+        //dd($imagenes);
+        $cabañas = Cabaña::inRandomOrder()->distinct()->take(3)->get();
+        // Pasar los datos de la cabaña a la vista
+        $servicios = Servicios::all();
+        $nombres = $request->nombres . ' ' . $request->apellidos;
+        $reserva = $request;
+        //  dd($reserva);
+        Reserva::create([
+            'cliente' => $nombres,
+            'email' => $request->email,
+            'telefono' => $request->telefono,
+            'cabaña' => $id,
+            'ingreso' => $request->fecha_entrada,
+            'egreso' => $request->fecha_salida,
+            'costo' => $request->costo,
+            'huespedes' => $request->huespedes,
+            'estado' => $request->estado,
+        ]);
+        return view('users.alerta', ['id' => $id, 'reserva' => $reserva, 'cabaña' => $cabaña, 'cabañas' => $cabañas, 'imagenes' => $imagenes]);
+
+        // return redirect()->route('reservaciones.cabaña', ['id' => $id])->with('success', 'Su solicitud se envio correctamente.');
     }
 }

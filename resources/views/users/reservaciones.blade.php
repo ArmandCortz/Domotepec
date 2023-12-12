@@ -21,7 +21,7 @@
 </section>
 <!-- Sección 2: Imagen de fondo, título y dos inputs tipo calendario -->
 <section class="wpb_wrapper" style="background-color: #bfbcbc; padding: 20px; position: relative;">
-   
+
     <div class="container text-center">
         <!-- Eliminé el formulario que estaba aquí -->
     </div>
@@ -37,7 +37,10 @@
                         <h5 class="card-title">{{ $cabaña->nombre }}</h5>
                         <p class="card-text">{{ $cabaña->descripcion }}</p>
                         <!-- Agrega aquí cualquier otra información que desees mostrar -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservaModal" data-cabana-nombre="{{ $cabaña->nombre }}" data-cabana-descripcion="{{ $cabaña->descripcion }}">Reservar</button>
+                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservaModal" data-cabana-nombre="{{ $cabaña->nombre }}" data-cabana-descripcion="{{ $cabaña->descripcion }}">Reservar</button> --}}
+                        <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
+                                    class="btn btn-outline-primary ver-cabaña" style="width: 100%" data-cabaña-id="{{ $cabaña->id }}">Ver
+                                    Cabaña</a>
                     </div>
                 </div>
             </div>

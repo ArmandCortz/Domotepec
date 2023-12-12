@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
+
 use Illuminate\Http\Request;
 use App\Models\Cabaña;
 use App\Models\Imagenes;
@@ -13,6 +15,7 @@ class ImagenesCabañasController extends Controller
     {
         $cabaña = Cabaña::find($cabaña);
         $imagenes = $cabaña->imagenes;
+        
         // dd($imagenes);
         return view("administracion.modules.cabañas.imagenes", compact("cabaña", "imagenes"));
     }
@@ -31,8 +34,8 @@ class ImagenesCabañasController extends Controller
                 $existingImage = Imagenes::where('cabaña', $cabaña->id)->where('clase', $key + 1)->first();
                 if ($existingImage) {
                     $existingImagePath = public_path('img/cabañas/imagenes/' . $existingImage->imagen);
-                    if (file_exists($existingImagePath)) {
-                        unlink($existingImagePath);
+                    if (File::exists($existingImagePath) && is_file($existingImagePath)) {
+                        File::delete($existingImagePath);
                     }
                 }
 
@@ -52,6 +55,7 @@ class ImagenesCabañasController extends Controller
                     ]);
                 }
             }
+
         } else {
             // No se proporcionaron imágenes nuevas
             return redirect()->route('cabañas.edit', $cabaña->id)->with('success', 'No se proporcionaron imágenes nuevas.');

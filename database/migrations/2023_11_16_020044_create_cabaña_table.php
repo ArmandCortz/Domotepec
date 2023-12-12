@@ -13,8 +13,15 @@ class CreateCabañaTable extends Migration
             $table->string('imagen')->nullable();
             $table->string('nombre', 100);
             $table->string('ubicacion', 100);
-            $table->string('descripcion', 200);
+            $table->text('descripcion');
             $table->integer('sucursal');
+            $table->float('precio', 8, 2)->nullable(); 
+            $table->integer('huespedes')->nullable();
+            $table->integer('habitaciones')->nullable();
+            $table->integer('camas')->nullable();
+            $table->integer('baños')->nullable();
+            $table->float('limpieza', 8, 2)->nullable();
+
             $table->timestamps();
         });
     }

@@ -82,6 +82,123 @@
                                         </div>
                                     </div>
 
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="precio"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Precio') }}</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input id="precio" type="number"
+                                                        class="form-control @error('precio') is-invalid @enderror"
+                                                        name="precio" value="{{ old('precio') }}" autocomplete="precio"
+                                                        step="0.01" min="0.01" autofocus>
+                                                    @error('precio')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="huespedes"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Maximo de huespedes') }}</label>
+                                            <div class="col-md-8">
+                                                <input id="huespedes" type="number"
+                                                    class="form-control @error('huespedes') is-invalid @enderror"
+                                                    name="huespedes" value="{{ old('huespedes') }}"
+                                                    autocomplete="huespedes" autofocus>
+                                                @error('huespedes')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="habitaciones"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Habitaciones') }}</label>
+                                            <div class="col-md-8">
+                                                <input id="habitaciones" type="number"
+                                                    class="form-control @error('habitaciones') is-invalid @enderror"
+                                                    name="habitaciones" value="{{ old('habitaciones') }}"
+                                                    autocomplete="habitaciones" autofocus>
+                                                @error('habitaciones')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="camas"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Camas') }}</label>
+                                            <div class="col-md-8">
+                                                <input id="camas" type="number"
+                                                    class="form-control @error('camas') is-invalid @enderror"
+                                                    name="camas" value="{{ old('camas') }}" autocomplete="camas"
+                                                    autofocus>
+                                                @error('camas')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="baños"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Baños') }}</label>
+                                            <div class="col-md-8">
+                                                <input id="baños" type="number"
+                                                    class="form-control @error('baños') is-invalid @enderror"
+                                                    name="baños" value="{{ old('baños') }}" autocomplete="baños"
+                                                    autofocus>
+                                                @error('baños')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="row mb-3">
+                                            <label for="limpieza"
+                                                class="col-md-4 col-form-label text-md-end">{{ __('Tarifa de limpieza') }}</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input id="limpieza" type="number"
+                                                        class="form-control @error('limpieza') is-invalid @enderror"
+                                                        name="limpieza" value="{{ old('limpieza') }}"
+                                                        autocomplete="limpieza" step="0.01" min="0.01" autofocus>
+                                                    @error('limpieza')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col"></div>
                                     <div class="col col-6">
                                         <div class="row mb-3">
@@ -110,7 +227,8 @@
                                                 <div class="form-group">
                                                     <label for="imagen">
 
-                                                        <div class="upload-button form-control @error('imagen') is-invalid @enderror" style="cursor: pointer;
+                                                        <div class="upload-button form-control @error('imagen') is-invalid @enderror"
+                                                            style="cursor: pointer;
                                                         width: auto;
                                                         border-radius: 8px;
                                                         height: 40px;
@@ -120,10 +238,12 @@
                                                         justify-content: center;
                                                         align-items: center;
                                                         font-size: 20px;
-                                                        font-weight: 600"> Seleccionar Archivo </div>
+                                                        font-weight: 600">
+                                                            Seleccionar Archivo </div>
                                                     </label>
                                                     <input type="file" name="imagen" id="imagen" accept="image/*"
-                                                        class="form-control @error('imagen') is-invalid @enderror" style="display:none">
+                                                        class="form-control @error('imagen') is-invalid @enderror"
+                                                        style="display:none">
                                                     @error('imagen')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -136,13 +256,13 @@
                                         <div style="text-align: center;">
                                             <div class="img-fluid">
                                                 <img id="imagen-preview" src="#" alt="Vista previa de la imagen"
-                                                style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; display: none; margin: 0 auto;">
-                                                
+                                                    style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; display: none; margin: 0 auto;">
+
                                             </div>
                                         </div>
                                     </div>
 
-                                    
+
 
                                 </div>
 
