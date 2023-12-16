@@ -8,14 +8,14 @@ class CreateCabañaTable extends Migration
 {
     public function up()
     {
-        Schema::create('cabañas', function (Blueprint $table) {
+        Schema::create('cabanas', function (Blueprint $table) {
             $table->id();
             $table->string('imagen')->nullable();
             $table->string('nombre', 100);
             $table->string('ubicacion', 100);
             $table->text('descripcion');
             $table->integer('sucursal');
-            $table->float('precio', 8, 2)->nullable(); 
+            $table->float('precio', 8, 2)->nullable();
             $table->integer('huespedes')->nullable();
             $table->integer('habitaciones')->nullable();
             $table->integer('camas')->nullable();
@@ -28,6 +28,6 @@ class CreateCabañaTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('cabaña');
+        Schema::dropIfExists('cabana');
     }
 }

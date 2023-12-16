@@ -354,11 +354,11 @@ return [
 
                 ],
                 [
-                    'text' => 'Cabañas',
-                    'route' => 'cabañas.index',
-                    'active' => ['cabañas*'],
+                    'text' => 'Cabanas',
+                    'route' => 'cabanas.index',
+                    'active' => ['cabanas*'],
                     'icon' => 'fas fa-fw',
-                    'can' => 'cabañas.index',
+                    'can' => 'cabanas.index',
 
                 ],
                 [
@@ -497,10 +497,10 @@ return [
                     'asset' => false,
                     'location' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
                 ],
-                
+
             ],
         ],
-        
+
         'Datatables' => [
             'active' => true,
             'files' => [

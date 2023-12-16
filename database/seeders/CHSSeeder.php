@@ -9,29 +9,29 @@ class CHSSeeder extends Seeder
 {
     public function run()
     {
-        
+
         CHS::create([
-            'cabaña' => '1',
+            'cabana' => '1',
             'servicio' => '2',
         ]);
         CHS::create([
-            'cabaña' => '1',
+            'cabana' => '1',
             'servicio' => '1',
         ]);
         CHS::create([
-            'cabaña' => '2',
+            'cabana' => '2',
             'servicio' => '2',
         ]);
         CHS::create([
-            'cabaña' => '2',
+            'cabana' => '2',
             'servicio' => '1',
         ]);
         CHS::create([
-            'cabaña' => '3',
+            'cabana' => '3',
             'servicio' => '2',
         ]);
         CHS::create([
-            'cabaña' => '3',
+            'cabana' => '3',
             'servicio' => '1',
         ]);
     }

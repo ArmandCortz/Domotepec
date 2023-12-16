@@ -21,7 +21,7 @@
                 {{-- <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">
                     Crear Usuario
                 </a> --}}
-                @can('cabañas.create')
+                @can('cabanas.create')
                     <a href="{{ route('reservas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
                         Reservaciones</a>
                 @endcan
@@ -36,7 +36,7 @@
                                         <th>ID</th>
                                         <th>Cliente</th>
                                         <th>Email</th>
-                                        <th>Cabaña</th>
+                                        <th>Cabana</th>
                                         <th>Estado</th>
                                         {{-- <th>Descripción</th> --}}
                                         <th>Acciones</th>
@@ -53,9 +53,9 @@
                                             </td>
                                             <td>{{ $reserva->email }}</td>
 
-                                            @foreach ($cabañas as $cabaña)
-                                                @if ($reserva->cabaña === $cabaña->id)
-                                                    <td>{{ $cabaña->nombre }}</td>
+                                            @foreach ($cabanas as $cabana)
+                                                @if ($reserva->cabana === $cabana->id)
+                                                    <td>{{ $cabana->nombre }}</td>
                                                 @endif
                                             @endforeach
 
@@ -81,10 +81,10 @@
 
 
                                             <td
-                                                @if (auth()->user()->can('cabañas.edit') &&
-                                                        auth()->user()->can('cabañas.destroy')) style="width: 100px;" @else style="width: 100px;" @endif>
+                                                @if (auth()->user()->can('cabanas.edit') &&
+                                                        auth()->user()->can('cabanas.destroy')) style="width: 100px;" @else style="width: 100px;" @endif>
 
-                                                @can('cabañas.edit')
+                                                @can('cabanas.edit')
                                                     @php
                                                         $estados = [
                                                             1 => 'outline-info',
@@ -201,9 +201,9 @@
 
             @foreach ($reservaciones as $reserva)
                 var cabañaNombre = '';
-                @foreach ($cabañas as $cabaña)
-                    @if ($reserva->cabaña === $cabaña->id)
-                        cabañaNombre = '{{ $cabaña->nombre }}';
+                @foreach ($cabanas as $cabana)
+                    @if ($reserva->cabana === $cabana->id)
+                        cabañaNombre = '{{ $cabana->nombre }}';
                     @endif
                 @endforeach
                 @if ($reserva->estado >= 1 && $reserva->estado <= 4)

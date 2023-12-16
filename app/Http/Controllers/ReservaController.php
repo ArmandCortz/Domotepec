@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cabaña;
+use App\Models\Cabana;
 use App\Models\Sucursal;
 use App\Models\Servicios;
 use App\Models\Reserva;
@@ -15,24 +15,24 @@ class ReservaController extends Controller
         // Obtén el ID de la sucursal desde la solicitud
         $sucursalId = $request->input('id');
 
-        // Obtén la sucursal y sus cabañas asociadas
-        $sucursal = Sucursal::with('cabañas')->findOrFail($sucursalId);
-        $cabañas = $sucursal->cabañas;
+        // Obtén la sucursal y sus cabanas asociadas
+        $sucursal = Sucursal::with('cabanas')->findOrFail($sucursalId);
+        $cabanas = $sucursal->cabanas;
 
-        return view('users.reservaciones', compact('cabañas'));
+        return view('users.reservaciones', compact('cabanas'));
     }
 
-    public function cabaña(Request $request, $id)
+    public function cabana(Request $request, $id)
     {
-        // Obtener la cabaña por su ID
-        $cabaña = Cabaña::with('servicios')->find($id);
-        // dd($cabaña);
-        $imagenes = $cabaña->imagenes;
+        // Obtener la cabana por su ID
+        $cabana = Cabana::with('servicios')->find($id);
+        // dd($cabana);
+        $imagenes = $cabana->imagenes;
         //dd($imagenes);
-        $cabañas = Cabaña::inRandomOrder()->distinct()->take(3)->get();
-        // Pasar los datos de la cabaña a la vista
+        $cabanas = Cabana::inRandomOrder()->distinct()->take(3)->get();
+        // Pasar los datos de la cabana a la vista
         $servicios = Servicios::all();
-        return view('users.cabaña', compact('cabaña', 'cabañas', 'imagenes', 'servicios'));
+        return view('users.cabana', compact('cabana', 'cabanas', 'imagenes', 'servicios'));
     }
 
     public function solicitud(Request $request, $id)
@@ -40,25 +40,25 @@ class ReservaController extends Controller
         $fecha_entrada = $request->fecha_entrada;
         $fecha_salida = $request->fecha_salida;
         $huespedes = $request->huespedes;
-        $cabaña = Cabaña::with('servicios')->find($id);
-        $imagenes = $cabaña->imagenes;
+        $cabana = Cabana::with('servicios')->find($id);
+        $imagenes = $cabana->imagenes;
 
-        $cabañas = Cabaña::inRandomOrder()->distinct()->take(3)->get();
+        $cabanas = Cabana::inRandomOrder()->distinct()->take(3)->get();
 
         $servicios = Servicios::all();
 
-        return view('users.solicitud', compact('cabaña', 'cabañas', 'imagenes', 'servicios', 'fecha_entrada', 'fecha_salida', 'huespedes'));
+        return view('users.solicitud', compact('cabana', 'cabanas', 'imagenes', 'servicios', 'fecha_entrada', 'fecha_salida', 'huespedes'));
 
 
     }
     public function enviar(Request $request, $id)
     {
-        $cabaña = Cabaña::with('servicios')->find($id);
-        // dd($cabaña);
-        $imagenes = $cabaña->imagenes;
+        $cabana = Cabana::with('servicios')->find($id);
+        // dd($cabana);
+        $imagenes = $cabana->imagenes;
         //dd($imagenes);
-        $cabañas = Cabaña::inRandomOrder()->distinct()->take(3)->get();
-        // Pasar los datos de la cabaña a la vista
+        $cabanas = Cabana::inRandomOrder()->distinct()->take(3)->get();
+        // Pasar los datos de la cabana a la vista
         $servicios = Servicios::all();
         $nombres = $request->nombres . ' ' . $request->apellidos;
         $reserva = $request;
@@ -67,15 +67,15 @@ class ReservaController extends Controller
             'cliente' => $nombres,
             'email' => $request->email,
             'telefono' => $request->telefono,
-            'cabaña' => $id,
+            'cabana' => $id,
             'ingreso' => $request->fecha_entrada,
             'egreso' => $request->fecha_salida,
             'costo' => $request->costo,
             'huespedes' => $request->huespedes,
             'estado' => $request->estado,
         ]);
-        return view('users.alerta', ['id' => $id, 'reserva' => $reserva, 'cabaña' => $cabaña, 'cabañas' => $cabañas, 'imagenes' => $imagenes]);
+        return view('users.alerta', ['id' => $id, 'reserva' => $reserva, 'cabana' => $cabana, 'cabanas' => $cabanas, 'imagenes' => $imagenes]);
 
-        // return redirect()->route('reservaciones.cabaña', ['id' => $id])->with('success', 'Su solicitud se envio correctamente.');
+        // return redirect()->route('reservaciones.cabana', ['id' => $id])->with('success', 'Su solicitud se envio correctamente.');
     }
 }

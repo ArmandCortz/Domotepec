@@ -164,7 +164,7 @@
 
                                             <div class="col-md-8">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="10" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ old('descripcion') }}</textarea>
+                                                    rows="10" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabana">{{ old('descripcion') }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">

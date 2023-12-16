@@ -14,15 +14,15 @@
                     <p>La mejor experiencia en tus viajes</p>
                 </div>
             </div>
-            @foreach ($carrusel as $cabaña)
+            @foreach ($carrusel as $cabana)
                 <div class="carousel-item ">
-                    <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" class="img-fluid mx-auto img" alt="...">
+                    <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}" class="img-fluid mx-auto img" alt="...">
                     <div class="carousel-caption"
                         style="position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%)">
-                        <h5>{{ $cabaña->nombre }}</h5>
-                        <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
-                                    class="btn btn-outline-light ver-cabaña" data-cabaña-id="{{ $cabaña->id }}">Ver
-                                    Cabaña</a>
+                        <h5>{{ $cabana->nombre }}</h5>
+                        <a href="{{ route('reservaciones.cabana', $cabana->id) }}" class="btn btn-outline-light ver-cabana"
+                            data-cabana-id="{{ $cabana->id }}">Ver
+                            Cabana</a>
                     </div>
                 </div>
             @endforeach
@@ -128,43 +128,43 @@
                             data-sucursal-id="{{ $sucursal->id }}">Ver Sucursal</a>
                     </div>
                 @endforeach
-                {{-- @foreach ($cabañas as $cabaña)
+                {{-- @foreach ($cabanas as $cabana)
                         <div class="col mt-2">
-                            <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt=""
+                            <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}" alt=""
                                 class="rounded-circle img-fluid"
                                 style="max-height: 200px; max-width: 200px; height: 200px;  width: 200px;">
                             <br><br>
-                            <h5>{{ $cabaña->nombre }}</h5>
-                            <a href="" class="btn btn-outline-success">Ver Cabaña</a>
+                            <h5>{{ $cabana->nombre }}</h5>
+                            <a href="" class="btn btn-outline-success">Ver Cabana</a>
                         </div>
                     @endforeach --}}
             </div>
         </div>
     </div>
 
-    <div id="cabañas" class="bg-dark text-white py-2 ">
+    <div id="cabanas" class="bg-dark text-white py-2 ">
         <div class="row mt-5 my-5">
             <div class="container-xxl text-center">
                 <div class="col-md-6 offset-md-3 text-center">
 
 
-                    <h1>Cabañas</h1>
-                    <h5>Selecciona la cabaña que desees ver: </h5>
+                    <h1>Cabanas</h1>
+                    <h5>Selecciona la cabana que desees ver: </h5>
                 </div>
 
                 <div class="container text-center py-2">
                     <div class="row">
-                        @foreach ($cabañas as $cabaña)
+                        @foreach ($cabanas as $cabana)
                             <div class="col mt-2">
-                                <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt=""
+                                <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}" alt=""
                                     class="rounded-circle img-fluid"
                                     style="max-height: 200px; max-width: 200px; height: 200px;  width: 200px;">
                                 <br><br>
-                                <h5>{{ $cabaña->nombre }}</h5>
+                                <h5>{{ $cabana->nombre }}</h5>
 
-                                <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
-                                    class="btn btn-outline-success ver-cabaña" data-cabaña-id="{{ $cabaña->id }}">Ver
-                                    Cabaña</a>
+                                <a href="{{ route('reservaciones.cabana', $cabana->id) }}"
+                                    class="btn btn-outline-success ver-cabana" data-cabana-id="{{ $cabana->id }}">Ver
+                                    Cabana</a>
                             </div>
                         @endforeach
                     </div>
@@ -189,13 +189,13 @@
             });
         });
         // $(document).ready(function() {
-        //     $('.ver-cabaña').on('click', function(e) {
+        //     $('.ver-cabana').on('click', function(e) {
         //         e.preventDefault(); // Evita el comportamiento predeterminado del enlace
-        //         var cabañaId = $(this).data('cabaña-id');
+        //         var cabañaId = $(this).data('cabana-id');
         //         console.log(cabañaId);
 
         //         // Redirigir a la ruta con el parámetro de ID
-        //         window.location.href = "/reservaciones/cabaña/" + cabañaId;
+        //         window.location.href = "/reservaciones/cabana/" + cabañaId;
         //     });
         // });
     </script>

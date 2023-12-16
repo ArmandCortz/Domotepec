@@ -42,7 +42,7 @@
             </div>
         </nav>
         <br>
-        <h2>Nombre de la cabaña</h2>
+        <h2>Nombre de la cabana</h2>
     </div>
 
 
@@ -55,19 +55,19 @@
         <!-- /.user-block -->
         <div class="row mb-3">
             <div class="col-sm-6">
-                <img class="img-fluid" src="{{ asset('img/cabaña 1.jpeg') }}" alt="Photo">
+                <img class="img-fluid" src="{{ asset('img/cabana 1.jpeg') }}" alt="Photo">
             </div>
             <!-- /.col -->
             <div class="col-sm-6">
                 <div class="row">
                     <div class="col-sm-6">
-                        <img class="img-fluid mb-3" src="{{ asset('img/cabaña 2.jpeg') }}" alt="Photo">
-                        <img class="img-fluid" src="{{ asset('img/cabaña 3.jpeg') }}" alt="Photo">
+                        <img class="img-fluid mb-3" src="{{ asset('img/cabana 2.jpeg') }}" alt="Photo">
+                        <img class="img-fluid" src="{{ asset('img/cabana 3.jpeg') }}" alt="Photo">
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
-                        <img class="img-fluid mb-3" src="{{ asset('img/cabaña 4.jpeg') }}" alt="Photo">
-                        <img class="img-fluid" src="{{ asset('img/cabaña 5.jpeg') }}" alt="Photo">
+                        <img class="img-fluid mb-3" src="{{ asset('img/cabana 4.jpeg') }}" alt="Photo">
+                        <img class="img-fluid" src="{{ asset('img/cabana 5.jpeg') }}" alt="Photo">
                     </div>
                     <!-- /.col -->
                 </div>

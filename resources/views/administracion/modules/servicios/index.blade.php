@@ -44,7 +44,7 @@
                                             <td>
                                                 @if ($servicio->imagen)
                                                     <img src="{{ asset('img/servicios/' . $servicio->imagen) }}"
-                                                        alt="Imagen de la cabaña"
+                                                        alt="Imagen de la cabana"
                                                         style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
                                                 @else
                                                     <img src="{{ asset('img/servicios/img.png') }}" alt="No hay imagen"

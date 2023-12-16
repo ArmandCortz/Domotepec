@@ -14,15 +14,15 @@ class Reserva extends Model
         'cliente',
         'email',
         'telefono',
-        'cabaña',
+        'cabana',
         'ingreso',
         'egreso',
         'costo',
         'huespedes',
         'estado',
     ];
-    public function cabaña()
+    public function cabana()
     {
-        return $this->belongsTo(Cabaña::class, 'cabañas');
+        return $this->belongsTo(Cabana::class, 'cabanas');
     }
 }

@@ -1,15 +1,15 @@
 @extends('adminlte::page')
-@section('title', 'Cabañas')
+@section('title', 'Cabanas')
 
 @section('content')
     <div class="content-header">
         <div class="container-lg">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Imagenes de la cabaña: {{ $cabaña->nombre }} </h1>
+                    <h1 class="text-center py-2 mb-2">Imagenes de la cabana: {{ $cabana->nombre }} </h1>
 
                     <div class="card">
-                        <form method="POST" action="{{ route('cabañas.imagenes.update', $cabaña->id) }}"
+                        <form method="POST" action="{{ route('cabanas.imagenes.update', $cabana->id) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -39,9 +39,8 @@
                                                     <div class="img-container"
                                                         style="position: relative; display: inline-block;">
                                                         <img id="imagen-preview-{{ $imagen->clase }}"
-                                                            src="{{ asset('img/cabañas/imagenes/' . ($imagen->imagen ?? 'img.jpeg')) }}"
-                                                            alt="Imagen {{ $imagen->clase }}"
-                                                            class="imagen-preview"
+                                                            src="{{ asset('img/cabanas/imagenes/' . ($imagen->imagen ?? 'img.jpeg')) }}"
+                                                            alt="Imagen {{ $imagen->clase }}" class="imagen-preview"
                                                             style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
 
                                                         <label for="imagen-{{ $imagen->clase }}" class="upload-label"
@@ -78,9 +77,8 @@
                                                     <div class="img-container"
                                                         style="position: relative; display: inline-block;">
                                                         <img id="imagen-preview-{{ $count }}"
-                                                            src="{{ asset('img/cabañas/imagenes/img.jpeg') }}"
-                                                            alt="Imagen {{ $count }}"
-                                                            class="imagen-preview"
+                                                            src="{{ asset('img/cabanas/imagenes/img.jpeg') }}"
+                                                            alt="Imagen {{ $count }}" class="imagen-preview"
                                                             style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
 
                                                         <label for="imagen-{{ $count }}" class="upload-label"
@@ -100,7 +98,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <a href="{{ route('cabañas.edit', $cabaña->id) }}" type="button"
+                                <a href="{{ route('cabanas.edit', $cabana->id) }}" type="button"
                                     class="btn btn-outline-danger">Cancelar</a>
                                 <button type="submit" class="btn btn-outline-primary">Guardar</button>
                             </div>

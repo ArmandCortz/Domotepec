@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Intervention\Image\ImageManagerStatic as Image;
 
 use Illuminate\Http\Request;
-use App\Models\Cabaña;
+use App\Models\Cabana;
 use App\Models\Sucursal;
 use App\Models\Imagenes;
 
@@ -13,17 +13,17 @@ class CabañasController extends Controller
 {
     public function index()
     {
-        $cabañas = Cabaña::all();
+        $cabanas = Cabana::all();
         $sucursales = Sucursal::all();
 
-        return view("administracion.modules.cabañas.index", compact("cabañas", 'sucursales'));
+        return view("administracion.modules.cabanas.index", compact("cabanas", 'sucursales'));
     }
 
     public function create()
     {
-        $cabañas = Cabaña::all();
+        $cabanas = Cabana::all();
         $sucursales = Sucursal::all();
-        return view("administracion.modules.cabañas.create", compact("cabañas", 'sucursales'));
+        return view("administracion.modules.cabanas.create", compact("cabanas", 'sucursales'));
 
     }
     public function store(Request $request)
@@ -67,16 +67,16 @@ class CabañasController extends Controller
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
             $imageName = time() . '.' . $imagen->getClientOriginalExtension();
-            $path = public_path('img/cabañas/' . $imageName);
+            $path = public_path('img/cabanas/' . $imageName);
 
             // Guarda la imagen original
-            $imagen->move('img/cabañas/', $imageName);
+            $imagen->move('img/cabanas/', $imageName);
 
             // Convierte la imagen a PNG y ajusta dimensiones
             $img = Image::make($path);
             $img->encode('png', 75); // Convierte a PNG con calidad del 75%
             $img->resize(400, 200); // Ajusta a dimensiones específicas (200x200)
-            
+
             $request->imagen = $imageName;
 
             // Guarda la imagen convertida
@@ -85,8 +85,8 @@ class CabañasController extends Controller
         // dd($request);
         // dd($imageName, $request->imagen, $request->all());
 
-        // Crear la cabaña
-        $cabaña = Cabaña::create([
+        // Crear la cabana
+        $cabana = Cabana::create([
             'nombre' => $request->nombre,
             'ubicacion' => $request->ubicacion,
             'sucursal' => $request->sucursal,
@@ -100,38 +100,38 @@ class CabañasController extends Controller
             'imagen' => $request->imagen,
         ]);
 
-        // Crear las seis imágenes asociadas a la cabaña
+        // Crear las seis imágenes asociadas a la cabana
         for ($count = 1; $count <= 6; $count++) {
             Imagenes::create([
-                'cabaña' => $cabaña->id,
+                'cabana' => $cabana->id,
                 'clase' => $count,
             ]);
         }
 
 
-        return redirect()->route('cabañas.index')->with('success', 'Cabaña creada exitosamente.');
+        return redirect()->route('cabanas.index')->with('success', 'Cabana creada exitosamente.');
     }
 
     public function show($id)
     {
-        
+
 
     }
 
     public function edit($id)
     {
         $sucursales = Sucursal::all();
-        $cabañas = Cabaña::find($id);
-        // dd($cabañas);
-        return view("administracion.modules.cabañas.edit", compact("sucursales", "cabañas"));
-        
-        // dd($cabaña);
+        $cabanas = Cabana::find($id);
+        // dd($cabanas);
+        return view("administracion.modules.cabanas.edit", compact("sucursales", "cabanas"));
+
+        // dd($cabana);
     }
 
     public function update(Request $request, $id)
     {
-        $cabaña = Cabaña::find($id);
-        //dd($cabaña);
+        $cabana = Cabana::find($id);
+        //dd($cabana);
         $messages = [
             'nombre.required' => 'El campo nombre es obligatorio.',
             'ubicacion.required' => 'El campo ubicacion es obligatorio.',
@@ -169,8 +169,8 @@ class CabañasController extends Controller
         ], $messages);
         if ($request->hasFile('imagen')) {
             // Elimina la imagen anterior si existe
-            if ($cabaña->imagen) {
-                $imagenPath = public_path('img/cabañas/' . $cabaña->imagen);
+            if ($cabana->imagen) {
+                $imagenPath = public_path('img/cabanas/' . $cabana->imagen);
                 if (file_exists($imagenPath)) {
                     unlink($imagenPath);
                 }
@@ -178,10 +178,10 @@ class CabañasController extends Controller
 
             $imagen = $request->file('imagen');
             $imageName = time() . '.' . $imagen->getClientOriginalExtension();
-            $path = public_path('img/cabañas/' . $imageName);
+            $path = public_path('img/cabanas/' . $imageName);
 
             // Guarda la imagen original
-            $imagen->move('img/cabañas/', $imageName);
+            $imagen->move('img/cabanas/', $imageName);
 
             // Convierte la imagen a PNG y ajusta dimensiones
             $img = Image::make($path);
@@ -192,13 +192,13 @@ class CabañasController extends Controller
             $img->save($path);
 
             // Actualiza el nombre de la imagen en la base de datos
-            $cabaña->update([
+            $cabana->update([
                 'imagen' => $imageName,
             ]);
         }
 
 
-        $cabaña->update([
+        $cabana->update([
             'nombre' => $request->nombre,
             'ubicacion' => $request->ubicacion,
             'sucursal' => $request->sucursal,
@@ -211,20 +211,20 @@ class CabañasController extends Controller
             'descripcion' => $request->descripcion,
         ]);
 
-        return redirect()->route('cabañas.index')->with('info', 'Cabaña actualizada exitosamente.');
+        return redirect()->route('cabanas.index')->with('info', 'Cabana actualizada exitosamente.');
     }
 
     public function destroy($id)
     {
-        $cabaña = Cabaña::find($id);
-        if ($cabaña->imagen) {
-            $imagenPath = public_path('img/cabañas/' . $cabaña->imagen);
+        $cabana = Cabana::find($id);
+        if ($cabana->imagen) {
+            $imagenPath = public_path('img/cabanas/' . $cabana->imagen);
             if (file_exists($imagenPath)) {
                 unlink($imagenPath);
             }
         }
-        $cabaña->delete();
+        $cabana->delete();
 
-        return redirect()->route('cabañas.index')->with('error', 'Cabaña eliminada exitosamente.');
+        return redirect()->route('cabanas.index')->with('error', 'Cabana eliminada exitosamente.');
     }
 }

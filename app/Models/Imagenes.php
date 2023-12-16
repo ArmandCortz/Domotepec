@@ -11,7 +11,7 @@ class Imagenes extends Model
     protected $fillable = [
         'id',
         'imagen',
-        'cabaña',
+        'cabana',
         'clase',
     ];
 }

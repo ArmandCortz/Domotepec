@@ -78,25 +78,25 @@
                                             <div class="row row-cols-2">
                                                 <div class="col">
                                                     <div class="row mb-3">
-                                                        <label for="cabaña"
-                                                            class="col-md-4 col-form-label text-md-end">{{ __('Cabaña') }}</label>
+                                                        <label for="cabana"
+                                                            class="col-md-4 col-form-label text-md-end">{{ __('Cabana') }}</label>
 
                                                         <div class="col-md-8">
-                                                            <select id="cabaña" name="cabaña"
-                                                                class="form-control @error('cabaña') is-invalid @enderror"
-                                                                autocomplete="cabaña" value="{{ old('cabaña') }}">
+                                                            <select id="cabana" name="cabana"
+                                                                class="form-control @error('cabana') is-invalid @enderror"
+                                                                autocomplete="cabana" value="{{ old('cabana') }}">
                                                                 <option value="" selected disabled>Selecciona una
-                                                                    cabaña
+                                                                    cabana
 
-                                                                    @foreach ($cabañas as $cabaña)
-                                                                <option value="{{ $cabaña->id }}"
-                                                                    {{ $cabaña->id == $reserva->cabaña ? 'selected' : '' }}>
-                                                                    {{ $cabaña->nombre }} </option>
+                                                                    @foreach ($cabanas as $cabana)
+                                                                <option value="{{ $cabana->id }}"
+                                                                    {{ $cabana->id == $reserva->cabana ? 'selected' : '' }}>
+                                                                    {{ $cabana->nombre }} </option>
                                                                 @endforeach
 
                                                             </select>
 
-                                                            @error('cabaña')
+                                                            @error('cabana')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
@@ -414,13 +414,13 @@
 
 
         $(document).ready(function() {
-            $('#cabaña').change(function() {
+            $('#cabana').change(function() {
                 var selectedCabaña = $(this).val();
-                @foreach ($cabañas as $cabaña)
+                @foreach ($cabanas as $cabana)
                     if (selectedCabaña) {
 
-                        if (selectedCabaña === "{{ $cabaña->id }}") {
-                            var huespedes = "{{ $cabaña->huespedes }}";
+                        if (selectedCabaña === "{{ $cabana->id }}") {
+                            var huespedes = "{{ $cabana->huespedes }}";
                             var mensaje = huespedes + " Personas máximo";
 
                             $('#huespedes').attr('max', huespedes);
@@ -464,7 +464,7 @@
             const endDate = document.getElementById('endDate');
             const endDateValue = endDate.value;
 
-            var precio = "{{ $cabaña->precio }}";
+            var precio = "{{ $cabana->precio }}";
             const preciotext = document.getElementById('precio');
 
             const diastext = document.getElementById('diferencia_dias');
@@ -476,7 +476,7 @@
             const impuestostext = document.getElementById('impuestos');
             const impuestos = calcularImpuestos(totalCabaña);
 
-            var limpieza = "{{ $cabaña->limpieza }}";
+            var limpieza = "{{ $cabana->limpieza }}";
             const limpiezatext = document.getElementById('tarifa_limpieza');
 
             const totalEstadiatext = document.getElementById('total_estadia');
@@ -494,7 +494,7 @@
             totalEstadiatext.textContent = `$${totalEstadia} USD`;
             inputTotal.value = totalEstadia;
 
-            const cabanaId = document.getElementById('cabaña');
+            const cabanaId = document.getElementById('cabana');
             const cabanaIdValue = cabanaId.value;
 
             console.log(cabanaIdValue);
@@ -511,14 +511,14 @@
         }
 
         function cargarReservasPorCabaña(cabanaId) {
-                        var calendarEl = document.getElementById('calendario');
+            var calendarEl = document.getElementById('calendario');
 
             var events = [];
             @foreach ($reservaciones as $reserva)
                 var cabañaNombre = '';
-                @foreach ($cabañas as $cabaña)
-                    @if ($reserva->cabaña === $cabaña->id)
-                        cabañaNombre = '{{ $cabaña->nombre }}';
+                @foreach ($cabanas as $cabana)
+                    @if ($reserva->cabana === $cabana->id)
+                        cabañaNombre = '{{ $cabana->nombre }}';
                     @endif
                 @endforeach
                 @if ($reserva->estado >= 1 && $reserva->estado <= 4)
@@ -537,7 +537,7 @@
             return events;
         }
 
-        $('#cabaña').change(function() {
+        $('#cabana').change(function() {
             var selectedCabañaId = $(this).val();
             var events = cargarReservasPorCabaña(selectedCabañaId);
 

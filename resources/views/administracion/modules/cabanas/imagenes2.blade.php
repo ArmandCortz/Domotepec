@@ -1,28 +1,28 @@
 @extends('adminlte::page')
-@section('title', 'Cabañas')
+@section('title', 'Cabanas')
 
 @section('content')
     <div class="content-header">
         <div class="container-lg">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Imagenes de la cabaña {{ $cabaña->nombre }} </h1>
+                    <h1 class="text-center py-2 mb-2">Imagenes de la cabana {{ $cabana->nombre }} </h1>
 
                     <div class="card">
-                        <form method="POST" action="{{ route('cabañas.update', $cabaña->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('cabanas.update', $cabana->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
 
                                 <div class="row row-cols-2">
                                     @foreach ($imagenes as $imagen)
-                                        
-                                    <div class="col ">
+                                        <div class="col ">
                                             <div class="row mb-3">
                                                 <div class="col-md-8 ">
                                                     <div class="form-group">
 
-                                                        <input type="file" name="imagen" id="imagen-{{$imagen->clase}}" accept="image/*"
+                                                        <input type="file" name="imagen"
+                                                            id="imagen-{{ $imagen->clase }}" accept="image/*"
                                                             class="form-control @error('imagen') is-invalid @enderror"
                                                             style="display: none">
                                                         @error('imagen')
@@ -38,12 +38,12 @@
                                             <div style="text-align: center; position: relative;">
                                                 <div class="img-container"
                                                     style="position: relative; display: inline-block;">
-                                                    <img id="imagen-preview-{{$imagen->clase}}"
-                                                        src="{{ asset('img/cabañas/imagenes/' . ($imagen->imagen ?? 'img.png')) }}"
-                                                        alt="Imagen de la cabaña"
+                                                    <img id="imagen-preview-{{ $imagen->clase }}"
+                                                        src="{{ asset('img/cabanas/imagenes/' . ($imagen->imagen ?? 'img.png')) }}"
+                                                        alt="Imagen de la cabana"
                                                         style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
 
-                                                    <label for="imagen-{{$imagen->clase}}" class="upload-label"
+                                                    <label for="imagen-{{ $imagen->clase }}" class="upload-label"
                                                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; display: grid; justify-content: center; align-items: center; font-size: 20px; font-weight: 600;">
                                                         <div class="upload-button form-control @error('imagen') is-invalid @enderror"
                                                             style="cursor: pointer; width: auto; border-radius: 8px; height: 40px; background-color: rgb(255, 255, 255); border-color: rgb(206, 207, 208);">
@@ -54,12 +54,12 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    
+
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <a href="{{ route('cabañas.edit', $cabaña->id) }}" type="button"
+                                <a href="{{ route('cabanas.edit', $cabana->id) }}" type="button"
                                     class="btn btn-outline-danger">Cancelar</a>
                                 <button type="submit" class="btn btn-outline-primary">Guardar</button>
                             </div>

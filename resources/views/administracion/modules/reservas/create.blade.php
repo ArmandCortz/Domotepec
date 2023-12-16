@@ -77,24 +77,24 @@
                                             <div class="row row-cols-2">
                                                 <div class="col">
                                                     <div class="row mb-3">
-                                                        <label for="cabaña"
-                                                            class="col-md-4 col-form-label text-md-end">{{ __('Cabaña') }}</label>
+                                                        <label for="cabana"
+                                                            class="col-md-4 col-form-label text-md-end">{{ __('Cabana') }}</label>
 
                                                         <div class="col-md-8">
-                                                            <select id="cabaña" name="cabaña"
-                                                                class="form-control @error('cabaña') is-invalid @enderror"
-                                                                autocomplete="cabaña" value="{{ old('cabaña') }}">
+                                                            <select id="cabana" name="cabana"
+                                                                class="form-control @error('cabana') is-invalid @enderror"
+                                                                autocomplete="cabana" value="{{ old('cabana') }}">
                                                                 <option value="" selected disabled>Selecciona una
-                                                                    cabaña
+                                                                    cabana
 
-                                                                    @foreach ($cabañas as $cabaña)
-                                                                <option value="{{ $cabaña->id }}">{{ $cabaña->nombre }}
+                                                                    @foreach ($cabanas as $cabana)
+                                                                <option value="{{ $cabana->id }}">{{ $cabana->nombre }}
                                                                 </option>
                                                                 @endforeach
 
                                                             </select>
 
-                                                            @error('cabaña')
+                                                            @error('cabana')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
@@ -371,13 +371,13 @@
 
 
         $(document).ready(function() {
-            $('#cabaña').change(function() {
+            $('#cabana').change(function() {
                 var selectedCabaña = $(this).val();
-                @foreach ($cabañas as $cabaña)
+                @foreach ($cabanas as $cabana)
                     if (selectedCabaña) {
 
-                        if (selectedCabaña === "{{ $cabaña->id }}") {
-                            var huespedes = "{{ $cabaña->huespedes }}";
+                        if (selectedCabaña === "{{ $cabana->id }}") {
+                            var huespedes = "{{ $cabana->huespedes }}";
                             var mensaje = huespedes + " Personas máximo";
 
                             $('#huespedes').attr('max', huespedes);
@@ -414,41 +414,42 @@
             const totalEstadia = parseFloat(totalCabaña) + parseFloat(impuestos) + parseFloat(tarifaLimpieza);
             return totalEstadia.toFixed(2);
         }
+
         function actualizarCalculos() {
             const startDate = document.getElementById('startDate');
-                            const startDateValue = startDate.value;
-                            const endDate = document.getElementById('endDate');
-                            const endDateValue = endDate.value;
+            const startDateValue = startDate.value;
+            const endDate = document.getElementById('endDate');
+            const endDateValue = endDate.value;
 
-                            var precio = "{{ $cabaña->precio }}";
-                            const preciotext = document.getElementById('precio');
+            var precio = "{{ $cabana->precio }}";
+            const preciotext = document.getElementById('precio');
 
-                            const diastext = document.getElementById('diferencia_dias');
-                            const diffDias = calcularDiferenciaDias(startDateValue, endDateValue);
+            const diastext = document.getElementById('diferencia_dias');
+            const diffDias = calcularDiferenciaDias(startDateValue, endDateValue);
 
-                            const totalCabañatext = document.getElementById('total_cabaña');
-                            const totalCabaña = calcularTotalCabaña(precio, startDateValue, endDateValue);
+            const totalCabañatext = document.getElementById('total_cabaña');
+            const totalCabaña = calcularTotalCabaña(precio, startDateValue, endDateValue);
 
-                            const impuestostext = document.getElementById('impuestos');
-                            const impuestos = calcularImpuestos(totalCabaña);
+            const impuestostext = document.getElementById('impuestos');
+            const impuestos = calcularImpuestos(totalCabaña);
 
-                            var limpieza = "{{ $cabaña->limpieza }}";
-                            const limpiezatext = document.getElementById('tarifa_limpieza');
+            var limpieza = "{{ $cabana->limpieza }}";
+            const limpiezatext = document.getElementById('tarifa_limpieza');
 
-                            const totalEstadiatext = document.getElementById('total_estadia');
-                            const totalEstadia = calcularTotalEstadia(totalCabaña, impuestos, limpieza);
-                            const inputTotal = document.getElementById('costo');
+            const totalEstadiatext = document.getElementById('total_estadia');
+            const totalEstadia = calcularTotalEstadia(totalCabaña, impuestos, limpieza);
+            const inputTotal = document.getElementById('costo');
 
 
-                            diastext.textContent = `${diffDias}`;
-                            totalCabañatext.textContent = `$${totalCabaña} USD`;
-                            preciotext.textContent = `$${precio} USD`;
+            diastext.textContent = `${diffDias}`;
+            totalCabañatext.textContent = `$${totalCabaña} USD`;
+            preciotext.textContent = `$${precio} USD`;
 
-                            impuestostext.textContent = `$${impuestos} USD`;
-                            limpiezatext.textContent = `$${limpieza} USD`;
+            impuestostext.textContent = `$${impuestos} USD`;
+            limpiezatext.textContent = `$${limpieza} USD`;
 
-                            totalEstadiatext.textContent = `$${totalEstadia} USD`;
-                            inputTotal.value = totalEstadia;
+            totalEstadiatext.textContent = `$${totalEstadia} USD`;
+            inputTotal.value = totalEstadia;
         }
     </script>
 

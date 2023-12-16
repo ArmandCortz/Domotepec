@@ -19,8 +19,8 @@ class Sucursal extends Model
         'imagen',
         // Puedes agregar más campos aquí si es necesario
     ];
-    public function cabañas()
+    public function cabanas()
     {
-        return $this->hasMany(Cabaña::class, 'sucursal');
+        return $this->hasMany(Cabana::class, 'sucursal');
     }
 }

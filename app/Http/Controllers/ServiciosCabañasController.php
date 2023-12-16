@@ -4,41 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Cabaña;
+use App\Models\Cabana;
 use App\Models\Servicios;
 use App\Models\CHS;
 
 class ServiciosCabañasController extends Controller
 {
-    public function index (Servicios $servicios, Cabaña $cabañas, $cabaña)
+    public function index(Servicios $servicios, Cabana $cabanas, $cabana)
     {
-        $cabaña = Cabaña::find($cabaña);
+        $cabana = Cabana::find($cabana);
         $servicios = Servicios::all();
-        // dd($cabaña->servicios);
+        // dd($cabana->servicios);
 
-        return view("administracion.modules.cabañas.servicios", compact("servicios","cabaña"));
+        return view("administracion.modules.cabanas.servicios", compact("servicios", "cabana"));
     }
 
-    
-    public function update(Request $request) {
-        
-        $cabaña= $request->cabaña;
+
+    public function update(Request $request)
+    {
+
+        $cabana = $request->cabana;
         $servicio = $request->servicio;
-        // dd("eliminando", $cabaña , $servicio);
-        $chs = CHS::where('cabaña', $cabaña)->where('servicio', $servicio)->first();
+        // dd("eliminando", $cabana , $servicio);
+        $chs = CHS::where('cabana', $cabana)->where('servicio', $servicio)->first();
         $chs->delete();
         return redirect()->back()->with('error', 'Registro eliminado correctamente.');
 
 
     }
 
-    public function store(Request $request) {
-        // dd($request->cabaña, $request->servicio);
+    public function store(Request $request)
+    {
+        // dd($request->cabana, $request->servicio);
         CHS::create([
-            'cabaña' => $request->cabaña,
+            'cabana' => $request->cabana,
             'servicio' => $request->servicio,
         ]);
-        $cabaña = Cabaña::find($request->cabaña);
+        $cabana = Cabana::find($request->cabana);
         // dd("guardado");
         return redirect()->back()->with('success', 'Servicio agregado exitosamente.');
 

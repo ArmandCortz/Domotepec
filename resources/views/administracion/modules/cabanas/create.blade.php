@@ -1,17 +1,17 @@
 @extends('adminlte::page')
-@section('title', 'Cabañas')
+@section('title', 'Cabanas')
 
 @section('content')
     <div class="content-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Crear Cabañas</h1>
+                    <h1 class="text-center py-2 mb-2">Crear Cabanas</h1>
 
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('cabañas.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('cabanas.store') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row row-cols-2">
@@ -207,7 +207,7 @@
 
                                             <div class="col-md-8">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="10" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ old('descripcion') }}</textarea>
+                                                    rows="10" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabana">{{ old('descripcion') }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">
@@ -270,7 +270,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <a href="{{ route('cabañas.index') }}" type="button"
+                            <a href="{{ route('cabanas.index') }}" type="button"
                                 class="btn btn-outline-danger">Cancelar</a>
                             <button type="submit" class="btn btn-outline-primary">Guardar</button>
                         </div>

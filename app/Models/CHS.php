@@ -11,14 +11,14 @@ class CHS extends Model
 
     protected $table = "cabañas_has_servicios";
     protected $fillable = [
-        'cabaña',
+        'cabana',
         'servicio'
     ];
     public $timestamps = false;
 
-    // public function cabañas()
+    // public function cabanas()
     // {
-    //     return $this->belongsTo(Cabaña::class, 'cabaña');
+    //     return $this->belongsTo(Cabana::class, 'cabana');
     // }
 
     // public function servicios()

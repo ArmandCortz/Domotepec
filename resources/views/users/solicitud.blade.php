@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     @endpush
     <section>
-        <div id="cabaña" class="py-2">
+        <div id="cabana" class="py-2">
             <div class="container">
 
                 <h2 class="text-center">Domotepec</h2>
@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-6 ">
                         <div class="col">
-                            <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt="No hay imagen"
+                            <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}" alt="No hay imagen"
                                 style="width: 100%; height: 300px;  border-radius: 15px; overflow: hidden;">
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="row row-cols-3 ">
                             @foreach ($imagenes as $imagen)
                                 <div class="col py-2">
-                                    <img src="{{ asset('img/cabañas/imagenes/' . $imagen->imagen) }}" alt="No hay imagen"
+                                    <img src="{{ asset('img/cabanas/imagenes/' . $imagen->imagen) }}" alt="No hay imagen"
                                         style="width: 100%; height: 135px;  border-radius: 15px; overflow: hidden;">
                                 </div>
                             @endforeach
@@ -32,16 +32,16 @@
 
                 <div class="row row-cols-2 py-4">
                     <div class="col-6">
-                        <h1>Nombre de la cabaña: {{ $cabaña->nombre }}</h1>
-                        <p>{{ $cabaña->huespedes }} huéspedes . {{ $cabaña->habitaciones }} habitaciones .
-                            {{ $cabaña->camas }} camas . {{ $cabaña->baños }} baños completos</p>
+                        <h1>Nombre de la cabana: {{ $cabana->nombre }}</h1>
+                        <p>{{ $cabana->huespedes }} huéspedes . {{ $cabana->habitaciones }} habitaciones .
+                            {{ $cabana->camas }} camas . {{ $cabana->baños }} baños completos</p>
                         <hr>
-                        <small>{{ $cabaña->descripcion }}
+                        <small>{{ $cabana->descripcion }}
                         </small>
                         <hr>
                         <h2>Lo que ofrece este lugar</h2>
                         <div class="row row-cols-2">
-                            @foreach ($cabaña->servicios as $servicio)
+                            @foreach ($cabana->servicios as $servicio)
                                 <div class="col">
                                     <div class="row row-cols-2">
                                         <div class="col-2">
@@ -63,8 +63,8 @@
                         <div class="card shadow-lg bg-light mb-3" style="max-width: 100$;">
 
                             <div class="card-body">
-                                <h3>${{ $cabaña->precio }} USD por noche</h3>
-                                <form action="{{ route('reservaciones.enviar', $cabaña->id) }}" method="POST">
+                                <h3>${{ $cabana->precio }} USD por noche</h3>
+                                <form action="{{ route('reservaciones.enviar', $cabana->id) }}" method="POST">
                                     @csrf
 
                                     <div class="row row-cols-2">
@@ -89,14 +89,16 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="nombres" class="form-label">Nombres:</label>
-                                                <input type="text" class="form-control" name="nombres" id="nombres" required>
+                                                <input type="text" class="form-control" name="nombres" id="nombres"
+                                                    required>
                                             </div>
 
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="apellidos" class="form-label">Apellidos:</label>
-                                                <input type="text" class="form-control" name="apellidos" id="apellidos" required>
+                                                <input type="text" class="form-control" name="apellidos" id="apellidos"
+                                                    required>
                                             </div>
                                         </div>
                                     </div>
@@ -104,15 +106,16 @@
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Correo:</label>
-                                                <input type="email" class="form-control" name="email" id="email" required>
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                    required>
                                             </div>
 
                                         </div>
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="huespedes" class="form-label">Cantidad de huéspedes:</label>
-                                                <input type="number" class="form-control" name="huespedes" id="huespedes" required
-                                                    min="1" value="1" max="{{ $cabaña->huespedes }}">
+                                                <input type="number" class="form-control" name="huespedes" id="huespedes"
+                                                    required min="1" value="1" max="{{ $cabana->huespedes }}">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -126,7 +129,7 @@
 
                                     <div class="mb-3">
                                         <input type="number" class="form-control" style="display: none" name="costo"
-                                            id="costo" >
+                                            id="costo">
                                     </div>
                                     <div class="mb-3">
                                         <input type="number" class="form-control" style="display: none" name="estado"
@@ -135,7 +138,8 @@
 
 
 
-                                    <button type="submit" class="btn btn-outline-primary mb-2" style="width: 100%">Enviar
+                                    <button type="submit" class="btn btn-outline-primary mb-2"
+                                        style="width: 100%">Enviar
                                         Solicitud
                                         de
                                         Reserva</button>
@@ -146,7 +150,7 @@
                                     <div class="row row-cols-2">
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label for="total_cabaña" class="form-label">{{ $cabaña->precio }} USD X
+                                                <label for="total_cabaña" class="form-label">{{ $cabana->precio }} USD X
                                                     <span id="diferencia_dias"></span> Noches</label>
                                             </div>
                                         </div>
@@ -167,7 +171,7 @@
                                             <p class="text-end"><span id="impuestos"></span></p>
                                         </div>
                                     </div>
-                                    
+
                                     <!-- Aquí se mostrará la tarifa de limpieza -->
                                     <div class="row row-cols-2">
                                         <div class="col">
@@ -204,30 +208,30 @@
     </section>
 
     <section>
-        <div id="cabañas" class="bg-dark text-white py-2 ">
+        <div id="cabanas" class="bg-dark text-white py-2 ">
             <div class="row mt-5 my-5">
                 <div class="container-xxl text-center">
                     <div class="col-md-6 offset-md-3 text-center">
 
 
-                        <h1>Descubre más cabañas</h1>
-                        <h5>Selecciona la cabaña que desees ver: </h5>
+                        <h1>Descubre más cabanas</h1>
+                        <h5>Selecciona la cabana que desees ver: </h5>
                     </div>
 
                     <div class="container text-center py-2">
                         <div class="row row-cols-3">
-                            @foreach ($cabañas as $cabaña)
+                            @foreach ($cabanas as $cabana)
                                 <div class="col mt-2">
-                                    <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt=""
+                                    <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}" alt=""
                                         class="rounded-circle img-fluid"
                                         style="max-height: 200px; max-width: 200px; height: 200px;  width: 200px;">
                                     <br><br>
-                                    <h5>{{ $cabaña->nombre }}</h5>
+                                    <h5>{{ $cabana->nombre }}</h5>
 
-                                    <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
-                                        class="btn btn-outline-success ver-cabaña"
-                                        data-cabaña-id="{{ $cabaña->id }}">Ver
-                                        Cabaña</a>
+                                    <a href="{{ route('reservaciones.cabana', $cabana->id) }}"
+                                        class="btn btn-outline-success ver-cabana"
+                                        data-cabana-id="{{ $cabana->id }}">Ver
+                                        Cabana</a>
                                 </div>
                             @endforeach
                         </div>
@@ -246,20 +250,20 @@
             return diffDias;
         }
 
-        // Función para calcular el total de la cabaña
+        // Función para calcular el total de la cabana
         function calcularTotalCabaña(precio, fechaEntrada, fechaSalida) {
             const diffDias = calcularDiferenciaDias(fechaEntrada, fechaSalida);
             const totalCabaña = precio * diffDias;
             return totalCabaña.toFixed(2);
         }
 
-        // Función para calcular los impuestos (20% del total de la cabaña)
+        // Función para calcular los impuestos (20% del total de la cabana)
         function calcularImpuestos(totalCabaña) {
             const impuestos = totalCabaña * 0.2;
             return impuestos.toFixed(2);
         }
 
-        // Función para calcular el total de la estadia (Total cabaña + Impuestos + Tarifa de limpieza)
+        // Función para calcular el total de la estadia (Total cabana + Impuestos + Tarifa de limpieza)
         function calcularTotalEstadia(totalCabaña, impuestos, tarifaLimpieza) {
             const totalEstadia = parseFloat(totalCabaña) + parseFloat(impuestos) + parseFloat(tarifaLimpieza);
             return totalEstadia.toFixed(2);
@@ -282,14 +286,14 @@
 
         // Función para actualizar los cálculos al cambiar las fechas
         function actualizarCalculos() {
-            const precio = parseFloat({{ $cabaña->precio }});
+            const precio = parseFloat({{ $cabana->precio }});
             const fechaEntradaValue = fechaEntrada.value;
             const fechaSalidaValue = fechaSalida.value;
             const diffDias = calcularDiferenciaDias(fechaEntradaValue, fechaSalidaValue);
 
             const totalCabaña = calcularTotalCabaña(precio, fechaEntradaValue, fechaSalidaValue);
             const impuestos = calcularImpuestos(totalCabaña);
-            const tarifaLimpieza = parseFloat({{ $cabaña->limpieza }}); // Valor de tarifa de limpieza
+            const tarifaLimpieza = parseFloat({{ $cabana->limpieza }}); // Valor de tarifa de limpieza
 
             diferenciaDiasElemento.textContent = diffDias;
             totalCabañaElemento.textContent = `$${totalCabaña} USD`;

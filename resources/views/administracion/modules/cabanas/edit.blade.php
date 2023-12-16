@@ -1,17 +1,17 @@
 @extends('adminlte::page')
-@section('title', 'Cabañas')
+@section('title', 'Cabanas')
 
 @section('content')
     <div class="content-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Editar Cabañas</h1>
+                    <h1 class="text-center py-2 mb-2">Editar Cabanas</h1>
 
                     <div class="card">
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('cabañas.update', $cabañas->id) }}"
+                            <form method="POST" action="{{ route('cabanas.update', $cabanas->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -25,7 +25,7 @@
                                             <div class="col-md-8">
                                                 <input id="nombre" type="text"
                                                     class="form-control @error('nombre') is-invalid @enderror"
-                                                    name="nombre" value="{{ $cabañas->nombre }}" autocomplete="nombre"
+                                                    name="nombre" value="{{ $cabanas->nombre }}" autocomplete="nombre"
                                                     autofocus>
 
                                                 @error('nombre')
@@ -45,7 +45,7 @@
                                             <div class="col-md-8">
                                                 <input id="ubicacion" type="text"
                                                     class="form-control @error('ubicacion') is-invalid @enderror"
-                                                    name="ubicacion" value="{{ $cabañas->ubicacion }}"
+                                                    name="ubicacion" value="{{ $cabanas->ubicacion }}"
                                                     autocomplete="ubicacion" autofocus>
 
                                                 @error('ubicacion')
@@ -70,7 +70,7 @@
                                                     <option value="" selected disabled>Selecciona una sucursal
                                                         @foreach ($sucursales as $sucursal)
                                                     <option value="{{ $sucursal->id }}"
-                                                        {{ $sucursal->id == $cabañas->sucursal ? 'selected' : '' }}>
+                                                        {{ $sucursal->id == $cabanas->sucursal ? 'selected' : '' }}>
                                                         {{ $sucursal->nombre }} </option>
                                                     @endforeach
 
@@ -95,7 +95,7 @@
                                                     </div>
                                                     <input id="precio" type="number"
                                                         class="form-control @error('precio') is-invalid @enderror"
-                                                        name="precio" value="{{ $cabañas->precio }}" autocomplete="precio"
+                                                        name="precio" value="{{ $cabanas->precio }}" autocomplete="precio"
                                                         step="0.01" min="0.01" autofocus>
                                                     @error('precio')
                                                         <span class="invalid-feedback" role="alert">
@@ -116,7 +116,7 @@
                                             <div class="col-md-8">
                                                 <input id="huespedes" type="number"
                                                     class="form-control @error('huespedes') is-invalid @enderror"
-                                                    name="huespedes" value="{{ $cabañas->huespedes }}"
+                                                    name="huespedes" value="{{ $cabanas->huespedes }}"
                                                     autocomplete="huespedes" autofocus>
                                                 @error('huespedes')
                                                     <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@
                                             <div class="col-md-8">
                                                 <input id="habitaciones" type="number"
                                                     class="form-control @error('habitaciones') is-invalid @enderror"
-                                                    name="habitaciones" value="{{ $cabañas->habitaciones }}"
+                                                    name="habitaciones" value="{{ $cabanas->habitaciones }}"
                                                     autocomplete="habitaciones" autofocus>
                                                 @error('habitaciones')
                                                     <span class="invalid-feedback" role="alert">
@@ -150,7 +150,7 @@
                                             <div class="col-md-8">
                                                 <input id="camas" type="number"
                                                     class="form-control @error('camas') is-invalid @enderror"
-                                                    name="camas" value="{{ $cabañas->camas }}" autocomplete="camas"
+                                                    name="camas" value="{{ $cabanas->camas }}" autocomplete="camas"
                                                     autofocus>
                                                 @error('camas')
                                                     <span class="invalid-feedback" role="alert">
@@ -167,7 +167,7 @@
                                             <div class="col-md-8">
                                                 <input id="baños" type="number"
                                                     class="form-control @error('baños') is-invalid @enderror"
-                                                    name="baños" value="{{ $cabañas->baños }}" autocomplete="baños"
+                                                    name="baños" value="{{ $cabanas->baños }}" autocomplete="baños"
                                                     autofocus>
                                                 @error('baños')
                                                     <span class="invalid-feedback" role="alert">
@@ -189,7 +189,7 @@
                                                     </div>
                                                     <input id="limpieza" type="number"
                                                         class="form-control @error('limpieza') is-invalid @enderror"
-                                                        name="limpieza" value="{{ $cabañas->limpieza }}"
+                                                        name="limpieza" value="{{ $cabanas->limpieza }}"
                                                         autocomplete="limpieza" step="0.01" min="0.01" autofocus>
                                                     @error('limpieza')
                                                         <span class="invalid-feedback" role="alert">
@@ -208,7 +208,7 @@
 
                                             <div class="col-md-8">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="8" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ $cabañas->descripcion }}</textarea>
+                                                    rows="8" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabana">{{ $cabanas->descripcion }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">
@@ -248,8 +248,8 @@
                                         <div style="text-align: center;">
                                             <div class="img-fluid">
                                                 <img id="imagen-preview"
-                                                    src="{{ asset('img/cabañas/' . ($cabañas->imagen ?? 'img.png')) }}"
-                                                    alt="Imagen de la cabaña"
+                                                    src="{{ asset('img/cabanas/' . ($cabanas->imagen ?? 'img.png')) }}"
+                                                    alt="Imagen de la cabana"
                                                     style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
                                             </div>
                                         </div>
@@ -262,15 +262,15 @@
                         </div>
                         <div class="modal-footer">
                             <div class="justify-content-start">
-                                <a href="{{ route('cabañas.servicios', $cabañas->id) }}" type="button"
+                                <a href="{{ route('cabanas.servicios', $cabanas->id) }}" type="button"
                                     class="btn btn-outline-primary">Agregar Servicios</a>
                             </div>
                             <div class="justify-content-start">
-                                <a href="{{ route('cabañas.imagenes', $cabañas->id) }}" type="button"
+                                <a href="{{ route('cabanas.imagenes', $cabanas->id) }}" type="button"
                                     class="btn btn-outline-success">Agregar Imagenes</a>
                             </div>
                             <div class="justify-content-end">
-                                <a href="{{ route('cabañas.index') }}" type="button"
+                                <a href="{{ route('cabanas.index') }}" type="button"
                                     class="btn btn-outline-danger">Cancelar</a>
                                 <button type="submit" class="btn btn-outline-primary">Guardar</button>
                             </div>

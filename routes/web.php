@@ -17,7 +17,6 @@ use App\Http\Controllers\ReservaController;
 */
 
 
-
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Definicion de rutas necesarias para el proyecto
@@ -43,9 +42,9 @@ Route::prefix('/user')->namespace("App\\Http\\Controllers")->group(function () {
     })->name('Contacto');
 
     Route::get('/reservaciones', "ReservaController@show")->name('reservaciones.sucursal');
-    Route::get('/reservaciones/cabaña/{id}', "ReservaController@cabaña")->name('reservaciones.cabaña');
-    Route::post('/reservaciones/cabaña/solicitud/{id}', "ReservaController@solicitud")->name('reservaciones.solicitud');
-    Route::post('/reservaciones/cabaña/solicitud/enviar/{id}', "ReservaController@enviar")->name('reservaciones.enviar');
+    Route::get('/reservaciones/cabana/{id}', "ReservaController@cabana")->name('reservaciones.cabana');
+    Route::post('/reservaciones/cabana/solicitud/{id}', "ReservaController@solicitud")->name('reservaciones.solicitud');
+    Route::post('/reservaciones/cabana/solicitud/enviar/{id}', "ReservaController@enviar")->name('reservaciones.enviar');
 });
 // Route::get('/reservaciones', [ReservaController::class, 'reservar'])->name('reservaciones');
 
@@ -72,16 +71,16 @@ Route::prefix('/')->group(function () {
         // Rutas para sucursales
         Route::resource('sucursales', 'SucursalesController')->names('sucursales');
 
-        // Rutas para cabañas
+        // Rutas para cabanas
 
-        Route::resource('cabanas', 'CabañasController')->names('cabañas');
-        
-        Route::get('cabanas/{id}/imagenes/edit', 'ImagenesCabañasController@edit')->name('cabañas.imagenes');
-        Route::put('cabanas/{id}/imagenes/update', 'ImagenesCabañasController@update')->name('cabañas.imagenes.update');
-        
-        Route::get('cabanas/{id}/servicios/edit', 'ServiciosCabañasController@index')->name('cabañas.servicios');
-        Route::post('/agregar-servicio', 'ServiciosCabañasController@store')->name('cabañas.servicios.store');
-        Route::post('/eliminar-servicio', 'ServiciosCabañasController@update')->name('cabañas.servicios.delete');
+        Route::resource('cabanas', 'CabañasController')->names('cabanas');
+
+        Route::get('cabanas/{id}/imagenes/edit', 'ImagenesCabañasController@edit')->name('cabanas.imagenes');
+        Route::put('cabanas/{id}/imagenes/update', 'ImagenesCabañasController@update')->name('cabanas.imagenes.update');
+
+        Route::get('cabanas/{id}/servicios/edit', 'ServiciosCabañasController@index')->name('cabanas.servicios');
+        Route::post('/agregar-servicio', 'ServiciosCabañasController@store')->name('cabanas.servicios.store');
+        Route::post('/eliminar-servicio', 'ServiciosCabañasController@update')->name('cabanas.servicios.delete');
 
         //Rutas para bienes
         Route::resource('bienes', "BienesController")->names('bienes');

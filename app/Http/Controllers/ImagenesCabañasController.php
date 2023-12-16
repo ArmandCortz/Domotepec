@@ -5,24 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
-use App\Models\Cabaña;
+use App\Models\Cabana;
 use App\Models\Imagenes;
 
 class ImagenesCabañasController extends Controller
 {
 
-    public function edit(Imagenes $imagenes, Cabaña $cabañas, $cabaña)
+    public function edit(Imagenes $imagenes, Cabana $cabanas, $cabana)
     {
-        $cabaña = Cabaña::find($cabaña);
-        $imagenes = $cabaña->imagenes;
-        
+        $cabana = Cabana::find($cabana);
+        $imagenes = $cabana->imagenes;
+
         // dd($imagenes);
-        return view("administracion.modules.cabañas.imagenes", compact("cabaña", "imagenes"));
+        return view("administracion.modules.cabanas.imagenes", compact("cabana", "imagenes"));
     }
 
     public function update(Request $request, $id)
     {
-        $cabaña = Cabaña::find($id);
+        $cabana = Cabana::find($id);
 
         $request->validate([
             'imagen.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -31,9 +31,9 @@ class ImagenesCabañasController extends Controller
         if ($request->hasFile('imagen')) {
             foreach ($request->file('imagen') as $key => $file) {
                 // Eliminar la imagen existente
-                $existingImage = Imagenes::where('cabaña', $cabaña->id)->where('clase', $key + 1)->first();
+                $existingImage = Imagenes::where('cabana', $cabana->id)->where('clase', $key + 1)->first();
                 if ($existingImage) {
-                    $existingImagePath = public_path('img/cabañas/imagenes/' . $existingImage->imagen);
+                    $existingImagePath = public_path('img/cabanas/imagenes/' . $existingImage->imagen);
                     if (File::exists($existingImagePath) && is_file($existingImagePath)) {
                         File::delete($existingImagePath);
                     }
@@ -41,7 +41,7 @@ class ImagenesCabañasController extends Controller
 
                 // Guardar la nueva imagen
                 $imageName = 'imagen_' . $key . '_' . time() . '.' . $file->extension();
-                $file->move(public_path('img/cabañas/imagenes'), $imageName);
+                $file->move(public_path('img/cabanas/imagenes'), $imageName);
 
                 if ($existingImage) {
                     // Actualizar el nombre de la imagen en la base de datos
@@ -49,7 +49,7 @@ class ImagenesCabañasController extends Controller
                 } else {
                     // Crear un nuevo registro de imagen si no existe
                     Imagenes::create([
-                        'cabaña' => $cabaña->id,
+                        'cabana' => $cabana->id,
                         'clase' => $key + 1,
                         'imagen' => $imageName,
                     ]);
@@ -58,10 +58,10 @@ class ImagenesCabañasController extends Controller
 
         } else {
             // No se proporcionaron imágenes nuevas
-            return redirect()->route('cabañas.edit', $cabaña->id)->with('success', 'No se proporcionaron imágenes nuevas.');
+            return redirect()->route('cabanas.edit', $cabana->id)->with('success', 'No se proporcionaron imágenes nuevas.');
         }
 
-        return redirect()->route('cabañas.edit', $cabaña->id)->with('success', 'Imágenes actualizadas correctamente.');
+        return redirect()->route('cabanas.edit', $cabana->id)->with('success', 'Imágenes actualizadas correctamente.');
     }
 
 

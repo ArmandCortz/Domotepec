@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     @endpush
     <section>
-        <div id="cabaña" class="py-2">
+        <div id="cabana" class="py-2">
             <div class="container">
 
                 <h2 class="text-center">Domotepec</h2>
@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-6 ">
                         <div class="col">
-                            <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt="No hay imagen"
+                            <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}" alt="No hay imagen"
                                 style="width: 100%; height: 300px;  border-radius: 15px; overflow: hidden;">
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="row row-cols-3 ">
                             @foreach ($imagenes as $imagen)
                                 <div class="col py-2">
-                                    <img src="{{ asset('img/cabañas/imagenes/' . $imagen->imagen) }}" alt="No hay imagen"
+                                    <img src="{{ asset('img/cabanas/imagenes/' . $imagen->imagen) }}" alt="No hay imagen"
                                         style="width: 100%; height: 135px;  border-radius: 15px; overflow: hidden;">
                                 </div>
                             @endforeach
@@ -32,16 +32,16 @@
 
                 <div class="row row-cols-2 py-4">
                     <div class="col-8">
-                        <h1>Nombre de la cabaña: {{ $cabaña->nombre }}</h1>
-                        <p>{{ $cabaña->huespedes }} huéspedes . {{ $cabaña->habitaciones }} habitaciones .
-                            {{ $cabaña->camas }} camas . {{ $cabaña->baños }} baños completos</p>
+                        <h1>Nombre de la cabana: {{ $cabana->nombre }}</h1>
+                        <p>{{ $cabana->huespedes }} huéspedes . {{ $cabana->habitaciones }} habitaciones .
+                            {{ $cabana->camas }} camas . {{ $cabana->baños }} baños completos</p>
                         <hr>
-                        <small>{{ $cabaña->descripcion }}
+                        <small>{{ $cabana->descripcion }}
                         </small>
                         <hr>
                         <h2>Lo que ofrece este lugar</h2>
                         <div class="row row-cols-2">
-                            @foreach ($cabaña->servicios as $servicio)
+                            @foreach ($cabana->servicios as $servicio)
                                 <div class="col">
                                     <div class="row row-cols-2">
                                         <div class="col-2">
@@ -63,8 +63,8 @@
                         <div class="card shadow-lg bg-light mb-3" style="max-width: 100$;">
 
                             <div class="card-body">
-                                <h3>${{ $cabaña->precio }} USD por noche</h3>
-                                <form action="{{ route('reservaciones.solicitud', $cabaña->id) }}" method="POST">
+                                <h3>${{ $cabana->precio }} USD por noche</h3>
+                                <form action="{{ route('reservaciones.solicitud', $cabana->id) }}" method="POST">
                                     @csrf
                                     <div class="row row-cols-2">
                                         <div class="col">
@@ -88,10 +88,11 @@
                                     <div class="mb-3">
                                         <label for="huespedes" class="form-label">Cantidad de huéspedes:</label>
                                         <input type="number" class="form-control" name="huespedes" id="huespedes"
-                                            min="1" value="1" max="{{ $cabaña->huespedes }}">
+                                            min="1" value="1" max="{{ $cabana->huespedes }}">
                                     </div>
 
-                                    <button type="submit" class="btn btn-outline-primary mb-2" style="width: 100%">Solicitar
+                                    <button type="submit" class="btn btn-outline-primary mb-2"
+                                        style="width: 100%">Solicitar
                                         Reserva</button>
                                     <p class="text-center">Aun no se te cobrara nada.</p>
 
@@ -99,7 +100,7 @@
                                     <div class="row row-cols-2">
                                         <div class="col">
                                             <div class="mb-3">
-                                                <label for="total_cabaña" class="form-label">{{ $cabaña->precio }} USD X
+                                                <label for="total_cabaña" class="form-label">{{ $cabana->precio }} USD X
                                                     <span id="diferencia_dias"></span> Noches</label>
                                             </div>
                                         </div>
@@ -157,30 +158,30 @@
     </section>
 
     <section>
-        <div id="cabañas" class="bg-dark text-white py-2 ">
+        <div id="cabanas" class="bg-dark text-white py-2 ">
             <div class="row mt-5 my-5">
                 <div class="container-xxl text-center">
                     <div class="col-md-6 offset-md-3 text-center">
 
 
-                        <h1>Descubre más cabañas</h1>
-                        <h5>Selecciona la cabaña que desees ver: </h5>
+                        <h1>Descubre más cabanas</h1>
+                        <h5>Selecciona la cabana que desees ver: </h5>
                     </div>
 
                     <div class="container text-center py-2">
                         <div class="row row-cols-3">
-                            @foreach ($cabañas as $cabaña)
+                            @foreach ($cabanas as $cabana)
                                 <div class="col mt-2">
-                                    <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}" alt=""
+                                    <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}" alt=""
                                         class="rounded-circle img-fluid"
                                         style="max-height: 200px; max-width: 200px; height: 200px;  width: 200px;">
                                     <br><br>
-                                    <h5>{{ $cabaña->nombre }}</h5>
+                                    <h5>{{ $cabana->nombre }}</h5>
 
-                                    <a href="{{ route('reservaciones.cabaña', $cabaña->id) }}"
-                                        class="btn btn-outline-success ver-cabaña"
-                                        data-cabaña-id="{{ $cabaña->id }}">Ver
-                                        Cabaña</a>
+                                    <a href="{{ route('reservaciones.cabana', $cabana->id) }}"
+                                        class="btn btn-outline-success ver-cabana"
+                                        data-cabana-id="{{ $cabana->id }}">Ver
+                                        Cabana</a>
                                 </div>
                             @endforeach
                         </div>
@@ -189,5 +190,4 @@
             </div>
         </div><br>
     </section>
-
 @endsection

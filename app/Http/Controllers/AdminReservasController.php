@@ -4,22 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reserva;
-use App\Models\Cabaña;
+use App\Models\Cabana;
 
 
 class AdminReservasController extends Controller
 {
     public function index()
     {
-        $reservaciones = Reserva::with('cabaña')->get();
-        $cabañas = Cabaña:: all();
-        return view ("administracion.modules.reservas.index",compact("reservaciones","cabañas"));
+        $reservaciones = Reserva::with('cabana')->get();
+        $cabanas = Cabana::all();
+        return view("administracion.modules.reservas.index", compact("reservaciones", "cabanas"));
     }
     public function create()
     {
-        $reservaciones = Reserva::with('cabaña')->get();
-        $cabañas = Cabaña::all();
-        return view("administracion.modules.reservas.create", compact("cabañas", 'reservaciones'));
+        $reservaciones = Reserva::with('cabana')->get();
+        $cabanas = Cabana::all();
+        return view("administracion.modules.reservas.create", compact("cabanas", 'reservaciones'));
 
     }
     public function store(Request $request)
@@ -28,8 +28,8 @@ class AdminReservasController extends Controller
         reserva::create([
             'cliente' => $request->cliente,
             'email' => $request->email,
-            'telefono' => $request->telefono, 
-            'cabaña' => $request->cabaña, 
+            'telefono' => $request->telefono,
+            'cabana' => $request->cabana,
             'ingreso' => $request->fecha_entrada,
             'egreso' => $request->fecha_salida,
             'costo' => $request->costo,
@@ -48,9 +48,9 @@ class AdminReservasController extends Controller
     public function edit($id)
     {
         $reserva = Reserva::findOrFail($id);
-        $reservaciones = Reserva::with('cabaña')->get();
-        $cabañas = Cabaña::all();
-        return view("administracion.modules.reservas.edit", compact("cabañas", 'reserva','reservaciones'));
+        $reservaciones = Reserva::with('cabana')->get();
+        $cabanas = Cabana::all();
+        return view("administracion.modules.reservas.edit", compact("cabanas", 'reserva', 'reservaciones'));
     }
 
     public function update(Request $request, $id)
@@ -60,7 +60,7 @@ class AdminReservasController extends Controller
             'cliente' => $request->cliente,
             'email' => $request->email,
             'telefono' => $request->telefono,
-            'cabaña' => $request->cabaña,
+            'cabana' => $request->cabana,
             'ingreso' => $request->fecha_entrada,
             'egreso' => $request->fecha_salida,
             'costo' => $request->costo,

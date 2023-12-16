@@ -170,7 +170,7 @@
 
                                             <div class="col-md-8">
                                                 <textarea id="descripcion" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion"
-                                                    rows="8" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabaña">{{ $bien->descripcion }}</textarea>
+                                                    rows="8" autocomplete="descripcion" autofocus placeholder="Escribe una descripcion para la cabana">{{ $bien->descripcion }}</textarea>
 
                                                 @error('descripcion')
                                                     <span class="invalid-feedback" role="alert">
@@ -203,7 +203,7 @@
                                             <div class="img-fluid">
                                                 <img id="imagen-preview"
                                                     src="{{ asset('img/bienes/' . ($bien->imagen ?? 'img.png')) }}"
-                                                    alt="Imagen de la cabaña"
+                                                    alt="Imagen de la cabana"
                                                     style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
                                             </div>
                                         </div>

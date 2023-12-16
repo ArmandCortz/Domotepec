@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Cabañas')
+@section('title', 'Cabanas')
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/admin/app.css') }}">
 @endsection
@@ -8,22 +8,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mt-3">Modulo Cabañas</h1>
+                <h1 class="text-center mt-3">Modulo Cabanas</h1>
 
                 {{-- <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" 
                     <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">Crear Usuario</a> --}}
                 {{-- <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">
                     Crear Usuario
                 </a> --}}
-                @can('cabañas.create')
-                    <a href="{{ route('cabañas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
-                        Cabañas</a>
+                @can('cabanas.create')
+                    <a href="{{ route('cabanas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
+                        Cabanas</a>
                 @endcan
 
                 <div class="card mt-3">
                     <div class="card-body ">
                         <div class="table-responsive">
-                            <table id="cabañas" class="table table-hover table-responsive-md"
+                            <table id="cabanas" class="table table-hover table-responsive-md"
                                 style=" border-radius: 5px; overflow: hidden;">
                                 <thead class="thead-dark">
                                     <tr>
@@ -37,47 +37,47 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cabañas as $cabaña)
+                                    @foreach ($cabanas as $cabana)
                                         <tr>
-                                            <td>{{ $cabaña->id }}</td>
+                                            <td>{{ $cabana->id }}</td>
                                             <td>
-                                                @if ($cabaña->imagen)
-                                                    <img src="{{ asset('img/cabañas/' . $cabaña->imagen) }}"
-                                                        alt="Imagen de la cabaña"
+                                                @if ($cabana->imagen)
+                                                    <img src="{{ asset('img/cabanas/' . $cabana->imagen) }}"
+                                                        alt="Imagen de la cabana"
                                                         style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
                                                 @else
-                                                    <img src="{{ asset('img/cabañas/img.png') }}" alt="No hay imagen"
+                                                    <img src="{{ asset('img/cabanas/img.png') }}" alt="No hay imagen"
                                                         style="max-width: 50px;  border-radius: 5px; overflow: hidden;">
                                                 @endif
                                             </td>
 
                                             <td>
                                                 <p class="d-flex align-items-center justify-content-center">
-                                                    {{ $cabaña->nombre }}</p>
+                                                    {{ $cabana->nombre }}</p>
                                             </td>
-                                            <td>{{ $cabaña->ubicacion }}</td>
+                                            <td>{{ $cabana->ubicacion }}</td>
                                             @foreach ($sucursales as $sucursal)
-                                                @if ($cabaña->sucursal === $sucursal->id)
+                                                @if ($cabana->sucursal === $sucursal->id)
                                                     <td>{{ $sucursal->nombre }}</td>
                                                 @endif
                                             @endforeach
-                                            {{-- <td>{{ $cabaña->descripcion }}</td> --}}
+                                            {{-- <td>{{ $cabana->descripcion }}</td> --}}
                                             <td
-                                                @if (auth()->user()->can('cabañas.edit') &&
-                                                        auth()->user()->can('cabañas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
+                                                @if (auth()->user()->can('cabanas.edit') &&
+                                                        auth()->user()->can('cabanas.destroy')) style="width: 200px;" @else style="width: 100px;" @endif>
 
-                                                @can('cabañas.edit')
-                                                    <a type="button" href="{{ route('cabañas.edit', $cabaña->id) }}"
+                                                @can('cabanas.edit')
+                                                    <a type="button" href="{{ route('cabanas.edit', $cabana->id) }}"
                                                         class="btn btn-outline-primary">
                                                         <i class="fas fa-pen"></i> Editar
                                                     </a>
                                                 @endcan
-                                                @can('cabañas.destroy')
+                                                @can('cabanas.destroy')
                                                     <a type="button" class="btn btn-outline-danger" data-toggle="modal"
-                                                        data-target="#modal-eliminar-{{ $cabaña->id }}">
+                                                        data-target="#modal-eliminar-{{ $cabana->id }}">
                                                         <i class="fas fa-trash"></i> Eliminar
                                                     </a>
-                                                    @include('administracion.modules.cabañas.delete')
+                                                    @include('administracion.modules.cabanas.delete')
                                                 @endcan
                                             </td>
 
@@ -114,11 +114,11 @@
         @endif
     </script>
     <script>
-        new DataTable('#cabañas', {
+        new DataTable('#cabanas', {
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ cabañas",
+                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ cabanas",
                 "infoEmpty": "",
                 "infoFiltered": "(_MAX_ servicios filtrados)",
                 "infoPostFix": "",

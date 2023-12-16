@@ -37,7 +37,7 @@
                                             <td>
                                                 @if ($bien->imagen)
                                                     <img src="{{ asset('img/bienes/' . $bien->imagen) }}"
-                                                        alt="Imagen de la cabaña"
+                                                        alt="Imagen de la cabana"
                                                         style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
                                                 @else
                                                     <img src="{{ asset('img/bienes/img.png') }}" alt="No hay imagen"
