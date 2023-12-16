@@ -17,7 +17,7 @@ class CreateSucursalTable extends Migration
             $table->id();
             $table->string('imagen')->nullable();
             $table->string('nombre', 100);
-            $table->string('empresa', 100);
+            $table->Integer('empresa');
             $table->string('direccion', 100);
             $table->string('telefono', 100);
             $table->string('gerente', 100);

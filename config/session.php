@@ -58,6 +58,7 @@ return [
     | location may be specified. This is only needed for file sessions.
     |
     */
+    'save' => env('SESSION_DRIVER', 'file'),
 
     'files' => storage_path('framework/sessions'),
 

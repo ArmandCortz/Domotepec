@@ -17,7 +17,7 @@ class SucursalesSeeder extends Seeder
         Sucursal::create([
 
             'nombre' => 'Ilopango',
-            'empresa' => 'Domotepec',
+            'empresa' => '1',
             'direccion' => 'Ilopango',
             'telefono' => '+5036004-3157',
             'gerente' => 'Leonel',
@@ -27,7 +27,7 @@ class SucursalesSeeder extends Seeder
         Sucursal::create([
 
             'nombre' => 'La Libertad',
-            'empresa' => 'Domotepec',
+            'empresa' => '1',
             'direccion' => 'La Libertad',
             'telefono' => '+5036004-3157',
             'gerente' => 'Leonel',
