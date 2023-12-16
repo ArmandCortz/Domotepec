@@ -73,14 +73,14 @@ Route::prefix('/')->group(function () {
 
         // Rutas para cabanas
 
-        Route::resource('cabanas', 'CabañasController')->names('cabanas');
+        Route::resource('cabanas', 'CabanasController')->names('cabanas');
 
-        Route::get('cabanas/{id}/imagenes/edit', 'ImagenesCabañasController@edit')->name('cabanas.imagenes');
-        Route::put('cabanas/{id}/imagenes/update', 'ImagenesCabañasController@update')->name('cabanas.imagenes.update');
+        Route::get('cabanas/{id}/imagenes/edit', 'ImagenesCabanasController@edit')->name('cabanas.imagenes');
+        Route::put('cabanas/{id}/imagenes/update', 'ImagenesCabanasController@update')->name('cabanas.imagenes.update');
 
-        Route::get('cabanas/{id}/servicios/edit', 'ServiciosCabañasController@index')->name('cabanas.servicios');
-        Route::post('/agregar-servicio', 'ServiciosCabañasController@store')->name('cabanas.servicios.store');
-        Route::post('/eliminar-servicio', 'ServiciosCabañasController@update')->name('cabanas.servicios.delete');
+        Route::get('cabanas/{id}/servicios/edit', 'ServiciosCabanasController@index')->name('cabanas.servicios');
+        Route::post('/agregar-servicio', 'ServiciosCabanasController@store')->name('cabanas.servicios.store');
+        Route::post('/eliminar-servicio', 'ServiciosCabanasController@update')->name('cabanas.servicios.delete');
 
         //Rutas para bienes
         Route::resource('bienes', "BienesController")->names('bienes');

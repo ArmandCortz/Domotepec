@@ -9,7 +9,7 @@ use App\Models\Cabana;
 use App\Models\Sucursal;
 use App\Models\Imagenes;
 
-class CabañasController extends Controller
+class CabanasController extends Controller
 {
     public function index()
     {

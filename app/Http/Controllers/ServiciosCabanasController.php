@@ -8,7 +8,7 @@ use App\Models\Cabana;
 use App\Models\Servicios;
 use App\Models\CHS;
 
-class ServiciosCabañasController extends Controller
+class ServiciosCabanasController extends Controller
 {
     public function index(Servicios $servicios, Cabana $cabanas, $cabana)
     {

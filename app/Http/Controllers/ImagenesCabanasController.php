@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Cabana;
 use App\Models\Imagenes;
 
-class ImagenesCabañasController extends Controller
+class ImagenesCabanasController extends Controller
 {
 
     public function edit(Imagenes $imagenes, Cabana $cabanas, $cabana)
