@@ -124,7 +124,7 @@ class EmpresasController extends Controller
             // Convierte la imagen a PNG y ajusta dimensiones
             $img = Image::make($path);
             $img->encode('png', 75); // Convierte a PNG con calidad del 75%
-            $img->resize(400, 200); // Ajusta a dimensiones específicas (400x200)
+            $img->resize(400, 400); // Ajusta a dimensiones específicas (400x200)
 
             // Guarda la imagen convertida
             $img->save($path);

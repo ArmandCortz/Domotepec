@@ -57,7 +57,7 @@
                                         <div style="text-align: center;">
                                             <div class="img-fluid">
                                                 <img id="imagen-preview" src="#" alt="Vista previa de la imagen"
-                                                    style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; display: none; margin: 0 auto;">
+                                                    style="width: 200px; height: 200px; max-width: 200px; max-height: 200px; display: none; margin: 0 auto;">
 
                                             </div>
                                         </div>

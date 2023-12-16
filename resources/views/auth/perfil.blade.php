@@ -78,6 +78,7 @@
                                                         {!! Form::label('name', 'Usuario:') !!}
                                                         {!! Form::text('name', $user->name, [
                                                             'class' => 'form-control',
+                                                            'disabled' => 'disabled',
                                                         ]) !!}
                                                         <small class="text-danger">{{ $errors->first('name') }}</small>
                                                     </div>
@@ -87,6 +88,7 @@
                                                         {!! Form::label('email', 'Email:') !!}
                                                         {!! Form::email('email', $user->email, [
                                                             'class' => 'form-control',
+                                                            'disabled' => 'disabled',
                                                         ]) !!}
                                                         <small class="text-danger">{{ $errors->first('email') }}</small>
                                                     </div>

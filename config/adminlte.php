@@ -355,8 +355,8 @@ return [
                 ],
                 [
                     'text' => 'Cabañas',
-                    'url' => '/cabanas',
-                    'active' => ['/cabanas/*'],
+                    'route' => 'cabañas.index',
+                    'active' => ['cabañas*'],
                     'icon' => 'fas fa-fw',
                     'can' => 'cabañas.index',
 

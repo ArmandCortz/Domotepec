@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mt-3">Modulo Bienes</h1>
+                <h1 class="text-center mt-3">Modulo Cabañas</h1>
 
                 <a href="{{ route('empresas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
                     Empresa</a>
@@ -34,7 +34,7 @@
                                                 @if ($empresa->imagen)
                                                     <img src="{{ asset('img/empresas/' . $empresa->imagen) }}"
                                                         alt="Imagen de la empresa"
-                                                        style="max-width: 100px;  border-radius: 5px; overflow: hidden;">
+                                                        style="max-width: 100px; max-height: 100px;  border-radius: 5px; overflow: hidden;">
                                                 @else
                                                     <img src="{{ asset('img/empresas/img.png') }}" alt="No hay imagen"
                                                         style="max-width: 50px;  border-radius: 5px; overflow: hidden;">

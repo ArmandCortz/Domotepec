@@ -29,16 +29,18 @@ class PerfilController extends Controller
             'email.unique' => 'El correo electrónico ya está en uso por otro usuario.',
         ];
 
+        // Validación de los campos 'name' y 'email'
         $request->validate([
-            'name' => 'required|unique:users,name,' . $user->id,
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            
         ], $messages);
 
+        // Actualizar los campos del usuario con los datos proporcionados en la solicitud
         $user->update($request->only(['name', 'email', 'nombres', 'apellidos', 'dui', 'telefono']));
 
-        return redirect()->route('perfil')->with('success', 'Perfil actualizado exitosamente.');
-
+        // Redirigir al usuario a la ruta 'perfil' con un mensaje de éxito
+        return redirect()->route('Perfil.index')->with('success', 'Perfil actualizado exitosamente.');
     }
+
 
     public function updatePassword(Request $request, User $user)
     {

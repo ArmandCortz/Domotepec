@@ -47,8 +47,10 @@
                                             @endif
                                         </td>
                                         <td>{{ $sucursal->nombre }}</td>
-                                        <td>{{ $sucursal->empresa }}</td>
                                         @foreach ($empresas as $empresa)
+                                            @if ($sucursal->empresa = $empresa->id)
+                                                <td>{{ $empresa->nombre }}</td>
+                                            @endif
                                         @endforeach
                                         <td>{{ $sucursal->direccion }}</td>
                                         <td>({{ substr($sucursal->telefono, 0, 4) }})

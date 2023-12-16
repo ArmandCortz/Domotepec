@@ -61,7 +61,7 @@
                                                 <img id="imagen-preview"
                                                     src="{{ asset('img/empresas/' . ($empresa->imagen ?? 'img.png')) }}"
                                                     alt="Imagen de la empresa"
-                                                    style="width: 400px; height: 200px; max-width: 100%; max-height: 200px; border-radius: 15px;">
+                                                    style="width: 200px; height: 200px; max-width: 200px; max-height: 200px; border-radius: 15px;">
                                             </div>
                                         </div>
                                     </div>
