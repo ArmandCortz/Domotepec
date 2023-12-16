@@ -33,6 +33,6 @@ class Cabana extends Model
     }
     public function servicios()
     {
-        return $this->belongsToMany(Servicios::class, 'cabañas_has_servicios', 'cabana', 'servicio');
+        return $this->belongsToMany(Servicios::class, 'cabanas_has_servicios', 'cabana', 'servicio');
     }
 }

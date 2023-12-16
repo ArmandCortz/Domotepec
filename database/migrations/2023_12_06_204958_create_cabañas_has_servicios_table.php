@@ -9,7 +9,7 @@ class CreateCabañasHasServiciosTable extends Migration
 
     public function up()
     {
-        Schema::create('cabañas_has_servicios', function (Blueprint $table) {
+        Schema::create('cabanas_has_servicios', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('cabana');
             $table->unsignedBigInteger('servicio');
@@ -22,7 +22,7 @@ class CreateCabañasHasServiciosTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('cabañas_has_servicios');
+        Schema::dropIfExists('cabanas_has_servicios');
 
     }
 }

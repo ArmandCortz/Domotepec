@@ -9,7 +9,7 @@ class CHS extends Model
 {
     use HasFactory;
 
-    protected $table = "cabañas_has_servicios";
+    protected $table = "cabanas_has_servicios";
     protected $fillable = [
         'cabana',
         'servicio'
