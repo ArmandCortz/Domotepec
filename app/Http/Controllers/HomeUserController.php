@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sucursal;
 use App\Models\Servicios;
-use App\Models\Cabaña;
+use App\Models\Cabana;
 
 class HomeUserController extends Controller
 {
@@ -18,11 +18,11 @@ class HomeUserController extends Controller
     {
         $sucursales = Sucursal::inRandomOrder()->distinct()->take(3)->get();
         $servicios = Servicios::inRandomOrder()->distinct()->take(6)->get();
-        $cabañas = Cabaña::inRandomOrder()->distinct()->take(4)->get();
-        $carrusel = Cabaña::inRandomOrder()->distinct()->take(4)->get();
+        $cabanas = Cabana::inRandomOrder()->distinct()->take(4)->get();
+        $carrusel = Cabana::inRandomOrder()->distinct()->take(4)->get();
 
         // Pasa las variables a la vista
-        return view('users.home', compact('sucursales', 'servicios', 'cabañas','carrusel'));
+        return view('users.home', compact('sucursales', 'servicios', 'cabanas', 'carrusel'));
 
     }
 
