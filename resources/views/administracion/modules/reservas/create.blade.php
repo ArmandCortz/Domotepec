@@ -78,7 +78,7 @@
                                                 <div class="col">
                                                     <div class="row mb-3">
                                                         <label for="cabana"
-                                                            class="col-md-4 col-form-label text-md-end">{{ __('Cabana') }}</label>
+                                                            class="col-md-4 col-form-label text-md-end">{{ __('Cabaña') }}</label>
 
                                                         <div class="col-md-8">
                                                             <select id="cabana" name="cabana"
@@ -130,7 +130,7 @@
                                                             <input id="startDate" type="date"
                                                                 class="form-control @error('fecha_entrada') is-invalid @enderror"
                                                                 name="fecha_entrada" value="{{ old('fecha_entrada') }}"
-                                                                autocomplete="fecha_entrada" autofocus>
+                                                                autocomplete="fecha_entrada" autofocus min="<?php echo date('Y-m-d'); ?>">
                                                             @error('fecha_entrada')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -148,7 +148,7 @@
                                                             <input id="endDate" type="date"
                                                                 class="form-control @error('fecha_salida') is-invalid @enderror"
                                                                 name="fecha_salida" value="{{ old('fecha_salida') }}"
-                                                                autocomplete="fecha_salida" autofocus>
+                                                                autocomplete="fecha_salida" autofocus min="<?php echo date('Y-m-d'); ?>">
                                                             @error('fecha_salida')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -307,6 +307,7 @@
             var startDateInput = $('#startDate');
             var endDateInput = $('#endDate');
             var calendar = null;
+            
 
             var mañana = new Date();
             mañana.setDate(mañana.getDate() + 1); // Obtiene la fecha de mañana
@@ -314,6 +315,7 @@
             pasado.setDate(pasado.getDate() + 2); // Obtiene la fecha de pasado mañana
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
+                
                 selectable: true,
                 datesSet: function(info) {
                     startDateInput.val(moment(mañana).format('YYYY-MM-DD'));

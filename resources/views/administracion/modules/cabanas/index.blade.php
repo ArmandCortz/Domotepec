@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mt-3">Modulo Cabanas</h1>
+                <h1 class="text-center mt-3">Modulo Cabañas</h1>
 
                 {{-- <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" 
                     <a href="{{ route('users.create') }}" class="btn btn-primary" data-toggle="modal" data-target="#modal-create">Crear Usuario</a> --}}
@@ -17,7 +17,8 @@
                 </a> --}}
                 @can('cabanas.create')
                     <a href="{{ route('cabanas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
-                        Cabanas</a>
+                        
+                    Cabañas</a>
                 @endcan
 
                 <div class="card mt-3">
@@ -118,12 +119,12 @@
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ cabanas",
+                "info": "Mostrando del _START_ al _END_ de un total de _TOTAL_ cabañas",
                 "infoEmpty": "",
-                "infoFiltered": "(_MAX_ servicios filtrados)",
+                "infoFiltered": "(_MAX_ cabañas filtradas)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ servicios",
+                "lengthMenu": "Mostrar _MENU_ cabañas",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",

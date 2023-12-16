@@ -5,7 +5,7 @@
             <div class="modal-header bg-dark">
                 <div class="container text-center">
                     <h1 class="modal-title" id="modal-perfilLabel">Eliminar
-                        Cabana</h1>
+                        Cabaña</h1>
                 </div>
                 <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

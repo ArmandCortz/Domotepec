@@ -6,7 +6,7 @@
         <div class="container-lg">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Servicios de la cabana: {{ $cabana->nombre }} </h1>
+                    <h1 class="text-center py-2 mb-2">Servicios de la cabaña: {{ $cabana->nombre }} </h1>
 
                     <div class="card">
 

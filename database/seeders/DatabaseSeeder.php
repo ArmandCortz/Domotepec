@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(RoleSeeder::class);
         $this->call(UsersTableSeeder::class);
-        $this->call(EmpresaSeeder::class);
-        $this->call(ServiciosSeeder::class);
-        $this->call(SucursalesSeeder::class);
-        $this->call(CabañasSeeder::class);
-        $this->call(BienesSeeder::class);
-        $this->call(CHSSeeder::class);
-        $this->call(ReservasSeeder::class);
+        // $this->call(EmpresaSeeder::class);
+        // $this->call(ServiciosSeeder::class);
+        // $this->call(SucursalesSeeder::class);
+        // $this->call(CabañasSeeder::class);
+        // $this->call(BienesSeeder::class);
+        // $this->call(CHSSeeder::class);
+        // $this->call(ReservasSeeder::class);
     }
 }

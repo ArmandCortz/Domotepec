@@ -11,10 +11,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mt-3">Modulo Sucursal</h1>
+                <h1 class="text-center mt-3">Modulo Sucursales</h1>
                 @can('sucursales.create')
                     <a href="{{ route('sucursales.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
-                        Sucursales</a>
+                        Sucursal</a>
                 @endcan <div class="card mt-3">
                     <div class="card-body">
 

@@ -21,7 +21,7 @@
                         <div class="col col-2 ">
                             <div class="text-center">
                                 <div class="profile-image-container" style="position: relative; display: inline-block;">
-                                    <img class="profile-user-img img-fluid img-circle" src="/img/img/ilopango_2.png"
+                                    <img class="profile-user-img img-fluid img-circle" src="/img/img-perfil/nouser.png"
                                         alt="User profile picture" style="width: 100px; height: 100px;">
                                     <button class="btn btn-link" id="edit-image-button">
                                         <i class="fas fa-camera"
@@ -60,9 +60,8 @@
                         <div class="row row-cols-2 py-2">
                             <div class="col-4 d-flex align-items-center justify-content-center">
                                 {{-- <h2>Información del usuario</h2> --}}
-                                <h5> Actualice la información del perfil y la dirección de correo electrónico de
-                                    su
-                                    cuenta.</h5>
+                                <h5> Actualice la información del perfil de
+                                    su cuenta.</h5>
                             </div>
                             <div class="col-8 ">
                                 {!! Form::model($user, [

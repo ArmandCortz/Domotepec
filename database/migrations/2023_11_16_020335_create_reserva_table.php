@@ -28,7 +28,7 @@ class CreateReservaTable extends Migration
             $table->timestamps();
 
             // $table->foreign('cliente')->references('id')->on('cliente');
-            $table->foreign('cabana')->references('id')->on('cabanas');
+            $table->foreign('cabana')->references('id')->on('cabanas')->onDelete('NO ACTION')->onUpdate('NO ACTION');
         });
     }
 

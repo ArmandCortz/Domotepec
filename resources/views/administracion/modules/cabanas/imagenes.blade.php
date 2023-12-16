@@ -6,7 +6,7 @@
         <div class="container-lg">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Imagenes de la cabana: {{ $cabana->nombre }} </h1>
+                    <h1 class="text-center py-2 mb-2">Imagenes de la Cabaña: {{ $cabana->nombre }} </h1>
 
                     <div class="card">
                         <form method="POST" action="{{ route('cabanas.imagenes.update', $cabana->id) }}"

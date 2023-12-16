@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center py-2 mb-2">Crear Cabanas</h1>
+                    <h1 class="text-center py-2 mb-2">Crear Cabañas</h1>
 
                     <div class="card">
 

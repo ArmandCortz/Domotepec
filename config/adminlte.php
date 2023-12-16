@@ -354,7 +354,7 @@ return [
 
                 ],
                 [
-                    'text' => 'Cabanas',
+                    'text' => 'Cabañas',
                     'route' => 'cabanas.index',
                     'active' => ['cabanas*'],
                     'icon' => 'fas fa-fw',

@@ -15,8 +15,9 @@ class CreateCabañasHasServiciosTable extends Migration
             $table->unsignedBigInteger('servicio');
 
 
-            $table->foreign('cabana')->references('id')->on('cabanas');
-            $table->foreign('servicio')->references('id')->on('servicios');
+            $table->foreign('cabana')->references('id')->on('cabanas')->onDelete('NO ACTION')->onUpdate('NO ACTION');
+            $table->foreign('servicio')->references('id')->on('servicios')->onDelete('NO ACTION')->onUpdate('NO ACTION');
+
         });
     }
 

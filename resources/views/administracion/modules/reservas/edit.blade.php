@@ -132,7 +132,7 @@
                                                             <input id="startDate" type="date"
                                                                 class="form-control @error('fecha_entrada') is-invalid @enderror"
                                                                 name="fecha_entrada" value="{{ $reserva->ingreso }}"
-                                                                autocomplete="fecha_entrada" autofocus>
+                                                                autocomplete="fecha_entrada" autofocus min="<?php echo date('Y-m-d'); ?>">
                                                             @error('fecha_entrada')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -150,7 +150,7 @@
                                                             <input id="endDate" type="date"
                                                                 class="form-control @error('fecha_salida') is-invalid @enderror"
                                                                 name="fecha_salida" value="{{ $reserva->egreso }}"
-                                                                autocomplete="fecha_salida" autofocus>
+                                                                autocomplete="fecha_salida" autofocus min="<?php echo date('Y-m-d'); ?>">
                                                             @error('fecha_salida')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -348,10 +348,10 @@
             var endDateInput = $('#endDate');
             var calendar = null;
 
-            var mañana = new Date();
-            mañana.setDate(mañana.getDate() + 1); // Obtiene la fecha de mañana
-            var pasado = new Date();
-            pasado.setDate(pasado.getDate() + 2); // Obtiene la fecha de pasado mañana
+            var mañana = new Date($reserva->ingreso);
+            mañana.setDate(mañana.getDate()); // Obtiene la fecha de mañana
+            var pasado = new Date($reserva->ingreso);
+            pasado.setDate(pasado.getDate()); // Obtiene la fecha de pasado mañana
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 selectable: true,

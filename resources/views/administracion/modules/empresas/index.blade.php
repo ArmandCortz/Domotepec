@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center mt-3">Modulo Cabanas</h1>
+                <h1 class="text-center mt-3">Modulo Empresas</h1>
 
                 <a href="{{ route('empresas.create') }}" class="btn btn-outline-primary"><i class="fas fa-user"></i> Crear
                     Empresa</a>
@@ -96,12 +96,12 @@
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-                "infoEmpty": "Mostrando 0 a 0 de 0 Entradas",
-                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Empresas",
+                "infoEmpty": "Mostrando 0 a 0 de 0 Empresas",
+                "infoFiltered": "(Filtrado de _MAX_ total Empresas)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "lengthMenu": "Mostrar _MENU_ Empresas",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscar:",
