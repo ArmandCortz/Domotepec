@@ -512,20 +512,10 @@
 
         }
 
-        function agregarReservasAlCalendario(reservas, calendar) {
-            // Agregar eventos al calendario basados en las reservas por cabaña
-            if (calendar) {
-                // calendar.getEvents().forEach(function(event) {
-                //     event.remove();
-                // });
-                console.log(reservas);
-                calendar.addEventSource(reservas);
-            } else {
-                console.log(2);
-            }
-        }
+        
 
         function cargarReservasPorCabaña(cabanaId, calendar) {
+            calendar.removeAllEvents();
             $.ajax({
                 url: `/reservas_por_cabana/${cabanaId}`,
                 type: 'GET',
@@ -536,27 +526,18 @@
                     console.error('Error al obtener reservas por cabaña:', error);
                 }
             });
+        }
 
-            
-            var events = [{
-                    title: 'Reserva 1',
-                    start: '2023-12-18T17:00:00',
-                    end: '2023-12-19T14:00:00',
-                    backgroundColor: 'green',
-                    borderColor: 'green'
-                },
-                {
-                    title: 'Reserva 2',
-                    start: '2023-12-25T17:00:00',
-                    end: '2023-12-28T14:00:00',
-                    backgroundColor: 'blue',
-                    borderColor: 'blue'
-                }
+        function agregarReservasAlCalendario(reservas, calendar) {
 
-                // ... Puedes agregar más eventos aquí según la lógica de tu aplicación
-            ];
-
-            return events;
+            reservas.forEach(function(reserva) {
+                calendar.addEvent({
+                    title: 'reservado',
+                    start: reserva.ingreso + 'T17:00:00',
+                    end: reserva.egreso + 'T14:00:00',
+                    color: 'gray'
+                });
+            });
         }
     </script>
 
