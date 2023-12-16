@@ -75,4 +75,11 @@ class AdminReservasController extends Controller
     {
         //
     }
+
+    public function reservasPorCabana($id)
+    {
+        
+        $reservaciones = Reserva::with('cabana')->where('cabana', $id)->get();
+        return response()->json($reservaciones);
+    }
 }

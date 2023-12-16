@@ -106,6 +106,8 @@ Route::prefix('/')->group(function () {
         // Route::post('/reservaciones', 'AdminReservasController@reservar')->name('reservas');
 
         Route::resource('reservas', "AdminReservasController")->names('reservas');
+        Route::get('/reservas_por_cabana/{id}', 'AdminReservasController@reservasPorCabana');
+
 
     });
 });

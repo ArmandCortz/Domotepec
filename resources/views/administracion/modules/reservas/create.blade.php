@@ -372,31 +372,40 @@
                 createEvent(); // Crear evento al cambiar la fecha de fin
                 actualizarCalculos(); // Actualizar cálculos al cambiar la fecha de fin
             });
+
+            $(document).ready(function() {
+                $('#cabana').change(function() {
+                    var selectedCabaña = $(this).val();
+                    @foreach ($cabanas as $cabana)
+                        if (selectedCabaña) {
+
+                            if (selectedCabaña === "{{ $cabana->id }}") {
+
+                                var huespedes = "{{ $cabana->huespedes }}";
+                                var mensaje = huespedes + " Personas máximo";
+                                var precio = "{{ $cabana->precio }}";
+
+
+                                $('#huespedes').attr('max', huespedes);
+                                $('#huespedes').attr('placeholder', mensaje);
+                                $('#precio').attr('value', precio);
+
+                                if (calendar) {
+                                    console.log(precio);
+                                }
+                                actualizarCalculos(precio, selectedCabaña, calendar);
+
+                            }
+                        }
+                    @endforeach
+                });
+            });
         });
 
         // operaciones
 
 
-        $(document).ready(function() {
-            $('#cabana').change(function() {
-                var selectedCabaña = $(this).val();
-                @foreach ($cabanas as $cabana)
-                    if (selectedCabaña) {
 
-                        if (selectedCabaña === "{{ $cabana->id }}") {
-                            var huespedes = "{{ $cabana->huespedes }}";
-                            var mensaje = huespedes + " Personas máximo";
-
-                            $('#huespedes').attr('max', huespedes);
-                            $('#huespedes').attr('placeholder', mensaje);
-                            $('#precio').attr('value', precio);
-
-                            actualizarCalculos();
-                        }
-                    }
-                @endforeach
-            });
-        });
 
         function calcularDiferenciaDias(startDate, endDate) {
             const unDia = 24 * 60 * 60 * 1000; // 1 día en milisegundos
@@ -422,14 +431,55 @@
             return totalEstadia.toFixed(2);
         }
 
-        function actualizarCalculos() {
+        function getBackgroundColor(state) {
+            switch (state) {
+                case '1':
+                    return '#17a2b8'; // Color celeste para estado Espera
+                case '2':
+                    return '#ffc107'; // Color amarillo para estado Reservada
+                case '3':
+                    return '#28a745'; // Color verde para estado Confirmada
+                case '4':
+                    return '#007bff'; // Color azul para estado Pagada
+                case '5':
+                    return '#6c757d'; // Color gris para estado Vencida
+                case '6':
+                    return '#dc3545'; // Color rojo para estado Cancelada
+                default:
+                    return '#f8f9fa'; // Color por defecto
+            }
+
+        }
+
+        function getBorderColor(state) {
+            switch (state) {
+                case '1':
+                    return '#17a2b8'; // Color celeste para estado Espera
+                case '2':
+                    return '#ffc107'; // Color amarillo para estado Reservada
+                case '3':
+                    return '#28a745'; // Color verde para estado Confirmada
+                case '4':
+                    return '#007bff'; // Color azul para estado Pagada
+                case '5':
+                    return '#6c757d'; // Color gris para estado Vencida
+                case '6':
+                    return '#dc3545'; // Color rojo para estado Cancelada
+                default:
+                    return '#f8f9fa'; // Color por defecto
+            }
+
+        }
+
+        function actualizarCalculos(precio, selectedCabaña, calendar) {
             const startDate = document.getElementById('startDate');
             const startDateValue = startDate.value;
             const endDate = document.getElementById('endDate');
             const endDateValue = endDate.value;
 
-            var precio = "{{ $cabana->precio }}";
+            var precio = precio;
             const preciotext = document.getElementById('precio');
+            console.log(precio);
 
             const diastext = document.getElementById('diferencia_dias');
             const diffDias = calcularDiferenciaDias(startDateValue, endDateValue);
@@ -457,6 +507,56 @@
 
             totalEstadiatext.textContent = `$${totalEstadia} USD`;
             inputTotal.value = totalEstadia;
+
+            cargarReservasPorCabaña(selectedCabaña, calendar);
+
+        }
+
+        function agregarReservasAlCalendario(reservas, calendar) {
+            // Agregar eventos al calendario basados en las reservas por cabaña
+            if (calendar) {
+                // calendar.getEvents().forEach(function(event) {
+                //     event.remove();
+                // });
+                console.log(reservas);
+                calendar.addEventSource(reservas);
+            } else {
+                console.log(2);
+            }
+        }
+
+        function cargarReservasPorCabaña(cabanaId, calendar) {
+            $.ajax({
+                url: `/reservas_por_cabana/${cabanaId}`,
+                type: 'GET',
+                success: function(reservas) {
+                    agregarReservasAlCalendario(reservas, calendar);
+                },
+                error: function(error) {
+                    console.error('Error al obtener reservas por cabaña:', error);
+                }
+            });
+
+            
+            var events = [{
+                    title: 'Reserva 1',
+                    start: '2023-12-18T17:00:00',
+                    end: '2023-12-19T14:00:00',
+                    backgroundColor: 'green',
+                    borderColor: 'green'
+                },
+                {
+                    title: 'Reserva 2',
+                    start: '2023-12-25T17:00:00',
+                    end: '2023-12-28T14:00:00',
+                    backgroundColor: 'blue',
+                    borderColor: 'blue'
+                }
+
+                // ... Puedes agregar más eventos aquí según la lógica de tu aplicación
+            ];
+
+            return events;
         }
     </script>
 

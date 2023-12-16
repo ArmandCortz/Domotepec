@@ -132,7 +132,8 @@
                                                             <input id="startDate" type="date"
                                                                 class="form-control @error('fecha_entrada') is-invalid @enderror"
                                                                 name="fecha_entrada" value="{{ $reserva->ingreso }}"
-                                                                autocomplete="fecha_entrada" autofocus min="<?php echo date('Y-m-d'); ?>">
+                                                                autocomplete="fecha_entrada" autofocus
+                                                                min="<?php echo date('Y-m-d'); ?>">
                                                             @error('fecha_entrada')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -150,7 +151,8 @@
                                                             <input id="endDate" type="date"
                                                                 class="form-control @error('fecha_salida') is-invalid @enderror"
                                                                 name="fecha_salida" value="{{ $reserva->egreso }}"
-                                                                autocomplete="fecha_salida" autofocus min="<?php echo date('Y-m-d'); ?>">
+                                                                autocomplete="fecha_salida" autofocus
+                                                                min="<?php echo date('Y-m-d'); ?>">
                                                             @error('fecha_salida')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -388,7 +390,7 @@
 
                 if (startDate && endDate) {
                     calendar.addEvent({
-                        title: 'Nueva Reserva',
+                        title: 'Reserva Actual',
                         start: startDate + 'T17:00:00',
                         end: endDate + 'T14:00:00',
                         color: 'blue' // Puedes cambiar el color del evento si lo deseas
@@ -420,14 +422,19 @@
                     if (selectedCabaña) {
 
                         if (selectedCabaña === "{{ $cabana->id }}") {
+
                             var huespedes = "{{ $cabana->huespedes }}";
                             var mensaje = huespedes + " Personas máximo";
+                            var precio = "{{ $cabana->precio }}";
+
 
                             $('#huespedes').attr('max', huespedes);
                             $('#huespedes').attr('placeholder', mensaje);
                             $('#precio').attr('value', precio);
+                            console.log(precio);
+                            actualizarCalculos(precio);
 
-                            actualizarCalculos();
+                            
                         }
                     }
                 @endforeach
