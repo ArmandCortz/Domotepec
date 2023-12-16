@@ -19,6 +19,7 @@ class AdminReservasController extends Controller
     {
         $reservaciones = Reserva::with('cabana')->get();
         $cabanas = Cabana::all();
+        
         return view("administracion.modules.reservas.create", compact("cabanas", 'reservaciones'));
 
     }

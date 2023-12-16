@@ -15,7 +15,7 @@
         {{-- <div id="calendario"></div> --}}
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center mt-3">Crear Reservaciones</h1>
+                <h1 class="text-center mt-3">Editar Reservaciones</h1>
 
 
                 <div class="card">
@@ -348,9 +348,9 @@
             var endDateInput = $('#endDate');
             var calendar = null;
 
-            var mañana = new Date($reserva->ingreso);
+            var mañana = new Date("{{ $reserva->ingreso }}");
             mañana.setDate(mañana.getDate()); // Obtiene la fecha de mañana
-            var pasado = new Date($reserva->ingreso);
+            var pasado = new Date("{{ $reserva->egreso }}");
             pasado.setDate(pasado.getDate()); // Obtiene la fecha de pasado mañana
 
             var calendar = new FullCalendar.Calendar(calendarEl, {

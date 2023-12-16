@@ -97,7 +97,7 @@
                                                     @endphp
 
                                                     @if (array_key_exists($reserva->estado, $estados))
-                                                        <a type="button" href="{{ route('reservas.edit', $reserva->id) }}"
+                                                        <a type="button" href="{{ route('reservas.edit', $reserva->estado) }}"
                                                             class="btn btn-{{ $estados[$reserva->estado] }}">
                                                             <i class="fas fa-pen"></i> Revisar
                                                         </a>
